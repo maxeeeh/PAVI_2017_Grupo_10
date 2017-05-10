@@ -30,7 +30,7 @@
     End Function
 
     Private Function leo_tabla(ByVal nombre_tabla As String) As DataTable
-        Return ejecuto_sql("SELECT * FROM " & nombre_tabla)
+        Return ejecuto_sql("SELECT * FROM " & nombre_tabla & " WHERE habilitado = 1")
     End Function
 
     Private Sub cargar_lista()
@@ -60,7 +60,8 @@
     Private Sub eliminar(ByVal id As Integer)
         Dim txt_delete As String = ""
 
-        txt_delete &= "DELETE Cargo"
+        txt_delete &= "UPDATE Cargo"
+        txt_delete &= " SET habilitado = 1"
         txt_delete &= " WHERE id_cargo = " & id
 
         insertar_modificar_eliminar(txt_delete)
@@ -132,7 +133,7 @@
 
         Dim res As Integer = MessageBox.Show("                        Esta seguro?", "Confirmacion", MessageBoxButtons.OKCancel)
         If res = DialogResult.OK Then
-            eliminar(lst_cargos.SelectedIndex + 1)
+            eliminar(lst_cargos.SelectedValue)
             cargar_lista()
             MessageBox.Show("Se ha eliminado el cargo correctamente" _
                             , "Informacion" _
@@ -149,7 +150,7 @@
         Dim tabla As New Data.DataTable
         sql &= "SELECT *"
         sql &= " FROM Cargo"
-        sql &= " WHERE descripcion LIKE '" & pattern & "%'"
+        sql &= " WHERE habilitado = 1 AND descripcion LIKE '" & pattern & "%'"
         llenar_lista(ejecuto_sql(sql))
     End Sub
 
@@ -159,8 +160,5 @@
         lst_cargos.ValueMember = "id_cargo"
     End Sub
 
-    Private Sub txt_descripcion_TextChanged(sender As Object, e As EventArgs) Handles txt_descripcion.TextChanged
-
-    End Sub
 
 End Class

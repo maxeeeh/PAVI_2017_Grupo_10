@@ -31,7 +31,7 @@
     End Function
 
     Private Function leo_tabla(ByVal nombre_tabla As String) As DataTable
-        Return ejecuto_sql("SELECT * FROM " & nombre_tabla)
+        Return ejecuto_sql("SELECT * FROM " & nombre_tabla & " WHERE habilitado = 1")
     End Function
 
     Private Sub cargar_lista()
@@ -51,7 +51,6 @@
         Dim txt_insert As String = ""
 
         txt_insert &= "INSERT INTO Insumo ("
-        'txt_insert &= "id_empleado"
         txt_insert &= "descripcion)"
         txt_insert &= " VALUES ("
         txt_insert &= "'" & txt_descripcion.Text & "')"
@@ -62,7 +61,8 @@
     Private Sub eliminar(ByVal id As Integer)
         Dim txt_delete As String = ""
 
-        txt_delete &= "DELETE Insumo"
+        txt_delete &= "UPDATE Insumo"
+        txt_delete &= "SET habilitado = 0"
         txt_delete &= " WHERE id_insumo = " & id
 
         insertar_modificar_eliminar(txt_delete)
@@ -134,7 +134,7 @@
 
         Dim res As Integer = MessageBox.Show("                        Esta seguro?", "Confirmacion", MessageBoxButtons.OKCancel)
         If res = DialogResult.OK Then
-            eliminar(lst_insumos.SelectedIndex + 1)
+            eliminar(lst_insumos.SelectedValue)
             cargar_lista()
             MessageBox.Show("Se ha eliminado el insumo correctamente" _
                             , "Informacion" _
@@ -151,7 +151,7 @@
         Dim tabla As New Data.DataTable
         sql &= "SELECT *"
         sql &= " FROM Insumo"
-        sql &= " WHERE descripcion LIKE '" & pattern & "%'"
+        sql &= " WHERE habilitado = 1 AND descripcion LIKE '" & pattern & "%'"
         llenar_lista(ejecuto_sql(sql))
     End Sub
 
