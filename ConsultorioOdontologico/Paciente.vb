@@ -2,9 +2,8 @@
 
 
     'Lo que me permite conectar a la BD'
-    Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
-    'Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=LAPATOP\LUCIANOSQL;User ID=Luciano;Initial Catalog=ConsultorioOdontologicoBD;Password=Luciano"
-
+    'Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
+    Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=LAPATOP\LUCIANOSQL;User ID=Luciano;Initial Catalog=ConsultorioOdontologicoBD;Password=Luciano"
     Enum tipo_grabacion
         insertar
         modificar
@@ -67,7 +66,7 @@
         sql &= "          , P.departamento"
         sql &= " FROM     Paciente P JOIN TipoDocumento T"
         sql &= " ON       P.id_tipo_documento = T.id_tipo_documento"
-        sql &= " WHERE habilitado = 1"
+        sql &= " WHERE P.habilitado = 1"
         sql &= " ORDER BY P.apellido ASC"
 
         tabla = ejecuto_sql(sql)
@@ -344,17 +343,17 @@
         Next
     End Sub
 
-    Private Sub cmd_eliminar_por_doc_Click(sender As Object, e As EventArgs)
-        If validar_pacientes(Me.cmb_eliminar_por_tipo_doc.SelectedValue, Me.txt_eliminar_por_doc.Text) = respuesta_validacion._existe Then
+    Private Sub cmd_eliminar_por_doc_Click(sender As Object, e As EventArgs) Handles cmd_eliminar_por_doc.Click
+        If validar_pacientes(Me.cmb_tipo_doc.SelectedValue, Me.txt_nro_doc.Text) = respuesta_validacion._existe Then
             Dim res As Integer = MessageBox.Show("                        Esta seguro?", "Confirmacion", MessageBoxButtons.OKCancel)
             If res = DialogResult.OK Then
-                eliminar(Me.cmb_eliminar_por_tipo_doc.SelectedValue, Me.txt_eliminar_por_doc.Text)
+                eliminar(Me.cmb_tipo_doc.SelectedValue, Me.txt_nro_doc.Text)
                 MessageBox.Show("Se ha eliminado el paciente correctamente" _
                             , "Informacion" _
                             , MessageBoxButtons.OK _
                             , MessageBoxIcon.Information)
                 Me.cargar_grilla()
-                Me.txt_eliminar_por_doc.Text = ""
+                Me.txt_nro_doc.Text = ""
             End If
         Else
             MessageBox.Show("Se ha detectado que el paciente no existe en la base de datos" _
@@ -381,7 +380,7 @@
         If res = DialogResult.OK Then
             eliminar(Me.grid_pacientes.CurrentRow.Cells(3).Value, Me.grid_pacientes.CurrentRow.Cells(4).Value)
             cargar_grilla()
-            Me.txt_eliminar_por_doc.Text = ""
+            Me.txt_nro_doc.Text = ""
             MessageBox.Show("Se ha eliminado el paciente correctamente" _
                             , "Informacion" _
                             , MessageBoxButtons.OK _
@@ -537,22 +536,7 @@
             Exit Sub
         End If
 
-
-        Dim encontrado As Boolean = False
-
-        For c = 0 To (grid_pacientes.Rows.Count - 1)
-            If cmb_tipo_doc.SelectedValue = grid_pacientes.Rows(c).Cells(3).Value.ToString _
-                And String.Compare(grid_pacientes.Rows(c).Cells(4).Value, txt_nro_doc.Text, False) = 0 Then
-
-                llenar_formulario(c)
-
-                encontrado = True
-                Exit For
-
-            End If
-        Next
-
-        If encontrado = True Then
+        If buscarPacienteYLlenarFormulario() = True Then
             accion = tipo_grabacion.modificar
             habilitar_controles()
             dtp_fecha_nac.Enabled = False
@@ -563,6 +547,27 @@
         End If
 
     End Sub
+
+    Private Function buscarPacienteYLlenarFormulario() As Boolean
+
+        'Intenta encontrar al paciente en la grilla por su tipo y num de doc, y si lo logra llena el formulario
+        Dim encontrado As Boolean = False
+
+        For c = 0 To (grid_pacientes.Rows.Count - 1)
+            If cmb_tipo_doc.SelectedValue = grid_pacientes.Rows(c).Cells(3).Value.ToString _
+                And String.Compare(grid_pacientes.Rows(c).Cells(4).Value, txt_nro_doc.Text, False) = 0 Then
+
+                llenar_formulario(c)
+                encontrado = True
+
+                Exit For
+            End If
+
+        Next
+
+        Return encontrado
+
+    End Function
 
     Private Sub llenar_formulario(row As Integer)
 
@@ -647,7 +652,7 @@
         sql &= "          , P.departamento"
         sql &= " FROM     Paciente P JOIN TipoDocumento T"
         sql &= " ON       P.id_tipo_documento = T.id_tipo_documento"
-        sql &= " WHERE habilitado = 1"
+        sql &= " WHERE P.habilitado = 1"
 
         sql &= " AND (CONCAT(P.apellido, ' ', P.nombre) LIKE '" & pattern & "%'"
         sql &= " OR CONCAT(P.nombre, ' ', P.apellido) LIKE '" & pattern & "%')"
@@ -664,4 +669,26 @@
         End If
     End Sub
 
+    Private Sub actualizar_mascara_nro_doc()
+
+        'Dim id_tipo_doc As String = cmb_tipo_doc.SelectedValue
+
+        Select Case cmb_tipo_doc.SelectedValue.ToString
+            Case "1" 'DNI
+                txt_nro_doc.Mask = "00-000-000"
+            Case "2" 'Cedula
+                txt_nro_doc.Mask = "A-00-000-000"
+            Case "3" 'LE
+                txt_nro_doc.Mask = "A-00-000-000"
+            Case "4" 'LC
+                txt_nro_doc.Mask = "A-00-000-000"
+            Case "5" 'Pasaporte
+                txt_nro_doc.Mask = "AAA-000-000"
+        End Select
+
+    End Sub
+
+    Private Sub cmb_tipo_doc_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmb_tipo_doc.SelectedIndexChanged
+        actualizar_mascara_nro_doc()
+    End Sub
 End Class

@@ -383,7 +383,7 @@
                 Dim res As Integer = MessageBox.Show("                        Esta seguro?", "Confirmacion", MessageBoxButtons.OKCancel)
                 If res = DialogResult.OK Then
                     eliminar(Me.txt_cuil.Text)
-                    
+
                     Me.cargar_grilla()
                     accion = tipo_grabacion.insertar
                     MessageBox.Show("Se ha eliminado el empleado correctamente" _
