@@ -151,6 +151,7 @@
         sql &= "SELECT *"
         sql &= " FROM Cargo"
         sql &= " WHERE habilitado = 1 AND descripcion LIKE '" & pattern & "%'"
+        sql &= " ORDER BY descripcion ASC"
         llenar_lista(ejecuto_sql(sql))
     End Sub
 

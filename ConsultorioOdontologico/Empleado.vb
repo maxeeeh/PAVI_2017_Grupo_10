@@ -66,6 +66,7 @@
         sql &= " FROM     Empleado E JOIN cargo C"
         sql &= " ON       E.id_cargo = C.id_cargo"
         sql &= " WHERE habilitado = 1"
+        sql &= " ORDER BY E.apellido ASC"
 
 
         tabla = ejecuto_sql(sql)
@@ -701,8 +702,9 @@
         sql &= " ON       E.id_cargo = C.id_cargo"
         sql &= " WHERE E.habilitado = 1"
         If cmb_filtro_cargo.Enabled = True Then
-            sql &= " AND E.id_cargo = " & (cmb_filtro_cargo.SelectedIndex + 1)
+            sql &= " AND E.id_cargo = " & (cmb_filtro_cargo.SelectedValue)
         End If
+        sql &= " ORDER BY E.apellido ASC"
 
         tabla = ejecuto_sql(sql)
         llenar_grilla(tabla)

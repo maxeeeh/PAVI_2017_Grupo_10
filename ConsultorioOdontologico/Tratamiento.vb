@@ -330,8 +330,9 @@ Public Class frm_registrar_tratamiento
 
         sql &= " SELECT *"
         sql &= " FROM     Tratamiento"
-        sql &= " WHERE descripcion LIKE '" & pattern & "%'"
+        sql &= " WHERE habilitado = 1 AND descripcion LIKE '" & pattern & "%'"
         sql &= " OR descripcion LIKE '%" & pattern & "%'"
+        sql &= " ORDER BY descripcion ASC"
 
         tabla = ejecuto_sql(sql)
         llenar_grilla(tabla)

@@ -71,55 +71,15 @@
         sql &= "          , P.departamento"
         sql &= " FROM     Paciente P JOIN TipoDocumento T"
         sql &= " ON       P.id_tipo_documento = T.id_tipo_documento"
-        sql &= " WHERE habilitado = 1"  'asegurarse de que esto lo de habilitado en la BD
+        sql &= " WHERE habilitado = 1"
+        sql &= " ORDER BY P.apellido ASC"
 
-
-        'Le digo cual es la consulta'
-        'cmd.CommandText = sql
-        'Ejecuto la consulta y guardo los datos en algun contenedor'
         tabla = ejecuto_sql(sql)
-        'tabla.Load(ejecuto_sql(sql))
-        'conexion.Close()
-
-        'Dim c As Integer
-
-        'Me.grid_pacientes.Rows.Clear()
-
-        'For c = 0 To tabla.Rows.Count - 1
-        '    grid_pacientes.Rows.Add()
-        '    grid_pacientes.Rows(c).Cells(0).Value = tabla.Rows(c)("nombre")
-        '    grid_pacientes.Rows(c).Cells(1).Value = tabla.Rows(c)("apellido")
-        '    grid_pacientes.Rows(c).Cells(2).Value = tabla.Rows(c)("descripcion")
-        '    grid_pacientes.Rows(c).Cells(3).Value = tabla.Rows(c)("id_tipo_documento")
-        '    grid_pacientes.Rows(c).Cells(4).Value = tabla.Rows(c)("nro_documento")
-        '    grid_pacientes.Rows(c).Cells(5).Value = tabla.Rows(c)("sexo")
-        '    grid_pacientes.Rows(c).Cells(6).Value = tabla.Rows(c)("fecha_nacimiento")
-        '    grid_pacientes.Rows(c).Cells(7).Value = tabla.Rows(c)("telefono")
-        '    grid_pacientes.Rows(c).Cells(8).Value = tabla.Rows(c)("celular")
-        '    grid_pacientes.Rows(c).Cells(9).Value = tabla.Rows(c)("id_localidad")
-        '    grid_pacientes.Rows(c).Cells(10).Value = tabla.Rows(c)("calle")
-        '    grid_pacientes.Rows(c).Cells(11).Value = tabla.Rows(c)("nro_calle")
-        '    grid_pacientes.Rows(c).Cells(12).Value = tabla.Rows(c)("piso")
-        '    grid_pacientes.Rows(c).Cells(13).Value = tabla.Rows(c)("departamento")
-
-        'Next
         llenar_grilla(tabla)
     End Sub
 
 
-    'Lee una tabla de base de datos y devuelve su contenido en un DataTable'
     Private Function leo_tabla(ByVal nombre_tabla As String) As DataTable
-        'Dim conexion As New Data.OleDb.OleDbConnection
-        'Dim cmd As New Data.OleDb.OleDbCommand
-        'Dim tabla As New Data.DataTable
-
-        'conexion.ConnectionString = cadena_conexion
-        'conexion.Open()
-        'cmd.Connection = conexion
-        'cmd.CommandType = CommandType.Text
-        'cmd.CommandText = "SELECT * FROM " & nombre_tabla
-        'tabla.Load(cmd.ExecuteReader())
-        'conexion.Close()
         Return ejecuto_sql("SELECT * FROM " & nombre_tabla)
     End Function
 
@@ -164,33 +124,21 @@
         Dim message_str As String = "Se encuentran los siguientes errores:"
         Dim libre_de_error As Boolean = True
         If txt_ape.Text = "" Then
-            'MessageBox.Show("El campo apellido esta vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            'txt_ape.Focus()
-            'Return respuesta_validacion_error._error
             libre_de_error = False
             message_str &= vbCrLf & "El campo apellido esta vacio."
         End If
 
         If txt_nom.Text = "" Then
-            'MessageBox.Show("El campo nombre esta vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            'txt_nom.Focus()
-            'Return respuesta_validacion_error._error
             libre_de_error = False
             message_str &= vbCrLf & "El campo nombre esta vacio"
         End If
 
         If cmb_tipo_doc.SelectedIndex = -1 Then
-            'MessageBox.Show("El campo localidad esta sin seleccion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            'cmb_loc.Focus()
-            'Return respuesta_validacion_error._error
             libre_de_error = False
             message_str &= vbCrLf & "El campo tipo documento esta sin seleccion"
         End If
 
         If txt_nro_doc.Text.Length < 8 Then
-            'MessageBox.Show("El campo CUIL debe contener 12 digitos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            'txt_cuil.Focus()
-            'Return respuesta_validacion_error._error
             libre_de_error = False
             message_str &= vbCrLf & "El campo numero de documento debe contener 8 digitos"
         End If
@@ -201,16 +149,11 @@
         End If
 
         If (txt_telefono.Text = "" And txt_celular.Text = "") Then
-            'MessageBox.Show("Se debe registrar al menos un numero de contacto", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            'txt_telefono.Focus()
-            'Return respuesta_validacion_error._error
             libre_de_error = False
             message_str &= vbCrLf & "Se debe registrar al menos un numero de contacto"
         End If
 
         If (txt_telefono.Text.Length > 0 And txt_telefono.Text.Length < 7) Then
-            'MessageBox.Show("Numero telefonico incorrecto. Debe contener al menos 7 digitos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            'Return respuesta_validacion_error._error
             libre_de_error = False
             message_str &= vbCrLf & "Numero telefonico incorrecto. Debe contener al menos 7 digitos"
         End If
@@ -218,8 +161,6 @@
         If txt_telefono.Text.Length > 0 Then
             For Each c As Char In txt_telefono.Text
                 If Not (IsNumeric(c)) Then
-                    'MessageBox.Show("Numero telefonico incorrecto. No debe contener letras", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    'Return respuesta_validacion_error._error
                     libre_de_error = False
                     message_str &= vbCrLf & "Numero telefonico incorrecto. No debe contener letras"
                     Exit For
@@ -228,8 +169,6 @@
         End If
 
         If (txt_celular.Text.Length > 0 And txt_celular.Text.Length < 8) Then
-            'MessageBox.Show("Numero de celular incorrecto. Debe contener al menos 2 digitos de codigo de area y 6 digitos de numero de celular", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            'Return respuesta_validacion_error._error
             libre_de_error = False
             message_str &= vbCrLf & "Numero de celular incorrecto. Debe contener al menos 2 digitos de codigo de area y 6 digitos de numero de celular"
         End If
@@ -237,8 +176,6 @@
         If txt_celular.Text.Length > 0 Then
             For Each c As Char In txt_celular.Text
                 If Not (IsNumeric(c)) Then
-                    'MessageBox.Show("Numero de celular incorrecto. No debe contener letras o simbolos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    'Return respuesta_validacion_error._error
                     libre_de_error = False
                     message_str &= vbCrLf & "Numero de celular incorrecto. No debe contener letras o simbolos"
                     Exit For
@@ -247,25 +184,16 @@
         End If
 
         If txt_calle.Text = "" Then
-            'MessageBox.Show("El campo calle esta vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            'txt_calle.Focus()
-            'Return respuesta_validacion_error._error
             libre_de_error = False
             message_str &= vbCrLf & "El campo calle esta vacio"
         End If
 
         If txt_nro_calle.Text = "" Then
-            'MessageBox.Show("El campo numero calle esta vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            'txt_nro_calle.Focus()
-            'Return respuesta_validacion_error._error
             libre_de_error = False
             message_str &= vbCrLf & "El campo numero calle esta vacio"
         Else
             For Each c As Char In txt_nro_calle.Text
                 If Not (IsNumeric(c)) Then
-                    'MessageBox.Show("El campo numero calle no debe contener letras o simbolos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    'txt_nro_calle.Focus()
-                    'Return respuesta_validacion_error._error
                     libre_de_error = False
                     message_str &= vbCrLf & "El campo numero calle no debe contener letras o simbolos"
                     Exit For
@@ -274,9 +202,6 @@
         End If
 
         If cmb_loc.SelectedIndex = -1 Then
-            'MessageBox.Show("El campo localidad esta sin seleccion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            'cmb_loc.Focus()
-            'Return respuesta_validacion_error._error
             libre_de_error = False
             message_str &= vbCrLf & "El campo localidad esta sin seleccion"
         End If
@@ -284,18 +209,12 @@
         If txt_piso.Text.Length > 0 Then
             For Each c As Char In txt_piso.Text
                 If Not (IsNumeric(c)) Then
-                    'MessageBox.Show("El campo piso no debe contener letras o simbolos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    'txt_piso.Focus()
-                    'Return respuesta_validacion_error._error
                     libre_de_error = False
                     message_str &= vbCrLf & "El campo piso no debe contener letras o simbolos"
                     Exit For
                 End If
             Next
             If txt_depto.Text = "" And Not (String.Compare(txt_piso.Text, "0") = 0) Then
-                'MessageBox.Show("Debe especificar cual es el departamento", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                'txt_depto.Focus()
-                'Return respuesta_validacion_error._error
                 libre_de_error = False
                 message_str &= vbCrLf & "Debe especificar cual es el departamento"
             End If
@@ -303,17 +222,11 @@
 
         If txt_depto.Text.Length > 0 Then
             If txt_piso.Text = "" Then
-                'MessageBox.Show("Debe especificar cual es el piso", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                'txt_piso.Focus()
-                'Return respuesta_validacion_error._error
                 libre_de_error = False
                 message_str &= vbCrLf & "Debe especificar cual es el piso"
             Else
                 For Each c As Char In txt_piso.Text
                     If Not (IsNumeric(c)) And Not (String.Compare(txt_piso.Text, "0") = 0) Then
-                        '    MessageBox.Show("El campo piso no debe contener letras o simbolos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        '    txt_piso.Focus()
-                        'Return respuesta_validacion_error._error
                         libre_de_error = False
                         message_str &= vbCrLf & "El campo piso no debe contener letras o simbolos"
                         Exit For
@@ -323,33 +236,6 @@
 
         End If
 
-
-        'For Each obj As Windows.Forms.Control In grp_datos_personales.Controls
-        '    'Otras validaciones---'
-        '    nom = obj.Name
-        '    'MessageBox.Show(nom)
-        '    'If Not (nom = "txt_piso") Or Not (nom = "txt_depto") Or Not (nom = "txt_celular") Or Not (nom = "txt_telefono") Or Not (nom = "txt_eliminar_por_cuil") Then
-        '    If Not (nom = "txt_celular") And Not (nom = "txt_telefono") Then
-        '        If nom = "txt_cuil" And obj.Text.Length < 14 Then
-        '            MessageBox.Show("El campo " + obj.Name + " esta vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        '        End If
-        '        If obj.GetType().Name = "TextBox" Or obj.GetType().Name = "MaskedTextBox" Then
-        '            If obj.Text = "" Then
-        '                MessageBox.Show("El campo " + obj.Name + " esta vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        '                obj.Focus()
-        '                Return respuesta_validacion_error._error
-        '            End If
-        '        End If
-        '    End If
-        '    If obj.GetType().Name = "ComboBox" Then
-        '        Dim local As ComboBox = obj
-        '        If local.SelectedIndex = -1 Then
-        '            MessageBox.Show("El campo " + obj.Name + " esta sin seleccion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        '            obj.Focus()
-        '            Return respuesta_validacion_error._error
-        '        End If
-        '    End If
-        'Next
         If libre_de_error = True Then
             Return respuesta_validacion_error._ok
         Else
@@ -380,10 +266,8 @@
     End Function
 
     Private Sub cmd_registrar_Click(sender As Object, e As EventArgs) Handles cmd_registrar.Click
-        'Al metodo para validar los campos lo llama pero por alguna razon no va a la rama del Else cuando estan vacios'
         If validar_datos() = respuesta_validacion_error._ok Then
             If Me.accion = tipo_grabacion.insertar Then
-                'DeLucho: para hacer la siguiente validacion asumo que el id_tipo_documento es igual al indice del cmb_tipo_documento + 1, verificar despues
                 If validar_pacientes(Me.cmb_tipo_doc.SelectedValue, Me.txt_nro_doc.Text) = respuesta_validacion._no_existe Then
                     insertar()
                     MessageBox.Show("Se ha registrado el paciente correctamente")
@@ -407,8 +291,6 @@
 
             End If
             Me.cargar_grilla()
-            'Else
-            'MessageBox.Show("Complete los campos con la informacion correcta", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 
@@ -516,7 +398,6 @@
         Dim txt_insert As String = ""
 
         txt_insert &= "INSERT INTO Paciente ("
-        'txt_insert &= "id_empleado"
         txt_insert &= "nro_documento"
         txt_insert &= ", id_tipo_documento"
         txt_insert &= ", nombre"
@@ -530,10 +411,10 @@
         txt_insert &= ", nro_calle"
         txt_insert &= ", piso"
         txt_insert &= ", departamento"
-        txt_insert &= ", habilitado)" '<---- FIJARSE QUE ESTE EN BD!!!
+        txt_insert &= ", habilitado)"
         txt_insert &= " VALUES ("
         txt_insert &= "'" & Me.txt_nro_doc.Text & "'"
-        txt_insert &= ", " & Me.cmb_tipo_doc.SelectedValue  '<--- REVISAR ESTO VS SELECTEDVALUE sin + 1
+        txt_insert &= ", " & Me.cmb_tipo_doc.SelectedValue
         txt_insert &= ", '" & Me.txt_nom.Text & "'"
         txt_insert &= ", '" & Me.txt_ape.Text & "'"
         If rb_hombre.Checked Then
@@ -574,16 +455,6 @@
 
 
         insertar_modificar_eliminar(txt_insert)
-        'Dim conexion As New Data.OleDb.OleDbConnection
-        'Dim cmd As New Data.OleDb.OleDbCommand
-
-        'conexion.ConnectionString = cadena_conexion
-        'conexion.Open()
-        'cmd.Connection = conexion
-        'cmd.CommandType = CommandType.Text
-        'cmd.CommandText = txt_insert
-        'cmd.ExecuteNonQuery()
-        'conexion.Close()
     End Sub
 
     Private Sub eliminar(ByVal tipoDoc As String, ByVal nroDoc As String)
@@ -621,10 +492,6 @@
             txt_update &= ",celular = '" & Me.txt_celular.Text & "'"
         End If
 
-        'txt_update &= " ,telefono = '" & txt_telefono.Text & "'"
-        'txt_update &= " ,celular = '" & txt_celular.Text & "'"
-
-
         txt_update &= " ,id_localidad = " & cmb_loc.SelectedIndex + 1
         txt_update &= " ,calle = '" & txt_calle.Text & "'"
         txt_update &= " ,nro_calle = " & txt_nro_calle.Text
@@ -641,8 +508,6 @@
             txt_update &= ",departamento = '" & Me.txt_depto.Text & "'"
         End If
 
-        'txt_update &= " ,piso = " & txt_piso.Text
-        'txt_update &= " ,departamento = '" & txt_depto.Text & "'"
 
         txt_update &= " WHERE id_tipo_documento = " & (cmb_tipo_doc.SelectedValue)
         txt_update &= " AND nro_documento = '" & txt_nro_doc.Text & "'"
@@ -696,7 +561,6 @@
             habilitar_controles()
             dtp_fecha_nac.Enabled = False
             cmb_tipo_doc.Enabled = False
-            'cmd_registrar.Text = "Modificar"
         Else
             MessageBox.Show("No se ha encontrado ningun paciente con el el tipo y numero de documento especificado", _
                             "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -737,8 +601,7 @@
         accion = tipo_grabacion.modificar
         habilitar_controles()
         dtp_fecha_nac.Enabled = False
-        cmb_tipo_doc.Enabled = False '<--- REEMP CMB_CARGO POR ESTO, VER SI TIENE SENTIDO
-        'cmd_registrar.Text = "Modificar"
+        cmb_tipo_doc.Enabled = False
     End Sub
 
     Private Sub llenar_grilla(ByVal tabla As DataTable)
