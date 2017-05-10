@@ -2,7 +2,9 @@
 
 Public Class frm_registrar_tratamiento
     Dim flag As Boolean = False
-    Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
+
+    ' Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
+    Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=POZZO;Integrated Security=SSPI;Initial Catalog=ConsultorioOdontologicoBD"
     Enum tipo_grabacion
         insertar
         modificar
@@ -40,7 +42,7 @@ Public Class frm_registrar_tratamiento
 
         Dim sql As String = ""
         sql &= " SELECT *"
-        sql &= " FROM Tratamiento"
+        sql &= " FROM Tratamiento WHERE habilitado=1"
 
 
 
@@ -145,6 +147,9 @@ Public Class frm_registrar_tratamiento
         txt_filtro_descripcion.Text = ""
     End Sub
 
+
+
+
     Private Sub eliminar(ByVal id)
         Dim txt_delete As String = ""
 
@@ -181,19 +186,7 @@ Public Class frm_registrar_tratamiento
         End If
 
 
-        'MsgBox(txt_costo.Text & "   " & ent & "   " & dec)
-
-        'If CChar(dec(0)) = "" And CChar(dec(1)) = "" Then
-        '    txt_insert &= ", '" & ent & dec.Replace(" ", "0") & "')"
-        'Else
-        '    If CChar(dec(0)) = " " Then
-        '        txt_insert &= ", '" & ent & dec.Replace(" ", "0") & "')"
-        '    Else
-        '        If CChar(dec(1)) = " " Then
-        '            txt_insert &= ", '" & ent & dec.Replace(" ", "0") & "')"
-        '        End If
-        '    End If
-        'End If
+        
 
         txt_insert &= ", '" & ent & dec & "')"
 
@@ -266,6 +259,7 @@ Public Class frm_registrar_tratamiento
 
     Private Sub cmd_eliminar_fila_seleccionada_Click(sender As Object, e As EventArgs) Handles cmd_eliminar.Click
 
+
         If grid_tratamientos.CurrentCell.Selected = False Then
 
             MessageBox.Show("Debe seleccionar una fila de la grilla" _
@@ -280,7 +274,13 @@ Public Class frm_registrar_tratamiento
         If res = DialogResult.OK Then
             'el 0 representa la posicion de la columna por la cual tomo el valor en este caso elimino por id
             'que esta en la posicion 0 
-            eliminar(Me.grid_tratamientos.CurrentRow.Cells(0).Value)
+            Dim txt_delete As String = ""
+
+            txt_delete &= "UPDATE Tratamiento"
+            txt_delete &= " SET habilitado = 0"
+            txt_delete &= " WHERE id_tratamiento= " & Me.grid_tratamientos.CurrentRow.Cells(0).Value
+
+            insertar_modificar_eliminar(txt_delete)
             cargar_grilla()
             MessageBox.Show("Se ha eliminado el tratamiento correctamente" _
                             , "Informacion" _
@@ -337,19 +337,15 @@ Public Class frm_registrar_tratamiento
         llenar_grilla(tabla)
     End Sub
 
-    Private Sub grp_costo_Enter(sender As Object, e As EventArgs) Handles grp_costo.Enter
-
-    End Sub
-
-    Private Sub lbl_campos_obligatorios_Click(sender As Object, e As EventArgs) Handles lbl_campos_obligatorios.Click
-
-    End Sub
+    
 
     Private Sub frm_registrar_tratamiento_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If MessageBox.Show("Esta segro que desea salir", "Importante", MessageBoxButtons.OKCancel) = Windows.Forms.DialogResult.OK Then
-            e.Cancel = True
-        Else
+        If MessageBox.Show("Esta seguro que desea salir", "Importante", MessageBoxButtons.OKCancel) = Windows.Forms.DialogResult.OK Then
             e.Cancel = False
+        Else
+            e.Cancel = True
         End If
     End Sub
+
+   
 End Class
