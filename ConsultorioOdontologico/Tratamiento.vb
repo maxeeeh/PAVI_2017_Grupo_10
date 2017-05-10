@@ -1,10 +1,9 @@
-﻿Imports System.Globalization
+﻿Public Class frm_registrar_tratamiento
 
-Public Class frm_registrar_tratamiento
     Dim flag As Boolean = False
 
-    ' Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
-    Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=POZZO;Integrated Security=SSPI;Initial Catalog=ConsultorioOdontologicoBD"
+    Dim cadena_conexion As String = "" 'Se asigna dinamicamente en Load dependiendo en que maquina este
+
     Enum tipo_grabacion
         insertar
         modificar
@@ -27,6 +26,15 @@ Public Class frm_registrar_tratamiento
     Dim accion As tipo_grabacion = tipo_grabacion.insertar
 
     Private Sub frm_registrar_tratamiento_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        'Asigna la cadena de conexion segun la compu actual (por el tema de Git y eso)
+        Select Case Environment.UserName
+            Case "Luciano" 'Lucho
+                cadena_conexion = "Provider=SQLNCLI11;Data Source=LAPATOP\LUCIANOSQL;User ID=Luciano;Initial Catalog=ConsultorioOdontologicoBD;Password=Luciano"
+            Case "NOTEBOOK" 'maxeeeh
+                cadena_conexion = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
+        End Select
+
         cmd_eliminar.Enabled = True
         cargar_grilla()
         cmd_registrar.Enabled = False

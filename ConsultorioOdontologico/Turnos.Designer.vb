@@ -23,12 +23,12 @@ Partial Class frm_turnos
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.lbl_empleado = New System.Windows.Forms.Label()
         Me.fecha_turno = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.hora_desde = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.hora_hasta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.empleado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.paciente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lbl_empleado = New System.Windows.Forms.Label()
         Me.lbl_paciente = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -42,15 +42,6 @@ Partial Class frm_turnos
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.Size = New System.Drawing.Size(993, 371)
         Me.DataGridView1.TabIndex = 0
-        '
-        'lbl_empleado
-        '
-        Me.lbl_empleado.AutoSize = True
-        Me.lbl_empleado.Location = New System.Drawing.Point(28, 48)
-        Me.lbl_empleado.Name = "lbl_empleado"
-        Me.lbl_empleado.Size = New System.Drawing.Size(71, 17)
-        Me.lbl_empleado.TabIndex = 1
-        Me.lbl_empleado.Text = "Empleado"
         '
         'fecha_turno
         '
@@ -77,6 +68,15 @@ Partial Class frm_turnos
         Me.paciente.HeaderText = "Paciente"
         Me.paciente.Name = "paciente"
         '
+        'lbl_empleado
+        '
+        Me.lbl_empleado.AutoSize = True
+        Me.lbl_empleado.Location = New System.Drawing.Point(28, 48)
+        Me.lbl_empleado.Name = "lbl_empleado"
+        Me.lbl_empleado.Size = New System.Drawing.Size(71, 17)
+        Me.lbl_empleado.TabIndex = 1
+        Me.lbl_empleado.Text = "Empleado"
+        '
         'lbl_paciente
         '
         Me.lbl_paciente.AutoSize = True
@@ -94,7 +94,7 @@ Partial Class frm_turnos
         Me.Controls.Add(Me.lbl_paciente)
         Me.Controls.Add(Me.lbl_empleado)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frm_turnos"
         Me.Text = "Turnos"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

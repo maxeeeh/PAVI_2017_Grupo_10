@@ -1,6 +1,6 @@
 ﻿Public Class frm_registrar_insumo
-    'Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
-    Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=LAPATOP\LUCIANOSQL;User ID=Luciano;Initial Catalog=ConsultorioOdontologicoBD;password=Luciano"
+
+    Dim cadena_conexion As String = "" 'Se asigna dinamicamente en Load dependiendo en que maquina este
 
     'Para saber si existe en la BD'
     Enum respuesta_validacion
@@ -40,6 +40,15 @@
     End Sub
 
     Private Sub frm_registrar_insumo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        'Asigna la cadena de conexion segun la compu actual (por el tema de Git y eso)
+        Select Environment.UserName
+            Case "Luciano" 'Lucho
+                cadena_conexion = "Provider=SQLNCLI11;Data Source=LAPATOP\LUCIANOSQL;User ID=Luciano;Initial Catalog=ConsultorioOdontologicoBD;Password=Luciano"
+            Case "NOTEBOOK" 'maxeeeh
+                cadena_conexion = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
+        End Select
+
         cargar_lista()
         lst_insumos.SelectedIndex = -1
     End Sub
