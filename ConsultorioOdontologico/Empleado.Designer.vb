@@ -82,7 +82,6 @@ Partial Class frm_registrar_empleado
         Me.lbl_eliminar = New System.Windows.Forms.Label()
         Me.lbl_eliminar_por_cuil = New System.Windows.Forms.Label()
         Me.cmd_eliminar_por_cuil = New System.Windows.Forms.Button()
-        Me.cmd_eliminar_fila_seleccionada = New System.Windows.Forms.Button()
         Me.lbl_campos_obligatorios = New System.Windows.Forms.Label()
         Me.cmb_filtro_cargo = New System.Windows.Forms.ComboBox()
         Me.txt_filtro_nombre_apellido = New System.Windows.Forms.TextBox()
@@ -653,7 +652,6 @@ Partial Class frm_registrar_empleado
         Me.TabPage2.Controls.Add(Me.lbl_eliminar)
         Me.TabPage2.Controls.Add(Me.lbl_eliminar_por_cuil)
         Me.TabPage2.Controls.Add(Me.cmd_eliminar_por_cuil)
-        Me.TabPage2.Controls.Add(Me.cmd_eliminar_fila_seleccionada)
         Me.TabPage2.Location = New System.Drawing.Point(4, 25)
         Me.TabPage2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TabPage2.Name = "TabPage2"
@@ -702,16 +700,6 @@ Partial Class frm_registrar_empleado
         Me.cmd_eliminar_por_cuil.TabIndex = 27
         Me.cmd_eliminar_por_cuil.Text = "Eliminar"
         Me.cmd_eliminar_por_cuil.UseVisualStyleBackColor = True
-        '
-        'cmd_eliminar_fila_seleccionada
-        '
-        Me.cmd_eliminar_fila_seleccionada.Location = New System.Drawing.Point(311, 137)
-        Me.cmd_eliminar_fila_seleccionada.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.cmd_eliminar_fila_seleccionada.Name = "cmd_eliminar_fila_seleccionada"
-        Me.cmd_eliminar_fila_seleccionada.Size = New System.Drawing.Size(483, 28)
-        Me.cmd_eliminar_fila_seleccionada.TabIndex = 25
-        Me.cmd_eliminar_fila_seleccionada.Text = "Eliminar Fila Seleccionada"
-        Me.cmd_eliminar_fila_seleccionada.UseVisualStyleBackColor = True
         '
         'lbl_campos_obligatorios
         '
@@ -852,7 +840,6 @@ Partial Class frm_registrar_empleado
     Friend WithEvents lbl_eliminar As System.Windows.Forms.Label
     Friend WithEvents lbl_eliminar_por_cuil As System.Windows.Forms.Label
     Friend WithEvents cmd_eliminar_por_cuil As System.Windows.Forms.Button
-    Friend WithEvents cmd_eliminar_fila_seleccionada As System.Windows.Forms.Button
     Friend WithEvents txt_eliminar_por_cuil As System.Windows.Forms.MaskedTextBox
     Friend WithEvents cmd_buscar As System.Windows.Forms.Button
     Friend WithEvents lbl_campos_obligatorios As System.Windows.Forms.Label

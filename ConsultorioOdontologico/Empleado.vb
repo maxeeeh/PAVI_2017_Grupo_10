@@ -381,7 +381,7 @@
     End Sub
 
 
-    Private Sub cmd_eliminar_fila_seleccionada_Click(sender As Object, e As EventArgs) Handles cmd_eliminar_fila_seleccionada.Click
+    Private Sub cmd_eliminar_fila_seleccionada_Click(sender As Object, e As EventArgs)
 
         If grid_empleados.CurrentCell.Selected = False Then
 
