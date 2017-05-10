@@ -1,4 +1,5 @@
-﻿Public Class frm_registrar_insumo
+﻿Imports System.Net.NetworkInformation
+Public Class frm_registrar_insumo
     Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
 
 
@@ -7,6 +8,7 @@
         _existe
         _no_existe
     End Enum
+
 
     'Para saber si hay algun campo con informacion erronea'
     Enum respuesta_validacion_error
