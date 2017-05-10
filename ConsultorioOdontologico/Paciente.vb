@@ -34,10 +34,6 @@
                      , leo_tabla("TipoDocumento") _
                      , "id_tipo_documento" _
                      , "descripcion")
-        cargar_combo(cmb_eliminar_por_tipo_doc _
-                     , leo_tabla("TipoDocumento") _
-                     , "id_tipo_documento" _
-                     , "descripcion")
 
     End Sub
 
