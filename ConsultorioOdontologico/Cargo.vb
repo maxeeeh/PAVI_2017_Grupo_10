@@ -30,7 +30,7 @@
     End Function
 
     Private Function leo_tabla(ByVal nombre_tabla As String) As DataTable
-        Return ejecuto_sql("SELECT * FROM " & nombre_tabla & " WHERE habilitado = 1")
+        Return ejecuto_sql("SELECT * FROM " & nombre_tabla & " WHERE habilitado = 1 ORDER BY descripcion ASC")
     End Function
 
     Private Sub cargar_lista()

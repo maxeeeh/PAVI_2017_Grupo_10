@@ -42,7 +42,7 @@ Public Class frm_registrar_tratamiento
 
         Dim sql As String = ""
         sql &= " SELECT *"
-        sql &= " FROM Tratamiento WHERE habilitado=1"
+        sql &= " FROM Tratamiento WHERE habilitado=1 ORDER BY descripcion ASC"
 
 
 
