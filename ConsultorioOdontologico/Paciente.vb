@@ -348,7 +348,7 @@
         Next
     End Sub
 
-    Private Sub cmd_eliminar_por_doc_Click(sender As Object, e As EventArgs) Handles cmd_eliminar_por_doc.Click
+    Private Sub cmd_eliminar_por_doc_Click(sender As Object, e As EventArgs)
         If validar_pacientes(Me.cmb_eliminar_por_tipo_doc.SelectedValue, Me.txt_eliminar_por_doc.Text) = respuesta_validacion._existe Then
             Dim res As Integer = MessageBox.Show("                        Esta seguro?", "Confirmacion", MessageBoxButtons.OKCancel)
             If res = DialogResult.OK Then
@@ -528,7 +528,7 @@
         conexion.Close()
     End Sub
 
-    Private Sub cmd_buscar_Click(sender As Object, e As EventArgs) Handles cmd_buscar.Click
+    Private Sub cmd_buscar_Click(sender As Object, e As EventArgs)
         If cmb_tipo_doc.SelectedIndex = -1 Then
             MessageBox.Show("Debe seleccionar un tipo de documento", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             cmb_tipo_doc.Focus()

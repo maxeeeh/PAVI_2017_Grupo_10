@@ -22,12 +22,6 @@ Partial Class frm_registrar_paciente
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.cmb_eliminar_por_tipo_doc = New System.Windows.Forms.ComboBox()
-        Me.lbl_eliminar = New System.Windows.Forms.Label()
-        Me.lbl_eliminar_por_doc = New System.Windows.Forms.Label()
-        Me.cmd_eliminar_por_doc = New System.Windows.Forms.Button()
-        Me.lbl_asterisco = New System.Windows.Forms.Label()
-        Me.lbl_nro = New System.Windows.Forms.Label()
         Me.grid_pacientes = New System.Windows.Forms.DataGridView()
         Me.nom = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ape = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -43,9 +37,13 @@ Partial Class frm_registrar_paciente
         Me.nro_calle = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.piso = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.departamento = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cmd_buscar = New System.Windows.Forms.Button()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.cmd_nuevo = New System.Windows.Forms.Button()
+        Me.cmd_salir = New System.Windows.Forms.Button()
+        Me.grp_pacientes = New System.Windows.Forms.GroupBox()
+        Me.cmd_registrar = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txt_filtro_nombre_apellido = New System.Windows.Forms.TextBox()
+        Me.cmd_eliminar_por_doc = New System.Windows.Forms.Button()
         Me.lbl_advertencia = New System.Windows.Forms.Label()
         Me.grp_domicilio = New System.Windows.Forms.GroupBox()
         Me.cmb_loc = New System.Windows.Forms.ComboBox()
@@ -55,9 +53,11 @@ Partial Class frm_registrar_paciente
         Me.lbl_depto = New System.Windows.Forms.Label()
         Me.lbl_piso = New System.Windows.Forms.Label()
         Me.txt_nro_calle = New System.Windows.Forms.TextBox()
+        Me.lbl_nro = New System.Windows.Forms.Label()
         Me.lbl_calle = New System.Windows.Forms.Label()
         Me.txt_calle = New System.Windows.Forms.TextBox()
         Me.grp_datos_personales = New System.Windows.Forms.GroupBox()
+        Me.cmd_buscar = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.rb_hombre = New System.Windows.Forms.RadioButton()
         Me.rb_mujer = New System.Windows.Forms.RadioButton()
@@ -75,78 +75,12 @@ Partial Class frm_registrar_paciente
         Me.lbl_nro_doc = New System.Windows.Forms.Label()
         Me.txt_nro_doc = New System.Windows.Forms.MaskedTextBox()
         Me.lbl_tipo_documento = New System.Windows.Forms.Label()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.txt_eliminar_por_doc = New System.Windows.Forms.MaskedTextBox()
-        Me.lbl_eliminar_por_tipo_doc = New System.Windows.Forms.Label()
-        Me.cmd_nuevo = New System.Windows.Forms.Button()
-        Me.cmd_salir = New System.Windows.Forms.Button()
-        Me.grp_pacientes = New System.Windows.Forms.GroupBox()
-        Me.cmd_registrar = New System.Windows.Forms.Button()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.txt_filtro_nombre_apellido = New System.Windows.Forms.TextBox()
+        Me.lbl_asterisco = New System.Windows.Forms.Label()
         CType(Me.grid_pacientes, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
+        Me.grp_pacientes.SuspendLayout()
         Me.grp_domicilio.SuspendLayout()
         Me.grp_datos_personales.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
-        Me.grp_pacientes.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'cmb_eliminar_por_tipo_doc
-        '
-        Me.cmb_eliminar_por_tipo_doc.FormattingEnabled = True
-        Me.cmb_eliminar_por_tipo_doc.Location = New System.Drawing.Point(280, 76)
-        Me.cmb_eliminar_por_tipo_doc.Name = "cmb_eliminar_por_tipo_doc"
-        Me.cmb_eliminar_por_tipo_doc.Size = New System.Drawing.Size(60, 21)
-        Me.cmb_eliminar_por_tipo_doc.TabIndex = 32
-        '
-        'lbl_eliminar
-        '
-        Me.lbl_eliminar.AutoSize = True
-        Me.lbl_eliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_eliminar.Location = New System.Drawing.Point(24, 15)
-        Me.lbl_eliminar.Name = "lbl_eliminar"
-        Me.lbl_eliminar.Size = New System.Drawing.Size(760, 16)
-        Me.lbl_eliminar.TabIndex = 29
-        Me.lbl_eliminar.Text = "Ingrese el tipo y numero de documento del paciente o seleccione la fila que muest" & _
-    "ra los datos del paciente que desea eliminar"
-        '
-        'lbl_eliminar_por_doc
-        '
-        Me.lbl_eliminar_por_doc.AutoSize = True
-        Me.lbl_eliminar_por_doc.Location = New System.Drawing.Point(349, 80)
-        Me.lbl_eliminar_por_doc.Name = "lbl_eliminar_por_doc"
-        Me.lbl_eliminar_por_doc.Size = New System.Drawing.Size(44, 13)
-        Me.lbl_eliminar_por_doc.TabIndex = 28
-        Me.lbl_eliminar_por_doc.Text = "NroDoc"
-        '
-        'cmd_eliminar_por_doc
-        '
-        Me.cmd_eliminar_por_doc.Location = New System.Drawing.Point(483, 75)
-        Me.cmd_eliminar_por_doc.Name = "cmd_eliminar_por_doc"
-        Me.cmd_eliminar_por_doc.Size = New System.Drawing.Size(112, 23)
-        Me.cmd_eliminar_por_doc.TabIndex = 27
-        Me.cmd_eliminar_por_doc.Text = "Eliminar"
-        Me.cmd_eliminar_por_doc.UseVisualStyleBackColor = True
-        '
-        'lbl_asterisco
-        '
-        Me.lbl_asterisco.AutoSize = True
-        Me.lbl_asterisco.Location = New System.Drawing.Point(697, 242)
-        Me.lbl_asterisco.Name = "lbl_asterisco"
-        Me.lbl_asterisco.Size = New System.Drawing.Size(108, 13)
-        Me.lbl_asterisco.TabIndex = 38
-        Me.lbl_asterisco.Text = "* Campos obligatorios"
-        '
-        'lbl_nro
-        '
-        Me.lbl_nro.AutoSize = True
-        Me.lbl_nro.Location = New System.Drawing.Point(226, 22)
-        Me.lbl_nro.Name = "lbl_nro"
-        Me.lbl_nro.Size = New System.Drawing.Size(31, 13)
-        Me.lbl_nro.TabIndex = 2
-        Me.lbl_nro.Text = "Nro *"
         '
         'grid_pacientes
         '
@@ -270,46 +204,79 @@ Partial Class frm_registrar_paciente
         Me.departamento.ReadOnly = True
         Me.departamento.Visible = False
         '
-        'cmd_buscar
+        'cmd_nuevo
         '
-        Me.cmd_buscar.Location = New System.Drawing.Point(150, 108)
-        Me.cmd_buscar.Name = "cmd_buscar"
-        Me.cmd_buscar.Size = New System.Drawing.Size(200, 23)
-        Me.cmd_buscar.TabIndex = 13
-        Me.cmd_buscar.Text = "Buscar"
-        Me.cmd_buscar.UseVisualStyleBackColor = True
+        Me.cmd_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_nuevo.Location = New System.Drawing.Point(496, 646)
+        Me.cmd_nuevo.Name = "cmd_nuevo"
+        Me.cmd_nuevo.Size = New System.Drawing.Size(89, 23)
+        Me.cmd_nuevo.TabIndex = 36
+        Me.cmd_nuevo.Text = "Nuevo"
+        Me.cmd_nuevo.UseVisualStyleBackColor = True
         '
-        'TabControl1
+        'cmd_salir
         '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Location = New System.Drawing.Point(10, 11)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(819, 306)
-        Me.TabControl1.TabIndex = 37
+        Me.cmd_salir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_salir.Location = New System.Drawing.Point(722, 646)
+        Me.cmd_salir.Name = "cmd_salir"
+        Me.cmd_salir.Size = New System.Drawing.Size(89, 23)
+        Me.cmd_salir.TabIndex = 35
+        Me.cmd_salir.Text = "Salir"
+        Me.cmd_salir.UseVisualStyleBackColor = True
         '
-        'TabPage1
+        'grp_pacientes
         '
-        Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage1.Controls.Add(Me.lbl_advertencia)
-        Me.TabPage1.Controls.Add(Me.grp_domicilio)
-        Me.TabPage1.Controls.Add(Me.grp_datos_personales)
-        Me.TabPage1.Controls.Add(Me.lbl_asterisco)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(811, 280)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Registrar"
+        Me.grp_pacientes.Controls.Add(Me.grid_pacientes)
+        Me.grp_pacientes.Location = New System.Drawing.Point(10, 360)
+        Me.grp_pacientes.Name = "grp_pacientes"
+        Me.grp_pacientes.Size = New System.Drawing.Size(819, 280)
+        Me.grp_pacientes.TabIndex = 33
+        Me.grp_pacientes.TabStop = False
+        Me.grp_pacientes.Text = "Pacientes"
+        '
+        'cmd_registrar
+        '
+        Me.cmd_registrar.Enabled = False
+        Me.cmd_registrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_registrar.Location = New System.Drawing.Point(609, 646)
+        Me.cmd_registrar.Name = "cmd_registrar"
+        Me.cmd_registrar.Size = New System.Drawing.Size(89, 23)
+        Me.cmd_registrar.TabIndex = 34
+        Me.cmd_registrar.Text = "Guardar"
+        Me.cmd_registrar.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(19, 337)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(146, 13)
+        Me.Label3.TabIndex = 20
+        Me.Label3.Text = "Filtrar por nombre y/o apellido"
+        '
+        'txt_filtro_nombre_apellido
+        '
+        Me.txt_filtro_nombre_apellido.Location = New System.Drawing.Point(177, 334)
+        Me.txt_filtro_nombre_apellido.Name = "txt_filtro_nombre_apellido"
+        Me.txt_filtro_nombre_apellido.Size = New System.Drawing.Size(100, 20)
+        Me.txt_filtro_nombre_apellido.TabIndex = 21
+        '
+        'cmd_eliminar_por_doc
+        '
+        Me.cmd_eliminar_por_doc.Location = New System.Drawing.Point(341, 647)
+        Me.cmd_eliminar_por_doc.Name = "cmd_eliminar_por_doc"
+        Me.cmd_eliminar_por_doc.Size = New System.Drawing.Size(112, 23)
+        Me.cmd_eliminar_por_doc.TabIndex = 38
+        Me.cmd_eliminar_por_doc.Text = "Eliminar"
+        Me.cmd_eliminar_por_doc.UseVisualStyleBackColor = True
         '
         'lbl_advertencia
         '
         Me.lbl_advertencia.AutoSize = True
-        Me.lbl_advertencia.Location = New System.Drawing.Point(536, 259)
+        Me.lbl_advertencia.Location = New System.Drawing.Point(550, 273)
         Me.lbl_advertencia.Name = "lbl_advertencia"
         Me.lbl_advertencia.Size = New System.Drawing.Size(269, 13)
-        Me.lbl_advertencia.TabIndex = 39
+        Me.lbl_advertencia.TabIndex = 43
         Me.lbl_advertencia.Text = "-Debe especificar al menos 1 (uno) numero de contacto"
         '
         'grp_domicilio
@@ -324,10 +291,10 @@ Partial Class frm_registrar_paciente
         Me.grp_domicilio.Controls.Add(Me.lbl_nro)
         Me.grp_domicilio.Controls.Add(Me.lbl_calle)
         Me.grp_domicilio.Controls.Add(Me.txt_calle)
-        Me.grp_domicilio.Location = New System.Drawing.Point(401, 9)
+        Me.grp_domicilio.Location = New System.Drawing.Point(415, 23)
         Me.grp_domicilio.Name = "grp_domicilio"
         Me.grp_domicilio.Size = New System.Drawing.Size(397, 106)
-        Me.grp_domicilio.TabIndex = 19
+        Me.grp_domicilio.TabIndex = 41
         Me.grp_domicilio.TabStop = False
         Me.grp_domicilio.Text = "Domicilio"
         '
@@ -392,6 +359,15 @@ Partial Class frm_registrar_paciente
         Me.txt_nro_calle.Size = New System.Drawing.Size(100, 20)
         Me.txt_nro_calle.TabIndex = 3
         '
+        'lbl_nro
+        '
+        Me.lbl_nro.AutoSize = True
+        Me.lbl_nro.Location = New System.Drawing.Point(226, 22)
+        Me.lbl_nro.Name = "lbl_nro"
+        Me.lbl_nro.Size = New System.Drawing.Size(31, 13)
+        Me.lbl_nro.TabIndex = 2
+        Me.lbl_nro.Text = "Nro *"
+        '
         'lbl_calle
         '
         Me.lbl_calle.AutoSize = True
@@ -429,12 +405,21 @@ Partial Class frm_registrar_paciente
         Me.grp_datos_personales.Controls.Add(Me.lbl_nro_doc)
         Me.grp_datos_personales.Controls.Add(Me.txt_nro_doc)
         Me.grp_datos_personales.Controls.Add(Me.lbl_tipo_documento)
-        Me.grp_datos_personales.Location = New System.Drawing.Point(8, 9)
+        Me.grp_datos_personales.Location = New System.Drawing.Point(22, 23)
         Me.grp_datos_personales.Name = "grp_datos_personales"
         Me.grp_datos_personales.Size = New System.Drawing.Size(374, 268)
-        Me.grp_datos_personales.TabIndex = 17
+        Me.grp_datos_personales.TabIndex = 40
         Me.grp_datos_personales.TabStop = False
         Me.grp_datos_personales.Text = "Datos Personales"
+        '
+        'cmd_buscar
+        '
+        Me.cmd_buscar.Location = New System.Drawing.Point(150, 108)
+        Me.cmd_buscar.Name = "cmd_buscar"
+        Me.cmd_buscar.Size = New System.Drawing.Size(200, 23)
+        Me.cmd_buscar.TabIndex = 13
+        Me.cmd_buscar.Text = "Buscar"
+        Me.cmd_buscar.UseVisualStyleBackColor = True
         '
         'Label2
         '
@@ -590,104 +575,27 @@ Partial Class frm_registrar_paciente
         Me.lbl_tipo_documento.TabIndex = 1
         Me.lbl_tipo_documento.Text = "Tipo Doc*"
         '
-        'TabPage2
+        'lbl_asterisco
         '
-        Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage2.Controls.Add(Me.txt_eliminar_por_doc)
-        Me.TabPage2.Controls.Add(Me.cmb_eliminar_por_tipo_doc)
-        Me.TabPage2.Controls.Add(Me.lbl_eliminar_por_tipo_doc)
-        Me.TabPage2.Controls.Add(Me.lbl_eliminar)
-        Me.TabPage2.Controls.Add(Me.lbl_eliminar_por_doc)
-        Me.TabPage2.Controls.Add(Me.cmd_eliminar_por_doc)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(811, 280)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Eliminar"
-        '
-        'txt_eliminar_por_doc
-        '
-        Me.txt_eliminar_por_doc.Location = New System.Drawing.Point(402, 76)
-        Me.txt_eliminar_por_doc.Mask = "00-000-000"
-        Me.txt_eliminar_por_doc.Name = "txt_eliminar_por_doc"
-        Me.txt_eliminar_por_doc.Size = New System.Drawing.Size(72, 20)
-        Me.txt_eliminar_por_doc.TabIndex = 33
-        '
-        'lbl_eliminar_por_tipo_doc
-        '
-        Me.lbl_eliminar_por_tipo_doc.AutoSize = True
-        Me.lbl_eliminar_por_tipo_doc.Location = New System.Drawing.Point(220, 80)
-        Me.lbl_eliminar_por_tipo_doc.Name = "lbl_eliminar_por_tipo_doc"
-        Me.lbl_eliminar_por_tipo_doc.Size = New System.Drawing.Size(51, 13)
-        Me.lbl_eliminar_por_tipo_doc.TabIndex = 31
-        Me.lbl_eliminar_por_tipo_doc.Text = "Tipo Doc"
-        '
-        'cmd_nuevo
-        '
-        Me.cmd_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmd_nuevo.Location = New System.Drawing.Point(496, 646)
-        Me.cmd_nuevo.Name = "cmd_nuevo"
-        Me.cmd_nuevo.Size = New System.Drawing.Size(89, 23)
-        Me.cmd_nuevo.TabIndex = 36
-        Me.cmd_nuevo.Text = "Nuevo"
-        Me.cmd_nuevo.UseVisualStyleBackColor = True
-        '
-        'cmd_salir
-        '
-        Me.cmd_salir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmd_salir.Location = New System.Drawing.Point(722, 646)
-        Me.cmd_salir.Name = "cmd_salir"
-        Me.cmd_salir.Size = New System.Drawing.Size(89, 23)
-        Me.cmd_salir.TabIndex = 35
-        Me.cmd_salir.Text = "Salir"
-        Me.cmd_salir.UseVisualStyleBackColor = True
-        '
-        'grp_pacientes
-        '
-        Me.grp_pacientes.Controls.Add(Me.grid_pacientes)
-        Me.grp_pacientes.Location = New System.Drawing.Point(10, 360)
-        Me.grp_pacientes.Name = "grp_pacientes"
-        Me.grp_pacientes.Size = New System.Drawing.Size(819, 280)
-        Me.grp_pacientes.TabIndex = 33
-        Me.grp_pacientes.TabStop = False
-        Me.grp_pacientes.Text = "Pacientes"
-        '
-        'cmd_registrar
-        '
-        Me.cmd_registrar.Enabled = False
-        Me.cmd_registrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmd_registrar.Location = New System.Drawing.Point(609, 646)
-        Me.cmd_registrar.Name = "cmd_registrar"
-        Me.cmd_registrar.Size = New System.Drawing.Size(89, 23)
-        Me.cmd_registrar.TabIndex = 34
-        Me.cmd_registrar.Text = "Guardar"
-        Me.cmd_registrar.UseVisualStyleBackColor = True
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(19, 337)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(146, 13)
-        Me.Label3.TabIndex = 20
-        Me.Label3.Text = "Filtrar por nombre y/o apellido"
-        '
-        'txt_filtro_nombre_apellido
-        '
-        Me.txt_filtro_nombre_apellido.Location = New System.Drawing.Point(177, 334)
-        Me.txt_filtro_nombre_apellido.Name = "txt_filtro_nombre_apellido"
-        Me.txt_filtro_nombre_apellido.Size = New System.Drawing.Size(100, 20)
-        Me.txt_filtro_nombre_apellido.TabIndex = 21
+        Me.lbl_asterisco.AutoSize = True
+        Me.lbl_asterisco.Location = New System.Drawing.Point(711, 256)
+        Me.lbl_asterisco.Name = "lbl_asterisco"
+        Me.lbl_asterisco.Size = New System.Drawing.Size(108, 13)
+        Me.lbl_asterisco.TabIndex = 42
+        Me.lbl_asterisco.Text = "* Campos obligatorios"
         '
         'frm_registrar_paciente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(842, 684)
+        Me.Controls.Add(Me.lbl_advertencia)
+        Me.Controls.Add(Me.grp_domicilio)
+        Me.Controls.Add(Me.grp_datos_personales)
+        Me.Controls.Add(Me.lbl_asterisco)
+        Me.Controls.Add(Me.cmd_eliminar_por_doc)
         Me.Controls.Add(Me.txt_filtro_nombre_apellido)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.cmd_nuevo)
         Me.Controls.Add(Me.cmd_salir)
         Me.Controls.Add(Me.grp_pacientes)
@@ -699,26 +607,15 @@ Partial Class frm_registrar_paciente
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registrar Paciente"
         CType(Me.grid_pacientes, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
+        Me.grp_pacientes.ResumeLayout(False)
         Me.grp_domicilio.ResumeLayout(False)
         Me.grp_domicilio.PerformLayout()
         Me.grp_datos_personales.ResumeLayout(False)
         Me.grp_datos_personales.PerformLayout()
-        Me.TabPage2.ResumeLayout(False)
-        Me.TabPage2.PerformLayout()
-        Me.grp_pacientes.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmb_eliminar_por_tipo_doc As System.Windows.Forms.ComboBox
-    Friend WithEvents lbl_eliminar As System.Windows.Forms.Label
-    Friend WithEvents lbl_eliminar_por_doc As System.Windows.Forms.Label
-    Friend WithEvents cmd_eliminar_por_doc As System.Windows.Forms.Button
-    Friend WithEvents lbl_asterisco As System.Windows.Forms.Label
-    Friend WithEvents lbl_nro As System.Windows.Forms.Label
     Friend WithEvents grid_pacientes As System.Windows.Forms.DataGridView
     Friend WithEvents nom As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ape As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -734,9 +631,14 @@ Partial Class frm_registrar_paciente
     Friend WithEvents nro_calle As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents piso As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents departamento As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents cmd_buscar As System.Windows.Forms.Button
-    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
-    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
+    Friend WithEvents cmd_nuevo As System.Windows.Forms.Button
+    Friend WithEvents cmd_salir As System.Windows.Forms.Button
+    Friend WithEvents grp_pacientes As System.Windows.Forms.GroupBox
+    Friend WithEvents cmd_registrar As System.Windows.Forms.Button
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents txt_filtro_nombre_apellido As System.Windows.Forms.TextBox
+    Friend WithEvents cmd_eliminar_por_doc As System.Windows.Forms.Button
+    Friend WithEvents lbl_advertencia As System.Windows.Forms.Label
     Friend WithEvents grp_domicilio As System.Windows.Forms.GroupBox
     Friend WithEvents cmb_loc As System.Windows.Forms.ComboBox
     Friend WithEvents lbl_localidad As System.Windows.Forms.Label
@@ -745,9 +647,11 @@ Partial Class frm_registrar_paciente
     Friend WithEvents lbl_depto As System.Windows.Forms.Label
     Friend WithEvents lbl_piso As System.Windows.Forms.Label
     Friend WithEvents txt_nro_calle As System.Windows.Forms.TextBox
+    Friend WithEvents lbl_nro As System.Windows.Forms.Label
     Friend WithEvents lbl_calle As System.Windows.Forms.Label
     Friend WithEvents txt_calle As System.Windows.Forms.TextBox
     Friend WithEvents grp_datos_personales As System.Windows.Forms.GroupBox
+    Friend WithEvents cmd_buscar As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Protected WithEvents rb_hombre As System.Windows.Forms.RadioButton
     Protected WithEvents rb_mujer As System.Windows.Forms.RadioButton
@@ -765,15 +669,6 @@ Partial Class frm_registrar_paciente
     Friend WithEvents lbl_nro_doc As System.Windows.Forms.Label
     Friend WithEvents txt_nro_doc As System.Windows.Forms.MaskedTextBox
     Friend WithEvents lbl_tipo_documento As System.Windows.Forms.Label
-    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
-    Friend WithEvents lbl_eliminar_por_tipo_doc As System.Windows.Forms.Label
-    Friend WithEvents cmd_nuevo As System.Windows.Forms.Button
-    Friend WithEvents cmd_salir As System.Windows.Forms.Button
-    Friend WithEvents grp_pacientes As System.Windows.Forms.GroupBox
-    Friend WithEvents cmd_registrar As System.Windows.Forms.Button
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents txt_filtro_nombre_apellido As System.Windows.Forms.TextBox
-    Friend WithEvents lbl_advertencia As System.Windows.Forms.Label
-    Friend WithEvents txt_eliminar_por_doc As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents lbl_asterisco As System.Windows.Forms.Label
 
 End Class

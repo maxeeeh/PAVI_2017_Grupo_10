@@ -361,7 +361,7 @@
         Next
     End Sub
 
-    Private Sub cmd_eliminar_por_cuil_Click(sender As Object, e As EventArgs) Handles cmd_eliminar_por_cuil.Click
+    Private Sub cmd_eliminar_por_cuil_Click(sender As Object, e As EventArgs)
         If validar_empleados(Me.txt_eliminar_por_cuil.Text) = respuesta_validacion._existe Then
             Dim res As Integer = MessageBox.Show("                        Esta seguro?", "Confirmacion", MessageBoxButtons.OKCancel)
             If res = DialogResult.OK Then
@@ -543,7 +543,7 @@
         conexion.Close()
     End Sub
 
-    Private Sub cmd_buscar_Click(sender As Object, e As EventArgs) Handles cmd_buscar.Click
+    Private Sub cmd_buscar_Click(sender As Object, e As EventArgs)
         If txt_cuil.Text.Length < 14 Then
             MessageBox.Show("El campo CUIL debe contener 14 digitos, el cual incluye los 2 (dos) guiones. Ejemplo: 00-00000000-00", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             txt_cuil.Focus()

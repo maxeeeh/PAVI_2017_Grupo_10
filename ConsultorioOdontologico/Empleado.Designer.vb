@@ -43,8 +43,13 @@ Partial Class frm_registrar_empleado
         Me.cmd_nuevo = New System.Windows.Forms.Button()
         Me.cmd_salir = New System.Windows.Forms.Button()
         Me.cmd_registrar = New System.Windows.Forms.Button()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.lbl_campos_obligatorios = New System.Windows.Forms.Label()
+        Me.cmb_filtro_cargo = New System.Windows.Forms.ComboBox()
+        Me.txt_filtro_nombre_apellido = New System.Windows.Forms.TextBox()
+        Me.lbl_filtro_nombre_apellido = New System.Windows.Forms.Label()
+        Me.chk_filtro_cargo = New System.Windows.Forms.CheckBox()
+        Me.lbl_advertencia = New System.Windows.Forms.Label()
+        Me.cmd_eliminar_por_cuil = New System.Windows.Forms.Button()
         Me.grp_domicilio = New System.Windows.Forms.GroupBox()
         Me.cmb_loc = New System.Windows.Forms.ComboBox()
         Me.lbl_localidad = New System.Windows.Forms.Label()
@@ -77,25 +82,11 @@ Partial Class frm_registrar_empleado
         Me.lbl_nom = New System.Windows.Forms.Label()
         Me.txt_nom = New System.Windows.Forms.TextBox()
         Me.lbl_cuil = New System.Windows.Forms.Label()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.txt_eliminar_por_cuil = New System.Windows.Forms.MaskedTextBox()
-        Me.lbl_eliminar = New System.Windows.Forms.Label()
-        Me.lbl_eliminar_por_cuil = New System.Windows.Forms.Label()
-        Me.cmd_eliminar_por_cuil = New System.Windows.Forms.Button()
-        Me.lbl_campos_obligatorios = New System.Windows.Forms.Label()
-        Me.cmb_filtro_cargo = New System.Windows.Forms.ComboBox()
-        Me.txt_filtro_nombre_apellido = New System.Windows.Forms.TextBox()
-        Me.lbl_filtro_nombre_apellido = New System.Windows.Forms.Label()
-        Me.chk_filtro_cargo = New System.Windows.Forms.CheckBox()
-        Me.lbl_advertencia = New System.Windows.Forms.Label()
         CType(Me.grid_empleados, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grp_empleados.SuspendLayout()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
         Me.grp_domicilio.SuspendLayout()
         Me.grp_datos_laborales.SuspendLayout()
         Me.grp_datos_personales.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
         Me.SuspendLayout()
         '
         'grid_empleados
@@ -268,28 +259,67 @@ Partial Class frm_registrar_empleado
         Me.cmd_registrar.Text = "Guardar"
         Me.cmd_registrar.UseVisualStyleBackColor = True
         '
-        'TabControl1
+        'lbl_campos_obligatorios
         '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Location = New System.Drawing.Point(12, 6)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(819, 258)
-        Me.TabControl1.TabIndex = 25
+        Me.lbl_campos_obligatorios.AutoSize = True
+        Me.lbl_campos_obligatorios.Location = New System.Drawing.Point(719, 273)
+        Me.lbl_campos_obligatorios.Name = "lbl_campos_obligatorios"
+        Me.lbl_campos_obligatorios.Size = New System.Drawing.Size(108, 13)
+        Me.lbl_campos_obligatorios.TabIndex = 26
+        Me.lbl_campos_obligatorios.Text = "* Campos obligatorios"
         '
-        'TabPage1
+        'cmb_filtro_cargo
         '
-        Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage1.Controls.Add(Me.grp_domicilio)
-        Me.TabPage1.Controls.Add(Me.grp_datos_laborales)
-        Me.TabPage1.Controls.Add(Me.grp_datos_personales)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.TabPage1.Size = New System.Drawing.Size(811, 232)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Registrar"
+        Me.cmb_filtro_cargo.Enabled = False
+        Me.cmb_filtro_cargo.FormattingEnabled = True
+        Me.cmb_filtro_cargo.Location = New System.Drawing.Point(478, 311)
+        Me.cmb_filtro_cargo.Name = "cmb_filtro_cargo"
+        Me.cmb_filtro_cargo.Size = New System.Drawing.Size(121, 21)
+        Me.cmb_filtro_cargo.TabIndex = 11
+        '
+        'txt_filtro_nombre_apellido
+        '
+        Me.txt_filtro_nombre_apellido.Location = New System.Drawing.Point(203, 311)
+        Me.txt_filtro_nombre_apellido.Name = "txt_filtro_nombre_apellido"
+        Me.txt_filtro_nombre_apellido.Size = New System.Drawing.Size(100, 20)
+        Me.txt_filtro_nombre_apellido.TabIndex = 28
+        '
+        'lbl_filtro_nombre_apellido
+        '
+        Me.lbl_filtro_nombre_apellido.AutoSize = True
+        Me.lbl_filtro_nombre_apellido.Location = New System.Drawing.Point(36, 314)
+        Me.lbl_filtro_nombre_apellido.Name = "lbl_filtro_nombre_apellido"
+        Me.lbl_filtro_nombre_apellido.Size = New System.Drawing.Size(146, 13)
+        Me.lbl_filtro_nombre_apellido.TabIndex = 29
+        Me.lbl_filtro_nombre_apellido.Text = "Filtrar por nombre y/o apellido"
+        '
+        'chk_filtro_cargo
+        '
+        Me.chk_filtro_cargo.AutoSize = True
+        Me.chk_filtro_cargo.Location = New System.Drawing.Point(358, 314)
+        Me.chk_filtro_cargo.Name = "chk_filtro_cargo"
+        Me.chk_filtro_cargo.Size = New System.Drawing.Size(99, 17)
+        Me.chk_filtro_cargo.TabIndex = 30
+        Me.chk_filtro_cargo.Text = "Filtrar por cargo"
+        Me.chk_filtro_cargo.UseVisualStyleBackColor = True
+        '
+        'lbl_advertencia
+        '
+        Me.lbl_advertencia.AutoSize = True
+        Me.lbl_advertencia.Location = New System.Drawing.Point(558, 286)
+        Me.lbl_advertencia.Name = "lbl_advertencia"
+        Me.lbl_advertencia.Size = New System.Drawing.Size(269, 13)
+        Me.lbl_advertencia.TabIndex = 31
+        Me.lbl_advertencia.Text = "-Debe especificar al menos 1 (uno) numero de contacto"
+        '
+        'cmd_eliminar_por_cuil
+        '
+        Me.cmd_eliminar_por_cuil.Location = New System.Drawing.Point(286, 657)
+        Me.cmd_eliminar_por_cuil.Name = "cmd_eliminar_por_cuil"
+        Me.cmd_eliminar_por_cuil.Size = New System.Drawing.Size(171, 23)
+        Me.cmd_eliminar_por_cuil.TabIndex = 32
+        Me.cmd_eliminar_por_cuil.Text = "Eliminar"
+        Me.cmd_eliminar_por_cuil.UseVisualStyleBackColor = True
         '
         'grp_domicilio
         '
@@ -303,10 +333,10 @@ Partial Class frm_registrar_empleado
         Me.grp_domicilio.Controls.Add(Me.lbl_nro)
         Me.grp_domicilio.Controls.Add(Me.lbl_calle)
         Me.grp_domicilio.Controls.Add(Me.txt_calle)
-        Me.grp_domicilio.Location = New System.Drawing.Point(401, 9)
+        Me.grp_domicilio.Location = New System.Drawing.Point(417, 24)
         Me.grp_domicilio.Name = "grp_domicilio"
         Me.grp_domicilio.Size = New System.Drawing.Size(397, 106)
-        Me.grp_domicilio.TabIndex = 19
+        Me.grp_domicilio.TabIndex = 35
         Me.grp_domicilio.TabStop = False
         Me.grp_domicilio.Text = "Domicilio"
         '
@@ -405,10 +435,10 @@ Partial Class frm_registrar_empleado
         Me.grp_datos_laborales.Controls.Add(Me.lbl_hora_egreso)
         Me.grp_datos_laborales.Controls.Add(Me.lbl_hora_ingreso)
         Me.grp_datos_laborales.Controls.Add(Me.lbl_cargo)
-        Me.grp_datos_laborales.Location = New System.Drawing.Point(401, 121)
+        Me.grp_datos_laborales.Location = New System.Drawing.Point(417, 136)
         Me.grp_datos_laborales.Name = "grp_datos_laborales"
         Me.grp_datos_laborales.Size = New System.Drawing.Size(397, 105)
-        Me.grp_datos_laborales.TabIndex = 18
+        Me.grp_datos_laborales.TabIndex = 34
         Me.grp_datos_laborales.TabStop = False
         Me.grp_datos_laborales.Text = "Datos Laborales"
         '
@@ -483,10 +513,10 @@ Partial Class frm_registrar_empleado
         Me.grp_datos_personales.Controls.Add(Me.lbl_nom)
         Me.grp_datos_personales.Controls.Add(Me.txt_nom)
         Me.grp_datos_personales.Controls.Add(Me.lbl_cuil)
-        Me.grp_datos_personales.Location = New System.Drawing.Point(8, 9)
+        Me.grp_datos_personales.Location = New System.Drawing.Point(24, 24)
         Me.grp_datos_personales.Name = "grp_datos_personales"
         Me.grp_datos_personales.Size = New System.Drawing.Size(374, 217)
-        Me.grp_datos_personales.TabIndex = 17
+        Me.grp_datos_personales.TabIndex = 33
         Me.grp_datos_personales.TabStop = False
         Me.grp_datos_personales.Text = "Datos Personales"
         '
@@ -602,122 +632,21 @@ Partial Class frm_registrar_empleado
         Me.lbl_cuil.TabIndex = 1
         Me.lbl_cuil.Text = "CUIL *"
         '
-        'TabPage2
-        '
-        Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage2.Controls.Add(Me.txt_eliminar_por_cuil)
-        Me.TabPage2.Controls.Add(Me.lbl_eliminar)
-        Me.TabPage2.Controls.Add(Me.lbl_eliminar_por_cuil)
-        Me.TabPage2.Controls.Add(Me.cmd_eliminar_por_cuil)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.TabPage2.Size = New System.Drawing.Size(811, 232)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Eliminar"
-        '
-        'txt_eliminar_por_cuil
-        '
-        Me.txt_eliminar_por_cuil.Location = New System.Drawing.Point(303, 75)
-        Me.txt_eliminar_por_cuil.Mask = "00-00000000-0"
-        Me.txt_eliminar_por_cuil.Name = "txt_eliminar_por_cuil"
-        Me.txt_eliminar_por_cuil.Size = New System.Drawing.Size(84, 20)
-        Me.txt_eliminar_por_cuil.TabIndex = 30
-        '
-        'lbl_eliminar
-        '
-        Me.lbl_eliminar.AutoSize = True
-        Me.lbl_eliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_eliminar.Location = New System.Drawing.Point(18, 15)
-        Me.lbl_eliminar.Name = "lbl_eliminar"
-        Me.lbl_eliminar.Size = New System.Drawing.Size(740, 16)
-        Me.lbl_eliminar.TabIndex = 29
-        Me.lbl_eliminar.Text = "Ingrese el numero de CUIL del empleado a eliminar o seleccione la fila que muestr" & _
-    "a los datos del datos que desea eliminar"
-        '
-        'lbl_eliminar_por_cuil
-        '
-        Me.lbl_eliminar_por_cuil.AutoSize = True
-        Me.lbl_eliminar_por_cuil.Location = New System.Drawing.Point(230, 78)
-        Me.lbl_eliminar_por_cuil.Name = "lbl_eliminar_por_cuil"
-        Me.lbl_eliminar_por_cuil.Size = New System.Drawing.Size(31, 13)
-        Me.lbl_eliminar_por_cuil.TabIndex = 28
-        Me.lbl_eliminar_por_cuil.Text = "CUIL"
-        '
-        'cmd_eliminar_por_cuil
-        '
-        Me.cmd_eliminar_por_cuil.Location = New System.Drawing.Point(424, 73)
-        Me.cmd_eliminar_por_cuil.Name = "cmd_eliminar_por_cuil"
-        Me.cmd_eliminar_por_cuil.Size = New System.Drawing.Size(171, 23)
-        Me.cmd_eliminar_por_cuil.TabIndex = 27
-        Me.cmd_eliminar_por_cuil.Text = "Eliminar"
-        Me.cmd_eliminar_por_cuil.UseVisualStyleBackColor = True
-        '
-        'lbl_campos_obligatorios
-        '
-        Me.lbl_campos_obligatorios.AutoSize = True
-        Me.lbl_campos_obligatorios.Location = New System.Drawing.Point(719, 273)
-        Me.lbl_campos_obligatorios.Name = "lbl_campos_obligatorios"
-        Me.lbl_campos_obligatorios.Size = New System.Drawing.Size(108, 13)
-        Me.lbl_campos_obligatorios.TabIndex = 26
-        Me.lbl_campos_obligatorios.Text = "* Campos obligatorios"
-        '
-        'cmb_filtro_cargo
-        '
-        Me.cmb_filtro_cargo.Enabled = False
-        Me.cmb_filtro_cargo.FormattingEnabled = True
-        Me.cmb_filtro_cargo.Location = New System.Drawing.Point(478, 311)
-        Me.cmb_filtro_cargo.Name = "cmb_filtro_cargo"
-        Me.cmb_filtro_cargo.Size = New System.Drawing.Size(121, 21)
-        Me.cmb_filtro_cargo.TabIndex = 11
-        '
-        'txt_filtro_nombre_apellido
-        '
-        Me.txt_filtro_nombre_apellido.Location = New System.Drawing.Point(203, 311)
-        Me.txt_filtro_nombre_apellido.Name = "txt_filtro_nombre_apellido"
-        Me.txt_filtro_nombre_apellido.Size = New System.Drawing.Size(100, 20)
-        Me.txt_filtro_nombre_apellido.TabIndex = 28
-        '
-        'lbl_filtro_nombre_apellido
-        '
-        Me.lbl_filtro_nombre_apellido.AutoSize = True
-        Me.lbl_filtro_nombre_apellido.Location = New System.Drawing.Point(36, 314)
-        Me.lbl_filtro_nombre_apellido.Name = "lbl_filtro_nombre_apellido"
-        Me.lbl_filtro_nombre_apellido.Size = New System.Drawing.Size(146, 13)
-        Me.lbl_filtro_nombre_apellido.TabIndex = 29
-        Me.lbl_filtro_nombre_apellido.Text = "Filtrar por nombre y/o apellido"
-        '
-        'chk_filtro_cargo
-        '
-        Me.chk_filtro_cargo.AutoSize = True
-        Me.chk_filtro_cargo.Location = New System.Drawing.Point(358, 314)
-        Me.chk_filtro_cargo.Name = "chk_filtro_cargo"
-        Me.chk_filtro_cargo.Size = New System.Drawing.Size(99, 17)
-        Me.chk_filtro_cargo.TabIndex = 30
-        Me.chk_filtro_cargo.Text = "Filtrar por cargo"
-        Me.chk_filtro_cargo.UseVisualStyleBackColor = True
-        '
-        'lbl_advertencia
-        '
-        Me.lbl_advertencia.AutoSize = True
-        Me.lbl_advertencia.Location = New System.Drawing.Point(558, 286)
-        Me.lbl_advertencia.Name = "lbl_advertencia"
-        Me.lbl_advertencia.Size = New System.Drawing.Size(269, 13)
-        Me.lbl_advertencia.TabIndex = 31
-        Me.lbl_advertencia.Text = "-Debe especificar al menos 1 (uno) numero de contacto"
-        '
         'frm_registrar_empleado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(844, 688)
+        Me.Controls.Add(Me.grp_domicilio)
+        Me.Controls.Add(Me.grp_datos_laborales)
+        Me.Controls.Add(Me.grp_datos_personales)
+        Me.Controls.Add(Me.cmd_eliminar_por_cuil)
         Me.Controls.Add(Me.lbl_advertencia)
         Me.Controls.Add(Me.chk_filtro_cargo)
         Me.Controls.Add(Me.lbl_filtro_nombre_apellido)
         Me.Controls.Add(Me.txt_filtro_nombre_apellido)
         Me.Controls.Add(Me.cmb_filtro_cargo)
         Me.Controls.Add(Me.lbl_campos_obligatorios)
-        Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.cmd_nuevo)
         Me.Controls.Add(Me.cmd_salir)
         Me.Controls.Add(Me.cmd_registrar)
@@ -731,16 +660,12 @@ Partial Class frm_registrar_empleado
         Me.Text = "Registrar Empleado"
         CType(Me.grid_empleados, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grp_empleados.ResumeLayout(False)
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
         Me.grp_domicilio.ResumeLayout(False)
         Me.grp_domicilio.PerformLayout()
         Me.grp_datos_laborales.ResumeLayout(False)
         Me.grp_datos_laborales.PerformLayout()
         Me.grp_datos_personales.ResumeLayout(False)
         Me.grp_datos_personales.PerformLayout()
-        Me.TabPage2.ResumeLayout(False)
-        Me.TabPage2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -750,46 +675,7 @@ Partial Class frm_registrar_empleado
     Friend WithEvents cmd_nuevo As System.Windows.Forms.Button
     Friend WithEvents cmd_salir As System.Windows.Forms.Button
     Friend WithEvents cmd_registrar As System.Windows.Forms.Button
-    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
-    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
-    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
-    Friend WithEvents grp_domicilio As System.Windows.Forms.GroupBox
-    Friend WithEvents cmb_loc As System.Windows.Forms.ComboBox
-    Friend WithEvents lbl_localidad As System.Windows.Forms.Label
-    Friend WithEvents txt_depto As System.Windows.Forms.TextBox
-    Friend WithEvents txt_piso As System.Windows.Forms.TextBox
-    Friend WithEvents lbl_depto As System.Windows.Forms.Label
-    Friend WithEvents lbl_piso As System.Windows.Forms.Label
-    Friend WithEvents txt_nro_calle As System.Windows.Forms.TextBox
-    Friend WithEvents lbl_nro As System.Windows.Forms.Label
-    Friend WithEvents lbl_calle As System.Windows.Forms.Label
-    Friend WithEvents txt_calle As System.Windows.Forms.TextBox
-    Friend WithEvents grp_datos_laborales As System.Windows.Forms.GroupBox
-    Friend WithEvents txt_hora_egreso As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents txt_hora_ingreso As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents cmb_cargo As System.Windows.Forms.ComboBox
-    Friend WithEvents lbl_hora_egreso As System.Windows.Forms.Label
-    Friend WithEvents lbl_hora_ingreso As System.Windows.Forms.Label
-    Friend WithEvents lbl_cargo As System.Windows.Forms.Label
-    Friend WithEvents grp_datos_personales As System.Windows.Forms.GroupBox
-    Friend WithEvents txt_cuil As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents lbl_celular As System.Windows.Forms.Label
-    Friend WithEvents lbl_telefono As System.Windows.Forms.Label
-    Friend WithEvents dtp_fecha_nac As System.Windows.Forms.DateTimePicker
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents lbl_ape As System.Windows.Forms.Label
-    Friend WithEvents txt_ape As System.Windows.Forms.TextBox
-    Friend WithEvents lbl_nom As System.Windows.Forms.Label
-    Friend WithEvents txt_nom As System.Windows.Forms.TextBox
-    Friend WithEvents lbl_cuil As System.Windows.Forms.Label
-    Friend WithEvents lbl_eliminar As System.Windows.Forms.Label
-    Friend WithEvents lbl_eliminar_por_cuil As System.Windows.Forms.Label
-    Friend WithEvents cmd_eliminar_por_cuil As System.Windows.Forms.Button
-    Friend WithEvents txt_eliminar_por_cuil As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents cmd_buscar As System.Windows.Forms.Button
     Friend WithEvents lbl_campos_obligatorios As System.Windows.Forms.Label
-    Friend WithEvents txt_celular As System.Windows.Forms.TextBox
-    Friend WithEvents txt_telefono As System.Windows.Forms.TextBox
     Friend WithEvents cmb_filtro_cargo As System.Windows.Forms.ComboBox
     Friend WithEvents txt_filtro_nombre_apellido As System.Windows.Forms.TextBox
     Friend WithEvents lbl_filtro_nombre_apellido As System.Windows.Forms.Label
@@ -810,5 +696,38 @@ Partial Class frm_registrar_empleado
     Friend WithEvents departamento As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents hora_ingreso As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents hora_egreso As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cmd_eliminar_por_cuil As System.Windows.Forms.Button
+    Friend WithEvents grp_domicilio As System.Windows.Forms.GroupBox
+    Friend WithEvents cmb_loc As System.Windows.Forms.ComboBox
+    Friend WithEvents lbl_localidad As System.Windows.Forms.Label
+    Friend WithEvents txt_depto As System.Windows.Forms.TextBox
+    Friend WithEvents txt_piso As System.Windows.Forms.TextBox
+    Friend WithEvents lbl_depto As System.Windows.Forms.Label
+    Friend WithEvents lbl_piso As System.Windows.Forms.Label
+    Friend WithEvents txt_nro_calle As System.Windows.Forms.TextBox
+    Friend WithEvents lbl_nro As System.Windows.Forms.Label
+    Friend WithEvents lbl_calle As System.Windows.Forms.Label
+    Friend WithEvents txt_calle As System.Windows.Forms.TextBox
+    Friend WithEvents grp_datos_laborales As System.Windows.Forms.GroupBox
+    Friend WithEvents txt_hora_egreso As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents txt_hora_ingreso As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents cmb_cargo As System.Windows.Forms.ComboBox
+    Friend WithEvents lbl_hora_egreso As System.Windows.Forms.Label
+    Friend WithEvents lbl_hora_ingreso As System.Windows.Forms.Label
+    Friend WithEvents lbl_cargo As System.Windows.Forms.Label
+    Friend WithEvents grp_datos_personales As System.Windows.Forms.GroupBox
+    Friend WithEvents cmd_buscar As System.Windows.Forms.Button
+    Friend WithEvents txt_cuil As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents txt_celular As System.Windows.Forms.TextBox
+    Friend WithEvents txt_telefono As System.Windows.Forms.TextBox
+    Friend WithEvents lbl_celular As System.Windows.Forms.Label
+    Friend WithEvents lbl_telefono As System.Windows.Forms.Label
+    Friend WithEvents dtp_fecha_nac As System.Windows.Forms.DateTimePicker
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lbl_ape As System.Windows.Forms.Label
+    Friend WithEvents txt_ape As System.Windows.Forms.TextBox
+    Friend WithEvents lbl_nom As System.Windows.Forms.Label
+    Friend WithEvents txt_nom As System.Windows.Forms.TextBox
+    Friend WithEvents lbl_cuil As System.Windows.Forms.Label
 
 End Class
