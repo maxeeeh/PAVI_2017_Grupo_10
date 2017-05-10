@@ -83,6 +83,12 @@
     <Compile Include="Cargo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Turnos.Designer.vb">
+      <DependentUpon>Turnos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Turnos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Paciente.designer.vb">
       <DependentUpon>Paciente.vb</DependentUpon>
     </Compile>
@@ -123,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cargo.resx">
       <DependentUpon>Cargo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Turnos.resx">
+      <DependentUpon>Turnos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Paciente.resx">
       <DependentUpon>Paciente.vb</DependentUpon>
