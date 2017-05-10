@@ -8,6 +8,7 @@
         _no_existe
     End Enum
 
+
     'Para saber si hay algun campo con informacion erronea'
     Enum respuesta_validacion_error
         _ok
