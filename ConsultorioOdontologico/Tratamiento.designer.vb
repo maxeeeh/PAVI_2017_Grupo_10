@@ -89,7 +89,7 @@ Partial Class frm_registrar_tratamiento
         '
         'cmd_nuevo
         '
-        Me.cmd_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmd_nuevo.Location = New System.Drawing.Point(12, 378)
         Me.cmd_nuevo.Name = "cmd_nuevo"
         Me.cmd_nuevo.Size = New System.Drawing.Size(89, 23)
@@ -100,7 +100,7 @@ Partial Class frm_registrar_tratamiento
         'cmd_registrar
         '
         Me.cmd_registrar.Enabled = False
-        Me.cmd_registrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_registrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmd_registrar.Location = New System.Drawing.Point(107, 378)
         Me.cmd_registrar.Name = "cmd_registrar"
         Me.cmd_registrar.Size = New System.Drawing.Size(89, 23)
@@ -111,7 +111,7 @@ Partial Class frm_registrar_tratamiento
         'cmd_eliminar
         '
         Me.cmd_eliminar.Enabled = False
-        Me.cmd_eliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_eliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmd_eliminar.Location = New System.Drawing.Point(202, 378)
         Me.cmd_eliminar.Name = "cmd_eliminar"
         Me.cmd_eliminar.Size = New System.Drawing.Size(89, 23)
@@ -121,7 +121,7 @@ Partial Class frm_registrar_tratamiento
         '
         'cmd_salir
         '
-        Me.cmd_salir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_salir.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmd_salir.Location = New System.Drawing.Point(297, 378)
         Me.cmd_salir.Name = "cmd_salir"
         Me.cmd_salir.Size = New System.Drawing.Size(89, 23)
@@ -168,7 +168,7 @@ Partial Class frm_registrar_tratamiento
         'lbl_campos_obligatorios
         '
         Me.lbl_campos_obligatorios.AutoSize = True
-        Me.lbl_campos_obligatorios.Location = New System.Drawing.Point(279, 158)
+        Me.lbl_campos_obligatorios.Location = New System.Drawing.Point(278, 156)
         Me.lbl_campos_obligatorios.Name = "lbl_campos_obligatorios"
         Me.lbl_campos_obligatorios.Size = New System.Drawing.Size(108, 13)
         Me.lbl_campos_obligatorios.TabIndex = 89
@@ -178,7 +178,7 @@ Partial Class frm_registrar_tratamiento
         '
         Me.txt_filtro_descripcion.Location = New System.Drawing.Point(128, 188)
         Me.txt_filtro_descripcion.Name = "txt_filtro_descripcion"
-        Me.txt_filtro_descripcion.Size = New System.Drawing.Size(100, 20)
+        Me.txt_filtro_descripcion.Size = New System.Drawing.Size(253, 20)
         Me.txt_filtro_descripcion.TabIndex = 91
         '
         'lbl_filtro_descripcion

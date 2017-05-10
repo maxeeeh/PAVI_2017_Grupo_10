@@ -725,7 +725,7 @@ Partial Class frm_registrar_empleado
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(860, 727)
-        Me.MinimumSize = New System.Drawing.Size(860, 597)
+        Me.MinimumSize = New System.Drawing.Size(860, 726)
         Me.Name = "frm_registrar_empleado"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registrar Empleado"

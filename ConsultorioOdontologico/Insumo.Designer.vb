@@ -38,13 +38,13 @@ Partial Class frm_registrar_insumo
         '
         Me.txt_descripcion.Location = New System.Drawing.Point(6, 19)
         Me.txt_descripcion.Name = "txt_descripcion"
-        Me.txt_descripcion.Size = New System.Drawing.Size(248, 116)
+        Me.txt_descripcion.Size = New System.Drawing.Size(362, 116)
         Me.txt_descripcion.TabIndex = 0
         Me.txt_descripcion.Text = ""
         '
         'cmd_registrar
         '
-        Me.cmd_registrar.Location = New System.Drawing.Point(18, 305)
+        Me.cmd_registrar.Location = New System.Drawing.Point(129, 376)
         Me.cmd_registrar.Name = "cmd_registrar"
         Me.cmd_registrar.Size = New System.Drawing.Size(75, 23)
         Me.cmd_registrar.TabIndex = 2
@@ -53,7 +53,7 @@ Partial Class frm_registrar_insumo
         '
         'cmd_salir
         '
-        Me.cmd_salir.Location = New System.Drawing.Point(190, 305)
+        Me.cmd_salir.Location = New System.Drawing.Point(301, 376)
         Me.cmd_salir.Name = "cmd_salir"
         Me.cmd_salir.Size = New System.Drawing.Size(75, 23)
         Me.cmd_salir.TabIndex = 3
@@ -65,7 +65,7 @@ Partial Class frm_registrar_insumo
         Me.grp_descripcion.Controls.Add(Me.txt_descripcion)
         Me.grp_descripcion.Location = New System.Drawing.Point(12, 12)
         Me.grp_descripcion.Name = "grp_descripcion"
-        Me.grp_descripcion.Size = New System.Drawing.Size(260, 141)
+        Me.grp_descripcion.Size = New System.Drawing.Size(374, 141)
         Me.grp_descripcion.TabIndex = 4
         Me.grp_descripcion.TabStop = False
         Me.grp_descripcion.Text = "Descripcion*"
@@ -75,7 +75,7 @@ Partial Class frm_registrar_insumo
         Me.lst_insumos.FormattingEnabled = True
         Me.lst_insumos.Location = New System.Drawing.Point(18, 204)
         Me.lst_insumos.Name = "lst_insumos"
-        Me.lst_insumos.Size = New System.Drawing.Size(248, 95)
+        Me.lst_insumos.Size = New System.Drawing.Size(362, 160)
         Me.lst_insumos.TabIndex = 5
         '
         'lbl_filtro
@@ -91,12 +91,12 @@ Partial Class frm_registrar_insumo
         '
         Me.txt_filtro.Location = New System.Drawing.Point(129, 176)
         Me.txt_filtro.Name = "txt_filtro"
-        Me.txt_filtro.Size = New System.Drawing.Size(137, 20)
+        Me.txt_filtro.Size = New System.Drawing.Size(251, 20)
         Me.txt_filtro.TabIndex = 7
         '
         'cmd_borrar
         '
-        Me.cmd_borrar.Location = New System.Drawing.Point(104, 305)
+        Me.cmd_borrar.Location = New System.Drawing.Point(215, 376)
         Me.cmd_borrar.Name = "cmd_borrar"
         Me.cmd_borrar.Size = New System.Drawing.Size(75, 23)
         Me.cmd_borrar.TabIndex = 8
@@ -106,7 +106,7 @@ Partial Class frm_registrar_insumo
         'lbl_campo_obligatorio
         '
         Me.lbl_campo_obligatorio.AutoSize = True
-        Me.lbl_campo_obligatorio.Location = New System.Drawing.Point(174, 156)
+        Me.lbl_campo_obligatorio.Location = New System.Drawing.Point(287, 156)
         Me.lbl_campo_obligatorio.Name = "lbl_campo_obligatorio"
         Me.lbl_campo_obligatorio.Size = New System.Drawing.Size(98, 13)
         Me.lbl_campo_obligatorio.TabIndex = 9
@@ -116,7 +116,7 @@ Partial Class frm_registrar_insumo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(280, 344)
+        Me.ClientSize = New System.Drawing.Size(398, 411)
         Me.Controls.Add(Me.lbl_campo_obligatorio)
         Me.Controls.Add(Me.cmd_borrar)
         Me.Controls.Add(Me.txt_filtro)
@@ -125,8 +125,8 @@ Partial Class frm_registrar_insumo
         Me.Controls.Add(Me.grp_descripcion)
         Me.Controls.Add(Me.cmd_salir)
         Me.Controls.Add(Me.cmd_registrar)
-        Me.MaximumSize = New System.Drawing.Size(296, 383)
-        Me.MinimumSize = New System.Drawing.Size(296, 383)
+        Me.MaximumSize = New System.Drawing.Size(414, 450)
+        Me.MinimumSize = New System.Drawing.Size(414, 450)
         Me.Name = "frm_registrar_insumo"
         Me.Text = "Registrar Insumo"
         Me.grp_descripcion.ResumeLayout(False)
