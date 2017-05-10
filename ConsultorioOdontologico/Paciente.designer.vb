@@ -484,6 +484,8 @@ Partial Class frm_registrar_paciente
         'cmb_tipo_doc
         '
         Me.cmb_tipo_doc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cmb_tipo_doc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmb_tipo_doc.DropDownWidth = 100
         Me.cmb_tipo_doc.FormattingEnabled = True
         Me.cmb_tipo_doc.Location = New System.Drawing.Point(200, 101)
         Me.cmb_tipo_doc.Margin = New System.Windows.Forms.Padding(4)

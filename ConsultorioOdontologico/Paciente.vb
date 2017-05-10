@@ -2,7 +2,9 @@
 
 
     'Lo que me permite conectar a la BD'
-    Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
+
+    Dim cadena_conexion As String = ""
+    'Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
     'Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=LAPATOP\LUCIANOSQL;User ID=Luciano;Initial Catalog=ConsultorioOdontologicoBD;Password=Luciano"
     Enum tipo_grabacion
         insertar
@@ -24,6 +26,17 @@
     Dim accion As tipo_grabacion = tipo_grabacion.insertar
 
     Private Sub frm_registrar_paciente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+        'Asigna la cadena de conexion segun la compu actual (por el tema de Git y eso)
+        Select Case Environment.UserName
+            Case "Luciano"
+                cadena_conexion = "Provider=SQLNCLI11;Data Source=LAPATOP\LUCIANOSQL;User ID=Luciano;Initial Catalog=ConsultorioOdontologicoBD;Password=Luciano"
+            Case "Maximiliano"
+                cadena_conexion = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
+        End Select
+
+
         cargar_grilla()
         cargar_combo(cmb_loc _
                      , leo_tabla("Localidad") _
@@ -34,6 +47,8 @@
                      , "id_tipo_documento" _
                      , "descripcion")
 
+
+        MessageBox.Show(Environment.UserName, "lklk", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
     End Sub
 
     Private Sub cargar_grilla()
