@@ -26,7 +26,6 @@ Partial Class frm_registrar_paciente
         Me.lbl_eliminar = New System.Windows.Forms.Label()
         Me.lbl_eliminar_por_doc = New System.Windows.Forms.Label()
         Me.cmd_eliminar_por_doc = New System.Windows.Forms.Button()
-        Me.cmd_eliminar_fila_seleccionada = New System.Windows.Forms.Button()
         Me.lbl_asterisco = New System.Windows.Forms.Label()
         Me.lbl_nro = New System.Windows.Forms.Label()
         Me.grid_pacientes = New System.Windows.Forms.DataGridView()
@@ -77,6 +76,7 @@ Partial Class frm_registrar_paciente
         Me.txt_nro_doc = New System.Windows.Forms.MaskedTextBox()
         Me.lbl_tipo_documento = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.txt_eliminar_por_doc = New System.Windows.Forms.MaskedTextBox()
         Me.lbl_eliminar_por_tipo_doc = New System.Windows.Forms.Label()
         Me.cmd_nuevo = New System.Windows.Forms.Button()
         Me.cmd_salir = New System.Windows.Forms.Button()
@@ -84,7 +84,6 @@ Partial Class frm_registrar_paciente
         Me.cmd_registrar = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txt_filtro_nombre_apellido = New System.Windows.Forms.TextBox()
-        Me.txt_eliminar_por_doc = New System.Windows.Forms.MaskedTextBox()
         CType(Me.grid_pacientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -130,15 +129,6 @@ Partial Class frm_registrar_paciente
         Me.cmd_eliminar_por_doc.TabIndex = 27
         Me.cmd_eliminar_por_doc.Text = "Eliminar"
         Me.cmd_eliminar_por_doc.UseVisualStyleBackColor = True
-        '
-        'cmd_eliminar_fila_seleccionada
-        '
-        Me.cmd_eliminar_fila_seleccionada.Location = New System.Drawing.Point(223, 111)
-        Me.cmd_eliminar_fila_seleccionada.Name = "cmd_eliminar_fila_seleccionada"
-        Me.cmd_eliminar_fila_seleccionada.Size = New System.Drawing.Size(373, 23)
-        Me.cmd_eliminar_fila_seleccionada.TabIndex = 25
-        Me.cmd_eliminar_fila_seleccionada.Text = "Eliminar Fila Seleccionada"
-        Me.cmd_eliminar_fila_seleccionada.UseVisualStyleBackColor = True
         '
         'lbl_asterisco
         '
@@ -609,13 +599,20 @@ Partial Class frm_registrar_paciente
         Me.TabPage2.Controls.Add(Me.lbl_eliminar)
         Me.TabPage2.Controls.Add(Me.lbl_eliminar_por_doc)
         Me.TabPage2.Controls.Add(Me.cmd_eliminar_por_doc)
-        Me.TabPage2.Controls.Add(Me.cmd_eliminar_fila_seleccionada)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage2.Size = New System.Drawing.Size(811, 280)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Eliminar"
+        '
+        'txt_eliminar_por_doc
+        '
+        Me.txt_eliminar_por_doc.Location = New System.Drawing.Point(402, 76)
+        Me.txt_eliminar_por_doc.Mask = "00-000-000"
+        Me.txt_eliminar_por_doc.Name = "txt_eliminar_por_doc"
+        Me.txt_eliminar_por_doc.Size = New System.Drawing.Size(72, 20)
+        Me.txt_eliminar_por_doc.TabIndex = 33
         '
         'lbl_eliminar_por_tipo_doc
         '
@@ -683,14 +680,6 @@ Partial Class frm_registrar_paciente
         Me.txt_filtro_nombre_apellido.Size = New System.Drawing.Size(100, 20)
         Me.txt_filtro_nombre_apellido.TabIndex = 21
         '
-        'txt_eliminar_por_doc
-        '
-        Me.txt_eliminar_por_doc.Location = New System.Drawing.Point(402, 76)
-        Me.txt_eliminar_por_doc.Mask = "00-000-000"
-        Me.txt_eliminar_por_doc.Name = "txt_eliminar_por_doc"
-        Me.txt_eliminar_por_doc.Size = New System.Drawing.Size(72, 20)
-        Me.txt_eliminar_por_doc.TabIndex = 33
-        '
         'frm_registrar_paciente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -728,7 +717,6 @@ Partial Class frm_registrar_paciente
     Friend WithEvents lbl_eliminar As System.Windows.Forms.Label
     Friend WithEvents lbl_eliminar_por_doc As System.Windows.Forms.Label
     Friend WithEvents cmd_eliminar_por_doc As System.Windows.Forms.Button
-    Friend WithEvents cmd_eliminar_fila_seleccionada As System.Windows.Forms.Button
     Friend WithEvents lbl_asterisco As System.Windows.Forms.Label
     Friend WithEvents lbl_nro As System.Windows.Forms.Label
     Friend WithEvents grid_pacientes As System.Windows.Forms.DataGridView
