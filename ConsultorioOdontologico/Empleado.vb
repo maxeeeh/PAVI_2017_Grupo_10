@@ -466,7 +466,7 @@
     End Sub
 
 
-    Private Sub eliminar(ByVal cuil)
+    Private Sub eliminar(ByVal cuil As String)
         Dim txt_delete As String = ""
 
         txt_delete &= "UPDATE Empleado"
