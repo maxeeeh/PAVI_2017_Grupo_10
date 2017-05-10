@@ -1,11 +1,8 @@
 ﻿Public Class frm_registrar_paciente
 
 
-    'Lo que me permite conectar a la BD'
-
     Dim cadena_conexion As String = ""
-    'Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
-    'Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=LAPATOP\LUCIANOSQL;User ID=Luciano;Initial Catalog=ConsultorioOdontologicoBD;Password=Luciano"
+    
     Enum tipo_grabacion
         insertar
         modificar
@@ -30,9 +27,9 @@
 
         'Asigna la cadena de conexion segun la compu actual (por el tema de Git y eso)
         Select Case Environment.UserName
-            Case "Luciano"
+            Case "Luciano" 'Lucho
                 cadena_conexion = "Provider=SQLNCLI11;Data Source=LAPATOP\LUCIANOSQL;User ID=Luciano;Initial Catalog=ConsultorioOdontologicoBD;Password=Luciano"
-            Case "Maximiliano"
+            Case "NOTEBOOK" 'maxeeeh
                 cadena_conexion = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
         End Select
 
@@ -46,23 +43,13 @@
                      , leo_tabla("TipoDocumento") _
                      , "id_tipo_documento" _
                      , "descripcion")
+        'AJKSDKAJSGDKASGDAJKSDGKASJDASD
 
-
-        MessageBox.Show(Environment.UserName, "lklk", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
     End Sub
 
     Private Sub cargar_grilla()
-        'Dim conexion As New Data.OleDb.OleDbConnection
-        'Dim cmd As New Data.OleDb.OleDbCommand
         Dim tabla As New Data.DataTable
 
-        'conexion.ConnectionString = cadena_conexion
-        'conexion.Open()
-
-        ''Se indica al comando que conexion a BD se va usar'
-        'cmd.Connection = conexion
-        ''Indico que tipo de comando voy a usar, como voy a mandar la consulta'
-        'cmd.CommandType = CommandType.Text
 
         Dim sql As String = ""
         sql &= " SELECT   P.apellido"
