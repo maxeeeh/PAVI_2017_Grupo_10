@@ -159,10 +159,6 @@
         Me.txt_ape.Focus()
     End Sub
 
-
-
-
-
     Private Function validar_datos() As respuesta_validacion_error
         Dim nom As String = ""
         Dim message_str As String = "Se encuentran los siguientes errores:"
@@ -383,7 +379,6 @@
         End If
     End Function
 
-
     Private Sub cmd_registrar_Click(sender As Object, e As EventArgs) Handles cmd_registrar.Click
         'Al metodo para validar los campos lo llama pero por alguna razon no va a la rama del Else cuando estan vacios'
         If validar_datos() = respuesta_validacion_error._ok Then
@@ -492,7 +487,6 @@
 
     End Sub
 
-
     Private Sub cmd_eliminar_fila_seleccionada_Click(sender As Object, e As EventArgs)
 
         If grid_pacientes.CurrentCell.Selected = False Then
@@ -592,13 +586,12 @@
         'conexion.Close()
     End Sub
 
-
-    Private Sub eliminar(ByVal tipoDoc, ByVal nroDoc)
+    Private Sub eliminar(ByVal tipoDoc As String, ByVal nroDoc As String)
         Dim txt_delete As String = ""
 
         txt_delete &= "UPDATE Paciente"
         txt_delete &= " SET habilitado = 0"
-        txt_delete &= " WHERE id_tipo_documento = " & tipoDoc 'HACER STRIMG
+        txt_delete &= " WHERE id_tipo_documento = " & tipoDoc 'HACER STRING
         txt_delete &= " AND nro_documento = '" & nroDoc & "'"
 
         insertar_modificar_eliminar(txt_delete)
@@ -802,18 +795,6 @@
 
         tabla = ejecuto_sql(sql)
         llenar_grilla(tabla)
-    End Sub
-
-    Private Sub lbl_eliminar_por_tipo_doc_Click(sender As Object, e As EventArgs) Handles lbl_eliminar_por_tipo_doc.Click
-
-    End Sub
-
-    Private Sub TabPage2_Click(sender As Object, e As EventArgs) Handles TabPage2.Click
-
-    End Sub
-
-    Private Sub MaskedTextBox1_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles txt_eliminar_por_doc.MaskInputRejected
-
     End Sub
 
     Private Sub frm_registrar_tratamiento_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
