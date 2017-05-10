@@ -1,5 +1,4 @@
-﻿Imports System.Net.NetworkInformation
-Public Class frm_registrar_insumo
+﻿Public Class frm_registrar_insumo
     Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
 
 
