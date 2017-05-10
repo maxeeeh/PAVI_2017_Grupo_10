@@ -344,4 +344,12 @@ Public Class frm_registrar_tratamiento
     Private Sub lbl_campos_obligatorios_Click(sender As Object, e As EventArgs) Handles lbl_campos_obligatorios.Click
 
     End Sub
+
+    Private Sub frm_registrar_tratamiento_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If MessageBox.Show("Esta segro que desea salir", "Importante", MessageBoxButtons.OKCancel) = Windows.Forms.DialogResult.OK Then
+            e.Cancel = True
+        Else
+            e.Cancel = False
+        End If
+    End Sub
 End Class
