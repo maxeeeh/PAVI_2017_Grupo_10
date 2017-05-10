@@ -65,7 +65,7 @@
         sql &= "          , E.hora_egreso"
         sql &= " FROM     Empleado E JOIN cargo C"
         sql &= " ON       E.id_cargo = C.id_cargo"
-        sql &= " WHERE habilitado = 1"
+        sql &= " WHERE E.habilitado = 1"
         sql &= " ORDER BY E.apellido ASC"
 
 
@@ -278,6 +278,7 @@
             If Me.accion = tipo_grabacion.insertar Then
                 If validar_empleados(Me.txt_cuil.Text) = respuesta_validacion._no_existe Then
                     insertar()
+                    limpiar_campos()
                     MessageBox.Show("Se ha registrado el empleado correctamente")
                 Else
                     MessageBox.Show("Se ha detectado un empleado con el mismo numero de cuil", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -327,7 +328,22 @@
     End Sub
 
     Private Sub limpiar_campos()
-        For Each obj As Windows.Forms.Control In grp_datos_personales.Controls
+        'For Each obj As Windows.Forms.Control In Me.Controls
+        '    If TypeOf obj Is TextBox Then
+        '        obj.Text = ""
+        '    End If
+
+        '    If TypeOf obj Is MaskedTextBox Then
+        '        obj.Text = ""
+        '    End If
+
+        '    If TypeOf obj Is ComboBox Then
+        '        Dim local As ComboBox = obj
+        '        local.SelectedIndex = -1
+        '    End If
+        'Next
+
+        For Each obj As Windows.Forms.Control In Me.grp_datos_personales.Controls
             If obj.GetType().Name = "TextBox" Then
                 obj.Text = ""
             End If
@@ -335,10 +351,9 @@
             If obj.GetType().Name = "MaskedTextBox" Then
                 obj.Text = ""
             End If
-
         Next
 
-        For Each obj As Windows.Forms.Control In grp_domicilio.Controls
+        For Each obj As Windows.Forms.Control In Me.grp_domicilio.Controls
             If obj.GetType().Name = "TextBox" Then
                 obj.Text = ""
             End If
@@ -349,7 +364,7 @@
             End If
         Next
 
-        For Each obj As Windows.Forms.Control In grp_datos_laborales.Controls
+        For Each obj As Windows.Forms.Control In Me.grp_datos_laborales.Controls
             If obj.GetType().Name = "MaskedTextBox" Then
                 obj.Text = ""
             End If
@@ -361,17 +376,27 @@
         Next
     End Sub
 
-    Private Sub cmd_eliminar_por_cuil_Click(sender As Object, e As EventArgs)
-        If validar_empleados(Me.txt_eliminar_por_cuil.Text) = respuesta_validacion._existe Then
-            Dim res As Integer = MessageBox.Show("                        Esta seguro?", "Confirmacion", MessageBoxButtons.OKCancel)
-            If res = DialogResult.OK Then
-                eliminar(Me.txt_eliminar_por_cuil.Text)
-                MessageBox.Show("Se ha eliminado el empleado correctamente" _
-                            , "Informacion" _
-                            , MessageBoxButtons.OK _
-                            , MessageBoxIcon.Information)
-                Me.cargar_grilla()
+    Private Sub cmd_eliminar_por_cuil_Click(sender As Object, e As EventArgs) Handles cmd_eliminar_por_cuil.Click
+
+        If validar_empleados(Me.txt_cuil.Text) = respuesta_validacion._existe Then
+            If buscar() Then
+                Dim res As Integer = MessageBox.Show("                        Esta seguro?", "Confirmacion", MessageBoxButtons.OKCancel)
+                If res = DialogResult.OK Then
+                    eliminar(Me.txt_cuil.Text)
+
+                    Me.cargar_grilla()
+                    accion = tipo_grabacion.insertar
+                    MessageBox.Show("Se ha eliminado el empleado correctamente" _
+                                , "Informacion" _
+                                , MessageBoxButtons.OK _
+                                , MessageBoxIcon.Information)
+                Else
+                    habilitar_controles()
+                    limpiar_campos()
+                End If
+                accion = tipo_grabacion.insertar
             End If
+
         Else
             MessageBox.Show("Se ha detectado que el empleado no existe en la base de datos" _
                         , "ERROR" _
@@ -543,14 +568,7 @@
         conexion.Close()
     End Sub
 
-    Private Sub cmd_buscar_Click(sender As Object, e As EventArgs)
-        If txt_cuil.Text.Length < 14 Then
-            MessageBox.Show("El campo CUIL debe contener 14 digitos, el cual incluye los 2 (dos) guiones. Ejemplo: 00-00000000-00", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            txt_cuil.Focus()
-            Exit Sub
-        End If
-
-
+    Private Function buscar() As Boolean
         Dim encontrado As Boolean = False
 
         For c = 0 To (grid_empleados.Rows.Count - 1)
@@ -564,12 +582,21 @@
             End If
         Next
 
-        If encontrado = True Then
+        Return encontrado
+    End Function
+
+    Private Sub cmd_buscar_Click(sender As Object, e As EventArgs) Handles cmd_buscar.Click
+        If txt_cuil.Text.Length < 13 Then
+            MessageBox.Show("El campo CUIL debe contener 13 digitos, el cual incluye los 2 (dos) guiones. Ejemplo: 00-00000000-0", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            txt_cuil.Focus()
+            Exit Sub
+        End If
+
+        If buscar() = True Then
             accion = tipo_grabacion.modificar
             habilitar_controles()
             dtp_fecha_nac.Enabled = False
             cmb_cargo.Enabled = False
-            'cmd_registrar.Text = "Modificar"
         Else
             MessageBox.Show("No se ha encontrado ningun empleado con el CUIL especificado", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
@@ -596,15 +623,17 @@
 
     End Sub
 
-    Private Sub grid_empleados_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles grid_empleados.RowHeaderMouseClick
-
+    Private Sub llenar_form_click_en_grid()
         llenar_formulario(grid_empleados.CurrentRow.Index)
 
         accion = tipo_grabacion.modificar
         habilitar_controles()
         dtp_fecha_nac.Enabled = False
         cmb_cargo.Enabled = False
-        'cmd_registrar.Text = "Modificar"
+    End Sub
+
+    Private Sub grid_empleados_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles grid_empleados.RowHeaderMouseClick
+        llenar_form_click_en_grid()
     End Sub
 
     Private Sub txt_filtro_nombre_apellido_TextChanged(sender As Object, e As EventArgs) Handles txt_filtro_nombre_apellido.TextChanged
@@ -717,4 +746,10 @@
             e.Cancel = True
         End If
     End Sub
+
+    Private Sub grid_empleados_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grid_empleados.CellClick
+        llenar_form_click_en_grid()
+    End Sub
+
+
 End Class

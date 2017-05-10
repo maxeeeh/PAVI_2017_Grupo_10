@@ -314,9 +314,9 @@ Partial Class frm_registrar_empleado
         '
         'cmd_eliminar_por_cuil
         '
-        Me.cmd_eliminar_por_cuil.Location = New System.Drawing.Point(286, 657)
+        Me.cmd_eliminar_por_cuil.Location = New System.Drawing.Point(384, 656)
         Me.cmd_eliminar_por_cuil.Name = "cmd_eliminar_por_cuil"
-        Me.cmd_eliminar_por_cuil.Size = New System.Drawing.Size(171, 23)
+        Me.cmd_eliminar_por_cuil.Size = New System.Drawing.Size(89, 23)
         Me.cmd_eliminar_por_cuil.TabIndex = 32
         Me.cmd_eliminar_por_cuil.Text = "Eliminar"
         Me.cmd_eliminar_por_cuil.UseVisualStyleBackColor = True
