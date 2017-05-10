@@ -815,4 +815,12 @@
     Private Sub MaskedTextBox1_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles txt_eliminar_por_doc.MaskInputRejected
 
     End Sub
+
+    Private Sub frm_registrar_tratamiento_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If MessageBox.Show("Esta seguro que desea salir", "Importante", MessageBoxButtons.OKCancel) = Windows.Forms.DialogResult.OK Then
+            e.Cancel = True
+        Else
+            e.Cancel = False
+        End If
+    End Sub
 End Class
