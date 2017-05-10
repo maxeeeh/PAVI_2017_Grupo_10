@@ -125,6 +125,7 @@ Partial Class frm_registrar_insumo
         Me.Controls.Add(Me.grp_descripcion)
         Me.Controls.Add(Me.cmd_salir)
         Me.Controls.Add(Me.cmd_registrar)
+        Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(414, 450)
         Me.MinimumSize = New System.Drawing.Size(414, 450)
         Me.Name = "frm_registrar_insumo"

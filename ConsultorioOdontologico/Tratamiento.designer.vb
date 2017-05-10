@@ -206,6 +206,7 @@ Partial Class frm_registrar_tratamiento
         Me.Controls.Add(Me.cmd_nuevo)
         Me.Controls.Add(Me.grid_tratamientos)
         Me.Controls.Add(Me.lblFecha)
+        Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(414, 450)
         Me.MinimumSize = New System.Drawing.Size(414, 450)
         Me.Name = "frm_registrar_tratamiento"

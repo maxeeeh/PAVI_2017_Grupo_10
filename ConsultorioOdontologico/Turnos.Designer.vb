@@ -37,10 +37,11 @@ Partial Class frm_turnos
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.fecha_turno, Me.hora_desde, Me.hora_hasta, Me.empleado, Me.paciente})
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 195)
+        Me.DataGridView1.Location = New System.Drawing.Point(9, 158)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(993, 371)
+        Me.DataGridView1.Size = New System.Drawing.Size(745, 301)
         Me.DataGridView1.TabIndex = 0
         '
         'fecha_turno
@@ -71,30 +72,32 @@ Partial Class frm_turnos
         'lbl_empleado
         '
         Me.lbl_empleado.AutoSize = True
-        Me.lbl_empleado.Location = New System.Drawing.Point(28, 48)
+        Me.lbl_empleado.Location = New System.Drawing.Point(21, 39)
+        Me.lbl_empleado.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbl_empleado.Name = "lbl_empleado"
-        Me.lbl_empleado.Size = New System.Drawing.Size(71, 17)
+        Me.lbl_empleado.Size = New System.Drawing.Size(54, 13)
         Me.lbl_empleado.TabIndex = 1
         Me.lbl_empleado.Text = "Empleado"
         '
         'lbl_paciente
         '
         Me.lbl_paciente.AutoSize = True
-        Me.lbl_paciente.Location = New System.Drawing.Point(28, 86)
+        Me.lbl_paciente.Location = New System.Drawing.Point(21, 70)
+        Me.lbl_paciente.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbl_paciente.Name = "lbl_paciente"
-        Me.lbl_paciente.Size = New System.Drawing.Size(63, 17)
+        Me.lbl_paciente.Size = New System.Drawing.Size(49, 13)
         Me.lbl_paciente.TabIndex = 2
         Me.lbl_paciente.Text = "Paciente"
         '
         'frm_turnos
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1017, 578)
+        Me.ClientSize = New System.Drawing.Size(763, 470)
         Me.Controls.Add(Me.lbl_paciente)
         Me.Controls.Add(Me.lbl_empleado)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.MaximizeBox = False
         Me.Name = "frm_turnos"
         Me.Text = "Turnos"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

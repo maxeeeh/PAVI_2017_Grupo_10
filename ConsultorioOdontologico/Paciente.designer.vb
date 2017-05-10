@@ -435,7 +435,7 @@ Partial Class frm_registrar_paciente
         Me.rb_hombre.AutoSize = True
         Me.rb_hombre.Enabled = False
         Me.rb_hombre.Location = New System.Drawing.Point(150, 152)
-        Me.rb_hombre.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.rb_hombre.Margin = New System.Windows.Forms.Padding(2)
         Me.rb_hombre.Name = "rb_hombre"
         Me.rb_hombre.Size = New System.Drawing.Size(62, 17)
         Me.rb_hombre.TabIndex = 16
@@ -447,7 +447,7 @@ Partial Class frm_registrar_paciente
         '
         Me.rb_mujer.Enabled = False
         Me.rb_mujer.Location = New System.Drawing.Point(214, 153)
-        Me.rb_mujer.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.rb_mujer.Margin = New System.Windows.Forms.Padding(2)
         Me.rb_mujer.Name = "rb_mujer"
         Me.rb_mujer.Size = New System.Drawing.Size(59, 15)
         Me.rb_mujer.TabIndex = 15
@@ -603,7 +603,8 @@ Partial Class frm_registrar_paciente
         Me.Controls.Add(Me.cmd_salir)
         Me.Controls.Add(Me.grp_pacientes)
         Me.Controls.Add(Me.cmd_registrar)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
+        Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(858, 718)
         Me.MinimumSize = New System.Drawing.Size(858, 718)
         Me.Name = "frm_registrar_paciente"
