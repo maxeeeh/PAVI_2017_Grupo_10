@@ -153,7 +153,8 @@ Public Class frm_registrar_tratamiento
     Private Sub eliminar(ByVal id)
         Dim txt_delete As String = ""
 
-        txt_delete &= "DELETE FROM Tratamiento"
+        txt_delete &= "UPDATE Tratamiento"
+        txt_delete &= " SET habilitado = 0"
         txt_delete &= " WHERE id_tratamiento = '" & id & "'"
 
         insertar_modificar_eliminar(txt_delete)
@@ -172,7 +173,6 @@ Public Class frm_registrar_tratamiento
         Dim ent As String = Me.txt_costo.Text.Substring(0, 5)
 
 
-        'MsgBox(txt_costo.TextLength & "   " & ent.Length & "   " & dec.Length)
 
 
         If dec.Length = 0 Then

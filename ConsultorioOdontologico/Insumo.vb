@@ -62,7 +62,7 @@
         Dim txt_delete As String = ""
 
         txt_delete &= "UPDATE Insumo"
-        txt_delete &= "SET habilitado = 0"
+        txt_delete &= " SET habilitado = 0"
         txt_delete &= " WHERE id_insumo = " & id
 
         insertar_modificar_eliminar(txt_delete)
