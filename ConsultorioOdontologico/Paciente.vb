@@ -575,7 +575,7 @@
 
     End Sub
 
-    Private Sub grid_pacientes_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles grid_pacientes.RowHeaderMouseClick, 
+    Private Sub grid_pacientes_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles grid_pacientes.RowHeaderMouseClick
         llenar_form_click_en_grid()
     End Sub
 

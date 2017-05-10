@@ -22,16 +22,92 @@ Partial Class frm_turnos
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.lbl_empleado = New System.Windows.Forms.Label()
+        Me.fecha_turno = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.hora_desde = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.hora_hasta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.empleado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.paciente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lbl_paciente = New System.Windows.Forms.Label()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.fecha_turno, Me.hora_desde, Me.hora_hasta, Me.empleado, Me.paciente})
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 195)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.RowTemplate.Height = 24
+        Me.DataGridView1.Size = New System.Drawing.Size(993, 371)
+        Me.DataGridView1.TabIndex = 0
+        '
+        'lbl_empleado
+        '
+        Me.lbl_empleado.AutoSize = True
+        Me.lbl_empleado.Location = New System.Drawing.Point(28, 48)
+        Me.lbl_empleado.Name = "lbl_empleado"
+        Me.lbl_empleado.Size = New System.Drawing.Size(71, 17)
+        Me.lbl_empleado.TabIndex = 1
+        Me.lbl_empleado.Text = "Empleado"
+        '
+        'fecha_turno
+        '
+        Me.fecha_turno.HeaderText = "Fecha Turno"
+        Me.fecha_turno.Name = "fecha_turno"
+        '
+        'hora_desde
+        '
+        Me.hora_desde.HeaderText = "Hora Desde"
+        Me.hora_desde.Name = "hora_desde"
+        '
+        'hora_hasta
+        '
+        Me.hora_hasta.HeaderText = "Hora Hasta"
+        Me.hora_hasta.Name = "hora_hasta"
+        '
+        'empleado
+        '
+        Me.empleado.HeaderText = "Empleado"
+        Me.empleado.Name = "empleado"
+        '
+        'paciente
+        '
+        Me.paciente.HeaderText = "Paciente"
+        Me.paciente.Name = "paciente"
+        '
+        'lbl_paciente
+        '
+        Me.lbl_paciente.AutoSize = True
+        Me.lbl_paciente.Location = New System.Drawing.Point(28, 86)
+        Me.lbl_paciente.Name = "lbl_paciente"
+        Me.lbl_paciente.Size = New System.Drawing.Size(63, 17)
+        Me.lbl_paciente.TabIndex = 2
+        Me.lbl_paciente.Text = "Paciente"
         '
         'frm_turnos
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.ClientSize = New System.Drawing.Size(1017, 578)
+        Me.Controls.Add(Me.lbl_paciente)
+        Me.Controls.Add(Me.lbl_empleado)
+        Me.Controls.Add(Me.DataGridView1)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frm_turnos"
         Me.Text = "Turnos"
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
+    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents fecha_turno As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents hora_desde As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents hora_hasta As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents empleado As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents paciente As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents lbl_empleado As System.Windows.Forms.Label
+    Friend WithEvents lbl_paciente As System.Windows.Forms.Label
 End Class
