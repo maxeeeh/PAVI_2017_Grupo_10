@@ -707,4 +707,8 @@
         tabla = ejecuto_sql(sql)
         llenar_grilla(tabla)
     End Sub
+
+    Private Sub txt_eliminar_por_cuil_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles txt_eliminar_por_cuil.MaskInputRejected
+
+    End Sub
 End Class
