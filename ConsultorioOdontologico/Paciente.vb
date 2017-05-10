@@ -1,8 +1,8 @@
 ﻿Public Class frm_registrar_paciente
 
 
-    Dim cadena_conexion As String = ""
-    
+    Dim cadena_conexion As String = "" 'Se asigna dinamicamente en Load dependiendo en que maquina este
+
     Enum tipo_grabacion
         insertar
         modificar
@@ -43,7 +43,6 @@
                      , leo_tabla("TipoDocumento") _
                      , "id_tipo_documento" _
                      , "descripcion")
-        'AJKSDKAJSGDKASGDAJKSDGKASJDASD
 
     End Sub
 
