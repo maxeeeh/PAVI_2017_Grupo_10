@@ -1,0 +1,166 @@
+﻿Public Class frm_registrar_cargo
+
+    Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
+
+
+    Enum respuesta_validacion
+        _existe
+        _no_existe
+    End Enum
+
+    Enum respuesta_validacion_error
+        _ok
+        _error
+    End Enum
+
+
+    Private Function ejecuto_sql(ByVal sql As String) As DataTable
+        Dim conexion As New Data.OleDb.OleDbConnection
+        Dim cmd As New Data.OleDb.OleDbCommand
+        Dim tabla As New Data.DataTable
+
+        conexion.ConnectionString = cadena_conexion
+        conexion.Open()
+        cmd.Connection = conexion
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = sql
+        tabla.Load(cmd.ExecuteReader())
+        conexion.Close()
+        Return tabla
+    End Function
+
+    Private Function leo_tabla(ByVal nombre_tabla As String) As DataTable
+        Return ejecuto_sql("SELECT * FROM " & nombre_tabla)
+    End Function
+
+    Private Sub cargar_lista()
+        llenar_lista(leo_tabla("Cargo"))
+    End Sub
+
+    Private Sub frm_registrar_Cargo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cargar_lista()
+        lst_cargos.SelectedIndex = -1
+    End Sub
+
+    Private Sub cmd_salir_Click(sender As Object, e As EventArgs) Handles cmd_salir.Click
+        Me.Close()
+    End Sub
+
+    Private Sub insertar()
+        Dim txt_insert As String = ""
+
+        txt_insert &= "INSERT INTO Cargo ("
+        txt_insert &= "descripcion)"
+        txt_insert &= " VALUES ("
+        txt_insert &= "'" & txt_descripcion.Text & "')"
+
+        insertar_modificar_eliminar(txt_insert)
+    End Sub
+
+    Private Sub eliminar(ByVal id As Integer)
+        Dim txt_delete As String = ""
+
+        txt_delete &= "DELETE Cargo"
+        txt_delete &= " WHERE id_cargo = " & id
+
+        insertar_modificar_eliminar(txt_delete)
+    End Sub
+
+    Private Sub insertar_modificar_eliminar(ByVal sql As String)
+        Dim conexion As New Data.OleDb.OleDbConnection
+        Dim cmd As New Data.OleDb.OleDbCommand
+
+        conexion.ConnectionString = cadena_conexion
+        conexion.Open()
+        cmd.Connection = conexion
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = sql
+        cmd.ExecuteNonQuery()
+        conexion.Close()
+    End Sub
+
+
+    Private Function validar_datos() As respuesta_validacion_error
+        If txt_descripcion.Text = "" Then
+            MessageBox.Show("El campo descripcion esta vacio" & vbCrLf & "Debe proveer de una descripcion para el cargo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            txt_descripcion.Focus()
+            Return respuesta_validacion_error._error
+        End If
+        Return respuesta_validacion_error._ok
+    End Function
+
+    Private Function validar_cargos(ByVal descripcion) As respuesta_validacion
+        Dim sql As String = ""
+        sql &= "SELECT * "
+        sql &= " FROM Cargo"
+        sql &= " WHERE descripcion  = '" & descripcion & "'"
+
+        Dim tabla As New DataTable
+
+        tabla = Me.ejecuto_sql(sql)
+
+        If tabla.Rows.Count = 0 Then
+            Return respuesta_validacion._no_existe
+        Else
+            Return respuesta_validacion._existe
+        End If
+    End Function
+
+    Private Sub cmd_registrar_Click(sender As Object, e As EventArgs) Handles cmd_registrar.Click
+        If validar_datos() = respuesta_validacion_error._ok Then
+            If validar_cargos(Me.txt_descripcion.Text) = respuesta_validacion._no_existe Then
+                insertar()
+                MessageBox.Show("Se ha registrado el cargo correctamente")
+            Else
+                MessageBox.Show("Se ha detectado un cargo con la misma descipcion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+            Me.cargar_lista()
+            txt_descripcion.Text = ""
+        End If
+    End Sub
+
+    Private Sub cmd_borrar_Click(sender As Object, e As EventArgs) Handles cmd_borrar.Click
+        If lst_cargos.SelectedIndex = -1 Then
+
+            MessageBox.Show("Debe seleccionar un cargo de la lista" _
+                        , "ERROR" _
+                        , MessageBoxButtons.OK _
+                        , MessageBoxIcon.Error)
+
+            Exit Sub
+        End If
+
+        Dim res As Integer = MessageBox.Show("                        Esta seguro?", "Confirmacion", MessageBoxButtons.OKCancel)
+        If res = DialogResult.OK Then
+            eliminar(lst_cargos.SelectedIndex + 1)
+            cargar_lista()
+            MessageBox.Show("Se ha eliminado el cargo correctamente" _
+                            , "Informacion" _
+                            , MessageBoxButtons.OK _
+                            , MessageBoxIcon.Information)
+            lst_cargos.SelectedIndex = -1
+        End If
+    End Sub
+
+    Private Sub txt_filtro_TextChanged(sender As Object, e As EventArgs) Handles txt_filtro.TextChanged
+        Dim pattern As String = txt_filtro.Text
+        Dim sql As String = ""
+
+        Dim tabla As New Data.DataTable
+        sql &= "SELECT *"
+        sql &= " FROM Cargo"
+        sql &= " WHERE descripcion LIKE '" & pattern & "%'"
+        llenar_lista(ejecuto_sql(sql))
+    End Sub
+
+    Private Sub llenar_lista(ByVal tabla As DataTable)
+        lst_cargos.DataSource = tabla
+        lst_cargos.DisplayMember = "descripcion"
+        lst_cargos.ValueMember = "id_cargo"
+    End Sub
+
+    Private Sub txt_descripcion_TextChanged(sender As Object, e As EventArgs) Handles txt_descripcion.TextChanged
+
+    End Sub
+
+End Class
