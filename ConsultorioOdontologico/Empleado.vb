@@ -324,7 +324,7 @@
         txt_hora_ingreso.Enabled = True
         txt_hora_egreso.Enabled = True
         cmd_registrar.Enabled = True
-        cmd_registrar.Text = "Registrar"
+        'cmd_registrar.Text = "Registrar"
     End Sub
 
     Private Sub limpiar_campos()
@@ -379,22 +379,24 @@
     Private Sub cmd_eliminar_por_cuil_Click(sender As Object, e As EventArgs) Handles cmd_eliminar_por_cuil.Click
 
         If validar_empleados(Me.txt_cuil.Text) = respuesta_validacion._existe Then
-            If buscar() Then
+            If buscar_empleado_y_llenar_formulario() Then
                 Dim res As Integer = MessageBox.Show("                        Esta seguro?", "Confirmacion", MessageBoxButtons.OKCancel)
                 If res = DialogResult.OK Then
                     eliminar(Me.txt_cuil.Text)
 
                     Me.cargar_grilla()
                     accion = tipo_grabacion.insertar
+                    habilitar_controles()
                     MessageBox.Show("Se ha eliminado el empleado correctamente" _
                                 , "Informacion" _
                                 , MessageBoxButtons.OK _
                                 , MessageBoxIcon.Information)
                 Else
+                    accion = tipo_grabacion.modificar
                     habilitar_controles()
-                    limpiar_campos()
+                    Me.dtp_fecha_nac.Enabled = False
+                    cmb_cargo.Enabled = False
                 End If
-                accion = tipo_grabacion.insertar
             End If
 
         Else
@@ -568,7 +570,7 @@
         conexion.Close()
     End Sub
 
-    Private Function buscar() As Boolean
+    Private Function buscar_empleado_y_llenar_formulario() As Boolean
         Dim encontrado As Boolean = False
 
         For c = 0 To (grid_empleados.Rows.Count - 1)
@@ -592,7 +594,7 @@
             Exit Sub
         End If
 
-        If buscar() = True Then
+        If buscar_empleado_y_llenar_formulario() = True Then
             accion = tipo_grabacion.modificar
             habilitar_controles()
             dtp_fecha_nac.Enabled = False

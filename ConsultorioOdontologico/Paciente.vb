@@ -2,8 +2,8 @@
 
 
     'Lo que me permite conectar a la BD'
-    'Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
-    Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=LAPATOP\LUCIANOSQL;User ID=Luciano;Initial Catalog=ConsultorioOdontologicoBD;Password=Luciano"
+    Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
+    'Dim cadena_conexion As String = "Provider=SQLNCLI11;Data Source=LAPATOP\LUCIANOSQL;User ID=Luciano;Initial Catalog=ConsultorioOdontologicoBD;Password=Luciano"
     Enum tipo_grabacion
         insertar
         modificar
@@ -344,7 +344,7 @@
     End Sub
 
     Private Sub cmd_eliminar_por_doc_Click(sender As Object, e As EventArgs) Handles cmd_eliminar_por_doc.Click
-        If validar_pacientes(Me.cmb_tipo_doc.SelectedValue, Me.txt_nro_doc.Text) = respuesta_validacion._existe Then
+        If buscar_paciente_y_llenar_formulario() = True Then 'Si encuentra el paciente segun el tipo y num de doc lo carga
             Dim res As Integer = MessageBox.Show("                        Esta seguro?", "Confirmacion", MessageBoxButtons.OKCancel)
             If res = DialogResult.OK Then
                 eliminar(Me.cmb_tipo_doc.SelectedValue, Me.txt_nro_doc.Text)
@@ -352,39 +352,22 @@
                             , "Informacion" _
                             , MessageBoxButtons.OK _
                             , MessageBoxIcon.Information)
+                accion = tipo_grabacion.insertar
+                habilitar_controles()
                 Me.cargar_grilla()
-                Me.txt_nro_doc.Text = ""
+
+            Else
+                accion = tipo_grabacion.modificar
+                habilitar_controles()
+                Me.dtp_fecha_nac.Enabled = False
+                cmb_tipo_doc.Enabled = False
             End If
+
         Else
             MessageBox.Show("Se ha detectado que el paciente no existe en la base de datos" _
                         , "ERROR" _
                         , MessageBoxButtons.OK _
                         , MessageBoxIcon.Error)
-        End If
-
-    End Sub
-
-    Private Sub cmd_eliminar_fila_seleccionada_Click(sender As Object, e As EventArgs)
-
-        If grid_pacientes.CurrentCell.Selected = False Then
-
-            MessageBox.Show("Debe seleccionar una fila de la grilla" _
-                        , "ERROR" _
-                        , MessageBoxButtons.OK _
-                        , MessageBoxIcon.Error)
-
-            Exit Sub
-        End If
-
-        Dim res As Integer = MessageBox.Show("                        Esta seguro?", "Confirmacion", MessageBoxButtons.OKCancel)
-        If res = DialogResult.OK Then
-            eliminar(Me.grid_pacientes.CurrentRow.Cells(3).Value, Me.grid_pacientes.CurrentRow.Cells(4).Value)
-            cargar_grilla()
-            Me.txt_nro_doc.Text = ""
-            MessageBox.Show("Se ha eliminado el paciente correctamente" _
-                            , "Informacion" _
-                            , MessageBoxButtons.OK _
-                            , MessageBoxIcon.Information)
         End If
 
     End Sub
@@ -405,8 +388,7 @@
         txt_insert &= ", calle"
         txt_insert &= ", nro_calle"
         txt_insert &= ", piso"
-        txt_insert &= ", departamento"
-        txt_insert &= ", habilitado)"
+        txt_insert &= ", departamento)"
         txt_insert &= " VALUES ("
         txt_insert &= "'" & Me.txt_nro_doc.Text & "'"
         txt_insert &= ", " & Me.cmb_tipo_doc.SelectedValue
@@ -442,10 +424,8 @@
         If txt_depto.Text = "" Then
             txt_insert &= ", ''"
         Else
-            txt_insert &= ", '" & Me.txt_depto.Text & "'"
+            txt_insert &= ", '" & Me.txt_depto.Text & "')"
         End If
-
-        txt_insert &= ", 1)"
 
 
 
@@ -523,7 +503,7 @@
         conexion.Close()
     End Sub
 
-    Private Sub cmd_buscar_Click(sender As Object, e As EventArgs)
+    Private Sub cmd_buscar_Click(sender As Object, e As EventArgs) Handles cmd_buscar.Click
         If cmb_tipo_doc.SelectedIndex = -1 Then
             MessageBox.Show("Debe seleccionar un tipo de documento", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             cmb_tipo_doc.Focus()
@@ -536,7 +516,7 @@
             Exit Sub
         End If
 
-        If buscarPacienteYLlenarFormulario() = True Then
+        If buscar_paciente_y_llenar_formulario() = True Then
             accion = tipo_grabacion.modificar
             habilitar_controles()
             dtp_fecha_nac.Enabled = False
@@ -548,7 +528,7 @@
 
     End Sub
 
-    Private Function buscarPacienteYLlenarFormulario() As Boolean
+    Private Function buscar_paciente_y_llenar_formulario() As Boolean
 
         'Intenta encontrar al paciente en la grilla por su tipo y num de doc, y si lo logra llena el formulario
         Dim encontrado As Boolean = False
@@ -595,8 +575,15 @@
 
     End Sub
 
-    Private Sub grid_pacientes_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles grid_pacientes.RowHeaderMouseClick
+    Private Sub grid_pacientes_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles grid_pacientes.RowHeaderMouseClick, 
+        llenar_form_click_en_grid()
+    End Sub
 
+    Private Sub grid_pacientes_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grid_pacientes.CellClick
+        llenar_form_click_en_grid()
+    End Sub
+
+    Private Sub llenar_form_click_en_grid()
         llenar_formulario(grid_pacientes.CurrentRow.Index)
 
         accion = tipo_grabacion.modificar
