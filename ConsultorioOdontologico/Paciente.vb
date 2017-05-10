@@ -591,7 +591,7 @@
 
         txt_delete &= "UPDATE Paciente"
         txt_delete &= " SET habilitado = 0"
-        txt_delete &= " WHERE id_tipo_documento = " & tipoDoc 'HACER STRING
+        txt_delete &= " WHERE id_tipo_documento = " & tipoDoc
         txt_delete &= " AND nro_documento = '" & nroDoc & "'"
 
         insertar_modificar_eliminar(txt_delete)
