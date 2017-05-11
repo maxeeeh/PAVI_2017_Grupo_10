@@ -349,7 +349,7 @@
 
 
     Private Sub frm_registrar_tratamiento_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If MessageBox.Show("Esta seguro que desea salir", "Importante", MessageBoxButtons.OKCancel) = Windows.Forms.DialogResult.OK Then
+        If MessageBox.Show("          ¿Esta seguro que desea salir?", "Importante", MessageBoxButtons.OKCancel) = Windows.Forms.DialogResult.OK Then
             e.Cancel = False
         Else
             e.Cancel = True

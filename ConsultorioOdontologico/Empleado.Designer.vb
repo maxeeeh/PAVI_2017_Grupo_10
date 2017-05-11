@@ -230,7 +230,7 @@ Partial Class frm_registrar_empleado
         '
         'cmd_nuevo
         '
-        Me.cmd_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmd_nuevo.Location = New System.Drawing.Point(498, 656)
         Me.cmd_nuevo.Name = "cmd_nuevo"
         Me.cmd_nuevo.Size = New System.Drawing.Size(89, 23)
@@ -240,7 +240,7 @@ Partial Class frm_registrar_empleado
         '
         'cmd_salir
         '
-        Me.cmd_salir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_salir.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmd_salir.Location = New System.Drawing.Point(724, 656)
         Me.cmd_salir.Name = "cmd_salir"
         Me.cmd_salir.Size = New System.Drawing.Size(89, 23)
@@ -251,7 +251,7 @@ Partial Class frm_registrar_empleado
         'cmd_registrar
         '
         Me.cmd_registrar.Enabled = False
-        Me.cmd_registrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_registrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmd_registrar.Location = New System.Drawing.Point(611, 656)
         Me.cmd_registrar.Name = "cmd_registrar"
         Me.cmd_registrar.Size = New System.Drawing.Size(89, 23)
