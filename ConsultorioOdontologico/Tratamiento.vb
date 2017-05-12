@@ -2,7 +2,7 @@
 
     Dim flag As Boolean = False
 
-    'La siguiente linea asigna dinamicamente en Load dependiendo en que maquina este (ayudandose con una clase)
+    'En la siguiente linea se asigna automaticamente la cadena de conexion segun en que compu este (ayudandose con una clase)
     Dim cadena_conexion As String = (New Cadena_Conexion)._cadena_conexion
 
     Enum tipo_grabacion
