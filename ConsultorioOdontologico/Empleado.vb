@@ -1,7 +1,7 @@
 ﻿Public Class frm_registrar_empleado
 
     'En la siguiente linea se asigna automaticamente la cadena de conexion segun en que compu este (ayudandose con una clase)
-    Dim cadena_conexion As String = (New Cadena_Conexion)._cadena_conexion
+    Dim cadena_conexion As String = (New Atributos_Compartidos)._cadena_conexion
 
     Enum tipo_grabacion
         insertar
@@ -791,11 +791,9 @@
     End Sub
 
     Private Sub frm_registrar_empleado_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If MessageBox.Show("          ¿Esta seguro que desea salir?", "Importante", MessageBoxButtons.OKCancel) = Windows.Forms.DialogResult.OK Then
-            e.Cancel = False
-        Else
-            e.Cancel = True
-        End If
+        'La siguiente linea usa el metodo "confirmar_salida" de la clase "Atributos_Compartidos" para
+        'ver si el usuario cancelo el cerrado del formulario. (Le manda el evento de cerrado "e" al metodo)
+        e.Cancel = (New Atributos_Compartidos).confirmar_salida(e)
     End Sub
 
     Private Sub grid_empleados_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grid_empleados.CellClick
