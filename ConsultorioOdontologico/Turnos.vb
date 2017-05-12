@@ -1,6 +1,7 @@
 ﻿Public Class frm_turnos
 
-    Dim cadena_conexion As String = "" 'Se asigna dinamicamente en Load dependiendo en que maquina este
+    'La siguiente linea asigna dinamicamente en Load dependiendo en que maquina este (ayudandose con una clase)
+    Dim cadena_conexion As String = (New Cadena_Conexion)._cadena_conexion
 
     Private Sub frm_turnos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 

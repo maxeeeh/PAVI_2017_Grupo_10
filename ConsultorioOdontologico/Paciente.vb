@@ -1,7 +1,7 @@
 ﻿Public Class frm_registrar_paciente
 
-
-    Dim cadena_conexion As String = "" 'Se asigna dinamicamente en Load dependiendo en que maquina este
+    'La siguiente linea asigna dinamicamente en Load dependiendo en que maquina este (ayudandose con una clase)
+    Dim cadena_conexion As String = (New Cadena_Conexion)._cadena_conexion
 
     Enum tipo_grabacion
         insertar
@@ -23,15 +23,6 @@
     Dim accion As tipo_grabacion = tipo_grabacion.insertar
 
     Private Sub frm_registrar_paciente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
-        'Asigna la cadena de conexion segun la compu actual (por el tema de Git y eso)
-        Select Case Environment.UserName
-            Case "Luciano" 'Lucho
-                cadena_conexion = "Provider=SQLNCLI11;Data Source=LAPATOP\LUCIANOSQL;User ID=Luciano;Initial Catalog=ConsultorioOdontologicoBD;Password=Luciano"
-            Case "NOTEBOOK" 'maxeeeh
-                cadena_conexion = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
-        End Select
 
 
         cargar_grilla()
