@@ -11,6 +11,7 @@
     'Para saber si existe en la BD'
     Enum respuesta_validacion
         _existe
+        _existe_deshabilitado 'Puede ser el caso que ya existe este empleado pero esta deshabilitado
         _no_existe
     End Enum
 
@@ -257,7 +258,7 @@
 
     Private Function validar_empleados(ByVal cuil) As respuesta_validacion
         Dim sql As String = ""
-        sql &= "SELECT cuil "
+        sql &= "SELECT habilitado "
         sql &= " FROM Empleado"
         sql &= " WHERE cuil  = '" & cuil & "'"
 
@@ -268,29 +269,47 @@
         If tabla.Rows.Count = 0 Then
             Return respuesta_validacion._no_existe
         Else
-            Return respuesta_validacion._existe
+            If tabla(0)(0) = True Then
+                Return respuesta_validacion._existe
+            Else
+                Return respuesta_validacion._existe_deshabilitado
+            End If
         End If
+
     End Function
 
 
     Private Sub cmd_registrar_Click(sender As Object, e As EventArgs) Handles cmd_registrar.Click
         If validar_datos() = respuesta_validacion_error._ok Then
             If Me.accion = tipo_grabacion.insertar Then
-                If validar_empleados(Me.txt_cuil.Text) = respuesta_validacion._no_existe Then
-                    insertar()
-                    limpiar_campos()
-                    MessageBox.Show("Se ha registrado el empleado correctamente")
-                Else
-                    MessageBox.Show("Se ha detectado un empleado con el mismo numero de cuil", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End If
+                Select Case validar_empleados(Me.txt_cuil.Text)
+                    Case respuesta_validacion._no_existe
+                        insertar()
+                        limpiar_campos()
+                        Me.cargar_grilla()
+                        MessageBox.Show("Se ha registrado el empleado correctamente")
+                    Case respuesta_validacion._existe_deshabilitado
+                        Dim res As Integer = MessageBox.Show("Se ha detectado un empleado con el mismo numero de CUIL existente " & vbCrLf & "                                                 en la base de datos." & vbCrLf _
+                                                             & "                                      ¿Desea habilitarlo nuevamente?", _
+                                                             "Confirmacion", MessageBoxButtons.OKCancel)
+                        If res = DialogResult.OK Then
+                            habilitar_empleado()
+                            limpiar_campos()
+                            Me.cargar_grilla()
+                            MessageBox.Show("   Se ha habilitado el empleado nuevamente")
+                        End If
+                    Case respuesta_validacion._existe
+                        MessageBox.Show("Se ha detectado un empleado con el mismo numero de CUIL", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Select
             Else
                 If validar_datos() = respuesta_validacion_error._ok Then
                     If validar_empleados(txt_cuil.Text) = respuesta_validacion._existe Then
                         modificar()
-                        MessageBox.Show("Se ha modificado el empleado correctamente")
                         habilitar_controles()
                         limpiar_campos()
                         accion = tipo_grabacion.insertar
+                        Me.cargar_grilla()
+                        MessageBox.Show("Se ha modificado el empleado correctamente")
                     Else
                         MessageBox.Show("Se ha detectado que el empleado no existe en la base de datos. Compruebe que haya escrito correctamente el CUIL del empleado", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
@@ -299,9 +318,6 @@
                 End If
 
             End If
-            Me.cargar_grilla()
-            'Else
-            'MessageBox.Show("Complete los campos con la informacion correcta", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 
@@ -328,20 +344,6 @@
     End Sub
 
     Private Sub limpiar_campos()
-        'For Each obj As Windows.Forms.Control In Me.Controls
-        '    If TypeOf obj Is TextBox Then
-        '        obj.Text = ""
-        '    End If
-
-        '    If TypeOf obj Is MaskedTextBox Then
-        '        obj.Text = ""
-        '    End If
-
-        '    If TypeOf obj Is ComboBox Then
-        '        Dim local As ComboBox = obj
-        '        local.SelectedIndex = -1
-        '    End If
-        'Next
 
         For Each obj As Windows.Forms.Control In Me.grp_datos_personales.Controls
             If obj.GetType().Name = "TextBox" Then
@@ -503,6 +505,57 @@
         insertar_modificar_eliminar(txt_delete)
     End Sub
 
+    Private Sub habilitar_empleado()
+        Dim txt_update As String = ""
+
+        txt_update &= "UPDATE Empleado "
+        txt_update &= "SET nombre = '" & txt_nom.Text & "'"
+        txt_update &= " ,apellido = '" & txt_ape.Text & "'"
+
+        If txt_telefono.Text = "" Then
+            txt_update &= ",telefono = ''"
+        Else
+            txt_update &= ",telefono = '" & Me.txt_telefono.Text & "'"
+        End If
+
+        If txt_celular.Text = "" Then
+            txt_update &= ",celular = ''"
+        Else
+            txt_update &= ",celular = '" & Me.txt_celular.Text & "'"
+        End If
+
+        'txt_update &= " ,telefono = '" & txt_telefono.Text & "'"
+        'txt_update &= " ,celular = '" & txt_celular.Text & "'"
+
+
+        txt_update &= " ,id_localidad = " & cmb_loc.SelectedIndex + 1
+        txt_update &= " ,calle = '" & txt_calle.Text & "'"
+        txt_update &= " ,nro_calle = " & txt_nro_calle.Text
+
+        If txt_piso.Text = "" Then
+            txt_update &= ",piso = 0"
+        Else
+            txt_update &= ",piso = " & Me.txt_piso.Text
+        End If
+
+        If txt_depto.Text = "" Then
+            txt_update &= ",departamento = ''"
+        Else
+            txt_update &= ",departamento = '" & Me.txt_depto.Text & "'"
+        End If
+
+        'txt_update &= " ,piso = " & txt_piso.Text
+        'txt_update &= " ,departamento = '" & txt_depto.Text & "'"
+
+
+        txt_update &= " ,hora_ingreso = '" & txt_hora_ingreso.Text & "'"
+        txt_update &= " ,hora_egreso = '" & txt_hora_egreso.Text & "'"
+        txt_update &= " ,habilitado = 1"
+        txt_update &= " WHERE cuil = '" & txt_cuil.Text & "'"
+
+        insertar_modificar_eliminar(txt_update)
+    End Sub
+
     Private Sub modificar()
         Dim txt_update As String = ""
 
@@ -549,10 +602,6 @@
         txt_update &= " ,hora_ingreso = '" & txt_hora_ingreso.Text & "'"
         txt_update &= " ,hora_egreso = '" & txt_hora_egreso.Text & "'"
         txt_update &= " WHERE cuil = '" & txt_cuil.Text & "'"
-
-
-
-
 
         insertar_modificar_eliminar(txt_update)
     End Sub
@@ -741,8 +790,8 @@
         llenar_grilla(tabla)
     End Sub
 
-    Private Sub frm_registrar_tratamiento_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If MessageBox.Show("Esta seguro que desea salir", "Importante", MessageBoxButtons.OKCancel) = Windows.Forms.DialogResult.OK Then
+    Private Sub frm_registrar_empleado_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If MessageBox.Show("          ¿Esta seguro que desea salir?", "Importante", MessageBoxButtons.OKCancel) = Windows.Forms.DialogResult.OK Then
             e.Cancel = False
         Else
             e.Cancel = True
