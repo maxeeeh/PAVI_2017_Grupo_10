@@ -12,5 +12,7 @@
                 cadena_conexion = "Provider=SQLNCLI11;Data Source=BGH\MORILLASSQL;User ID=Morillas;Initial Catalog=ConsultorioOdontologicoBD;password=Morillas"
         End Select
 
+
+
     End Sub
 End Class
