@@ -27,6 +27,7 @@
 
 
         cargar_grilla()
+        'clase_auxiliar.cargar_combobox(cmb_loc, una_pk, un_descriptor, nombre_tabla)
         clase_auxiliar.cargar_combobox(cmb_loc, clase_auxiliar.leo_tabla("Localidad"))
         clase_auxiliar.cargar_combobox(cmb_tipo_doc, clase_auxiliar.leo_tabla("TipoDocumento"))
 
@@ -64,6 +65,7 @@
     Private Function leo_tabla(ByVal nombre_tabla As String) As DataTable
         Return ejecuto_sql("SELECT * FROM " & nombre_tabla)
     End Function
+
 
     Private Function ejecuto_sql(ByVal sql As String) As DataTable
         Dim conexion As New Data.OleDb.OleDbConnection
