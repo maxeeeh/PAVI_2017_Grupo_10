@@ -1,7 +1,8 @@
 ﻿Public Class frm_registrar_paciente
 
     'En la siguiente linea se asigna automaticamente la cadena de conexion segun en que compu este (ayudandose con una clase)
-    Dim cadena_conexion As String = (New Atributos_Compartidos)._cadena_conexion
+    Dim clase_auxiliar As New Atributos_Compartidos
+    Dim cadena_conexion As String = clase_auxiliar._cadena_conexion
 
     Enum tipo_grabacion
         insertar
@@ -26,14 +27,8 @@
 
 
         cargar_grilla()
-        cargar_combo(cmb_loc _
-                     , leo_tabla("Localidad") _
-                     , "id_localidad" _
-                     , "descripcion")
-        cargar_combo(cmb_tipo_doc _
-                     , leo_tabla("TipoDocumento") _
-                     , "id_tipo_documento" _
-                     , "descripcion")
+        clase_auxiliar.cargar_combobox(cmb_loc, clase_auxiliar.leo_tabla("Localidad"))
+        clase_auxiliar.cargar_combobox(cmb_tipo_doc, clase_auxiliar.leo_tabla("TipoDocumento"))
 
     End Sub
 
@@ -85,21 +80,9 @@
         Return tabla
     End Function
 
-    Private Sub cargar_combo(ByRef combo As ComboBox _
-                             , ByVal tabla As DataTable _
-                             , ByVal pk As String _
-                             , ByVal descriptor As String)
-
-        'Origen de los datos'
-        combo.DataSource = tabla
-        combo.DisplayMember = descriptor
-        combo.ValueMember = pk
-    End Sub
-
     Private Sub cmd_nuevo_Click(sender As Object, e As EventArgs) Handles cmd_nuevo.Click
         habilitar_controles()
-        limpiar_campos()
-
+        clase_auxiliar.blanquear_campos(Me)
 
         Me.accion = tipo_grabacion.insertar
 
@@ -267,7 +250,7 @@
                         modificar()
                         MessageBox.Show("Se ha modificado el paciente correctamente")
                         habilitar_controles()
-                        limpiar_campos()
+                        clase_auxiliar.blanquear_campos(Me)
                         accion = tipo_grabacion.insertar
                     Else
                         MessageBox.Show("Se ha detectado que el paciente no existe en la base de datos. Compruebe que a ingresado correctamente el tipo y numero de documento", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -300,39 +283,6 @@
         cmb_loc.Enabled = True
         cmd_registrar.Enabled = True
         cmb_tipo_doc.Enabled = True
-    End Sub
-
-    Private Sub limpiar_campos()
-        For Each obj As Windows.Forms.Control In grp_datos_personales.Controls
-            If obj.GetType().Name = "TextBox" Then
-                obj.Text = ""
-            End If
-
-            If obj.GetType().Name = "MaskedTextBox" Then
-                obj.Text = ""
-            End If
-
-            If obj.GetType().Name = "RadioButton" Then
-                Dim local As RadioButton = obj
-                local.Checked = False
-            End If
-
-            If obj.GetType().Name = "ComboBox" Then
-                Dim local As ComboBox = obj
-                local.SelectedIndex = -1
-            End If
-        Next
-
-        For Each obj As Windows.Forms.Control In grp_domicilio.Controls
-            If obj.GetType().Name = "TextBox" Then
-                obj.Text = ""
-            End If
-
-            If obj.GetType().Name = "ComboBox" Then
-                Dim local As ComboBox = obj
-                local.SelectedIndex = -1
-            End If
-        Next
     End Sub
 
     Private Sub cmd_eliminar_por_doc_Click(sender As Object, e As EventArgs) Handles cmd_eliminar_por_doc.Click
@@ -649,19 +599,22 @@
     Private Sub actualizar_mascara_nro_doc()
 
         'Dim id_tipo_doc As String = cmb_tipo_doc.SelectedValue
-
-        Select Case cmb_tipo_doc.SelectedValue.ToString
-            Case "1" 'DNI
-                txt_nro_doc.Mask = "00-000-000"
-            Case "2" 'Cedula
-                txt_nro_doc.Mask = "A-00-000-000"
-            Case "3" 'LE
-                txt_nro_doc.Mask = "A-00-000-000"
-            Case "4" 'LC
-                txt_nro_doc.Mask = "A-00-000-000"
-            Case "5" 'Pasaporte
-                txt_nro_doc.Mask = "AAA-000-000"
-        End Select
+        Try
+            Select Case cmb_tipo_doc.SelectedValue.ToString
+                Case "1" 'DNI
+                    txt_nro_doc.Mask = "00-000-000"
+                Case "2" 'Cedula
+                    txt_nro_doc.Mask = "A-00-000-000"
+                Case "3" 'LE
+                    txt_nro_doc.Mask = "A-00-000-000"
+                Case "4" 'LC
+                    txt_nro_doc.Mask = "A-00-000-000"
+                Case "5" 'Pasaporte
+                    txt_nro_doc.Mask = "AAA-000-000"
+            End Select
+        Catch
+            cmb_tipo_doc.SelectedValue = 1
+        End Try
 
     End Sub
 

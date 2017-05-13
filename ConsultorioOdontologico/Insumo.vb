@@ -1,7 +1,8 @@
 ﻿Public Class frm_registrar_insumo
 
     'En la siguiente linea se asigna automaticamente la cadena de conexion segun en que compu este (ayudandose con una clase)
-    Dim cadena_conexion As String = (New Atributos_Compartidos)._cadena_conexion
+    Dim clase_auxiliar As New Atributos_Compartidos
+    Dim cadena_conexion As String = clase_auxiliar._cadena_conexion
 
     'Para saber si existe en la BD'
     Enum respuesta_validacion
