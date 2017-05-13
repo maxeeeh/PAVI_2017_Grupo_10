@@ -1,7 +1,8 @@
 ﻿Public Class frm_registrar_empleado
 
     'En la siguiente linea se asigna automaticamente la cadena de conexion segun en que compu este (ayudandose con una clase)
-    Dim cadena_conexion As String = (New Atributos_Compartidos)._cadena_conexion
+    Dim clase_auxiliar As New Atributos_Compartidos
+    Dim cadena_conexion As String = clase_auxiliar._cadena_conexion
 
     Enum tipo_grabacion
         insertar
@@ -26,21 +27,9 @@
     Private Sub frm_registrar_empleado_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         cargar_grilla()
-        cargar_combo(cmb_loc _
-                     , leo_tabla("Localidad") _
-                     , "id_localidad" _
-                     , "descripcion")
-        cargar_combo(cmb_cargo _
-                     , leo_tabla("Cargo") _
-                     , "id_cargo" _
-                     , "descripcion")
-
-        Dim tabla As New Data.DataTable
-        tabla = leo_tabla("Cargo")
-        cargar_combo(cmb_filtro_cargo _
-                     , tabla _
-                     , "id_cargo" _
-                     , "descripcion")
+        clase_auxiliar.cargar_combobox(cmb_loc, clase_auxiliar.leo_tabla("Localidad"))
+        clase_auxiliar.cargar_combobox(cmb_cargo, clase_auxiliar.leo_tabla("Cargo"))
+        clase_auxiliar.cargar_combobox(cmb_filtro_cargo, clase_auxiliar.leo_tabla("Cargo"))
 
     End Sub
 
@@ -96,20 +85,9 @@
         Return tabla
     End Function
 
-    Private Sub cargar_combo(ByRef combo As ComboBox _
-                             , ByVal tabla As DataTable _
-                             , ByVal pk As String _
-                             , ByVal descriptor As String)
-
-        'Origen de los datos'
-        combo.DataSource = tabla
-        combo.DisplayMember = descriptor
-        combo.ValueMember = pk
-    End Sub
-
     Private Sub cmd_nuevo_Click(sender As Object, e As EventArgs) Handles cmd_nuevo.Click
         habilitar_controles()
-        limpiar_campos()
+        clase_auxiliar.blanquear_campos(Me)
 
 
         Me.accion = tipo_grabacion.insertar
@@ -285,7 +263,7 @@
                 Select Case validar_empleados(Me.txt_cuil.Text)
                     Case respuesta_validacion._no_existe
                         insertar()
-                        limpiar_campos()
+                        clase_auxiliar.blanquear_campos(Me)
                         Me.cargar_grilla()
                         MessageBox.Show("Se ha registrado el empleado correctamente")
                     Case respuesta_validacion._existe_deshabilitado
@@ -294,7 +272,7 @@
                                                              "Confirmacion", MessageBoxButtons.OKCancel)
                         If res = DialogResult.OK Then
                             habilitar_empleado()
-                            limpiar_campos()
+                            clase_auxiliar.blanquear_campos(Me)
                             Me.cargar_grilla()
                             MessageBox.Show("   Se ha habilitado el empleado nuevamente")
                         End If
@@ -306,7 +284,7 @@
                     If validar_empleados(txt_cuil.Text) = respuesta_validacion._existe Then
                         modificar()
                         habilitar_controles()
-                        limpiar_campos()
+                        clase_auxiliar.blanquear_campos(Me)
                         accion = tipo_grabacion.insertar
                         Me.cargar_grilla()
                         MessageBox.Show("Se ha modificado el empleado correctamente")
@@ -341,41 +319,6 @@
         txt_hora_egreso.Enabled = True
         cmd_registrar.Enabled = True
         'cmd_registrar.Text = "Registrar"
-    End Sub
-
-    Private Sub limpiar_campos()
-
-        For Each obj As Windows.Forms.Control In Me.grp_datos_personales.Controls
-            If obj.GetType().Name = "TextBox" Then
-                obj.Text = ""
-            End If
-
-            If obj.GetType().Name = "MaskedTextBox" Then
-                obj.Text = ""
-            End If
-        Next
-
-        For Each obj As Windows.Forms.Control In Me.grp_domicilio.Controls
-            If obj.GetType().Name = "TextBox" Then
-                obj.Text = ""
-            End If
-
-            If obj.GetType().Name = "ComboBox" Then
-                Dim local As ComboBox = obj
-                local.SelectedIndex = -1
-            End If
-        Next
-
-        For Each obj As Windows.Forms.Control In Me.grp_datos_laborales.Controls
-            If obj.GetType().Name = "MaskedTextBox" Then
-                obj.Text = ""
-            End If
-
-            If obj.GetType().Name = "ComboBox" Then
-                Dim local As ComboBox = obj
-                local.SelectedIndex = -1
-            End If
-        Next
     End Sub
 
     Private Sub cmd_eliminar_por_cuil_Click(sender As Object, e As EventArgs) Handles cmd_eliminar_por_cuil.Click
