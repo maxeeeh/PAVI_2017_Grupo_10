@@ -599,21 +599,22 @@
     Private Sub actualizar_mascara_nro_doc()
 
         'Dim id_tipo_doc As String = cmb_tipo_doc.SelectedValue
-
-        Select Case cmb_tipo_doc.SelectedValue.ToString
-            Case "-1"
-                txt_nro_doc.Mask = ""
-            Case "1" 'DNI
-                txt_nro_doc.Mask = "00-000-000"
-            Case "2" 'Cedula
-                txt_nro_doc.Mask = "A-00-000-000"
-            Case "3" 'LE
-                txt_nro_doc.Mask = "A-00-000-000"
-            Case "4" 'LC
-                txt_nro_doc.Mask = "A-00-000-000"
-            Case "5" 'Pasaporte
-                txt_nro_doc.Mask = "AAA-000-000"
-        End Select
+        Try
+            Select Case cmb_tipo_doc.SelectedValue.ToString
+                Case "1" 'DNI
+                    txt_nro_doc.Mask = "00-000-000"
+                Case "2" 'Cedula
+                    txt_nro_doc.Mask = "A-00-000-000"
+                Case "3" 'LE
+                    txt_nro_doc.Mask = "A-00-000-000"
+                Case "4" 'LC
+                    txt_nro_doc.Mask = "A-00-000-000"
+                Case "5" 'Pasaporte
+                    txt_nro_doc.Mask = "AAA-000-000"
+            End Select
+        Catch
+            cmb_tipo_doc.SelectedValue = 1
+        End Try
 
     End Sub
 
