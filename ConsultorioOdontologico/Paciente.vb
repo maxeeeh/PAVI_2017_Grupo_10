@@ -13,6 +13,7 @@
     Enum respuesta_validacion
         _existe
         _no_existe
+        _existe_deshabilitado
     End Enum
 
     'Para saber si hay algun campo con informacion erronea'
@@ -221,7 +222,7 @@
                                        ByVal nro_documento As String _
                                        ) As respuesta_validacion
         Dim sql As String = ""
-        sql &= "SELECT id_tipo_documento, nro_documento"
+        sql &= "SELECT habilitado"
         sql &= " FROM Paciente"
         sql &= " WHERE id_tipo_documento = " & id_tipo_documento
         sql &= " AND nro_documento = '" & nro_documento & "'"
@@ -233,36 +234,52 @@
         If tabla.Rows.Count = 0 Then
             Return respuesta_validacion._no_existe
         Else
-            Return respuesta_validacion._existe
+            If tabla(0)(0) = True Then
+                Return respuesta_validacion._existe
+            Else
+                Return respuesta_validacion._existe_deshabilitado
+            End If
         End If
     End Function
 
     Private Sub cmd_registrar_Click(sender As Object, e As EventArgs) Handles cmd_registrar.Click
         If validar_datos() = respuesta_validacion_error._ok Then
             If Me.accion = tipo_grabacion.insertar Then
-                If validar_pacientes(Me.cmb_tipo_doc.SelectedValue, Me.txt_nro_doc.Text) = respuesta_validacion._no_existe Then
-                    insertar()
-                    MessageBox.Show("Se ha registrado el paciente correctamente")
-                Else
-                    MessageBox.Show("Se ha detectado un paciente con el mismo tipo y numero de documento", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End If
+                Select Case validar_pacientes(Me.cmb_tipo_doc.SelectedValue, Me.txt_nro_doc.Text)
+                    Case respuesta_validacion._no_existe
+                        insertar()
+                        clase_auxiliar.blanquear_campos(Me)
+                        Me.cargar_grilla()
+                        MessageBox.Show("Se ha registrado el paciente correctamente")
+                    Case respuesta_validacion._existe_deshabilitado
+                        Dim res As Integer = MessageBox.Show("Se ha detectado un paciente con el mismo numero y tipo de documento deshabilitado " & vbCrLf & "                                                 en la base de datos." & vbCrLf _
+                                                             & "                                      ¿Desea habilitarlo nuevamente?", _
+                                                             "Confirmacion", MessageBoxButtons.OKCancel)
+                        If res = DialogResult.OK Then
+                            modificar(True)
+                            clase_auxiliar.blanquear_campos(Me)
+                            Me.cargar_grilla()
+                            MessageBox.Show("   Se ha habilitado el paciente nuevamente")
+                        End If
+                    Case respuesta_validacion._existe
+                        MessageBox.Show("Se ha detectado un paciente con el mismo tipo y numero de documento", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Select
             Else
                 If validar_datos() = respuesta_validacion_error._ok Then
                     If validar_pacientes(Me.cmb_tipo_doc.SelectedValue, Me.txt_nro_doc.Text) = respuesta_validacion._existe Then
-                        modificar()
+                        modificar(False)
                         MessageBox.Show("Se ha modificado el paciente correctamente")
                         habilitar_controles()
                         clase_auxiliar.blanquear_campos(Me)
                         accion = tipo_grabacion.insertar
+                        Me.cargar_grilla()
                     Else
                         MessageBox.Show("Se ha detectado que el paciente no existe en la base de datos. Compruebe que a ingresado correctamente el tipo y numero de documento", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 Else
                     MessageBox.Show("Complete los campos con la informacion correcta", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
-
             End If
-            Me.cargar_grilla()
         End If
     End Sub
 
@@ -387,7 +404,7 @@
         insertar_modificar_eliminar(txt_delete)
     End Sub
 
-    Private Sub modificar()
+    Private Sub modificar(ByVal habilitar As Boolean)
         Dim txt_update As String = ""
 
         txt_update &= "UPDATE Paciente "
@@ -425,6 +442,10 @@
             txt_update &= ",departamento = ''"
         Else
             txt_update &= ",departamento = '" & Me.txt_depto.Text & "'"
+        End If
+
+        If habilitar Then
+            txt_update &= ",habilitado = 1"
         End If
 
 
@@ -601,22 +622,25 @@
     Private Sub actualizar_mascara_nro_doc()
 
         'Dim id_tipo_doc As String = cmb_tipo_doc.SelectedValue
-        Try
-            Select Case cmb_tipo_doc.SelectedValue.ToString
-                Case "1" 'DNI
-                    txt_nro_doc.Mask = "00-000-000"
-                Case "2" 'Cedula
-                    txt_nro_doc.Mask = "A-00-000-000"
-                Case "3" 'LE
-                    txt_nro_doc.Mask = "A-00-000-000"
-                Case "4" 'LC
-                    txt_nro_doc.Mask = "A-00-000-000"
-                Case "5" 'Pasaporte
-                    txt_nro_doc.Mask = "AAA-000-000"
-            End Select
-        Catch
-            cmb_tipo_doc.SelectedValue = 1
-        End Try
+        'Try
+        Select Case cmb_tipo_doc.SelectedIndex + 1.ToString
+            Case "1" 'DNI
+                txt_nro_doc.Mask = "00-000-000"
+            Case "2" 'Cedula
+                txt_nro_doc.Mask = "A-00-000-000"
+            Case "3" 'LE
+                txt_nro_doc.Mask = "A-00-000-000"
+            Case "4" 'LC
+                txt_nro_doc.Mask = "A-00-000-000"
+            Case "5" 'Pasaporte
+                txt_nro_doc.Mask = "AAA-000-000"
+                'Este seria el caso default. Ver si es lo mas correcto esa mascara
+            Case Else
+                txt_nro_doc.Mask = ""
+        End Select
+        'Catch
+        '    cmb_tipo_doc.SelectedValue = 1
+        'End Try
 
     End Sub
 

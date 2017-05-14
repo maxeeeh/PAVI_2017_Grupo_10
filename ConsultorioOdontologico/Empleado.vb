@@ -267,11 +267,11 @@
                         Me.cargar_grilla()
                         MessageBox.Show("Se ha registrado el empleado correctamente")
                     Case respuesta_validacion._existe_deshabilitado
-                        Dim res As Integer = MessageBox.Show("Se ha detectado un empleado con el mismo numero de CUIL existente " & vbCrLf & "                                                 en la base de datos." & vbCrLf _
+                        Dim res As Integer = MessageBox.Show("Se ha detectado un empleado con el mismo numero de CUIL deshabilitado " & vbCrLf & "                                                 en la base de datos." & vbCrLf _
                                                              & "                                      ¿Desea habilitarlo nuevamente?", _
                                                              "Confirmacion", MessageBoxButtons.OKCancel)
                         If res = DialogResult.OK Then
-                            habilitar_empleado()
+                            modificar(True)
                             clase_auxiliar.blanquear_campos(Me)
                             Me.cargar_grilla()
                             MessageBox.Show("   Se ha habilitado el empleado nuevamente")
@@ -282,7 +282,7 @@
             Else
                 If validar_datos() = respuesta_validacion_error._ok Then
                     If validar_empleados(txt_cuil.Text) = respuesta_validacion._existe Then
-                        modificar()
+                        modificar(False)
                         habilitar_controles()
                         clase_auxiliar.blanquear_campos(Me)
                         accion = tipo_grabacion.insertar
@@ -448,11 +448,62 @@
         insertar_modificar_eliminar(txt_delete)
     End Sub
 
-    Private Sub habilitar_empleado()
+    'Private Sub habilitar_empleado()
+    '    Dim txt_update As String = ""
+
+    '    txt_update &= "UPDATE Empleado "
+    '    txt_update &= "SET nombre = '" & txt_nom.Text & "'"
+    '    txt_update &= " ,apellido = '" & txt_ape.Text & "'"
+
+    '    If txt_telefono.Text = "" Then
+    '        txt_update &= ",telefono = ''"
+    '    Else
+    '        txt_update &= ",telefono = '" & Me.txt_telefono.Text & "'"
+    '    End If
+
+    '    If txt_celular.Text = "" Then
+    '        txt_update &= ",celular = ''"
+    '    Else
+    '        txt_update &= ",celular = '" & Me.txt_celular.Text & "'"
+    '    End If
+
+    '    'txt_update &= " ,telefono = '" & txt_telefono.Text & "'"
+    '    'txt_update &= " ,celular = '" & txt_celular.Text & "'"
+
+
+    '    txt_update &= " ,id_localidad = " & cmb_loc.SelectedIndex + 1
+    '    txt_update &= " ,calle = '" & txt_calle.Text & "'"
+    '    txt_update &= " ,nro_calle = " & txt_nro_calle.Text
+
+    '    If txt_piso.Text = "" Then
+    '        txt_update &= ",piso = 0"
+    '    Else
+    '        txt_update &= ",piso = " & Me.txt_piso.Text
+    '    End If
+
+    '    If txt_depto.Text = "" Then
+    '        txt_update &= ",departamento = ''"
+    '    Else
+    '        txt_update &= ",departamento = '" & Me.txt_depto.Text & "'"
+    '    End If
+
+    '    'txt_update &= " ,piso = " & txt_piso.Text
+    '    'txt_update &= " ,departamento = '" & txt_depto.Text & "'"
+
+
+    '    txt_update &= " ,hora_ingreso = '" & txt_hora_ingreso.Text & "'"
+    '    txt_update &= " ,hora_egreso = '" & txt_hora_egreso.Text & "'"
+    '    txt_update &= " ,habilitado = 1"
+    '    txt_update &= " WHERE cuil = '" & txt_cuil.Text & "'"
+
+    '    insertar_modificar_eliminar(txt_update)
+    'End Sub
+
+    Private Sub modificar(ByVal habilitar As Boolean)
         Dim txt_update As String = ""
 
-        txt_update &= "UPDATE Empleado "
-        txt_update &= "SET nombre = '" & txt_nom.Text & "'"
+        txt_update &= "UPDATE Empleado"
+        txt_update &= " SET nombre = '" & txt_nom.Text & "'"
         txt_update &= " ,apellido = '" & txt_ape.Text & "'"
 
         If txt_telefono.Text = "" Then
@@ -493,58 +544,11 @@
 
         txt_update &= " ,hora_ingreso = '" & txt_hora_ingreso.Text & "'"
         txt_update &= " ,hora_egreso = '" & txt_hora_egreso.Text & "'"
-        txt_update &= " ,habilitado = 1"
+        If (habilitar) Then
+            txt_update &= " ,habilitado = 1"
+        End If
         txt_update &= " WHERE cuil = '" & txt_cuil.Text & "'"
 
-        insertar_modificar_eliminar(txt_update)
-    End Sub
-
-    Private Sub modificar()
-        Dim txt_update As String = ""
-
-        txt_update &= "UPDATE Empleado "
-        txt_update &= "SET nombre = '" & txt_nom.Text & "'"
-        txt_update &= " ,apellido = '" & txt_ape.Text & "'"
-
-        If txt_telefono.Text = "" Then
-            txt_update &= ",telefono = ''"
-        Else
-            txt_update &= ",telefono = '" & Me.txt_telefono.Text & "'"
-        End If
-
-        If txt_celular.Text = "" Then
-            txt_update &= ",celular = ''"
-        Else
-            txt_update &= ",celular = '" & Me.txt_celular.Text & "'"
-        End If
-
-        'txt_update &= " ,telefono = '" & txt_telefono.Text & "'"
-        'txt_update &= " ,celular = '" & txt_celular.Text & "'"
-
-
-        txt_update &= " ,id_localidad = " & cmb_loc.SelectedIndex + 1
-        txt_update &= " ,calle = '" & txt_calle.Text & "'"
-        txt_update &= " ,nro_calle = " & txt_nro_calle.Text
-
-        If txt_piso.Text = "" Then
-            txt_update &= ",piso = 0"
-        Else
-            txt_update &= ",piso = " & Me.txt_piso.Text
-        End If
-
-        If txt_depto.Text = "" Then
-            txt_update &= ",departamento = ''"
-        Else
-            txt_update &= ",departamento = '" & Me.txt_depto.Text & "'"
-        End If
-
-        'txt_update &= " ,piso = " & txt_piso.Text
-        'txt_update &= " ,departamento = '" & txt_depto.Text & "'"
-
-
-        txt_update &= " ,hora_ingreso = '" & txt_hora_ingreso.Text & "'"
-        txt_update &= " ,hora_egreso = '" & txt_hora_egreso.Text & "'"
-        txt_update &= " WHERE cuil = '" & txt_cuil.Text & "'"
 
         insertar_modificar_eliminar(txt_update)
     End Sub
