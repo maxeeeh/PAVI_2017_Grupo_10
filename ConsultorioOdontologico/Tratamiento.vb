@@ -1,10 +1,10 @@
 ﻿Public Class frm_registrar_tratamiento
 
-    Dim flag As Boolean = False
-
     'En la siguiente linea se asigna automaticamente la cadena de conexion segun en que compu este (ayudandose con una clase)
     Dim clase_auxiliar As New Atributos_Compartidos
     Dim cadena_conexion As String = clase_auxiliar._cadena_conexion
+
+    Dim descripcion_a_modificar As String = ""
 
     Enum tipo_grabacion
         insertar
@@ -16,6 +16,7 @@
     Enum respuesta_validacion
         _existe
         _no_existe
+        _existe_deshabilitado
     End Enum
 
 
@@ -115,19 +116,30 @@
     'Se valida que no exista un tratamiento con la misma descripcion
     Private Function validar_tratamientos(ByVal desc As String) As respuesta_validacion
         Dim sql As String = ""
-        sql &= "SELECT id_tratamiento "
+        sql &= "SELECT descripcion, habilitado "
         sql &= " FROM Tratamiento"
-        sql &= " WHERE descripcion  = '" & desc & "'"
+        'sql &= " WHERE descripcion  = '" & desc & "'"
 
         Dim tabla As New DataTable
 
         tabla = Me.ejecuto_sql(sql)
 
-        If tabla.Rows.Count = 0 Then
-            Return respuesta_validacion._no_existe
-        Else
-            Return respuesta_validacion._existe
-        End If
+        For i As Integer = 0 To tabla.Rows.Count - 1
+            If String.Compare(normalizar_texto(Me.txt_descripcion.Text), normalizar_texto(tabla(i)(0))) = 0 Then
+                If tabla(i)(1) = True Then
+                    Return respuesta_validacion._existe
+                Else
+                    descripcion_a_modificar = tabla(i)(0)
+                    Return respuesta_validacion._existe_deshabilitado
+                End If
+            End If
+        Next
+        Return respuesta_validacion._no_existe
+        'If tabla.Rows.Count = 0 Then
+        '    Return respuesta_validacion._no_existe
+        'Else
+        '    Return respuesta_validacion._existe
+        'End If
     End Function
 
 
@@ -200,12 +212,19 @@
 
 
 
-    Private Sub modificar()
+    Private Sub modificar(ByVal habilitar As Boolean)
         Dim txt_update As String = ""
 
         txt_update &= "UPDATE Tratamiento "
         txt_update &= "SET costo= '" & Me.txt_costo.Text & "'"
-        txt_update &= " WHERE descripcion='" & Me.txt_descripcion.Text & "'"
+        If habilitar Then
+            txt_update &= ", descripcion = '" & Me.txt_descripcion.Text & "'"
+            txt_update &= ", habilitado = 1"
+            txt_update &= " WHERE descripcion='" & Me.descripcion_a_modificar & "'"
+        Else
+            txt_update &= " WHERE descripcion='" & Me.txt_descripcion.Text & "'"
+        End If
+
 
         insertar_modificar_eliminar(txt_update)
     End Sub
@@ -227,7 +246,7 @@
 
     Private Sub cmd_nuevo_Click(sender As Object, e As EventArgs) Handles cmd_nuevo.Click
         habilitar_controles()
-        limpiar_campos()
+        clase_auxiliar.blanquear_campos(Me)
         Me.accion = tipo_grabacion.insertar
         Me.txt_descripcion.Focus()
     End Sub
@@ -236,24 +255,43 @@
 
         If validar_datos() = respuesta_validacion_error._ok Then
             If Me.accion = tipo_grabacion.insertar Then
-                If validar_tratamientos(txt_descripcion.Text) = respuesta_validacion._no_existe Then
-                    insertar()
-                    MessageBox.Show("Se ha registrado el tratamiento correctamente")
-                    cargar_grilla()
-                    limpiar_campos()
-                Else
-                    MessageBox.Show("Se ha detectado un tratamiento con la misma descripcion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End If
+                Select Case validar_tratamientos(Me.txt_descripcion.Text)
+                    Case respuesta_validacion._no_existe
+                        insertar()
+                        clase_auxiliar.blanquear_campos(Me)
+                        Me.cargar_grilla()
+                        MessageBox.Show("Se ha registrado el tratamiento correctamente")
+                    Case respuesta_validacion._existe_deshabilitado
+                        Dim res As Integer = MessageBox.Show("Se ha detectado un tratamiento con la misma descipcion deshabilitado " & vbCrLf & "                                                 en la base de datos." & vbCrLf _
+                                                             & "                                      ¿Desea habilitarlo nuevamente?", _
+                                                             "Confirmacion", MessageBoxButtons.OKCancel)
+                        If res = DialogResult.OK Then
+                            modificar(True)
+                            clase_auxiliar.blanquear_campos(Me)
+                            Me.cargar_grilla()
+                            MessageBox.Show("   Se ha habilitado el tratamiento nuevamente")
+                        End If
+                    Case respuesta_validacion._existe
+                        MessageBox.Show("Se ha detectado un tratamiento con la misma descipcion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Select
+                'If validar_tratamientos(txt_descripcion.Text) = respuesta_validacion._no_existe Then
+                '    insertar()
+                '    MessageBox.Show("Se ha registrado el tratamiento correctamente")
+                '    cargar_grilla()
+                '    limpiar_campos()
+                'Else
+                '    MessageBox.Show("Se ha detectado un tratamiento con la misma descripcion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                'End If
+
             Else
                 If validar_datos() = respuesta_validacion_error._ok Then
-                    modificar()
+                    modificar(False)
+                    habilitar_controles()
+                    clase_auxiliar.blanquear_campos(Me)
+                    accion = tipo_grabacion.insertar
                     cargar_grilla()
                     MessageBox.Show("Se ha modificado el tratamiento correctamente")
-                    limpiar_campos()
-                    habilitar_controles()
-                    accion = tipo_grabacion.insertar
                 End If
-
             End If
         End If
 
@@ -292,19 +330,21 @@
 
     End Sub
 
-    Private Sub dgv_tratamientos_DoubleClick(sender As Object, e As EventArgs) Handles grid_tratamientos.DoubleClick
+    Private Sub llenar_form_click_en_grid()
         txt_descripcion.Text = Me.grid_tratamientos.CurrentRow.Cells(1).Value
         txt_costo.Text = Me.grid_tratamientos.CurrentRow.Cells(2).Value
-        txt_descripcion.Enabled = False
-        txt_costo.Enabled = True
-
-        cmd_eliminar.Enabled = True
-        cmd_nuevo.Enabled = True
-        cmd_registrar.Enabled = True
 
         accion = tipo_grabacion.modificar
+        habilitar_controles()
+        txt_descripcion.Enabled = False
+    End Sub
 
+    Private Sub grid_tratamientos_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles grid_tratamientos.RowHeaderMouseClick
+        llenar_form_click_en_grid()
+    End Sub
 
+    Private Sub dgv_tratamientos_CellClick(sender As Object, e As EventArgs) Handles grid_tratamientos.CellClick
+        llenar_form_click_en_grid()
     End Sub
 
     Private Sub llenar_grilla(ByVal tabla As DataTable)
@@ -345,8 +385,37 @@
     Private Sub frm_registrar_tratamiento_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         'La siguiente linea usa el metodo "confirmar_salida" de la clase "Atributos_Compartidos" para
         'ver si el usuario cancelo el cerrado del formulario. (Le manda el evento de cerrado "e" al metodo)
-        e.Cancel = (New Atributos_Compartidos).confirmar_salida(e)
+        e.Cancel = clase_auxiliar.confirmar_salida(e)
     End Sub
 
+
+    Private Function normalizar_texto(ByVal text As String) As String
+        Dim text_normalized As String = text.ToLower()
+
+        Dim vocalesSinAcento() As Char = "aeiou".ToCharArray()
+        Dim vocalesConAcento() As Char = "áéíóú".ToCharArray()
+
+        'For Each c As Char In text_normalized
+        '    Select Case c
+        '        Case "á"c
+        '            text_normalized = text_normalized.Replace(c, "a"c)
+        '        Case "é"c
+        '            text_normalized = text_normalized.Replace(c, "e"c)
+        '        Case "í"c
+        '            text_normalized = text_normalized.Replace(c, "i"c)
+        '        Case "ó"c
+        '            text_normalized = text_normalized.Replace(c, "o"c)
+        '        Case "ú"c
+        '            text_normalized = text_normalized.Replace(c, "u"c)
+        '    End Select
+        'Next
+
+        For index As Integer = 0 To vocalesSinAcento.GetUpperBound(0)
+            text_normalized = text_normalized.Replace(vocalesConAcento(index), vocalesSinAcento(index))
+        Next
+
+        Return text_normalized
+
+    End Function
 
 End Class

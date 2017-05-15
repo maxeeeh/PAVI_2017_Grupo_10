@@ -142,7 +142,8 @@
             Select Case validar_cargos(Me.txt_descripcion.Text)
                 Case respuesta_validacion._no_existe
                     insertar()
-                    clase_auxiliar.blanquear_campos(Me)
+                    Me.txt_descripcion.Text = ""
+                    'clase_auxiliar.blanquear_campos(Me)
                     Me.cargar_lista()
                     MessageBox.Show("Se ha registrado el cargo correctamente")
                 Case respuesta_validacion._existe_deshabilitado
@@ -151,7 +152,8 @@
                                                          "Confirmacion", MessageBoxButtons.OKCancel)
                     If res = DialogResult.OK Then
                         modificar()
-                        clase_auxiliar.blanquear_campos(Me)
+                        Me.txt_descripcion.Text = ""
+                        'clase_auxiliar.blanquear_campos(Me)
                         Me.cargar_lista()
                         MessageBox.Show("   Se ha habilitado el cargo nuevamente")
                     End If
@@ -214,13 +216,12 @@
     Private Sub frm_registrar_cargo_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         'La siguiente linea usa el metodo "confirmar_salida" de la clase "Atributos_Compartidos" para
         'ver si el usuario cancelo el cerrado del formulario. (Le manda el evento de cerrado "e" al metodo)
-        e.Cancel = (New Atributos_Compartidos).confirmar_salida(e)
+        e.Cancel = clase_auxiliar.confirmar_salida(e)
     End Sub
+
 
     Private Function normalizar_texto(ByVal text As String) As String
         Dim text_normalized As String = text.ToLower()
-        'Dim vocalesSinAcento As String = "aeiou"
-        'Dim vocalesConAcento As String = "áéíóú"
 
         Dim vocalesSinAcento() As Char = "aeiou".ToCharArray()
         Dim vocalesConAcento() As Char = "áéíóú".ToCharArray()

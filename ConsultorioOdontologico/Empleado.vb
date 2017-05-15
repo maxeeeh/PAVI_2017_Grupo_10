@@ -634,6 +634,10 @@
         llenar_form_click_en_grid()
     End Sub
 
+    Private Sub grid_empleados_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grid_empleados.CellClick
+        llenar_form_click_en_grid()
+    End Sub
+
     Private Sub txt_filtro_nombre_apellido_TextChanged(sender As Object, e As EventArgs) Handles txt_filtro_nombre_apellido.TextChanged
         Dim pattern As String = txt_filtro_nombre_apellido.Text
         Dim sql As String = ""
@@ -740,12 +744,7 @@
     Private Sub frm_registrar_empleado_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         'La siguiente linea usa el metodo "confirmar_salida" de la clase "Atributos_Compartidos" para
         'ver si el usuario cancelo el cerrado del formulario. (Le manda el evento de cerrado "e" al metodo)
-        e.Cancel = (New Atributos_Compartidos).confirmar_salida(e)
+        e.Cancel = clase_auxiliar.confirmar_salida(e)
     End Sub
-
-    Private Sub grid_empleados_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grid_empleados.CellClick
-        llenar_form_click_en_grid()
-    End Sub
-
 
 End Class
