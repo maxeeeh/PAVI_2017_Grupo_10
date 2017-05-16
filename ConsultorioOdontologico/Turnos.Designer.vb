@@ -35,13 +35,14 @@ Partial Class frm_turnos
         Me.hora_hasta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.empleado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.paciente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.observaciones = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.grid_turnos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'grid_turnos
         '
         Me.grid_turnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grid_turnos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.fecha_turno, Me.hora_desde, Me.hora_hasta, Me.empleado, Me.paciente})
+        Me.grid_turnos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.fecha_turno, Me.hora_desde, Me.hora_hasta, Me.empleado, Me.paciente, Me.observaciones})
         Me.grid_turnos.Location = New System.Drawing.Point(12, 194)
         Me.grid_turnos.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.grid_turnos.Name = "grid_turnos"
@@ -126,6 +127,12 @@ Partial Class frm_turnos
         Me.paciente.Name = "paciente"
         Me.paciente.Width = 150
         '
+        'observaciones
+        '
+        Me.observaciones.HeaderText = "Observaciones"
+        Me.observaciones.Name = "observaciones"
+        Me.observaciones.Width = 200
+        '
         'frm_turnos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -155,4 +162,5 @@ Partial Class frm_turnos
     Friend WithEvents hora_hasta As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents empleado As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents paciente As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents observaciones As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

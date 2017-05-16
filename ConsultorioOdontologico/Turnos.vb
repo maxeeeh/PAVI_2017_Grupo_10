@@ -41,6 +41,7 @@
             sql &= "          , T.hora_hasta"
             sql &= "          , E.apellido + ', ' + E.nombre As emp"
             sql &= "          , P.apellido + ', ' + P.nombre As pac"
+            sql &= "          , T.observaciones"
             sql &= " FROM     Turno T JOIN Paciente P ON P.id_paciente = T.id_paciente" 'FROM Paciente JOIN Turno JOIN Empleado
             sql &= "                  JOIN Empleado E ON E.id_empleado = T.id_empleado"
             sql &= " WHERE P.habilitado = 1 AND E.habilitado = 1" ' AND T.fecha > [fechaActual] AND T.hora_desde >= [horaActual]  <--VER COMO HACER ESTO
@@ -75,6 +76,7 @@
             grid_turnos.Rows(c).Cells(2).Value = Convert.ToDateTime(tabla.Rows(c)("hora_hasta")).ToString("hh:mm")
             grid_turnos.Rows(c).Cells(3).Value = tabla.Rows(c)("emp")
             grid_turnos.Rows(c).Cells(4).Value = tabla.Rows(c)("pac")
+            grid_turnos.Rows(c).Cells(5).Value = tabla.Rows(c)("observaciones")
 
         Next
     End Sub
