@@ -69,10 +69,10 @@
         Me.grid_turnos.Rows.Clear()
 
         For c = 0 To tabla.Rows.Count - 1
-            grid_turnos.Rows.Add()
-            grid_turnos.Rows(c).Cells(0).Value = tabla.Rows(c)("fecha")
-            grid_turnos.Rows(c).Cells(1).Value = tabla.Rows(c)("hora_desde")
-            grid_turnos.Rows(c).Cells(2).Value = tabla.Rows(c)("hora_hasta")
+            grid_turnos.Rows.Add()              'convierte el valor de la tabla de la BD a tipo FechaHora para usarlo en grilla
+            grid_turnos.Rows(c).Cells(0).Value = Convert.ToDateTime(tabla.Rows(c)("fecha")).ToString("dd/MM/yyyy")
+            grid_turnos.Rows(c).Cells(1).Value = Convert.ToDateTime(tabla.Rows(c)("hora_desde")).ToString("hh:mm")
+            grid_turnos.Rows(c).Cells(2).Value = Convert.ToDateTime(tabla.Rows(c)("hora_hasta")).ToString("hh:mm")
             grid_turnos.Rows(c).Cells(3).Value = tabla.Rows(c)("emp")
             grid_turnos.Rows(c).Cells(4).Value = tabla.Rows(c)("pac")
 
