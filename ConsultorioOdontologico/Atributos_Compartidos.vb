@@ -82,8 +82,12 @@ Public Class Atributos_Compartidos
                 Case "RadioButton"
                     Dim radio_button As RadioButton = objeto
                     radio_button.Checked = False
+                Case "RichTextBox"
+                    objeto.Text = ""
                 Case "GroupBox"
                     blanquear_campos(objeto)
+                Case Else
+                    MessageBox.Show("El formato de control no esta configurado para el: " & objeto.GetType().Name)
             End Select
 
         Next
