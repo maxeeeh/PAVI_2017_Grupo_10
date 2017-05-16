@@ -6,6 +6,8 @@
     Private Sub frm_turnos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         clase_auxiliar.cargar_combobox(cmb_empleado, tabla_para_combo("Empleado")) 'la "tabla_para_combo" es solo de este formulario
         clase_auxiliar.cargar_combobox(cmb_paciente, tabla_para_combo("Paciente"))
+        clase_auxiliar.blanquear_campos(Me) 'Esto es para que los combobox empiecen en blanco
+
     End Sub
 
     Private Function tabla_para_combo(ByVal nombre_tabla As String) As DataTable ' el parametro puede ser "Empleado" o "Paciente"
@@ -35,12 +37,13 @@
             Dim sql As String = ""
 
             sql &= " SELECT     T.fecha"
-            sql &= "          , T.hora"
+            sql &= "          , T.hora_desde"
+            sql &= "          , T.hora_hasta"
             sql &= "          , E.apellido + ', ' + E.nombre As emp"
             sql &= "          , P.apellido + ', ' + P.nombre As pac"
             sql &= " FROM     Turno T JOIN Paciente P ON P.id_paciente = T.id_paciente" 'FROM Paciente JOIN Turno JOIN Empleado
             sql &= "                  JOIN Empleado E ON E.id_empleado = T.id_empleado"
-            sql &= " WHERE P.habilitado = 1 AND E.habilitado = 1" ' AND T.fecha > [fechaActual] AND T.hora >= [horaActual]  <--VER COMO HACER ESTO
+            sql &= " WHERE P.habilitado = 1 AND E.habilitado = 1" ' AND T.fecha > [fechaActual] AND T.hora_desde >= [horaActual]  <--VER COMO HACER ESTO
 
             If cmb_empleado.SelectedIndex <> -1 Then 'si se eligio un empleado
                 sql &= " AND T.id_empleado = " & Me.cmb_empleado.SelectedValue.ToString() 'El valueMember del cmb es el id_empleado
@@ -50,7 +53,7 @@
                 sql &= " AND T.id_paciente = " & Me.cmb_paciente.SelectedValue.ToString() 'El valueMember del cmb es el id_paciente
             End If
 
-            'sql &= " ORDER BY fecha, hora"
+            'sql &= " ORDER BY fecha, hora_desde"
             tabla = clase_auxiliar.ejecuto_sql(sql)
             llenar_grilla(tabla)
 
@@ -68,8 +71,8 @@
         For c = 0 To tabla.Rows.Count - 1
             grid_turnos.Rows.Add()
             grid_turnos.Rows(c).Cells(0).Value = tabla.Rows(c)("fecha")
-            grid_turnos.Rows(c).Cells(1).Value = tabla.Rows(c)("hora") 'hacer hora_desde
-            'grid_turnos.Rows(c).Cells(2).Value = tabla.Rows(c)("hora_hasta")  '<-- agregar a BD
+            grid_turnos.Rows(c).Cells(1).Value = tabla.Rows(c)("hora_desde")
+            grid_turnos.Rows(c).Cells(2).Value = tabla.Rows(c)("hora_hasta")
             grid_turnos.Rows(c).Cells(3).Value = tabla.Rows(c)("emp")
             grid_turnos.Rows(c).Cells(4).Value = tabla.Rows(c)("pac")
 
