@@ -86,8 +86,8 @@ Public Class Atributos_Compartidos
                     objeto.Text = ""
                 Case "GroupBox"
                     blanquear_campos(objeto)
-                Case Else
-                    MessageBox.Show("El formato de control no esta configurado para el: " & objeto.GetType().Name)
+                    'Case Else
+                    '    MessageBox.Show("El formato de control no esta configurado para el: " & objeto.GetType().Name)
             End Select
 
         Next
