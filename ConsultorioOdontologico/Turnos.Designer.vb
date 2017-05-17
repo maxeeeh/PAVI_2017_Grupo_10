@@ -26,21 +26,26 @@ Partial Class frm_turnos
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.grid_turnos = New System.Windows.Forms.DataGridView()
-        Me.lbl_empleado = New System.Windows.Forms.Label()
-        Me.lbl_paciente = New System.Windows.Forms.Label()
-        Me.cmb_empleado = New System.Windows.Forms.ComboBox()
-        Me.cmb_paciente = New System.Windows.Forms.ComboBox()
         Me.fecha_turno = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.hora_desde = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.hora_hasta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.empleado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.paciente = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.observaciones = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lbl_empleado = New System.Windows.Forms.Label()
+        Me.lbl_paciente = New System.Windows.Forms.Label()
+        Me.cmb_empleado = New System.Windows.Forms.ComboBox()
+        Me.cmb_paciente = New System.Windows.Forms.ComboBox()
+        Me.chk_habilitar_interseccion = New System.Windows.Forms.CheckBox()
         CType(Me.grid_turnos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'grid_turnos
         '
+        Me.grid_turnos.AllowUserToAddRows = False
+        Me.grid_turnos.AllowUserToDeleteRows = False
+        Me.grid_turnos.AllowUserToResizeColumns = False
+        Me.grid_turnos.AllowUserToResizeRows = False
         Me.grid_turnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grid_turnos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.fecha_turno, Me.hora_desde, Me.hora_hasta, Me.empleado, Me.paciente, Me.observaciones})
         Me.grid_turnos.Location = New System.Drawing.Point(12, 194)
@@ -49,44 +54,6 @@ Partial Class frm_turnos
         Me.grid_turnos.RowTemplate.Height = 24
         Me.grid_turnos.Size = New System.Drawing.Size(993, 370)
         Me.grid_turnos.TabIndex = 0
-        '
-        'lbl_empleado
-        '
-        Me.lbl_empleado.AutoSize = True
-        Me.lbl_empleado.Location = New System.Drawing.Point(28, 48)
-        Me.lbl_empleado.Name = "lbl_empleado"
-        Me.lbl_empleado.Size = New System.Drawing.Size(71, 17)
-        Me.lbl_empleado.TabIndex = 1
-        Me.lbl_empleado.Text = "Empleado"
-        '
-        'lbl_paciente
-        '
-        Me.lbl_paciente.AutoSize = True
-        Me.lbl_paciente.Location = New System.Drawing.Point(28, 86)
-        Me.lbl_paciente.Name = "lbl_paciente"
-        Me.lbl_paciente.Size = New System.Drawing.Size(63, 17)
-        Me.lbl_paciente.TabIndex = 2
-        Me.lbl_paciente.Text = "Paciente"
-        '
-        'cmb_empleado
-        '
-        Me.cmb_empleado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-        Me.cmb_empleado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cmb_empleado.FormattingEnabled = True
-        Me.cmb_empleado.Location = New System.Drawing.Point(105, 45)
-        Me.cmb_empleado.Name = "cmb_empleado"
-        Me.cmb_empleado.Size = New System.Drawing.Size(335, 24)
-        Me.cmb_empleado.TabIndex = 3
-        '
-        'cmb_paciente
-        '
-        Me.cmb_paciente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-        Me.cmb_paciente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cmb_paciente.FormattingEnabled = True
-        Me.cmb_paciente.Location = New System.Drawing.Point(105, 86)
-        Me.cmb_paciente.Name = "cmb_paciente"
-        Me.cmb_paciente.Size = New System.Drawing.Size(335, 24)
-        Me.cmb_paciente.TabIndex = 4
         '
         'fecha_turno
         '
@@ -133,11 +100,62 @@ Partial Class frm_turnos
         Me.observaciones.Name = "observaciones"
         Me.observaciones.Width = 200
         '
+        'lbl_empleado
+        '
+        Me.lbl_empleado.AutoSize = True
+        Me.lbl_empleado.Location = New System.Drawing.Point(28, 48)
+        Me.lbl_empleado.Name = "lbl_empleado"
+        Me.lbl_empleado.Size = New System.Drawing.Size(71, 17)
+        Me.lbl_empleado.TabIndex = 1
+        Me.lbl_empleado.Text = "Empleado"
+        '
+        'lbl_paciente
+        '
+        Me.lbl_paciente.AutoSize = True
+        Me.lbl_paciente.Location = New System.Drawing.Point(28, 86)
+        Me.lbl_paciente.Name = "lbl_paciente"
+        Me.lbl_paciente.Size = New System.Drawing.Size(63, 17)
+        Me.lbl_paciente.TabIndex = 2
+        Me.lbl_paciente.Text = "Paciente"
+        '
+        'cmb_empleado
+        '
+        Me.cmb_empleado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cmb_empleado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmb_empleado.FormattingEnabled = True
+        Me.cmb_empleado.Location = New System.Drawing.Point(105, 45)
+        Me.cmb_empleado.Name = "cmb_empleado"
+        Me.cmb_empleado.Size = New System.Drawing.Size(335, 24)
+        Me.cmb_empleado.TabIndex = 3
+        '
+        'cmb_paciente
+        '
+        Me.cmb_paciente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cmb_paciente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmb_paciente.FormattingEnabled = True
+        Me.cmb_paciente.Location = New System.Drawing.Point(105, 86)
+        Me.cmb_paciente.Name = "cmb_paciente"
+        Me.cmb_paciente.Size = New System.Drawing.Size(335, 24)
+        Me.cmb_paciente.TabIndex = 4
+        '
+        'chk_habilitar_interseccion
+        '
+        Me.chk_habilitar_interseccion.AutoSize = True
+        Me.chk_habilitar_interseccion.Checked = True
+        Me.chk_habilitar_interseccion.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chk_habilitar_interseccion.Location = New System.Drawing.Point(105, 130)
+        Me.chk_habilitar_interseccion.Name = "chk_habilitar_interseccion"
+        Me.chk_habilitar_interseccion.Size = New System.Drawing.Size(321, 21)
+        Me.chk_habilitar_interseccion.TabIndex = 5
+        Me.chk_habilitar_interseccion.Text = "Ver turnos de ese paciente con ese empleado"
+        Me.chk_habilitar_interseccion.UseVisualStyleBackColor = True
+        '
         'frm_turnos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1017, 578)
+        Me.Controls.Add(Me.chk_habilitar_interseccion)
         Me.Controls.Add(Me.cmb_paciente)
         Me.Controls.Add(Me.cmb_empleado)
         Me.Controls.Add(Me.lbl_paciente)
@@ -163,4 +181,5 @@ Partial Class frm_turnos
     Friend WithEvents empleado As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents paciente As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents observaciones As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents chk_habilitar_interseccion As System.Windows.Forms.CheckBox
 End Class

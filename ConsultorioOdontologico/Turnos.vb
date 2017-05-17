@@ -4,6 +4,7 @@
     Dim cadena_conexion As String = clase_auxiliar._cadena_conexion
 
     Private Sub frm_turnos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         clase_auxiliar.cargar_combobox(cmb_empleado, tabla_para_combo("Empleado")) 'la "tabla_para_combo" es solo de este formulario
         clase_auxiliar.cargar_combobox(cmb_paciente, tabla_para_combo("Paciente"))
         clase_auxiliar.blanquear_campos(Me) 'Esto es para que los combobox empiecen en blanco
@@ -13,13 +14,35 @@
     Private Function tabla_para_combo(ByVal nombre_tabla As String) As DataTable ' el parametro puede ser "Empleado" o "Paciente"
         'Da una tabla con 2 columnas: la primera es el id_paciente o id_empleado, y la segunda el apellido y nombre concatenados
         Dim tabla As New Data.DataTable
+
+        'Esto es para poder agregarle al principio el TODOS
+        Dim tablafinal As New Data.DataTable
+        tablafinal.Columns.Add()
+        tablafinal.Columns.Add()
+
+        Dim fila As Data.DataRow
         Dim sql As String = ""
         'En el select hace id_empleado o id_paciente, y despues concatena asi: "Apellido, Nombre"
         sql &= "SELECT id_" & nombre_tabla.ToLower() & ", apellido + ', ' + nombre"
         sql &= " FROM " & nombre_tabla
         sql &= " WHERE habilitado = 1"
         sql &= " ORDER BY apellido"
-        Return clase_auxiliar.ejecuto_sql(sql)
+        tabla = clase_auxiliar.ejecuto_sql(sql)
+        'Agrega una fila que dice "TODOS" al principio del combobox
+        fila = tablaFinal.NewRow()
+        fila(0) = 0 'En el campo de la pk (indice 0) hace 0
+        fila(1) = "TODOS" 'En el campo del nombre (indice 1) hace "Todos"
+        tablafinal.Rows.Add(fila)
+        For Each unaFila In tabla.Rows
+            Dim filaAAgregar As Data.DataRow
+            filaAAgregar = tablafinal.NewRow
+            filaAAgregar(0) = unaFila(0)
+            filaAAgregar(1) = unaFila(1)
+            tablafinal.Rows.Add(filaAAgregar)
+        Next
+
+        Return tablafinal
+
     End Function
 
     Private Sub frm_turnos_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -28,7 +51,7 @@
         e.Cancel = clase_auxiliar.confirmar_salida(e)
     End Sub
 
-    Private Sub cmb_SelectionChangeCommited(sender As Object, e As EventArgs) Handles cmb_empleado.SelectionChangeCommitted, cmb_paciente.SelectionChangeCommitted
+    Private Sub cmb_SelectionChangeCommited(sender As Object, e As EventArgs) Handles cmb_empleado.SelectionChangeCommitted, cmb_paciente.SelectionChangeCommitted, chk_habilitar_interseccion.CheckedChanged
         'Cuando se elige un paciente o un empleado, se actualizan las filas de la grilla
 
         If (cmb_empleado.SelectedIndex <> -1) Or (cmb_paciente.SelectedIndex <> -1) Then 'Si se eligio un empleado o un paciente
@@ -46,11 +69,25 @@
             sql &= "                  JOIN Empleado E ON E.id_empleado = T.id_empleado"
             sql &= " WHERE P.habilitado = 1 AND E.habilitado = 1" ' AND T.fecha > [fechaActual] AND T.hora_desde >= [horaActual]  <--VER COMO HACER ESTO
 
-            If cmb_empleado.SelectedIndex <> -1 Then 'si se eligio un empleado
-                sql &= " AND T.id_empleado = " & Me.cmb_empleado.SelectedValue.ToString() 'El valueMember del cmb es el id_empleado
-            End If
+            Dim conjuncion_interseccion As String = ""
 
-            If cmb_paciente.SelectedIndex <> -1 Then 'si se eligio un paciente
+            Try
+                If chk_habilitar_interseccion.Checked Then
+                    conjuncion_interseccion &= " AND T.id_paciente = " & Me.cmb_paciente.SelectedValue.ToString()
+                    conjuncion_interseccion &= " AND T.id_empleado = " & Me.cmb_empleado.SelectedValue.ToString() & ""
+                Else
+                    conjuncion_interseccion &= " AND (T.id_paciente = " & Me.cmb_paciente.SelectedValue.ToString()
+                    conjuncion_interseccion &= " OR T.id_empleado = " & Me.cmb_empleado.SelectedValue.ToString() & ")"
+                End If
+            Catch
+            End Try
+
+
+            If (cmb_empleado.SelectedIndex <> -1 And cmb_empleado.SelectedValue <> 0) And (cmb_paciente.SelectedIndex <> -1 And cmb_paciente.SelectedValue <> 0) Then 'si se eligio un paciente y un empleado
+                sql &= conjuncion_interseccion
+            ElseIf cmb_empleado.SelectedIndex <> -1 And cmb_paciente.SelectedValue = 0 Then 'si se eligio un empleado
+                sql &= " AND T.id_empleado = " & Me.cmb_empleado.SelectedValue.ToString() 'El valueMember del cmb es el id_empleado
+            ElseIf cmb_paciente.SelectedIndex <> -1 And cmb_empleado.SelectedValue = 0 Then 'si se eligio un paciente
                 sql &= " AND T.id_paciente = " & Me.cmb_paciente.SelectedValue.ToString() 'El valueMember del cmb es el id_paciente
             End If
 
