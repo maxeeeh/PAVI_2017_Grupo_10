@@ -40,42 +40,8 @@
     End Sub
 
     Private Sub cargar_grilla()
-
-        Dim tabla As New Data.DataTable
-
-        Dim sql As String = ""
-        sql &= " SELECT *"
-        sql &= " FROM Tratamiento WHERE habilitado=1 ORDER BY descripcion ASC"
-
-
-
-
-        tabla = ejecuto_sql(sql)
-
-
-        llenar_grilla(tabla)
+        llenar_grilla(clase_auxiliar.leo_tabla_soporte("Tratamiento"))
     End Sub
-
-
-    Private Function ejecuto_sql(ByVal sql As String) As DataTable
-
-        Dim conexion As New Data.OleDb.OleDbConnection
-        Dim cmd As New Data.OleDb.OleDbCommand
-        Dim tabla As New Data.DataTable
-
-        conexion.ConnectionString = cadena_conexion
-        conexion.Open()
-        cmd.Connection = conexion
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = sql
-        tabla.Load(cmd.ExecuteReader())
-        conexion.Close()
-
-        Return tabla
-
-
-    End Function
-
 
     'Se controla que los campos no esten vacios
     Private Function validar_datos() As respuesta_validacion_error
@@ -122,7 +88,7 @@
 
         Dim tabla As New DataTable
 
-        tabla = Me.ejecuto_sql(sql)
+        tabla = clase_auxiliar.ejecuto_sql(sql)
 
         For i As Integer = 0 To tabla.Rows.Count - 1
             If String.Compare(normalizar_texto(Me.txt_descripcion.Text), normalizar_texto(tabla(i)(0))) = 0 Then
@@ -376,7 +342,7 @@
         sql &= " OR descripcion LIKE '%" & pattern & "%'"
         sql &= " ORDER BY descripcion ASC"
 
-        tabla = ejecuto_sql(sql)
+        tabla = clase_auxiliar.ejecuto_sql(sql)
         llenar_grilla(tabla)
     End Sub
 

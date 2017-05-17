@@ -29,8 +29,8 @@
 
         cargar_grilla()
         'clase_auxiliar.cargar_combobox(cmb_loc, una_pk, un_descriptor, nombre_tabla)
-        clase_auxiliar.cargar_combobox(cmb_loc, clase_auxiliar.leo_tabla("Localidad"))
-        clase_auxiliar.cargar_combobox(cmb_tipo_doc, clase_auxiliar.leo_tabla("TipoDocumento"))
+        clase_auxiliar.cargar_combobox(cmb_loc, "Localidad")
+        clase_auxiliar.cargar_combobox(cmb_tipo_doc, "TipoDocumento")
 
     End Sub
 
@@ -58,30 +58,9 @@
         sql &= " WHERE P.habilitado = 1"
         sql &= " ORDER BY P.apellido ASC"
 
-        tabla = ejecuto_sql(sql)
+        tabla = clase_auxiliar.ejecuto_sql(sql)
         llenar_grilla(tabla)
     End Sub
-
-
-    Private Function leo_tabla(ByVal nombre_tabla As String) As DataTable
-        Return ejecuto_sql("SELECT * FROM " & nombre_tabla)
-    End Function
-
-
-    Private Function ejecuto_sql(ByVal sql As String) As DataTable
-        Dim conexion As New Data.OleDb.OleDbConnection
-        Dim cmd As New Data.OleDb.OleDbCommand
-        Dim tabla As New Data.DataTable
-
-        conexion.ConnectionString = cadena_conexion
-        conexion.Open()
-        cmd.Connection = conexion
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = sql
-        tabla.Load(cmd.ExecuteReader())
-        conexion.Close()
-        Return tabla
-    End Function
 
     Private Sub cmd_nuevo_Click(sender As Object, e As EventArgs) Handles cmd_nuevo.Click
         habilitar_controles()
@@ -229,7 +208,7 @@
 
         Dim tabla As New DataTable
 
-        tabla = Me.ejecuto_sql(sql)
+        tabla = clase_auxiliar.ejecuto_sql(sql)
 
         If tabla.Rows.Count = 0 Then
             Return respuesta_validacion._no_existe
@@ -609,7 +588,7 @@
         sql &= " AND (CONCAT(P.apellido, ' ', P.nombre) LIKE '" & pattern & "%'"
         sql &= " OR CONCAT(P.nombre, ' ', P.apellido) LIKE '" & pattern & "%')"
 
-        tabla = ejecuto_sql(sql)
+        tabla = clase_auxiliar.ejecuto_sql(sql)
         llenar_grilla(tabla)
     End Sub
 

@@ -19,28 +19,8 @@
         _error
     End Enum
 
-
-    Private Function ejecuto_sql(ByVal sql As String) As DataTable
-        Dim conexion As New Data.OleDb.OleDbConnection
-        Dim cmd As New Data.OleDb.OleDbCommand
-        Dim tabla As New Data.DataTable
-
-        conexion.ConnectionString = cadena_conexion
-        conexion.Open()
-        cmd.Connection = conexion
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = sql
-        tabla.Load(cmd.ExecuteReader())
-        conexion.Close()
-        Return tabla
-    End Function
-
-    Private Function leo_tabla(ByVal nombre_tabla As String) As DataTable
-        Return ejecuto_sql("SELECT * FROM " & nombre_tabla & " WHERE habilitado = 1 ORDER BY descripcion ASC")
-    End Function
-
     Private Sub cargar_lista()
-        llenar_lista(leo_tabla("Insumo"))
+        llenar_lista(clase_auxiliar.leo_tabla_soporte("Insumo"))
     End Sub
 
     Private Sub frm_registrar_insumo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -115,7 +95,7 @@
 
         Dim tabla As New DataTable
 
-        tabla = Me.ejecuto_sql(sql)
+        tabla = Me.clase_auxiliar.ejecuto_sql(sql)
 
         For i As Integer = 0 To tabla.Rows.Count - 1
             If String.Compare(normalizar_texto(Me.txt_descripcion.Text), normalizar_texto(tabla(i)(0))) = 0 Then
@@ -203,7 +183,7 @@
         sql &= " FROM Insumo"
         sql &= " WHERE habilitado = 1 AND descripcion LIKE '" & pattern & "%'"
         sql &= " ORDER BY descripcion ASC"
-        llenar_lista(ejecuto_sql(sql))
+        llenar_lista(clase_auxiliar.ejecuto_sql(sql))
     End Sub
 
     Private Sub llenar_lista(ByVal tabla As DataTable)

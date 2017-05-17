@@ -4,6 +4,7 @@
 ''' </summary>
 ''' <remarks></remarks>
 Public Class Atributos_Compartidos
+
     Dim cadena_conexion As String = ""
 
     ''' <summary>
@@ -51,15 +52,11 @@ Public Class Atributos_Compartidos
     End Function
 
     'Esta seria mi idea de implementar cargar_combobox (MAXI)
-    'Public Sub cargar_combobox(ByRef combo As ComboBox, ByVal pk As String, ByVal descriptor As String, ByVal nombre_tabla As String)
-    '    combo.Items.Clear()
-    '    Dim tabla As New DataTable
-    '    tabla = leo_tabla(nombre_tabla)
-    '    combo.DataSource = tabla
-    '    combo.ValueMember = pk
-    '    combo.DisplayMember = descriptor
-    'End Sub
+    Public Sub cargar_combobox(ByRef combo As ComboBox, ByVal nombre_tabla As String)
+        cargar_combobox(combo, leo_tabla(nombre_tabla))
+    End Sub
 
+    'Deje tambien esta version porque sirve para el formulario de turnos (LUCHO)
     Public Sub cargar_combobox(ByRef combo As ComboBox, ByVal data As DataTable)
         combo.Items.Clear()
         combo.DataSource = data
@@ -92,26 +89,27 @@ Public Class Atributos_Compartidos
         Next
     End Sub
 
-    Public Function leo_tabla(nombre_tabla As String) As DataTable
+    Public Function leo_tabla(ByVal nombre_tabla As String) As DataTable
+        Return ejecuto_sql("SELECT * FROM " & nombre_tabla)
+    End Function
 
+    Public Function leo_tabla_soporte(ByVal nombre_tabla As String) As DataTable
+        Return ejecuto_sql("SELECT * FROM " & nombre_tabla & " WHERE habilitado = 1 ORDER BY descripcion ASC")
+    End Function
+
+    Public Function ejecuto_sql(ByVal sql As String) As DataTable
         Dim conexion As New Data.OleDb.OleDbConnection
         Dim cmd As New Data.OleDb.OleDbCommand
         Dim tabla As New Data.DataTable
-        Dim sql As String = ""
 
         conexion.ConnectionString = cadena_conexion
         conexion.Open()
         cmd.Connection = conexion
         cmd.CommandType = CommandType.Text
-
-        sql &= "SELECT * FROM "
-        sql &= nombre_tabla
-
         cmd.CommandText = sql
         tabla.Load(cmd.ExecuteReader())
-
+        conexion.Close()
         Return tabla
-
     End Function
 
 End Class

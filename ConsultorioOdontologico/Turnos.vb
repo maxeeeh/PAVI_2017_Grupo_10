@@ -9,7 +9,7 @@
     End Sub
 
     Private Function tabla_para_combo(ByVal nombre_tabla As String) As DataTable ' el parametro puede ser "Empleado" o "Paciente"
-        'Da una tabla con 2 columnas: la primera es el id_paciente o id_empleado, y la segunda el apellido y nombre concatenado
+        'Da una tabla con 2 columnas: la primera es el id_paciente o id_empleado, y la segunda el apellido y nombre concatenados
         Dim tabla As New Data.DataTable
         Dim sql As String = ""
         'En el select hace id_empleado o id_paciente, y despues concatena asi: "Apellido, Nombre"
@@ -17,7 +17,7 @@
         sql &= " FROM " & nombre_tabla
         sql &= " WHERE habilitado = 1"
         sql &= " ORDER BY apellido"
-        Return ejecuto_sql(sql)
+        Return clase_auxiliar.ejecuto_sql(sql)
     End Function
 
     Private Sub frm_turnos_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -50,7 +50,8 @@
                 sql &= " AND T.id_paciente = " & Me.cmb_paciente.SelectedValue.ToString() 'El valueMember del cmb es el id_paciente
             End If
 
-            tabla = ejecuto_sql(sql)
+            'sql &= " ORDER BY fecha, hora"
+            tabla = clase_auxiliar.ejecuto_sql(sql)
             llenar_grilla(tabla)
 
         Else
@@ -58,25 +59,6 @@
         End If
 
     End Sub
-
-    Private Function leo_tabla(ByVal nombre_tabla As String) As DataTable
-        Return ejecuto_sql("SELECT * FROM " & nombre_tabla)
-    End Function
-
-    Private Function ejecuto_sql(ByVal sql As String) As DataTable
-        Dim conexion As New Data.OleDb.OleDbConnection
-        Dim cmd As New Data.OleDb.OleDbCommand
-        Dim tabla As New Data.DataTable
-
-        conexion.ConnectionString = cadena_conexion
-        conexion.Open()
-        cmd.Connection = conexion
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = sql
-        tabla.Load(cmd.ExecuteReader())
-        conexion.Close()
-        Return tabla
-    End Function
 
     Private Sub llenar_grilla(ByVal tabla As DataTable)
         Dim c As Integer
