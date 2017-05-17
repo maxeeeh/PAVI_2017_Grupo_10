@@ -31,6 +31,7 @@ Partial Class frm_turnos
         Me.lbl_empleado = New System.Windows.Forms.Label()
         Me.lbl_paciente = New System.Windows.Forms.Label()
         Me.cmb_empleado = New System.Windows.Forms.ComboBox()
+        Me.cmb_paciente = New System.Windows.Forms.ComboBox()
         CType(Me.grid_turnos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -90,22 +91,35 @@ Partial Class frm_turnos
         '
         'cmb_empleado
         '
+        Me.cmb_empleado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cmb_empleado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmb_empleado.FormattingEnabled = True
         Me.cmb_empleado.Location = New System.Drawing.Point(105, 45)
         Me.cmb_empleado.Name = "cmb_empleado"
-        Me.cmb_empleado.Size = New System.Drawing.Size(121, 24)
+        Me.cmb_empleado.Size = New System.Drawing.Size(335, 24)
         Me.cmb_empleado.TabIndex = 3
+        '
+        'cmb_paciente
+        '
+        Me.cmb_paciente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cmb_paciente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmb_paciente.FormattingEnabled = True
+        Me.cmb_paciente.Location = New System.Drawing.Point(105, 86)
+        Me.cmb_paciente.Name = "cmb_paciente"
+        Me.cmb_paciente.Size = New System.Drawing.Size(335, 24)
+        Me.cmb_paciente.TabIndex = 4
         '
         'frm_turnos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1017, 578)
+        Me.Controls.Add(Me.cmb_paciente)
         Me.Controls.Add(Me.cmb_empleado)
         Me.Controls.Add(Me.lbl_paciente)
         Me.Controls.Add(Me.lbl_empleado)
         Me.Controls.Add(Me.grid_turnos)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.Name = "frm_turnos"
         Me.Text = "Turnos"
@@ -123,4 +137,5 @@ Partial Class frm_turnos
     Friend WithEvents lbl_empleado As System.Windows.Forms.Label
     Friend WithEvents lbl_paciente As System.Windows.Forms.Label
     Friend WithEvents cmb_empleado As System.Windows.Forms.ComboBox
+    Friend WithEvents cmb_paciente As System.Windows.Forms.ComboBox
 End Class
