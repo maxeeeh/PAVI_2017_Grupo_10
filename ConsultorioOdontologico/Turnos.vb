@@ -104,7 +104,6 @@
                 Else
                     chk_habilitar_interseccion.Enabled = False
                 End If
-
             End If
 
             sql &= " ORDER BY fecha, hora_desde"
