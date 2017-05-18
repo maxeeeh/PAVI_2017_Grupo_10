@@ -22,6 +22,7 @@ Partial Class frm_registrar_paciente
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_registrar_paciente))
         Me.grid_pacientes = New System.Windows.Forms.DataGridView()
         Me.nom = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ape = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -603,6 +604,7 @@ Partial Class frm_registrar_paciente
         Me.Controls.Add(Me.cmd_salir)
         Me.Controls.Add(Me.grp_pacientes)
         Me.Controls.Add(Me.cmd_registrar)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(858, 718)

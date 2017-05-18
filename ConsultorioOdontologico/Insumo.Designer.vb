@@ -22,6 +22,7 @@ Partial Class frm_registrar_insumo
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_registrar_insumo))
         Me.txt_descripcion = New System.Windows.Forms.RichTextBox()
         Me.cmd_registrar = New System.Windows.Forms.Button()
         Me.cmd_salir = New System.Windows.Forms.Button()
@@ -125,6 +126,7 @@ Partial Class frm_registrar_insumo
         Me.Controls.Add(Me.grp_descripcion)
         Me.Controls.Add(Me.cmd_salir)
         Me.Controls.Add(Me.cmd_registrar)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(414, 450)
         Me.MinimumSize = New System.Drawing.Size(414, 450)

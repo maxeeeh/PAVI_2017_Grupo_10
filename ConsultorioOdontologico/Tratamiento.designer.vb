@@ -22,6 +22,7 @@ Partial Class frm_registrar_tratamiento
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_registrar_tratamiento))
         Me.lblFecha = New System.Windows.Forms.Label()
         Me.grid_tratamientos = New System.Windows.Forms.DataGridView()
         Me.id_tratamiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -206,6 +207,7 @@ Partial Class frm_registrar_tratamiento
         Me.Controls.Add(Me.cmd_nuevo)
         Me.Controls.Add(Me.grid_tratamientos)
         Me.Controls.Add(Me.lblFecha)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(414, 450)
         Me.MinimumSize = New System.Drawing.Size(414, 450)
