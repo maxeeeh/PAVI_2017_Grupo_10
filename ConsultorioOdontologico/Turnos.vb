@@ -49,12 +49,6 @@
 
     End Function
 
-    Private Sub frm_turnos_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        'La siguiente linea usa el metodo "confirmar_salida" de la clase "Atributos_Compartidos" para
-        'ver si el usuario cancelo el cerrado del formulario. (Le manda el evento de cerrado "e" al metodo)
-        e.Cancel = clase_auxiliar.confirmar_salida(e)
-    End Sub
-
     Private Sub cmb_SelectionChangeCommited(sender As Object, e As EventArgs) Handles cmb_empleado.SelectionChangeCommitted, cmb_paciente.SelectionChangeCommitted, chk_habilitar_interseccion.CheckStateChanged
         'Cuando se elige un paciente o un empleado, se actualizan las filas de la grilla
         Me.actualizar_datos_grilla()
@@ -133,4 +127,17 @@
         Next
     End Sub
 
+    Private Sub cmd_salir_Click(sender As Object, e As EventArgs) Handles cmd_salir.Click
+        Me.Close()
+    End Sub
+
+    Private Sub frm_turnos_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        'La siguiente linea usa el metodo "confirmar_salida" de la clase "Atributos_Compartidos" para
+        'ver si el usuario cancelo el cerrado del formulario. (Le manda el evento de cerrado "e" al metodo)
+        e.Cancel = clase_auxiliar.confirmar_salida(e)
+    End Sub
+
+    Private Sub cmd_Nuevo_Click(sender As Object, e As EventArgs) Handles cmd_Nuevo.Click
+        clase_auxiliar.blanquear_campos(Me)
+    End Sub
 End Class
