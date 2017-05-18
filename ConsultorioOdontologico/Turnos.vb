@@ -100,18 +100,19 @@
 
                 If cmb_empleado.SelectedValue <> 0 And cmb_paciente.SelectedValue <> 0 Then
                     chk_habilitar_interseccion.Enabled = True
+
+                Else
+                    chk_habilitar_interseccion.Enabled = False
                 End If
-            Else
-                chk_habilitar_interseccion.Enabled = False
             End If
 
-            sql &= " ORDER BY fecha, hora_desde"
-            tabla = clase_auxiliar.ejecuto_sql(sql)
-            llenar_grilla(tabla)
+                sql &= " ORDER BY fecha, hora_desde"
+                tabla = clase_auxiliar.ejecuto_sql(sql)
+                llenar_grilla(tabla)
 
-        Else
-            grid_turnos.Rows.Clear() 'si no se eligio ni un empleado ni un paciente entonces se vacia la grilla
-        End If
+            Else
+                grid_turnos.Rows.Clear() 'si no se eligio ni un empleado ni un paciente entonces se vacia la grilla
+            End If
 
     End Sub
 
