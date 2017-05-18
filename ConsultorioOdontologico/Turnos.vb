@@ -7,20 +7,15 @@
 
         clase_auxiliar.cargar_combobox(cmb_empleado, tabla_para_combo("Empleado")) 'la "tabla_para_combo" es solo de este formulario
         clase_auxiliar.cargar_combobox(cmb_paciente, tabla_para_combo("Paciente"))
-        clase_auxiliar.blanquear_campos(Me) 'Esto es para que los combobox empiecen en blanco
-
+        cmb_empleado.SelectedIndex = 0
+        cmb_paciente.SelectedIndex = 0
+        Me.actualizar_datos_grilla()
     End Sub
 
     Private Function tabla_para_combo(ByVal nombre_tabla As String) As DataTable ' el parametro puede ser "Empleado" o "Paciente"
-        'Da una tabla con 2 columnas: la primera es el id_paciente o id_empleado, y la segunda el apellido y nombre concatenados
+        'Esta funcion da una tabla con 2 columnas: la primera es el id_paciente o id_empleado, y la segunda el apellido y nombre concatenados
+
         Dim tabla As New Data.DataTable
-
-        'Esto es para poder agregarle al principio el TODOS
-        Dim tablafinal As New Data.DataTable
-        tablafinal.Columns.Add()
-        tablafinal.Columns.Add()
-
-        Dim fila As Data.DataRow
         Dim sql As String = ""
         'En el select hace id_empleado o id_paciente, y despues concatena asi: "Apellido, Nombre"
         sql &= "SELECT id_" & nombre_tabla.ToLower() & ", apellido + ', ' + nombre"
@@ -28,11 +23,20 @@
         sql &= " WHERE habilitado = 1"
         sql &= " ORDER BY apellido"
         tabla = clase_auxiliar.ejecuto_sql(sql)
-        'Agrega una fila que dice "TODOS" al principio del combobox
+
+        'Todo lo siguiente es para poder agregarle al principio del combobox el "TODOS"
+        Dim tablafinal As New Data.DataTable() 'Define la tabla
+        tablafinal.Columns.Add() 'le agrega una columna donde ira el pk (para el TODOS es 0)
+        tablafinal.Columns.Add() 'le agrega una columna done ira la descripcion (para el TODOS es TODOS)
+
+        'Aca se crea la fila que dice "TODOS" y se la agrega a la tablafinal
+        Dim fila As Data.DataRow
         fila = tablaFinal.NewRow()
         fila(0) = 0 'En el campo de la pk (indice 0) hace 0
         fila(1) = "TODOS" 'En el campo del nombre (indice 1) hace "Todos"
         tablafinal.Rows.Add(fila)
+
+        'Agrega todas las filas de la "tabla" (que contiene las filas de los turnos) a la "tablafinal" que empieza con "TODOS"
         For Each unaFila In tabla.Rows
             Dim filaAAgregar As Data.DataRow
             filaAAgregar = tablafinal.NewRow
@@ -51,8 +55,12 @@
         e.Cancel = clase_auxiliar.confirmar_salida(e)
     End Sub
 
-    Private Sub cmb_SelectionChangeCommited(sender As Object, e As EventArgs) Handles cmb_empleado.SelectionChangeCommitted, cmb_paciente.SelectionChangeCommitted, chk_habilitar_interseccion.CheckedChanged
+    Private Sub cmb_SelectionChangeCommited(sender As Object, e As EventArgs) Handles cmb_empleado.SelectionChangeCommitted, cmb_paciente.SelectionChangeCommitted, chk_habilitar_interseccion.CheckStateChanged
         'Cuando se elige un paciente o un empleado, se actualizan las filas de la grilla
+        Me.actualizar_datos_grilla()
+    End Sub
+
+    Private Sub actualizar_datos_grilla() 'Lo que pasa cuando se cambian los filtros de la grilla
 
         If (cmb_empleado.SelectedIndex <> -1) Or (cmb_paciente.SelectedIndex <> -1) Then 'Si se eligio un empleado o un paciente
 
@@ -67,31 +75,37 @@
             sql &= "          , T.observaciones"
             sql &= " FROM     Turno T JOIN Paciente P ON P.id_paciente = T.id_paciente" 'FROM Paciente JOIN Turno JOIN Empleado
             sql &= "                  JOIN Empleado E ON E.id_empleado = T.id_empleado"
-            sql &= " WHERE P.habilitado = 1 AND E.habilitado = 1" ' AND T.fecha > [fechaActual] AND T.hora_desde >= [horaActual]  <--VER COMO HACER ESTO
+            sql &= " WHERE P.habilitado = 1 AND E.habilitado = 1"
+            sql &= " AND T.fecha >= '" & DateAndTime.DateString & "'" 'Solo muestra los turnos que son de hoy en adelante
+            'sql &= " AND T.hora_desde >= [horaActual]"  <-- No se si ponerlo
 
             Dim conjuncion_interseccion As String = ""
 
-            Try
-                If chk_habilitar_interseccion.Checked Then
-                    conjuncion_interseccion &= " AND T.id_paciente = " & Me.cmb_paciente.SelectedValue.ToString()
-                    conjuncion_interseccion &= " AND T.id_empleado = " & Me.cmb_empleado.SelectedValue.ToString() & ""
-                Else
-                    conjuncion_interseccion &= " AND (T.id_paciente = " & Me.cmb_paciente.SelectedValue.ToString()
-                    conjuncion_interseccion &= " OR T.id_empleado = " & Me.cmb_empleado.SelectedValue.ToString() & ")"
-                End If
-            Catch
-            End Try
-
-
-            If (cmb_empleado.SelectedIndex <> -1 And cmb_empleado.SelectedValue <> 0) And (cmb_paciente.SelectedIndex <> -1 And cmb_paciente.SelectedValue <> 0) Then 'si se eligio un paciente y un empleado
-                sql &= conjuncion_interseccion
-            ElseIf cmb_empleado.SelectedIndex <> -1 And cmb_paciente.SelectedValue = 0 Then 'si se eligio un empleado
-                sql &= " AND T.id_empleado = " & Me.cmb_empleado.SelectedValue.ToString() 'El valueMember del cmb es el id_empleado
-            ElseIf cmb_paciente.SelectedIndex <> -1 And cmb_empleado.SelectedValue = 0 Then 'si se eligio un paciente
-                sql &= " AND T.id_paciente = " & Me.cmb_paciente.SelectedValue.ToString() 'El valueMember del cmb es el id_paciente
+            If chk_habilitar_interseccion.Checked Then
+                conjuncion_interseccion = " AND T.id_paciente = " & Me.cmb_paciente.SelectedValue.ToString()
+                conjuncion_interseccion &= " AND T.id_empleado = " & Me.cmb_empleado.SelectedValue.ToString()
+            Else
+                conjuncion_interseccion = " AND (T.id_paciente = " & Me.cmb_paciente.SelectedValue.ToString()
+                conjuncion_interseccion &= " OR T.id_empleado = " & Me.cmb_empleado.SelectedValue.ToString() & ")"
             End If
 
-            'sql &= " ORDER BY fecha, hora_desde"
+            If cmb_empleado.SelectedValue <> 0 Or cmb_paciente.SelectedValue <> 0 Then 'si NO dice TODOS en ambos combobox
+                If (cmb_empleado.SelectedIndex <> -1 And cmb_empleado.SelectedValue <> 0) And (cmb_paciente.SelectedIndex <> -1 And cmb_paciente.SelectedValue <> 0) Then 'si se eligio un paciente y un empleado
+                    sql &= conjuncion_interseccion
+                ElseIf cmb_empleado.SelectedIndex <> -1 And cmb_paciente.SelectedValue = 0 Then 'si se eligio un empleado
+                    sql &= " AND T.id_empleado = " & Me.cmb_empleado.SelectedValue.ToString() 'El valueMember del cmb es el id_empleado
+                ElseIf cmb_paciente.SelectedIndex <> -1 And cmb_empleado.SelectedValue = 0 Then 'si se eligio un paciente
+                    sql &= " AND T.id_paciente = " & Me.cmb_paciente.SelectedValue.ToString() 'El valueMember del cmb es el id_paciente
+                End If
+
+                If cmb_empleado.SelectedValue <> 0 And cmb_paciente.SelectedValue <> 0 Then
+                    chk_habilitar_interseccion.Enabled = True
+                End If
+            Else
+                chk_habilitar_interseccion.Enabled = False
+            End If
+
+            sql &= " ORDER BY fecha, hora_desde"
             tabla = clase_auxiliar.ejecuto_sql(sql)
             llenar_grilla(tabla)
 
@@ -100,6 +114,7 @@
         End If
 
     End Sub
+
 
     Private Sub llenar_grilla(ByVal tabla As DataTable)
         Dim c As Integer
