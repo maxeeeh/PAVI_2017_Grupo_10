@@ -100,9 +100,10 @@
 
                 If cmb_empleado.SelectedValue <> 0 And cmb_paciente.SelectedValue <> 0 Then
                     chk_habilitar_interseccion.Enabled = True
+
+                Else
+                    chk_habilitar_interseccion.Enabled = False
                 End If
-            Else
-                chk_habilitar_interseccion.Enabled = False
             End If
 
             sql &= " ORDER BY fecha, hora_desde"
