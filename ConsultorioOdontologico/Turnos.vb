@@ -1,10 +1,15 @@
 ﻿Public Class frm_turnos
+
+    Enum tipo_accion
+        normal
+        cargando_formulario
+    End Enum
     'En la siguiente linea se asigna automaticamente la cadena de conexion segun en que compu este (ayudandose con una clase)
     Dim clase_auxiliar As New Atributos_Compartidos
     Dim cadena_conexion As String = clase_auxiliar._cadena_conexion
+    Dim accion As tipo_accion = tipo_accion.normal
 
     Private Sub frm_turnos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         clase_auxiliar.cargar_combobox(cmb_empleado, tabla_para_combo("Empleado")) 'la "tabla_para_combo" es solo de este formulario
         clase_auxiliar.cargar_combobox(cmb_paciente, tabla_para_combo("Paciente"))
         cmb_empleado.SelectedIndex = 0
@@ -31,7 +36,7 @@
 
         'Aca se crea la fila que dice "TODOS" y se la agrega a la tablafinal
         Dim fila As Data.DataRow
-        fila = tablaFinal.NewRow()
+        fila = tablafinal.NewRow()
         fila(0) = 0 'En el campo de la pk (indice 0) hace 0
         fila(1) = "TODOS" 'En el campo del nombre (indice 1) hace "Todos"
         tablafinal.Rows.Add(fila)
@@ -49,9 +54,13 @@
 
     End Function
 
+    'A este lo deje comentado porque no terminaba de funcionar bien
     Private Sub cmb_SelectionChangeCommited(sender As Object, e As EventArgs) Handles cmb_empleado.SelectionChangeCommitted, cmb_paciente.SelectionChangeCommitted, chk_habilitar_interseccion.CheckStateChanged
+
         'Cuando se elige un paciente o un empleado, se actualizan las filas de la grilla
-        Me.actualizar_datos_grilla()
+        If Not accion = tipo_accion.cargando_formulario Then
+            Me.actualizar_datos_grilla()
+        End If
     End Sub
 
     Private Sub actualizar_datos_grilla() 'Lo que pasa cuando se cambian los filtros de la grilla
@@ -65,7 +74,9 @@
             sql &= "          , T.hora_desde"
             sql &= "          , T.hora_hasta"
             sql &= "          , E.apellido + ', ' + E.nombre As emp"
+            sql &= "          , T.id_empleado"
             sql &= "          , P.apellido + ', ' + P.nombre As pac"
+            sql &= "          , T.id_paciente"
             sql &= "          , T.observaciones"
             sql &= " FROM     Turno T JOIN Paciente P ON P.id_paciente = T.id_paciente" 'FROM Paciente JOIN Turno JOIN Empleado
             sql &= "                  JOIN Empleado E ON E.id_empleado = T.id_empleado"
@@ -117,12 +128,14 @@
 
         For c = 0 To tabla.Rows.Count - 1
             grid_turnos.Rows.Add()              'convierte el valor de la tabla de la BD a tipo FechaHora para usarlo en grilla
-            grid_turnos.Rows(c).Cells(0).Value = Convert.ToDateTime(tabla.Rows(c)("fecha")).ToString("dd/MM/yyyy")
-            grid_turnos.Rows(c).Cells(1).Value = Convert.ToDateTime(tabla.Rows(c)("hora_desde")).ToString("hh:mm")
-            grid_turnos.Rows(c).Cells(2).Value = Convert.ToDateTime(tabla.Rows(c)("hora_hasta")).ToString("hh:mm")
+            grid_turnos.Rows(c).Cells(0).Value = Convert.ToDateTime(tabla.Rows(c)("fecha")).ToString("yyyy/MM/dd")
+            grid_turnos.Rows(c).Cells(1).Value = Convert.ToDateTime(tabla.Rows(c)("hora_desde")).ToString("HH:mm")
+            grid_turnos.Rows(c).Cells(2).Value = Convert.ToDateTime(tabla.Rows(c)("hora_hasta")).ToString("HH:mm")
             grid_turnos.Rows(c).Cells(3).Value = tabla.Rows(c)("emp")
-            grid_turnos.Rows(c).Cells(4).Value = tabla.Rows(c)("pac")
-            grid_turnos.Rows(c).Cells(5).Value = tabla.Rows(c)("observaciones")
+            grid_turnos.Rows(c).Cells(4).Value = tabla.Rows(c)("id_empleado")
+            grid_turnos.Rows(c).Cells(5).Value = tabla.Rows(c)("pac")
+            grid_turnos.Rows(c).Cells(6).Value = tabla.Rows(c)("id_paciente")
+            grid_turnos.Rows(c).Cells(7).Value = tabla.Rows(c)("observaciones")
 
         Next
     End Sub
@@ -139,5 +152,29 @@
 
     Private Sub cmd_Nuevo_Click(sender As Object, e As EventArgs) Handles cmd_Nuevo.Click
         clase_auxiliar.blanquear_campos(Me)
+    End Sub
+
+    Private Sub grid_turnos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grid_turnos.CellClick
+        Me.cargar_formulario()
+    End Sub
+
+    Private Sub grid_turnos_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles grid_turnos.RowHeaderMouseClick
+        Me.cargar_formulario()
+    End Sub
+
+    Private Sub cargar_formulario()
+        'clase_auxiliar.blanquear_campos(Me)
+        Me.accion = tipo_accion.cargando_formulario
+        cmb_empleado.SelectedValue = grid_turnos.CurrentRow.Cells("id_empleado").Value
+        cmb_paciente.SelectedValue = grid_turnos.CurrentRow.Cells("id_paciente").Value
+        dtp_fecha_turno.Value = DateTime.Parse(grid_turnos.CurrentRow.Cells("fecha_turno").Value)
+        dtp_hora_desde.Value = DateTime.Parse(grid_turnos.CurrentRow.Cells("hora_desde").Value)
+        dtp_hora_hasta.Value = DateTime.Parse(grid_turnos.CurrentRow.Cells("hora_hasta").Value)
+        Me.cmd_buscar.Enabled = True
+        Me.accion = tipo_accion.normal
+    End Sub
+
+    Private Sub cmd_buscar_Click(sender As Object, e As EventArgs) Handles cmd_buscar.Click
+        Me.actualizar_datos_grilla()
     End Sub
 End Class
