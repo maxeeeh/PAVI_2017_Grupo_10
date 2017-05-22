@@ -243,10 +243,12 @@
             Dim datos_empleado As DataTable = clase_auxiliar.ejecuto_sql(sql_empleado)
             Dim hora_ingreso As DateTime = DateTime.Parse(datos_empleado.Rows(0)("hora_ingreso"))
             Dim hora_egreso As DateTime = DateTime.Parse(datos_empleado.Rows(0)("hora_egreso"))
-            'MessageBox.Show("hora_ingreso: " & hora_ingreso.ToString _
-            '                & "hora_egreso: " & hora_egreso.ToString _
-            '                & "hora_turno: " & dtp_hora_desde.Value.ToString _
-            '                & "hora_hasta turno: " & dtp_hora_hasta.Value.ToString)
+
+            'En las comparaciones habria que usar el TimeOfDay, fijarse despues
+            'MessageBox.Show("hora_ingreso: " & hora_ingreso.TimeOfDay.ToString _
+            '                & vbCrLf & "hora_egreso: " & hora_egreso.TimeOfDay.ToString _
+            '                & vbCrLf & "hora_desde: " & dtp_hora_desde.Value.TimeOfDay.ToString() _
+            '                & vbCrLf & "hora_hasta: " & dtp_hora_hasta.Value.TimeOfDay.ToString)
 
 
             If dtp_hora_desde.Value < hora_ingreso Or dtp_hora_hasta.Value > hora_egreso Then
