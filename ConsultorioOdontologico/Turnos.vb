@@ -277,7 +277,19 @@
 
     End Function
 
-    Private Function validar_turnos() As respuesta_validacion
+    Private Function existe_turno() As Boolean
+        For Each fila In grid_turnos.Rows 'Con el for, se revisan todos los turnos asignado hasta ahora
+            If fila.Cells("id_paciente").Value = cmb_paciente.SelectedValue _
+                And DateTime.Parse(fila.Cells("fecha_turno").Value) = dtp_fecha_turno.Value _
+                And DateTime.Parse(fila.Cells("hora_desde").Value) = dtp_hora_desde.Value _
+                Then
+                Return True
+            End If
+        Next
+        Return False
+    End Function
+
+    Private Function hay_superposicion() As respuesta_validacion
         'Esta funcion verifica que el nuevo turno a asignar no se superponga con algun turno ya asignado
         'Para hacer esa verificacion se usan los datos de la grilla
         'Tener en cuenta que para cuando se usa este metodo, en la grilla solo hay turnos con al menos el paciente o el empleado elegido
@@ -304,11 +316,11 @@
 
     Private Sub cmd_guardar_Click(sender As Object, e As EventArgs) Handles cmd_guardar.Click
         If validar_datos() = respuesta_validacion_error._ok Then
-            If validar_turnos() = respuesta_validacion._no_se_superpone Then
+            If hay_superposicion() = respuesta_validacion._no_se_superpone Then
                 insertar()
                 actualizar_datos_grilla()
                 MessageBox.Show("Se ha registrado el turno correctamente")
-            ElseIf validar_turnos() = respuesta_validacion._se_superpone Then
+            ElseIf hay_superposicion() = respuesta_validacion._se_superpone Then
                 MessageBox.Show("El turno se superpone con un turno ya existente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
@@ -335,4 +347,30 @@
 
         clase_auxiliar.insertar_modificar_eliminar(txt_insert)
     End Sub
+
+    Private Sub cmd_eliminar_Click(sender As Object, e As EventArgs) Handles cmd_eliminar.Click
+        If existe_turno() Then
+            Dim res As Integer = MessageBox.Show("                        Esta seguro?", "Confirmacion", MessageBoxButtons.OKCancel)
+            If res = DialogResult.OK Then
+
+                Dim txt_delete As String = ""
+
+                txt_delete &= "DELETE FROM Turno"
+                txt_delete &= " WHERE id_paciente = " & cmb_paciente.SelectedValue
+                txt_delete &= " AND fecha = '" & Format(dtp_fecha_turno.Value, "yyyy-MM-dd") & "'"
+                txt_delete &= " AND hora_desde = '" & Format(dtp_hora_desde.Value, "HH:mm") & "'"
+
+                clase_auxiliar.insertar_modificar_eliminar(txt_delete)
+
+                Me.actualizar_datos_grilla()
+                MessageBox.Show("Se ha eliminado el turno correctamente" _
+                            , "Informacion" _
+                            , MessageBoxButtons.OK _
+                            , MessageBoxIcon.Information)
+            End If
+        Else
+            MessageBox.Show("No se encuentra el turno que borrar")
+        End If
+    End Sub
+
 End Class

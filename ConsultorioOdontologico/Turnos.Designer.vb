@@ -22,9 +22,9 @@ Partial Class frm_turnos
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.grid_turnos = New System.Windows.Forms.DataGridView()
         Me.fecha_turno = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.hora_desde = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -83,8 +83,8 @@ Partial Class frm_turnos
         'fecha_turno
         '
         Me.fecha_turno.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.fecha_turno.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.fecha_turno.DefaultCellStyle = DataGridViewCellStyle1
         Me.fecha_turno.HeaderText = "Fecha Turno"
         Me.fecha_turno.Name = "fecha_turno"
         Me.fecha_turno.Width = 118
@@ -92,8 +92,8 @@ Partial Class frm_turnos
         'hora_desde
         '
         Me.hora_desde.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.hora_desde.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.hora_desde.DefaultCellStyle = DataGridViewCellStyle2
         Me.hora_desde.HeaderText = "Hora Desde"
         Me.hora_desde.Name = "hora_desde"
         Me.hora_desde.Width = 113
@@ -101,8 +101,8 @@ Partial Class frm_turnos
         'hora_hasta
         '
         Me.hora_hasta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.hora_hasta.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.hora_hasta.DefaultCellStyle = DataGridViewCellStyle3
         Me.hora_hasta.HeaderText = "Hora Hasta"
         Me.hora_hasta.Name = "hora_hasta"
         Me.hora_hasta.Width = 109
