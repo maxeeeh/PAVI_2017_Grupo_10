@@ -4,6 +4,24 @@
         normal
         cargando_formulario
     End Enum
+
+    Enum tipo_grabacion
+        insertar
+        modificar
+    End Enum
+
+    'Para saber si existe en la BD'
+    Enum respuesta_validacion
+        _se_superpone
+        _no_se_superpone
+    End Enum
+
+    'Para saber si hay algun campo con informacion erronea'
+    Enum respuesta_validacion_error
+        _ok
+        _error
+    End Enum
+
     'En la siguiente linea se asigna automaticamente la cadena de conexion segun en que compu este (ayudandose con una clase)
     Dim clase_auxiliar As New Atributos_Compartidos
     Dim cadena_conexion As String = clase_auxiliar._cadena_conexion
@@ -61,6 +79,14 @@
         If Not accion = tipo_accion.cargando_formulario Then
             Me.actualizar_datos_grilla()
         End If
+
+        If cmb_empleado.SelectedValue <> 0 Then
+            Me.actualizar_horarios_empleado()
+        Else
+            Me.txt_hora_ingreso.Text = ""
+            Me.txt_hora_egreso.Text = ""
+
+        End If
     End Sub
 
     Private Sub actualizar_datos_grilla() 'Lo que pasa cuando se cambian los filtros de la grilla
@@ -105,6 +131,8 @@
 
                 If cmb_empleado.SelectedValue <> 0 And cmb_paciente.SelectedValue <> 0 Then
                     chk_habilitar_interseccion.Enabled = True
+                Else
+                    chk_habilitar_interseccion.Enabled = False
                 End If
             Else
                 chk_habilitar_interseccion.Enabled = False
@@ -136,8 +164,21 @@
             grid_turnos.Rows(c).Cells(5).Value = tabla.Rows(c)("pac")
             grid_turnos.Rows(c).Cells(6).Value = tabla.Rows(c)("id_paciente")
             grid_turnos.Rows(c).Cells(7).Value = tabla.Rows(c)("observaciones")
-
         Next
+
+    End Sub
+
+    Private Sub actualizar_horarios_empleado()
+
+        Dim tabla As New Data.DataTable
+        Dim sql As String = "SELECT hora_ingreso, hora_egreso FROM Empleado WHERE id_empleado = " & cmb_empleado.SelectedValue.ToString
+        tabla = clase_auxiliar.ejecuto_sql(sql)
+
+        If tabla.Rows.Count > 0 Then
+            txt_hora_ingreso.Text = tabla.Rows(0)("hora_ingreso")
+            txt_hora_egreso.Text = tabla.Rows(0)("hora_egreso")
+        End If
+
     End Sub
 
     Private Sub cmd_salir_Click(sender As Object, e As EventArgs) Handles cmd_salir.Click
@@ -152,6 +193,8 @@
 
     Private Sub cmd_Nuevo_Click(sender As Object, e As EventArgs) Handles cmd_Nuevo.Click
         clase_auxiliar.blanquear_campos(Me)
+        cmb_paciente.SelectedIndex = 0
+        cmb_empleado.SelectedIndex = 0
     End Sub
 
     Private Sub grid_turnos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grid_turnos.CellClick
@@ -170,11 +213,126 @@
         dtp_fecha_turno.Value = DateTime.Parse(grid_turnos.CurrentRow.Cells("fecha_turno").Value)
         dtp_hora_desde.Value = DateTime.Parse(grid_turnos.CurrentRow.Cells("hora_desde").Value)
         dtp_hora_hasta.Value = DateTime.Parse(grid_turnos.CurrentRow.Cells("hora_hasta").Value)
+        Me.txt_observaciones.Text = grid_turnos.CurrentRow.Cells("observaciones").Value
         Me.cmd_buscar.Enabled = True
         Me.accion = tipo_accion.normal
+
+        Me.actualizar_horarios_empleado
     End Sub
 
     Private Sub cmd_buscar_Click(sender As Object, e As EventArgs) Handles cmd_buscar.Click
         Me.actualizar_datos_grilla()
+        Me.actualizar_horarios_empleado()
+    End Sub
+
+    Private Function validar_datos() As respuesta_validacion_error
+        Dim message_str As String = "Se encuentran los siguientes errores:"
+        Dim libre_de_error As Boolean = True
+        'vbCrLf es basicamente un enter, un salto a la linea siguiente
+
+        If cmb_paciente.SelectedIndex = -1 Or cmb_paciente.SelectedValue = 0 Then
+            libre_de_error = False
+            message_str &= vbCrLf & "Debe seleccionar un paciente."
+        End If
+
+        If cmb_empleado.SelectedIndex = -1 Or cmb_empleado.SelectedValue = 0 Then
+            libre_de_error = False
+            message_str &= vbCrLf & "Debe seleccionar un empleado."
+        Else
+            Dim sql_empleado As String = "SELECT * FROM Empleado WHERE id_empleado = " & cmb_empleado.SelectedValue
+            Dim datos_empleado As DataTable = clase_auxiliar.ejecuto_sql(sql_empleado)
+            Dim hora_ingreso As DateTime = DateTime.Parse(datos_empleado.Rows(0)("hora_ingreso"))
+            Dim hora_egreso As DateTime = DateTime.Parse(datos_empleado.Rows(0)("hora_egreso"))
+            'MessageBox.Show("hora_ingreso: " & hora_ingreso.ToString _
+            '                & "hora_egreso: " & hora_egreso.ToString _
+            '                & "hora_turno: " & dtp_hora_desde.Value.ToString _
+            '                & "hora_hasta turno: " & dtp_hora_hasta.Value.ToString)
+
+
+            If dtp_hora_desde.Value < hora_ingreso Or dtp_hora_hasta.Value > hora_egreso Then
+                libre_de_error = False
+                message_str &= vbCrLf & "El turno debe ser dentro del horario del empleado."
+            End If
+        End If
+
+        If dtp_fecha_turno.Value < DateTime.Today Then
+            libre_de_error = False
+            message_str &= vbCrLf & "La fecha seleccionada debe ser de hoy en adelante."
+        ElseIf dtp_fecha_turno.Value = DateTime.Today And dtp_hora_desde.Value < DateTime.Now Then
+            libre_de_error = False
+            message_str &= vbCrLf & "La hora seleccionada debe ser posterior a la hora actual."
+        End If
+
+        If dtp_hora_desde.Value >= dtp_hora_hasta.Value Then
+            libre_de_error = False
+            message_str &= vbCrLf & "La hora de fin debe ser mayor que la hora de inicio."
+        End If
+
+        If libre_de_error = True Then
+            Return respuesta_validacion_error._ok
+        Else
+            MessageBox.Show(message_str, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return respuesta_validacion_error._error
+        End If
+
+    End Function
+
+    Private Function validar_turnos() As respuesta_validacion
+        'Esta funcion verifica que el nuevo turno a asignar no se superponga con algun turno ya asignado
+        'Para hacer esa verificacion se usan los datos de la grilla
+        'Tener en cuenta que para cuando se usa este metodo, en la grilla solo hay turnos con al menos el paciente o el empleado elegido
+        For Each fila In grid_turnos.Rows 'Con el for, se revisan todos los turnos asignado hasta ahora
+            If DateTime.Parse(fila.Cells("fecha_turno").Value) = dtp_fecha_turno.Value Then 'si la fecha del turno viejo y nuevo coinciden
+                Dim hora_desde_vieja As DateTime = DateTime.Parse(fila.Cells("hora_desde").Value) 'hora_desde de un turno ya asignado
+                Dim hora_hasta_vieja As DateTime = DateTime.Parse(fila.Cells("hora_hasta").Value) 'hora_hasta de un turno ya asignado
+                Dim hora_desde_nueva As DateTime = dtp_hora_desde.Value 'hora_desde del nuevo turno a asignar
+                Dim hora_hasta_nueva As DateTime = dtp_hora_hasta.Value 'hora_hasta del nuevo turno a asignar
+                'El analisis que se hace para determinar si el nuevo turno se superpone con el turno viejo es el siguiente:
+                'Para que no se superpongan los turnos se debe cumplir 1 de 2 condiciones:
+                '   -que el turno nuevo termine antes de que empiece el viejo; 
+                '   ó
+                '   -que el turno nuevo empiece luego de que termine el viejo
+                'Si no se cumplen ninguna de las 2 condiciones, entonces los turnos se superponen
+                If Not (hora_hasta_nueva < hora_desde_vieja Or hora_desde_nueva > hora_hasta_vieja) Then
+                    Return respuesta_validacion._se_superpone
+                End If
+            End If
+        Next
+        'Si la funcion llega hasta aca es porque no encontro ningun turno con el que se superponga
+        Return respuesta_validacion._no_se_superpone
+    End Function
+
+    Private Sub cmd_guardar_Click(sender As Object, e As EventArgs) Handles cmd_guardar.Click
+        If validar_datos() = respuesta_validacion_error._ok Then
+            If validar_turnos() = respuesta_validacion._no_se_superpone Then
+                insertar()
+                actualizar_datos_grilla()
+                MessageBox.Show("Se ha registrado el turno correctamente")
+            ElseIf validar_turnos() = respuesta_validacion._se_superpone Then
+                MessageBox.Show("El turno se superpone con un turno ya existente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        End If
+
+    End Sub
+
+    Private Sub insertar()
+        Dim txt_insert As String = ""
+
+        txt_insert &= "INSERT INTO Turno ("
+        txt_insert &= " id_paciente"
+        txt_insert &= ", fecha"
+        txt_insert &= ", hora_desde"
+        txt_insert &= ", id_empleado"
+        txt_insert &= ", hora_hasta"
+        txt_insert &= ", observaciones)"
+        txt_insert &= " VALUES ("
+        txt_insert &= cmb_paciente.SelectedValue
+        txt_insert &= ", '" & Format(Me.dtp_fecha_turno.Value, "yyyy-MM-dd") & "'"
+        txt_insert &= ", '" & Format(Me.dtp_hora_desde.Value, "HH:mm") & "'"
+        txt_insert &= ", " & cmb_empleado.SelectedValue
+        txt_insert &= ", '" & Format(Me.dtp_hora_hasta.Value, "HH:mm") & "'"
+        txt_insert &= ", '" & txt_observaciones.Text & "')"
+
+        clase_auxiliar.insertar_modificar_eliminar(txt_insert)
     End Sub
 End Class

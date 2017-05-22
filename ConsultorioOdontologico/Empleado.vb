@@ -413,7 +413,7 @@
         txt_insert &= ", '" & Me.txt_hora_egreso.Text & "'"
         txt_insert &= ", 1)"
 
-        insertar_modificar_eliminar(txt_insert)
+        clase_auxiliar.insertar_modificar_eliminar(txt_insert)
     End Sub
 
 
@@ -424,7 +424,7 @@
         txt_delete &= " SET habilitado = 0"
         txt_delete &= " WHERE cuil = '" & cuil & "'"
 
-        insertar_modificar_eliminar(txt_delete)
+        clase_auxiliar.insertar_modificar_eliminar(txt_delete)
     End Sub
 
     'Private Sub habilitar_empleado()
@@ -529,20 +529,7 @@
         txt_update &= " WHERE cuil = '" & txt_cuil.Text & "'"
 
 
-        insertar_modificar_eliminar(txt_update)
-    End Sub
-
-    Private Sub insertar_modificar_eliminar(ByVal sql As String)
-        Dim conexion As New Data.OleDb.OleDbConnection
-        Dim cmd As New Data.OleDb.OleDbCommand
-
-        conexion.ConnectionString = cadena_conexion
-        conexion.Open()
-        cmd.Connection = conexion
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = sql
-        cmd.ExecuteNonQuery()
-        conexion.Close()
+        clase_auxiliar.insertar_modificar_eliminar(txt_update)
     End Sub
 
     Private Function buscar_empleado_y_llenar_formulario() As Boolean

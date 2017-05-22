@@ -22,9 +22,9 @@ Partial Class frm_turnos
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.grid_turnos = New System.Windows.Forms.DataGridView()
         Me.fecha_turno = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.hora_desde = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -52,9 +52,17 @@ Partial Class frm_turnos
         Me.lbl_paciente = New System.Windows.Forms.Label()
         Me.lbl_fecha = New System.Windows.Forms.Label()
         Me.cmd_buscar = New System.Windows.Forms.Button()
+        Me.grp_hora_empleado = New System.Windows.Forms.GroupBox()
+        Me.txt_hora_egreso = New System.Windows.Forms.MaskedTextBox()
+        Me.txt_hora_ingreso = New System.Windows.Forms.MaskedTextBox()
+        Me.lbl_ingreso = New System.Windows.Forms.Label()
+        Me.lbl_egreso = New System.Windows.Forms.Label()
+        Me.lbl_obsercaciones = New System.Windows.Forms.Label()
+        Me.txt_observaciones = New System.Windows.Forms.TextBox()
         CType(Me.grid_turnos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grp_grilla.SuspendLayout()
         Me.grp_hora.SuspendLayout()
+        Me.grp_hora_empleado.SuspendLayout()
         Me.SuspendLayout()
         '
         'grid_turnos
@@ -75,8 +83,8 @@ Partial Class frm_turnos
         'fecha_turno
         '
         Me.fecha_turno.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.fecha_turno.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.fecha_turno.DefaultCellStyle = DataGridViewCellStyle4
         Me.fecha_turno.HeaderText = "Fecha Turno"
         Me.fecha_turno.Name = "fecha_turno"
         Me.fecha_turno.Width = 118
@@ -84,8 +92,8 @@ Partial Class frm_turnos
         'hora_desde
         '
         Me.hora_desde.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.hora_desde.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.hora_desde.DefaultCellStyle = DataGridViewCellStyle5
         Me.hora_desde.HeaderText = "Hora Desde"
         Me.hora_desde.Name = "hora_desde"
         Me.hora_desde.Width = 113
@@ -93,8 +101,8 @@ Partial Class frm_turnos
         'hora_hasta
         '
         Me.hora_hasta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.hora_hasta.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.hora_hasta.DefaultCellStyle = DataGridViewCellStyle6
         Me.hora_hasta.HeaderText = "Hora Hasta"
         Me.hora_hasta.Name = "hora_hasta"
         Me.hora_hasta.Width = 109
@@ -218,7 +226,6 @@ Partial Class frm_turnos
         '
         'dtp_fecha_turno
         '
-        Me.dtp_fecha_turno.Enabled = False
         Me.dtp_fecha_turno.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.dtp_fecha_turno.Location = New System.Drawing.Point(698, 72)
         Me.dtp_fecha_turno.Margin = New System.Windows.Forms.Padding(4)
@@ -266,7 +273,7 @@ Partial Class frm_turnos
         Me.dtp_hora_hasta.ShowUpDown = True
         Me.dtp_hora_hasta.Size = New System.Drawing.Size(65, 22)
         Me.dtp_hora_hasta.TabIndex = 21
-        Me.dtp_hora_hasta.Value = New Date(2017, 5, 26, 0, 0, 0, 0)
+        Me.dtp_hora_hasta.Value = New Date(2017, 5, 21, 0, 0, 0, 0)
         '
         'dtp_hora_desde
         '
@@ -277,7 +284,7 @@ Partial Class frm_turnos
         Me.dtp_hora_desde.ShowUpDown = True
         Me.dtp_hora_desde.Size = New System.Drawing.Size(65, 22)
         Me.dtp_hora_desde.TabIndex = 20
-        Me.dtp_hora_desde.Value = New Date(2017, 5, 26, 0, 0, 0, 0)
+        Me.dtp_hora_desde.Value = New Date(2017, 5, 21, 0, 0, 0, 0)
         '
         'lbl_paciente
         '
@@ -306,11 +313,82 @@ Partial Class frm_turnos
         Me.cmd_buscar.Text = "Buscar"
         Me.cmd_buscar.UseVisualStyleBackColor = True
         '
+        'grp_hora_empleado
+        '
+        Me.grp_hora_empleado.Controls.Add(Me.txt_hora_egreso)
+        Me.grp_hora_empleado.Controls.Add(Me.txt_hora_ingreso)
+        Me.grp_hora_empleado.Controls.Add(Me.lbl_ingreso)
+        Me.grp_hora_empleado.Controls.Add(Me.lbl_egreso)
+        Me.grp_hora_empleado.Location = New System.Drawing.Point(848, 117)
+        Me.grp_hora_empleado.Name = "grp_hora_empleado"
+        Me.grp_hora_empleado.Size = New System.Drawing.Size(139, 100)
+        Me.grp_hora_empleado.TabIndex = 22
+        Me.grp_hora_empleado.TabStop = False
+        Me.grp_hora_empleado.Text = "Empleado"
+        '
+        'txt_hora_egreso
+        '
+        Me.txt_hora_egreso.Enabled = False
+        Me.txt_hora_egreso.Location = New System.Drawing.Point(86, 62)
+        Me.txt_hora_egreso.Mask = "00:00"
+        Me.txt_hora_egreso.Name = "txt_hora_egreso"
+        Me.txt_hora_egreso.Size = New System.Drawing.Size(47, 22)
+        Me.txt_hora_egreso.TabIndex = 17
+        Me.txt_hora_egreso.ValidatingType = GetType(Date)
+        '
+        'txt_hora_ingreso
+        '
+        Me.txt_hora_ingreso.Enabled = False
+        Me.txt_hora_ingreso.Location = New System.Drawing.Point(86, 24)
+        Me.txt_hora_ingreso.Mask = "00:00"
+        Me.txt_hora_ingreso.Name = "txt_hora_ingreso"
+        Me.txt_hora_ingreso.Size = New System.Drawing.Size(47, 22)
+        Me.txt_hora_ingreso.TabIndex = 16
+        Me.txt_hora_ingreso.ValidatingType = GetType(Date)
+        '
+        'lbl_ingreso
+        '
+        Me.lbl_ingreso.AutoSize = True
+        Me.lbl_ingreso.Location = New System.Drawing.Point(30, 24)
+        Me.lbl_ingreso.Name = "lbl_ingreso"
+        Me.lbl_ingreso.Size = New System.Drawing.Size(55, 17)
+        Me.lbl_ingreso.TabIndex = 14
+        Me.lbl_ingreso.Text = "Ingreso"
+        '
+        'lbl_egreso
+        '
+        Me.lbl_egreso.AutoSize = True
+        Me.lbl_egreso.Location = New System.Drawing.Point(34, 63)
+        Me.lbl_egreso.Name = "lbl_egreso"
+        Me.lbl_egreso.Size = New System.Drawing.Size(53, 17)
+        Me.lbl_egreso.TabIndex = 15
+        Me.lbl_egreso.Text = "Egreso"
+        '
+        'lbl_obsercaciones
+        '
+        Me.lbl_obsercaciones.AutoSize = True
+        Me.lbl_obsercaciones.Location = New System.Drawing.Point(51, 282)
+        Me.lbl_obsercaciones.Name = "lbl_obsercaciones"
+        Me.lbl_obsercaciones.Size = New System.Drawing.Size(103, 17)
+        Me.lbl_obsercaciones.TabIndex = 23
+        Me.lbl_obsercaciones.Text = "Observaciones"
+        '
+        'txt_observaciones
+        '
+        Me.txt_observaciones.Location = New System.Drawing.Point(168, 282)
+        Me.txt_observaciones.Multiline = True
+        Me.txt_observaciones.Name = "txt_observaciones"
+        Me.txt_observaciones.Size = New System.Drawing.Size(819, 88)
+        Me.txt_observaciones.TabIndex = 24
+        '
         'frm_turnos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1123, 836)
+        Me.Controls.Add(Me.txt_observaciones)
+        Me.Controls.Add(Me.lbl_obsercaciones)
+        Me.Controls.Add(Me.grp_hora_empleado)
         Me.Controls.Add(Me.cmd_buscar)
         Me.Controls.Add(Me.lbl_fecha)
         Me.Controls.Add(Me.grp_hora)
@@ -333,6 +411,8 @@ Partial Class frm_turnos
         Me.grp_grilla.ResumeLayout(False)
         Me.grp_hora.ResumeLayout(False)
         Me.grp_hora.PerformLayout()
+        Me.grp_hora_empleado.ResumeLayout(False)
+        Me.grp_hora_empleado.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -364,4 +444,11 @@ Partial Class frm_turnos
     Friend WithEvents id_paciente As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents observaciones As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cmd_buscar As System.Windows.Forms.Button
+    Friend WithEvents grp_hora_empleado As System.Windows.Forms.GroupBox
+    Friend WithEvents txt_hora_ingreso As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents lbl_ingreso As System.Windows.Forms.Label
+    Friend WithEvents lbl_egreso As System.Windows.Forms.Label
+    Friend WithEvents txt_hora_egreso As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents lbl_obsercaciones As System.Windows.Forms.Label
+    Friend WithEvents txt_observaciones As System.Windows.Forms.TextBox
 End Class

@@ -116,4 +116,17 @@ Public Class Atributos_Compartidos
         Return tabla
     End Function
 
+    Public Sub insertar_modificar_eliminar(ByVal sql As String)
+        Dim conexion As New Data.OleDb.OleDbConnection
+        Dim cmd As New Data.OleDb.OleDbCommand
+
+        conexion.ConnectionString = cadena_conexion
+        conexion.Open()
+        cmd.Connection = conexion
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = sql
+        cmd.ExecuteNonQuery()
+        conexion.Close()
+    End Sub
+
 End Class
