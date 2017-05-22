@@ -244,28 +244,33 @@
             Dim hora_ingreso As DateTime = DateTime.Parse(datos_empleado.Rows(0)("hora_ingreso"))
             Dim hora_egreso As DateTime = DateTime.Parse(datos_empleado.Rows(0)("hora_egreso"))
 
-            'En las comparaciones habria que usar el TimeOfDay, fijarse despues
-            'MessageBox.Show("hora_ingreso: " & hora_ingreso.TimeOfDay.ToString _
-            '                & vbCrLf & "hora_egreso: " & hora_egreso.TimeOfDay.ToString _
-            '                & vbCrLf & "hora_desde: " & dtp_hora_desde.Value.TimeOfDay.ToString() _
-            '                & vbCrLf & "hora_hasta: " & dtp_hora_hasta.Value.TimeOfDay.ToString)
+            'MessageBox.Show("hora_ingreso: " & hora_ingreso.ToString("HH:mm") _
+            '                & vbCrLf & "hora_egreso: " & hora_egreso.ToString("HH:mm") _
+            '                & vbCrLf & "hora_desde: " & dtp_hora_desde.Value.ToString("HH:mm") _
+            '                & vbCrLf & "hora_hasta: " & dtp_hora_hasta.Value.ToString("HH:mm"))
 
 
-            If dtp_hora_desde.Value < hora_ingreso Or dtp_hora_hasta.Value > hora_egreso Then
+            If dtp_hora_desde.Value.ToString("HH:mm") < hora_ingreso.ToString("HH:mm") Or _
+                    dtp_hora_hasta.Value.ToString("HH:mm") > hora_egreso.ToString("HH:mm") Then
                 libre_de_error = False
                 message_str &= vbCrLf & "El turno debe ser dentro del horario del empleado."
             End If
         End If
 
-        If dtp_fecha_turno.Value < DateTime.Today Then
-            libre_de_error = False
-            message_str &= vbCrLf & "La fecha seleccionada debe ser de hoy en adelante."
-        ElseIf dtp_fecha_turno.Value = DateTime.Today And dtp_hora_desde.Value < DateTime.Now Then
+        'If dtp_fecha_turno.Value < DateTime.Today Then
+        '    libre_de_error = False
+        '    message_str &= vbCrLf & "La fecha seleccionada debe ser de hoy en adelante."
+        'Else
+        'MessageBox.Show(DateTime.Now.ToString("HH:mm") & vbCrLf & DateTime.Now)
+        'MessageBox.Show(dtp_fecha_turno.Value & vbCrLf & DateTime.Today)
+        'MessageBox.Show(dtp_fecha_turno.Value.ToString("dd/MM/yyyy") & vbCrLf & DateTime.Today)
+
+        If dtp_fecha_turno.Value.ToString("dd/MM/yyyy") = DateTime.Today And dtp_hora_desde.Value.ToString("HH:mm") < DateTime.Now.ToString("HH:mm") Then
             libre_de_error = False
             message_str &= vbCrLf & "La hora seleccionada debe ser posterior a la hora actual."
         End If
 
-        If dtp_hora_desde.Value >= dtp_hora_hasta.Value Then
+        If dtp_hora_desde.Value.ToString("HH:mm") >= dtp_hora_hasta.Value.ToString("HH:mm") Then
             libre_de_error = False
             message_str &= vbCrLf & "La hora de fin debe ser mayor que la hora de inicio."
         End If
