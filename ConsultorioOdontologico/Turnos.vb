@@ -316,6 +316,7 @@
 
     Private Sub cmd_guardar_Click(sender As Object, e As EventArgs) Handles cmd_guardar.Click
         If validar_datos() = respuesta_validacion_error._ok Then
+            chk_habilitar_interseccion.Checked = False
             If hay_superposicion() = respuesta_validacion._no_se_superpone Then
                 insertar()
                 actualizar_datos_grilla()
