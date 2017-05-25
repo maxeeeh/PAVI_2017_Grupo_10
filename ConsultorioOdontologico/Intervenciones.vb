@@ -293,7 +293,7 @@
 
             'CERRAR CONEXION DE TRANSACCION
             Me.clase_auxiliar.cerrar_conexion_con_transaccion()
-            MessageBox.Show("EXITO", "ERROR", MessageBoxButtons.AbortRetryIgnore,MessageBoxIcon.Question)
+            MessageBox.Show("La intervencion se agregado con exito", "Enhorabuena!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 
         End If
     End Sub
