@@ -4,8 +4,22 @@
 ''' </summary>
 ''' <remarks></remarks>
 Public Class Atributos_Compartidos
+    Enum tipo_conexion
+        simple
+        transaccion
+    End Enum
+    Enum resultado_transaccion
+        _ok
+        _error
+    End Enum
+    Dim configuracion_conexion As tipo_conexion = tipo_conexion.simple
+    Dim control_transaccion As resultado_transaccion = resultado_transaccion._ok
 
     Dim cadena_conexion As String = ""
+    Dim conexion As New OleDb.OleDbConnection
+    Dim cmd As New OleDb.OleDbCommand
+    Dim transaccion As OleDb.OleDbTransaction
+
 
     ''' <summary>
     ''' Valor de la cadena de conexion, determinada automaticamente segun en que compu este (para lucho, maxi, leo y ana).
@@ -35,6 +49,40 @@ Public Class Atributos_Compartidos
                 Me._cadena_conexion = "Provider=SQLNCLI11;Data Source=POZZO;Integrated Security=SSPI;Initial Catalog=ConsultorioOdontologicoBD"
         End Select
 
+    End Sub
+    Public Sub iniciar_conexion_con_transaccion()
+        Me.control_transaccion = resultado_transaccion._ok
+        Me.configuracion_conexion = tipo_conexion.transaccion
+    End Sub
+    Public Sub cerrar_conexion_con_transaccion()
+        If Me.configuracion_conexion = tipo_conexion.transaccion Then
+            If Me.control_transaccion = resultado_transaccion._ok Then
+                Me.transaccion.Commit()
+            Else
+                Me.transaccion.Rollback()
+            End If
+            Me.configuracion_conexion = tipo_conexion.simple
+            Me.desconectar()
+        End If
+    End Sub
+    Private Sub conectar()
+        If conexion.State.ToString <> "Open" Then
+            Me.conexion.ConnectionString = cadena_conexion
+            Me.conexion.Open()
+            Me.cmd.Connection = conexion
+            Me.cmd.CommandType = CommandType.Text
+
+            If configuracion_conexion = tipo_conexion.transaccion Then
+                Me.transaccion = Me.conexion.BeginTransaction
+                Me.cmd.Transaction = Me.transaccion
+                Me.control_transaccion = resultado_transaccion._ok
+            End If
+        End If
+    End Sub
+    Private Sub desconectar()
+        If configuracion_conexion = tipo_conexion.simple Then
+            Me.conexion.Close()
+        End If
     End Sub
 
     Public Function confirmar_salida(ByRef e As FormClosingEventArgs) As Boolean
@@ -102,31 +150,19 @@ Public Class Atributos_Compartidos
     End Function
 
     Public Function ejecuto_sql(ByVal sql As String) As DataTable
-        Dim conexion As New Data.OleDb.OleDbConnection
-        Dim cmd As New Data.OleDb.OleDbCommand
-        Dim tabla As New Data.DataTable
-
-        conexion.ConnectionString = cadena_conexion
-        conexion.Open()
-        cmd.Connection = conexion
-        cmd.CommandType = CommandType.Text
+        Me.conectar()
         cmd.CommandText = sql
+        Dim tabla As New DataTable
         tabla.Load(cmd.ExecuteReader())
-        conexion.Close()
+        Me.desconectar()
         Return tabla
     End Function
 
     Public Sub insertar_modificar_eliminar(ByVal sql As String)
-        Dim conexion As New Data.OleDb.OleDbConnection
-        Dim cmd As New Data.OleDb.OleDbCommand
-
-        conexion.ConnectionString = cadena_conexion
-        conexion.Open()
-        cmd.Connection = conexion
-        cmd.CommandType = CommandType.Text
+        Me.conectar()
         cmd.CommandText = sql
         cmd.ExecuteNonQuery()
-        conexion.Close()
+        Me.desconectar()
     End Sub
 
 End Class

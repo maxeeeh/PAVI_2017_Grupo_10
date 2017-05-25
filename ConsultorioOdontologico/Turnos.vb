@@ -24,7 +24,6 @@
 
     'En la siguiente linea se asigna automaticamente la cadena de conexion segun en que compu este (ayudandose con una clase)
     Dim clase_auxiliar As New Atributos_Compartidos
-    Dim cadena_conexion As String = clase_auxiliar._cadena_conexion
     Dim accion As tipo_accion = tipo_accion.normal
 
     Private Sub frm_turnos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -287,9 +286,8 @@
     Private Function existe_turno() As Boolean
         For Each fila In grid_turnos.Rows 'Con el for, se revisan todos los turnos asignado hasta ahora
             If fila.Cells("id_paciente").Value = cmb_paciente.SelectedValue _
-                And DateTime.Parse(fila.Cells("fecha_turno").Value) = dtp_fecha_turno.Value _
-                And DateTime.Parse(fila.Cells("hora_desde").Value) = dtp_hora_desde.Value _
-                Then
+                And DateTime.Parse(fila.Cells("fecha_turno").Value) = dtp_fecha_turno.Value Then
+                'And DateTime.Parse(fila.Cells("hora_desde").Value) = dtp_hora_desde.Value Then
                 Return True
             End If
         Next
@@ -324,12 +322,16 @@
     Private Sub cmd_guardar_Click(sender As Object, e As EventArgs) Handles cmd_guardar.Click
         If validar_datos() = respuesta_validacion_error._ok Then
             chk_habilitar_interseccion.Checked = False
-            If hay_superposicion() = respuesta_validacion._no_se_superpone Then
-                insertar()
-                actualizar_datos_grilla()
-                MessageBox.Show("Se ha registrado el turno correctamente")
-            ElseIf hay_superposicion() = respuesta_validacion._se_superpone Then
-                MessageBox.Show("El turno se superpone con un turno ya existente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            If existe_turno() Then
+                MessageBox.Show("Ya existe un turno para el paciente para el dia seleccionado")
+            Else
+                If hay_superposicion() = respuesta_validacion._no_se_superpone Then
+                    insertar()
+                    actualizar_datos_grilla()
+                    MessageBox.Show("Se ha registrado el turno correctamente")
+                ElseIf hay_superposicion() = respuesta_validacion._se_superpone Then
+                    MessageBox.Show("El turno se superpone con un turno ya existente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
             End If
         End If
 

@@ -150,7 +150,7 @@ Partial Class frm_turnos
         '
         'cmb_empleado
         '
-        Me.cmb_empleado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cmb_empleado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.cmb_empleado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmb_empleado.FormattingEnabled = True
         Me.cmb_empleado.Location = New System.Drawing.Point(126, 60)
