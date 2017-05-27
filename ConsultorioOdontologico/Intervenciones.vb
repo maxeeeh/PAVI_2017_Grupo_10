@@ -8,20 +8,21 @@
 
     Private Sub frm_intervenciones_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         clase_auxiliar.cargar_combobox(cmb_insumos, "Insumo")
-        clase_auxiliar.cargar_combobox(cmb_tratamientos, tabla_para_combo_tratamiento())
+        tabla_tratamientos = tabla_para_combo_tratamiento()
+        clase_auxiliar.cargar_combobox(cmb_tratamientos, tabla_tratamientos)
         clase_auxiliar.cargar_combobox(cmb_paciente, tabla_para_combo_paciente())
         cmb_paciente.SelectedIndex = -1
 
         cmb_tratamientos.SelectedIndex = -1
         cmb_insumos.SelectedIndex = -1
 
-        tabla_tratamientos = Me.clase_auxiliar.leo_tabla("tratamiento")
+
     End Sub
 
     Private Function tabla_para_combo_tratamiento() As Data.DataTable
         Dim tabla As New Data.DataTable
         Dim sql As String = ""
-        sql &= "SELECT id_tratamiento, descripcion FROM Tratamiento WHERE habilitado=1"
+        sql &= "SELECT * FROM Tratamiento WHERE habilitado=1"
 
         tabla = clase_auxiliar.ejecuto_sql(sql)
 
@@ -68,28 +69,32 @@
 
     End Sub
 
-    Private Sub cmb_paciente_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmb_paciente.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub txt_hora_hasta_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles txt_hora_hasta.MaskInputRejected
-
-    End Sub
-
     Private Sub habilitar_controles()
-
+        cmd_guardar.Enabled = True
         cmb_tratamientos.Enabled = True
         txt_nro_tratamiento.Enabled = True
         cmd_agregar_tratamiento.Enabled = True
         cmd_remover_tratamiento.Enabled = True
-
-
         cmb_insumos.Enabled = True
         nud_cantidad_insumo.Enabled = True
         txt_nro_insumo.Enabled = True
         cmd_agregar_insumo.Enabled = True
         cmd_remover_insumo.Enabled = True
         txt__observaciones_intervencion.Enabled = True
+    End Sub
+
+    Private Sub deshabilitar_controles()
+        cmd_guardar.Enabled = False
+        cmb_tratamientos.Enabled = False
+        txt_nro_tratamiento.Enabled = False
+        cmd_agregar_tratamiento.Enabled = False
+        cmd_remover_tratamiento.Enabled = False
+        cmb_insumos.Enabled = False
+        nud_cantidad_insumo.Enabled = False
+        txt_nro_insumo.Enabled = False
+        cmd_agregar_insumo.Enabled = False
+        cmd_remover_insumo.Enabled = False
+        txt__observaciones_intervencion.Enabled = False
     End Sub
 
     Private Sub cmd_agregar_insumo_Click(sender As Object, e As EventArgs) Handles cmd_agregar_insumo.Click
@@ -131,13 +136,18 @@
 
     Private Sub cmd_remover_insumo_Click(sender As Object, e As EventArgs) Handles cmd_remover_insumo.Click
         If txt_nro_insumo.Text = "" Then
-            MessageBox.Show("El campo txt_nro_insumo esta vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("El campo Nº Insumo esta vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
 
-            Me.reasignar_nro_filas(Me.txt_nro_insumo.Text, Me.grid_insumos)
+            If existe_nro_fila_en_grilla(txt_nro_insumo.Text, Me.grid_insumos) Then
+                Me.reasignar_nro_filas(Me.txt_nro_insumo.Text, Me.grid_insumos)
 
-            txt_nro_insumo.Text = ""
-            cmb_insumos.SelectedIndex = -1
+                txt_nro_insumo.Text = ""
+                cmb_insumos.SelectedIndex = -1
+            Else
+                MessageBox.Show("El Nº de insumo debe existir en la grilla", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
         End If
 
     End Sub
@@ -182,13 +192,16 @@
             If fila_de_tratamiento <> -1 Then 'Si fila_de_tratamiento es -1 es porque no habia sido agregado
                 Dim res As Integer = MessageBox.Show("El tratamiento ya estaba agregado")
             Else
-                Me.grid_tratamientos.Rows.Add(Me.grid_tratamientos.Rows.Count + 1, Me.cmb_tratamientos.Text, Me.cmb_tratamientos.SelectedIndex)
-                Me.actualizar_monto_total()
+                Me.grid_tratamientos.Rows.Add(Me.grid_tratamientos.Rows.Count + 1, Me.cmb_tratamientos.Text, Me.cmb_tratamientos.SelectedIndex, tabla_tratamientos.Rows(Me.cmb_tratamientos.SelectedIndex)(2))
+                'Me.actualizar_monto_total()
+                Me.actualizar_monto_total(tabla_tratamientos.Rows(Me.cmb_tratamientos.SelectedIndex)("costo"))
             End If
             cmb_tratamientos.SelectedIndex = -1
 
         End If
     End Sub
+
+    
     Private Sub reasignar_nro_filas(ByVal txt_nro_fila As String, ByRef grilla As DataGridView)
         Dim nro_fila As Integer = Convert.ToInt32(txt_nro_fila) - 1
         grilla.Rows.RemoveAt(nro_fila)
@@ -199,14 +212,32 @@
 
     End Sub
 
+    Private Function existe_nro_fila_en_grilla(ByVal txt_nro_fila As String, ByRef grilla As DataGridView) As Boolean
+        For c As Integer = 0 To grilla.Rows.Count - 1
+            If grilla.Rows(c).Cells(0).Value = Convert.ToInt32(txt_nro_fila) Then
+                Return True
+            End If
+        Next
+        Return False
+    End Function
+
     Private Sub cmd_remover_tratamiento_Click(sender As Object, e As EventArgs) Handles cmd_remover_tratamiento.Click
         If txt_nro_tratamiento.Text = "" Then
-            MessageBox.Show("El campo txt_nro_tratamiento esta vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("El campo Nº Tratamiento esta vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            Me.reasignar_nro_filas(Me.txt_nro_tratamiento.Text, Me.grid_tratamientos)
-            txt_nro_tratamiento.Text = ""
-            cmb_tratamientos.SelectedIndex = -1
-            Me.actualizar_monto_total()
+            If existe_nro_fila_en_grilla(Me.txt_nro_tratamiento.Text, Me.grid_tratamientos) Then
+                Dim monto = "-" & tabla_tratamientos.Rows(Me.grid_tratamientos.Rows(Convert.ToInt32(Me.txt_nro_tratamiento.Text) - 1).Cells("id_tratamiento").Value)("costo")
+                Me.reasignar_nro_filas(Me.txt_nro_tratamiento.Text, Me.grid_tratamientos)
+
+                'Me.actualizar_monto_total()
+
+                Me.actualizar_monto_total(monto)
+                txt_nro_tratamiento.Text = ""
+                cmb_tratamientos.SelectedIndex = -1
+            Else
+                MessageBox.Show("El Nº de tratamiento debe existir en la grilla", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
         End If
 
 
@@ -237,6 +268,16 @@
                 monto_total = monto_total + costo
             Next
         End If
+    End Sub
+
+    Private Sub actualizar_monto_total(ByVal monto_t As String)
+        Dim monto_con_comas As String
+        Dim monto As Double
+
+        monto_con_comas = monto_t.Replace(".", ",")
+        monto = Convert.ToDouble(monto_con_comas)
+        monto_total = monto_total + monto
+        Me.txt_monto_total.Text = "$ " & monto_total
     End Sub
 
     Private Sub cmd_guardar_Click(sender As Object, e As EventArgs) Handles cmd_guardar.Click
@@ -293,8 +334,21 @@
 
             'CERRAR CONEXION DE TRANSACCION
             Me.clase_auxiliar.cerrar_conexion_con_transaccion()
-            MessageBox.Show("La intervencion se agregado con exito", "Enhorabuena!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-
+            MessageBox.Show("Se ha registrado la intervencion correctamente")
+            limpiar_form()
         End If
+    End Sub
+
+
+    Private Sub cmd_nuevo_Click(sender As Object, e As EventArgs) Handles cmd_nuevo.Click
+        limpiar_form()
+    End Sub
+
+    Private Sub limpiar_form()
+        monto_total = 0
+        clase_auxiliar.blanquear_campos(Me)
+        grid_insumos.Rows.Clear()
+        grid_tratamientos.Rows.Clear()
+        deshabilitar_controles()
     End Sub
 End Class

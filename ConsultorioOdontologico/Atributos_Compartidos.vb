@@ -132,6 +132,8 @@ Public Class Atributos_Compartidos
                     radio_button.Checked = False
                 Case "RichTextBox"
                     objeto.Text = ""
+                Case "NumericUpDown"
+                    objeto.Value = 1
                 Case "GroupBox"
                     blanquear_campos(objeto)
                     'Case Else

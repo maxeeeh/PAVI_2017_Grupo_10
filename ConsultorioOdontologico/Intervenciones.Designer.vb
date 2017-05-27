@@ -37,6 +37,7 @@ Partial Class frm_intervenciones
         Me.num = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.id_tratamiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.costo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txt_nro_tratamiento = New System.Windows.Forms.MaskedTextBox()
         Me.lbl_nro_tratamiento = New System.Windows.Forms.Label()
         Me.cmd_remover_tratamiento = New System.Windows.Forms.Button()
@@ -69,6 +70,8 @@ Partial Class frm_intervenciones
         Me.txt_hora_desde = New System.Windows.Forms.MaskedTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txt__observaciones_intervencion = New System.Windows.Forms.RichTextBox()
+        Me.lbl_monto_total = New System.Windows.Forms.Label()
+        Me.txt_monto_total = New System.Windows.Forms.TextBox()
         CType(Me.nud_cantidad_insumo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grp_tratamientos.SuspendLayout()
         CType(Me.grid_tratamientos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -116,7 +119,7 @@ Partial Class frm_intervenciones
         Me.cmb_tratamientos.FormattingEnabled = True
         Me.cmb_tratamientos.Location = New System.Drawing.Point(86, 16)
         Me.cmb_tratamientos.Name = "cmb_tratamientos"
-        Me.cmb_tratamientos.Size = New System.Drawing.Size(243, 21)
+        Me.cmb_tratamientos.Size = New System.Drawing.Size(248, 21)
         Me.cmb_tratamientos.TabIndex = 10
         '
         'lbl_tratamiento
@@ -183,7 +186,7 @@ Partial Class frm_intervenciones
         Me.grid_tratamientos.AllowUserToResizeColumns = False
         Me.grid_tratamientos.AllowUserToResizeRows = False
         Me.grid_tratamientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grid_tratamientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.num, Me.descripcion, Me.id_tratamiento})
+        Me.grid_tratamientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.num, Me.descripcion, Me.id_tratamiento, Me.costo})
         Me.grid_tratamientos.Location = New System.Drawing.Point(6, 19)
         Me.grid_tratamientos.Name = "grid_tratamientos"
         Me.grid_tratamientos.Size = New System.Drawing.Size(443, 111)
@@ -200,13 +203,20 @@ Partial Class frm_intervenciones
         Me.descripcion.HeaderText = "Descripcion"
         Me.descripcion.Name = "descripcion"
         Me.descripcion.ReadOnly = True
-        Me.descripcion.Width = 375
+        Me.descripcion.Width = 315
         '
         'id_tratamiento
         '
         Me.id_tratamiento.HeaderText = "id_tratamiento"
         Me.id_tratamiento.Name = "id_tratamiento"
         Me.id_tratamiento.Visible = False
+        '
+        'costo
+        '
+        Me.costo.HeaderText = "Costo"
+        Me.costo.Name = "costo"
+        Me.costo.ReadOnly = True
+        Me.costo.Width = 60
         '
         'txt_nro_tratamiento
         '
@@ -241,7 +251,7 @@ Partial Class frm_intervenciones
         Me.grp_insumos.Controls.Add(Me.grid_insumos)
         Me.grp_insumos.Location = New System.Drawing.Point(6, 70)
         Me.grp_insumos.Name = "grp_insumos"
-        Me.grp_insumos.Size = New System.Drawing.Size(455, 136)
+        Me.grp_insumos.Size = New System.Drawing.Size(455, 164)
         Me.grp_insumos.TabIndex = 20
         Me.grp_insumos.TabStop = False
         Me.grp_insumos.Text = "Insumos"
@@ -256,7 +266,7 @@ Partial Class frm_intervenciones
         Me.grid_insumos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.nro, Me.descripcion_insumo, Me.cantidad, Me.id_insumo})
         Me.grid_insumos.Location = New System.Drawing.Point(6, 19)
         Me.grid_insumos.Name = "grid_insumos"
-        Me.grid_insumos.Size = New System.Drawing.Size(443, 111)
+        Me.grid_insumos.Size = New System.Drawing.Size(443, 139)
         Me.grid_insumos.TabIndex = 0
         '
         'nro
@@ -326,7 +336,8 @@ Partial Class frm_intervenciones
         '
         'cmd_guardar
         '
-        Me.cmd_guardar.Location = New System.Drawing.Point(295, 546)
+        Me.cmd_guardar.Enabled = False
+        Me.cmd_guardar.Location = New System.Drawing.Point(301, 575)
         Me.cmd_guardar.Name = "cmd_guardar"
         Me.cmd_guardar.Size = New System.Drawing.Size(75, 23)
         Me.cmd_guardar.TabIndex = 25
@@ -335,7 +346,7 @@ Partial Class frm_intervenciones
         '
         'cmd_salir
         '
-        Me.cmd_salir.Location = New System.Drawing.Point(397, 546)
+        Me.cmd_salir.Location = New System.Drawing.Point(395, 575)
         Me.cmd_salir.Name = "cmd_salir"
         Me.cmd_salir.Size = New System.Drawing.Size(75, 23)
         Me.cmd_salir.TabIndex = 26
@@ -344,7 +355,7 @@ Partial Class frm_intervenciones
         '
         'cmd_nuevo
         '
-        Me.cmd_nuevo.Location = New System.Drawing.Point(193, 546)
+        Me.cmd_nuevo.Location = New System.Drawing.Point(207, 575)
         Me.cmd_nuevo.Name = "cmd_nuevo"
         Me.cmd_nuevo.Size = New System.Drawing.Size(75, 23)
         Me.cmd_nuevo.TabIndex = 27
@@ -365,7 +376,7 @@ Partial Class frm_intervenciones
         Me.txt_empleado.Location = New System.Drawing.Point(90, 16)
         Me.txt_empleado.Name = "txt_empleado"
         Me.txt_empleado.ReadOnly = True
-        Me.txt_empleado.Size = New System.Drawing.Size(380, 20)
+        Me.txt_empleado.Size = New System.Drawing.Size(369, 20)
         Me.txt_empleado.TabIndex = 29
         '
         'TabControl1
@@ -375,11 +386,13 @@ Partial Class frm_intervenciones
         Me.TabControl1.Location = New System.Drawing.Point(12, 303)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(475, 237)
+        Me.TabControl1.Size = New System.Drawing.Size(475, 266)
         Me.TabControl1.TabIndex = 30
         '
         'tratamientos
         '
+        Me.tratamientos.Controls.Add(Me.txt_monto_total)
+        Me.tratamientos.Controls.Add(Me.lbl_monto_total)
         Me.tratamientos.Controls.Add(Me.cmd_agregar_tratamiento)
         Me.tratamientos.Controls.Add(Me.cmb_tratamientos)
         Me.tratamientos.Controls.Add(Me.lbl_tratamiento)
@@ -390,7 +403,7 @@ Partial Class frm_intervenciones
         Me.tratamientos.Location = New System.Drawing.Point(4, 22)
         Me.tratamientos.Name = "tratamientos"
         Me.tratamientos.Padding = New System.Windows.Forms.Padding(3)
-        Me.tratamientos.Size = New System.Drawing.Size(467, 211)
+        Me.tratamientos.Size = New System.Drawing.Size(467, 240)
         Me.tratamientos.TabIndex = 0
         Me.tratamientos.Text = "Tratamientos"
         Me.tratamientos.UseVisualStyleBackColor = True
@@ -408,7 +421,7 @@ Partial Class frm_intervenciones
         Me.insumos.Location = New System.Drawing.Point(4, 22)
         Me.insumos.Name = "insumos"
         Me.insumos.Padding = New System.Windows.Forms.Padding(3)
-        Me.insumos.Size = New System.Drawing.Size(467, 211)
+        Me.insumos.Size = New System.Drawing.Size(467, 240)
         Me.insumos.TabIndex = 1
         Me.insumos.Text = "Insumos"
         Me.insumos.UseVisualStyleBackColor = True
@@ -427,7 +440,7 @@ Partial Class frm_intervenciones
         Me.grid_datos_turno.Controls.Add(Me.txt_empleado)
         Me.grid_datos_turno.Location = New System.Drawing.Point(12, 51)
         Me.grid_datos_turno.Name = "grid_datos_turno"
-        Me.grid_datos_turno.Size = New System.Drawing.Size(496, 161)
+        Me.grid_datos_turno.Size = New System.Drawing.Size(475, 161)
         Me.grid_datos_turno.TabIndex = 31
         Me.grid_datos_turno.TabStop = False
         Me.grid_datos_turno.Text = "Datos del Turno"
@@ -498,7 +511,6 @@ Partial Class frm_intervenciones
         '
         'txt_hora_desde
         '
-        Me.txt_hora_desde.Enabled = False
         Me.txt_hora_desde.Location = New System.Drawing.Point(247, 45)
         Me.txt_hora_desde.Mask = "99:99"
         Me.txt_hora_desde.Name = "txt_hora_desde"
@@ -524,11 +536,30 @@ Partial Class frm_intervenciones
         Me.txt__observaciones_intervencion.TabIndex = 38
         Me.txt__observaciones_intervencion.Text = ""
         '
+        'lbl_monto_total
+        '
+        Me.lbl_monto_total.AutoSize = True
+        Me.lbl_monto_total.Location = New System.Drawing.Point(284, 215)
+        Me.lbl_monto_total.Name = "lbl_monto_total"
+        Me.lbl_monto_total.Size = New System.Drawing.Size(64, 13)
+        Me.lbl_monto_total.TabIndex = 20
+        Me.lbl_monto_total.Text = "Monto Total"
+        '
+        'txt_monto_total
+        '
+        Me.txt_monto_total.Location = New System.Drawing.Point(354, 212)
+        Me.txt_monto_total.Name = "txt_monto_total"
+        Me.txt_monto_total.ReadOnly = True
+        Me.txt_monto_total.Size = New System.Drawing.Size(100, 20)
+        Me.txt_monto_total.TabIndex = 21
+        Me.txt_monto_total.Text = "$ 0"
+        Me.txt_monto_total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'frm_intervenciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(524, 577)
+        Me.ClientSize = New System.Drawing.Size(497, 603)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txt__observaciones_intervencion)
         Me.Controls.Add(Me.grid_datos_turno)
@@ -541,6 +572,8 @@ Partial Class frm_intervenciones
         Me.Controls.Add(Me.lbl_paciente)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(513, 642)
+        Me.MinimumSize = New System.Drawing.Size(513, 642)
         Me.Name = "frm_intervenciones"
         Me.Text = "Intervenciones"
         CType(Me.nud_cantidad_insumo, System.ComponentModel.ISupportInitialize).EndInit()
@@ -600,9 +633,12 @@ Partial Class frm_intervenciones
     Friend WithEvents descripcion_insumo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cantidad As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents id_insumo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents txt__observaciones_intervencion As System.Windows.Forms.RichTextBox
     Friend WithEvents num As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents descripcion As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents id_tratamiento As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents txt__observaciones_intervencion As System.Windows.Forms.RichTextBox
+    Friend WithEvents costo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents txt_monto_total As System.Windows.Forms.TextBox
+    Friend WithEvents lbl_monto_total As System.Windows.Forms.Label
 End Class
