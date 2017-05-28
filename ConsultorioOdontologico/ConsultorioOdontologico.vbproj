@@ -46,7 +46,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>diente.ico</ApplicationIcon>
+    <ApplicationIcon>Soporte al Software\diente.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -73,7 +73,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Atributos_Compartidos.vb" />
+    <Compile Include="Soporte al Software\Atributos_Compartidos.vb" />
     <Compile Include="Empleado.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -172,10 +172,10 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="App.config" />
+    <None Include="Soporte al Software\App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="diente.ico" />
+    <Content Include="Soporte al Software\diente.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

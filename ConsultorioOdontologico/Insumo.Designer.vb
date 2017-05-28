@@ -131,6 +131,7 @@ Partial Class frm_registrar_insumo
         Me.MaximumSize = New System.Drawing.Size(414, 450)
         Me.MinimumSize = New System.Drawing.Size(414, 450)
         Me.Name = "frm_registrar_insumo"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registrar Insumo"
         Me.grp_descripcion.ResumeLayout(False)
         Me.ResumeLayout(False)

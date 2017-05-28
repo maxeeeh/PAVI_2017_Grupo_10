@@ -212,6 +212,7 @@ Partial Class frm_registrar_tratamiento
         Me.MaximumSize = New System.Drawing.Size(414, 450)
         Me.MinimumSize = New System.Drawing.Size(414, 450)
         Me.Name = "frm_registrar_tratamiento"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registrar Tratamiento"
         CType(Me.grid_tratamientos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grp_descripcion.ResumeLayout(False)

@@ -58,6 +58,8 @@ Partial Class frm_intervenciones
         Me.txt_empleado = New System.Windows.Forms.TextBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tratamientos = New System.Windows.Forms.TabPage()
+        Me.txt_monto_total = New System.Windows.Forms.TextBox()
+        Me.lbl_monto_total = New System.Windows.Forms.Label()
         Me.insumos = New System.Windows.Forms.TabPage()
         Me.grid_datos_turno = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -70,8 +72,6 @@ Partial Class frm_intervenciones
         Me.txt_hora_desde = New System.Windows.Forms.MaskedTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txt__observaciones_intervencion = New System.Windows.Forms.RichTextBox()
-        Me.lbl_monto_total = New System.Windows.Forms.Label()
-        Me.txt_monto_total = New System.Windows.Forms.TextBox()
         CType(Me.nud_cantidad_insumo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grp_tratamientos.SuspendLayout()
         CType(Me.grid_tratamientos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -408,6 +408,25 @@ Partial Class frm_intervenciones
         Me.tratamientos.Text = "Tratamientos"
         Me.tratamientos.UseVisualStyleBackColor = True
         '
+        'txt_monto_total
+        '
+        Me.txt_monto_total.Location = New System.Drawing.Point(354, 212)
+        Me.txt_monto_total.Name = "txt_monto_total"
+        Me.txt_monto_total.ReadOnly = True
+        Me.txt_monto_total.Size = New System.Drawing.Size(100, 20)
+        Me.txt_monto_total.TabIndex = 21
+        Me.txt_monto_total.Text = "$ 0"
+        Me.txt_monto_total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'lbl_monto_total
+        '
+        Me.lbl_monto_total.AutoSize = True
+        Me.lbl_monto_total.Location = New System.Drawing.Point(284, 215)
+        Me.lbl_monto_total.Name = "lbl_monto_total"
+        Me.lbl_monto_total.Size = New System.Drawing.Size(64, 13)
+        Me.lbl_monto_total.TabIndex = 20
+        Me.lbl_monto_total.Text = "Monto Total"
+        '
         'insumos
         '
         Me.insumos.Controls.Add(Me.grp_insumos)
@@ -536,25 +555,6 @@ Partial Class frm_intervenciones
         Me.txt__observaciones_intervencion.TabIndex = 38
         Me.txt__observaciones_intervencion.Text = ""
         '
-        'lbl_monto_total
-        '
-        Me.lbl_monto_total.AutoSize = True
-        Me.lbl_monto_total.Location = New System.Drawing.Point(284, 215)
-        Me.lbl_monto_total.Name = "lbl_monto_total"
-        Me.lbl_monto_total.Size = New System.Drawing.Size(64, 13)
-        Me.lbl_monto_total.TabIndex = 20
-        Me.lbl_monto_total.Text = "Monto Total"
-        '
-        'txt_monto_total
-        '
-        Me.txt_monto_total.Location = New System.Drawing.Point(354, 212)
-        Me.txt_monto_total.Name = "txt_monto_total"
-        Me.txt_monto_total.ReadOnly = True
-        Me.txt_monto_total.Size = New System.Drawing.Size(100, 20)
-        Me.txt_monto_total.TabIndex = 21
-        Me.txt_monto_total.Text = "$ 0"
-        Me.txt_monto_total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
         'frm_intervenciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -575,6 +575,7 @@ Partial Class frm_intervenciones
         Me.MaximumSize = New System.Drawing.Size(513, 642)
         Me.MinimumSize = New System.Drawing.Size(513, 642)
         Me.Name = "frm_intervenciones"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Intervenciones"
         CType(Me.nud_cantidad_insumo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grp_tratamientos.ResumeLayout(False)
