@@ -35,9 +35,15 @@
         Dim tabla As New Data.DataTable
         Dim sql As String = ""
         'En el select hace id_empleado o id_paciente, y despues concatena asi: "Apellido, Nombre"
+        'La idea del LEFT JOIN es que mantenga los datos de la izquierda y llene con null los datos a la derecha
+        'si es que no se encontraron coincidencias con la condicion del ON. Al hacer el LEFT JOIN se encontraran
+        'los turnos que no tengan intervencion registrada si el id_intervencion es NULL
         sql &= "SELECT T.id_paciente, P.apellido + ', ' + P.nombre"
         sql &= " FROM Paciente P JOIN Turno T ON P.id_paciente = T.id_paciente"
-        sql &= " WHERE P.habilitado = 1 AND T.fecha = '" & DateTime.Today.ToString("yyyy-MM-dd") & "'"
+        sql &= " LEFT JOIN Intervencion I ON T.id_paciente = I.id_paciente AND T.fecha = I.fecha"
+        sql &= " WHERE P.habilitado = 1"
+        sql &= " AND T.fecha = '" & DateTime.Today.ToString("yyyy-MM-dd") & "'"
+        sql &= " AND I.id_intervencion IS NULL"
         sql &= " ORDER BY P.apellido"
         tabla = clase_auxiliar.ejecuto_sql(sql)
 
@@ -335,6 +341,7 @@
             'CERRAR CONEXION DE TRANSACCION
             Me.clase_auxiliar.cerrar_conexion_con_transaccion()
             MessageBox.Show("Se ha registrado la intervencion correctamente")
+            clase_auxiliar.cargar_combobox(cmb_paciente, tabla_para_combo_paciente())
             limpiar_form()
         End If
     End Sub
