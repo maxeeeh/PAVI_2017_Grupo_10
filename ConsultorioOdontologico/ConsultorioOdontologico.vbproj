@@ -76,6 +76,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factura.designer.vb">
+      <DependentUpon>Factura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Factura.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes\DataSet\Factura_DataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
