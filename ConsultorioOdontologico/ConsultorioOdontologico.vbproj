@@ -49,10 +49,13 @@
     <ApplicationIcon>Soporte al Software\diente.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -73,6 +76,20 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Reportes\DataSet\Factura_DataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Factura_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\DataSet\Factura_DataSet.vb">
+      <DependentUpon>Factura_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Factura_Report.Designer.vb">
+      <DependentUpon>Factura_Report.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Factura_Report.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Soporte al Software\Atributos_Compartidos.vb" />
     <Compile Include="Empleado.vb">
       <SubType>Form</SubType>
@@ -143,6 +160,11 @@
     <EmbeddedResource Include="Intervenciones.resx">
       <DependentUpon>Intervenciones.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Report\Detalle_Factura_SubReport.rdlc" />
+    <EmbeddedResource Include="Reportes\Report\Factura_Report.rdlc" />
+    <EmbeddedResource Include="Reportes\Factura_Report.resx">
+      <DependentUpon>Factura_Report.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Turnos.resx">
       <DependentUpon>Turnos.vb</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +185,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -171,6 +194,17 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Reportes\DataSet\Factura_DataSet.xsc">
+      <DependentUpon>Factura_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\DataSet\Factura_DataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Factura_DataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Reportes\DataSet\Factura_DataSet.xss">
+      <DependentUpon>Factura_DataSet.xsd</DependentUpon>
     </None>
     <None Include="Soporte al Software\App.config" />
   </ItemGroup>
