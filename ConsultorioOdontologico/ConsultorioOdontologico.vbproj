@@ -163,6 +163,9 @@
     <EmbeddedResource Include="Cargo.resx">
       <DependentUpon>Cargo.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Factura.resx">
+      <DependentUpon>Factura.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Intervenciones.resx">
       <DependentUpon>Intervenciones.vb</DependentUpon>
     </EmbeddedResource>

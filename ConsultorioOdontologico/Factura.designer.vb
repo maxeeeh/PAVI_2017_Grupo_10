@@ -26,8 +26,17 @@ Partial Class Factura
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmb_intervenciones = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grid_intervenciones = New System.Windows.Forms.DataGridView()
+        Me.cmd_agregar = New System.Windows.Forms.Button()
+        Me.cmd_remover = New System.Windows.Forms.Button()
+        Me.id_intervencion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.id_empleado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.empleado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.monto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txt_monto_total = New System.Windows.Forms.TextBox()
+        CType(Me.grid_intervenciones, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmb_pacientes
@@ -41,7 +50,7 @@ Partial Class Factura
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(42, 23)
+        Me.Label1.Location = New System.Drawing.Point(51, 18)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(54, 13)
         Me.Label1.TabIndex = 1
@@ -50,7 +59,7 @@ Partial Class Factura
         'cmb_intervenciones
         '
         Me.cmb_intervenciones.FormattingEnabled = True
-        Me.cmb_intervenciones.Location = New System.Drawing.Point(114, 86)
+        Me.cmb_intervenciones.Location = New System.Drawing.Point(114, 54)
         Me.cmb_intervenciones.Name = "cmb_intervenciones"
         Me.cmb_intervenciones.Size = New System.Drawing.Size(121, 21)
         Me.cmb_intervenciones.TabIndex = 2
@@ -58,33 +67,109 @@ Partial Class Factura
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(16, 94)
+        Me.Label2.Location = New System.Drawing.Point(28, 57)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(80, 13)
+        Me.Label2.Size = New System.Drawing.Size(77, 13)
         Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Intervenciones "
+        Me.Label2.Text = "Intervenciones"
         '
-        'DataGridView1
+        'grid_intervenciones
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(19, 168)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(537, 132)
-        Me.DataGridView1.TabIndex = 4
+        Me.grid_intervenciones.AllowUserToAddRows = False
+        Me.grid_intervenciones.AllowUserToDeleteRows = False
+        Me.grid_intervenciones.AllowUserToResizeColumns = False
+        Me.grid_intervenciones.AllowUserToResizeRows = False
+        Me.grid_intervenciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grid_intervenciones.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_intervencion, Me.fecha, Me.id_empleado, Me.empleado, Me.monto})
+        Me.grid_intervenciones.Location = New System.Drawing.Point(19, 168)
+        Me.grid_intervenciones.Name = "grid_intervenciones"
+        Me.grid_intervenciones.Size = New System.Drawing.Size(394, 132)
+        Me.grid_intervenciones.TabIndex = 4
+        '
+        'cmd_agregar
+        '
+        Me.cmd_agregar.Enabled = False
+        Me.cmd_agregar.Location = New System.Drawing.Point(241, 52)
+        Me.cmd_agregar.Name = "cmd_agregar"
+        Me.cmd_agregar.Size = New System.Drawing.Size(75, 23)
+        Me.cmd_agregar.TabIndex = 5
+        Me.cmd_agregar.Text = "Agregar"
+        Me.cmd_agregar.UseVisualStyleBackColor = True
+        '
+        'cmd_remover
+        '
+        Me.cmd_remover.Enabled = False
+        Me.cmd_remover.Location = New System.Drawing.Point(19, 131)
+        Me.cmd_remover.Name = "cmd_remover"
+        Me.cmd_remover.Size = New System.Drawing.Size(75, 23)
+        Me.cmd_remover.TabIndex = 6
+        Me.cmd_remover.Text = "Remover"
+        Me.cmd_remover.UseVisualStyleBackColor = True
+        '
+        'id_intervencion
+        '
+        Me.id_intervencion.HeaderText = "id_intervencion"
+        Me.id_intervencion.Name = "id_intervencion"
+        Me.id_intervencion.Visible = False
+        '
+        'fecha
+        '
+        Me.fecha.HeaderText = "Fecha"
+        Me.fecha.Name = "fecha"
+        '
+        'id_empleado
+        '
+        Me.id_empleado.HeaderText = "id_empleado"
+        Me.id_empleado.Name = "id_empleado"
+        Me.id_empleado.Visible = False
+        '
+        'empleado
+        '
+        Me.empleado.HeaderText = "Empleado"
+        Me.empleado.Name = "empleado"
+        Me.empleado.Width = 200
+        '
+        'monto
+        '
+        Me.monto.HeaderText = "Monto"
+        Me.monto.Name = "monto"
+        Me.monto.Width = 50
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(196, 134)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(67, 13)
+        Me.Label3.TabIndex = 7
+        Me.Label3.Text = "Monto Total:"
+        '
+        'txt_monto_total
+        '
+        Me.txt_monto_total.Location = New System.Drawing.Point(269, 131)
+        Me.txt_monto_total.Name = "txt_monto_total"
+        Me.txt_monto_total.ReadOnly = True
+        Me.txt_monto_total.Size = New System.Drawing.Size(100, 20)
+        Me.txt_monto_total.TabIndex = 8
+        Me.txt_monto_total.Text = "$ 0"
         '
         'Factura
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(614, 312)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.ClientSize = New System.Drawing.Size(421, 312)
+        Me.Controls.Add(Me.txt_monto_total)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.cmd_remover)
+        Me.Controls.Add(Me.cmd_agregar)
+        Me.Controls.Add(Me.grid_intervenciones)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.cmb_intervenciones)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cmb_pacientes)
         Me.Name = "Factura"
         Me.Text = "Factura"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grid_intervenciones, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -93,5 +178,14 @@ Partial Class Factura
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents cmb_intervenciones As System.Windows.Forms.ComboBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents grid_intervenciones As System.Windows.Forms.DataGridView
+    Friend WithEvents cmd_agregar As System.Windows.Forms.Button
+    Friend WithEvents cmd_remover As System.Windows.Forms.Button
+    Friend WithEvents id_intervencion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents fecha As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents id_empleado As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents empleado As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents monto As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents txt_monto_total As System.Windows.Forms.TextBox
 End Class
