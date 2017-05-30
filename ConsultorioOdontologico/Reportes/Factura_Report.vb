@@ -41,7 +41,7 @@
         nro_factura = id_factura
     End Sub
 
-    Sub New()
-        InitializeComponent()
-    End Sub
+    'Sub New()
+    'InitializeComponent()
+    'End Sub
 End Class
