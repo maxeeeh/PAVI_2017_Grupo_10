@@ -4,10 +4,10 @@
     <ReportItems>
       <Subreport Name="Detalle_Factura">
         <ReportName>Detalle_Factura_SubReport</ReportName>
-        <Top>0.17639cm</Top>
-        <Left>0.04748cm</Left>
-        <Height>5cm</Height>
-        <Width>14cm</Width>
+        <Top>0.07056cm</Top>
+        <Left>0.00001cm</Left>
+        <Height>5.07938cm</Height>
+        <Width>15.15875cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -15,13 +15,13 @@
         </Style>
       </Subreport>
     </ReportItems>
-    <Height>2.26017in</Height>
+    <Height>5.32632cm</Height>
     <Style />
   </Body>
-  <Width>5.74144in</Width>
+  <Width>15.15876cm</Width>
   <Page>
     <PageHeader>
-      <Height>10.16974cm</Height>
+      <Height>9.78833cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -46,7 +46,7 @@
           <Top>7.93787cm</Top>
           <Left>0.06647cm</Left>
           <Height>0.6cm</Height>
-          <Width>14.3175cm</Width>
+          <Width>15.05257cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -258,7 +258,7 @@
             </Textbox>
           </ReportItems>
           <KeepTogether>true</KeepTogether>
-          <Left>7.58326cm</Left>
+          <Left>8.11904cm</Left>
           <Height>7.39979cm</Height>
           <Width>7cm</Width>
           <ZIndex>1</ZIndex>
@@ -369,7 +369,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Email: Odontologia_Integral@gmail.com</Value>
+                      <Value>Email: odontologia_Integral@gmail.com</Value>
                       <Style>
                         <FontFamily>Arial Black</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -397,6 +397,7 @@
             </Textbox>
           </ReportItems>
           <KeepTogether>true</KeepTogether>
+          <Top>0cm</Top>
           <Height>7.39979cm</Height>
           <Width>7cm</Width>
           <ZIndex>2</ZIndex>
@@ -446,7 +447,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>1.13771cm</Height>
+      <Height>1cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>

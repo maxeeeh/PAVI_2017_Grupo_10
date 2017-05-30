@@ -6,18 +6,18 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.05021cm</Width>
+              <Width>3.99458cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.61667cm</Width>
+              <Width>6.56104cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>4.44437cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.75716cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -30,8 +30,8 @@
                             <TextRun>
                               <Value>Nro</Value>
                               <Style>
+                                <FontSize>15pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
-                                <Color>Blue</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -43,10 +43,21 @@
                       <rd:DefaultName>Textbox7</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Red</Color>
                           <Style>Solid</Style>
                           <Width>2pt</Width>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -66,8 +77,8 @@
                             <TextRun>
                               <Value>Fecha de la Intervencion</Value>
                               <Style>
+                                <FontSize>15pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
-                                <Color>Blue</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -79,10 +90,21 @@
                       <rd:DefaultName>Textbox1</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Red</Color>
                           <Style>Solid</Style>
                           <Width>2pt</Width>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -102,8 +124,8 @@
                             <TextRun>
                               <Value>Monto</Value>
                               <Style>
+                                <FontSize>15pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
-                                <Color>Blue</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -115,10 +137,21 @@
                       <rd:DefaultName>Textbox3</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Red</Color>
                           <Style>Solid</Style>
                           <Width>2pt</Width>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -130,7 +163,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.75716cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -144,8 +177,8 @@
                               <Value>=RowNumber(Nothing)</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
+                                <FontSize>13pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
-                                <Color>Orange</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -156,10 +189,21 @@
                       </Paragraphs>
                       <Style>
                         <Border>
-                          <Color>Red</Color>
                           <Style>Solid</Style>
                           <Width>2pt</Width>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -180,9 +224,9 @@
                               <Value>=Fields!fecha_intervencion.Value</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
-                                <FontWeight>Bold</FontWeight>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Medium</FontWeight>
                                 <Format>d</Format>
-                                <Color>Orange</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -194,10 +238,21 @@
                       <rd:DefaultName>fecha_intervencion</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Red</Color>
                           <Style>Solid</Style>
                           <Width>2pt</Width>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -215,11 +270,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!precio.Value</Value>
+                              <Value>="$ " &amp; Fields!precio.Value</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
-                                <FontWeight>Bold</FontWeight>
-                                <Color>Orange</Color>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Medium</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -231,7 +286,6 @@
                       <rd:DefaultName>precio</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Red</Color>
                           <Style>Solid</Style>
                           <Width>2pt</Width>
                         </Border>
@@ -265,23 +319,20 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DS_Detalle_Factura</DataSetName>
-        <Top>2.40453cm</Top>
-        <Left>2.53683cm</Left>
-        <Height>1.2cm</Height>
-        <Width>9.16688cm</Width>
+        <Height>1.51432cm</Height>
+        <Width>15cm</Width>
         <Style>
           <Border>
-            <Color>Red</Color>
             <Style>Solid</Style>
             <Width>2pt</Width>
           </Border>
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>4.94708cm</Height>
+    <Height>5cm</Height>
     <Style />
   </Body>
-  <Width>14cm</Width>
+  <Width>15cm</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

@@ -49,7 +49,7 @@ Partial Class frm_factura_report
         Me.rv_factura.LocalReport.ReportEmbeddedResource = "ConsultorioOdontologico.Factura_Report.rdlc"
         Me.rv_factura.Location = New System.Drawing.Point(36, 12)
         Me.rv_factura.Name = "rv_factura"
-        Me.rv_factura.Size = New System.Drawing.Size(564, 629)
+        Me.rv_factura.Size = New System.Drawing.Size(609, 629)
         Me.rv_factura.TabIndex = 0
         '
         'frm_factura_report
