@@ -1,7 +1,7 @@
 ﻿Public Class frm_factura_report
     Dim clase_auxiliar As New Atributos_Compartidos
 
-    Dim nro_factura As Integer = 1 'El valor de esta variable tiene que ser pasado por parametro al crear la ventana
+    Dim nro_factura As Integer = 13 'El valor de esta variable tiene que ser pasado por parametro al crear la ventana
     Private _p1 As Integer
 
     Private Sub Factura_Report_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -41,7 +41,7 @@
         nro_factura = id_factura
     End Sub
 
-    'Sub New()
-    'InitializeComponent()
-    'End Sub
+    Sub New()
+        InitializeComponent()
+    End Sub
 End Class

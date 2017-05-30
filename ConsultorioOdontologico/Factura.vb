@@ -158,7 +158,7 @@
                 sql_detallefactura &= "INSERT INTO detallefactura (id_factura, id_intervencion, precio) VALUES ("
                 sql_detallefactura &= " " & id_factura.ToString
                 sql_detallefactura &= ", " & fila.Cells("id_intervencion").Value.ToString
-                sql_detallefactura &= ", " & Me.monto_total.ToString
+                sql_detallefactura &= ", " & fila.Cells("monto").Value.ToString().Replace(",", ".")
                 sql_detallefactura &= ")"
 
                 Me.clase_auxiliar.insertar_modificar_eliminar(sql_detallefactura)

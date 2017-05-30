@@ -6,13 +6,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.99458cm</Width>
+              <Width>4.03687cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>6.56104cm</Width>
+              <Width>6.60333cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.44437cm</Width>
+              <Width>4.48666cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -163,7 +163,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.75716cm</Height>
+              <Height>0.65133cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -315,12 +315,17 @@
             </TablixMember>
             <TablixMember>
               <Group Name="Details" />
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DS_Detalle_Factura</DataSetName>
-        <Height>1.51432cm</Height>
-        <Width>15cm</Width>
+        <Top>0.3175cm</Top>
+        <Left>0.67cm</Left>
+        <Height>1.40849cm</Height>
+        <Width>15.12687cm</Width>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -332,7 +337,7 @@
     <Height>5cm</Height>
     <Style />
   </Body>
-  <Width>15cm</Width>
+  <Width>16.6cm</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
