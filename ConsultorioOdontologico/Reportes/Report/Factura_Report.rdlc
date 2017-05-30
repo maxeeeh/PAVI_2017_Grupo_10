@@ -4,8 +4,8 @@
     <ReportItems>
       <Subreport Name="Detalle_Factura">
         <ReportName>Detalle_Factura_SubReport</ReportName>
-        <Top>2.16958cm</Top>
-        <Left>0.00001cm</Left>
+        <Top>0.17639cm</Top>
+        <Left>0.04748cm</Left>
         <Height>5cm</Height>
         <Width>14cm</Width>
         <Style>
@@ -15,7 +15,7 @@
         </Style>
       </Subreport>
     </ReportItems>
-    <Height>3.0935in</Height>
+    <Height>2.26017in</Height>
     <Style />
   </Body>
   <Width>5.74144in</Width>
@@ -76,9 +76,9 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Left>3.91675cm</Left>
+              <Left>3.53279cm</Left>
               <Height>0.6cm</Height>
-              <Width>2.5cm</Width>
+              <Width>2.88396cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -108,9 +108,9 @@
                 </Paragraph>
               </Paragraphs>
               <Top>1.16417cm</Top>
-              <Left>3.91675cm</Left>
+              <Left>3.58026cm</Left>
               <Height>0.6cm</Height>
-              <Width>2.5cm</Width>
+              <Width>2.88396cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -316,7 +316,6 @@
                 </Paragraph>
               </Paragraphs>
               <Top>3.91583cm</Top>
-              <Left>0cm</Left>
               <Height>1.01451cm</Height>
               <Width>6.53458cm</Width>
               <ZIndex>1</ZIndex>
@@ -399,7 +398,7 @@
           </ReportItems>
           <KeepTogether>true</KeepTogether>
           <Height>7.39979cm</Height>
-          <Width>7.02646cm</Width>
+          <Width>7cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -447,7 +446,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>7.43479cm</Height>
+      <Height>1.13771cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -469,9 +468,9 @@
             </Paragraph>
           </Paragraphs>
           <Top>0.17639cm</Top>
-          <Left>11.16352cm</Left>
+          <Left>10.26394cm</Left>
           <Height>0.6cm</Height>
-          <Width>2.5cm</Width>
+          <Width>3.39958cm</Width>
           <Style>
             <Border>
               <Style>None</Style>

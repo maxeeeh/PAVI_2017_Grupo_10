@@ -1,4 +1,4 @@
-﻿Public Class Factura
+﻿Public Class frm_factura
     Dim clase_auxiliar As New Atributos_Compartidos
     Dim tabla_intervenciones As New DataTable
     Dim monto_total As Double = 0
@@ -6,10 +6,10 @@
     Private Sub Factura_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         clase_auxiliar.cargar_combobox(cmb_pacientes, tabla_para_combo_pacientes())
-
+        If cmb_pacientes.SelectedIndex <> -1 Then
+            Me.cargar_intervenciones()
+        End If
     End Sub
-
-   
 
     Private Function tabla_para_combo_pacientes() As DataTable
 
@@ -23,8 +23,6 @@
         '       sql &= " GROUP BY id_" & nombre_tabla.ToLower() & ", apellido + ', ' + nombre"
         tabla = clase_auxiliar.ejecuto_sql(sql)
 
-
-
         Return tabla
 
     End Function
@@ -32,18 +30,22 @@
     Private Sub cargar_tabla_intervenciones() ' el parametro puede ser "Empleado" o "Paciente"
         'Esta funcion da una tabla con 2 columnas: la primera es el id_paciente o id_empleado, y la segunda el apellido y nombre concatenados
 
-        Dim tabla As New Data.DataTable
-        Dim sql As String = ""
-        'En el select hace id_empleado o id_paciente, y despues concatena asi: "Apellido, Nombre"
-        sql &= "SELECT I.id_intervencion, I.fecha, I.monto_total As monto, I.id_empleado, E.nombre + ', ' + E.apellido As empleado"
-        sql &= " FROM Intervencion I JOIN Empleado E ON I.id_empleado = E.id_empleado"
-        sql &= " WHERE pagado = 0 AND id_paciente = " & cmb_pacientes.SelectedValue.ToString
-        sql &= " ORDER BY fecha ASC"
-        tabla_intervenciones = clase_auxiliar.ejecuto_sql(sql) 'guarda la tabla de las intervenciones en una variable
+            Dim tabla As New Data.DataTable
+            Dim sql As String = ""
+            'En el select hace id_empleado o id_paciente, y despues concatena asi: "Apellido, Nombre"
+            sql &= "SELECT I.id_intervencion, I.fecha, I.monto_total As monto, I.id_empleado, E.nombre + ', ' + E.apellido As empleado"
+            sql &= " FROM Intervencion I JOIN Empleado E ON I.id_empleado = E.id_empleado"
+            sql &= " WHERE pagado = 0 AND id_paciente = " & cmb_pacientes.SelectedValue.ToString
+            sql &= " ORDER BY fecha ASC"
+            tabla_intervenciones = clase_auxiliar.ejecuto_sql(sql) 'guarda la tabla de las intervenciones en una variable
 
     End Sub
 
     Private Sub cmb_pacientes_SelectionChangeCommited(sender As Object, e As EventArgs) Handles cmb_pacientes.SelectionChangeCommitted
+        cargar_intervenciones()
+    End Sub
+
+    Private Sub cargar_intervenciones()
         cargar_tabla_intervenciones()
         clase_auxiliar.cargar_combobox(cmb_intervenciones, tabla_intervenciones)
         Me.grid_intervenciones.Rows.Clear()
@@ -112,7 +114,7 @@
         Me.grid_intervenciones.Rows.RemoveAt(grid_intervenciones.CurrentRow.Index)
 
 
-        
+
         'Me.actualizar_monto_total()
 
         Me.actualizar_monto_total(monto)

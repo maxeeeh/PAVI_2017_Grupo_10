@@ -106,7 +106,6 @@ Public Class Atributos_Compartidos
 
     'Deje tambien esta version porque sirve para el formulario de turnos (LUCHO)
     Public Sub cargar_combobox(ByRef combo As ComboBox, ByVal data As DataTable)
-        'combo.Items.Clear()
         combo.DataSource = data '.Rows.InsertAt(New System.Data.DataRow()
         combo.ValueMember = data.Columns(0).ColumnName   'pk
         combo.DisplayMember = data.Columns(1).ColumnName 'descripcion
