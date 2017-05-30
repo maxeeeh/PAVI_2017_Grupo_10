@@ -6,7 +6,7 @@
         <ReportName>Detalle_Factura_SubReport</ReportName>
         <Top>0.17639cm</Top>
         <Height>5.00882cm</Height>
-        <Width>16.61153cm</Width>
+        <Width>16.70049cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -56,7 +56,7 @@
               <Style />
             </Paragraph>
           </Paragraphs>
-          <Top>7.7262cm</Top>
+          <Top>7.8cm</Top>
           <Left>4.03458cm</Left>
           <Height>0.74111cm</Height>
           <Width>8.38507cm</Width>
@@ -213,7 +213,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Inic. Activ 01/06/99</Value>
+                      <Value>Inic. Activ 30/05/27</Value>
                       <Style>
                         <FontFamily>Arial Black</FontFamily>
                       </Style>
@@ -276,7 +276,6 @@
             </Textbox>
           </ReportItems>
           <KeepTogether>true</KeepTogether>
-          <Top>0cm</Top>
           <Left>8.78945cm</Left>
           <Height>7.39979cm</Height>
           <Width>8cm</Width>
@@ -435,7 +434,6 @@
             </Image>
           </ReportItems>
           <KeepTogether>true</KeepTogether>
-          <Top>0cm</Top>
           <Height>7.39979cm</Height>
           <Width>8.02646cm</Width>
           <ZIndex>2</ZIndex>
@@ -463,7 +461,7 @@
               <Style />
             </Paragraph>
           </Paragraphs>
-          <Top>8.67898cm</Top>
+          <Top>8.69cm</Top>
           <Left>4.03458cm</Left>
           <Height>0.74111cm</Height>
           <Width>2.5cm</Width>
@@ -622,9 +620,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
           <Top>0.23812cm</Top>
-          <Left>6.64147cm</Left>
+          <Left>7.27647cm</Left>
           <Height>0.71465cm</Height>
-          <Width>4.77542cm</Width>
+          <Width>4.2198cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
