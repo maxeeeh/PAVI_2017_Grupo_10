@@ -49,12 +49,18 @@
         Me.grid_intervenciones.Rows.Clear()
         Me.cmd_agregar.Enabled = True
         Me.cmd_remover.Enabled = False
+        Me.monto_total = 0
+        Me.txt_monto_total.Text = "$ 0"
     End Sub
 
     Private Sub frm_intervenciones_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         'La siguiente linea usa el metodo "confirmar_salida" de la clase "Atributos_Compartidos" para
         'ver si el usuario cancelo el cerrado del formulario. (Le manda el evento de cerrado "e" al metodo)
         e.Cancel = clase_auxiliar.confirmar_salida(e)
+    End Sub
+
+    Private Sub cmd_salir_Click(sender As Object, e As EventArgs) Handles cmd_salir.Click
+        Me.Close()
     End Sub
 
     Private Sub cmd_agregar_Click(sender As Object, e As EventArgs) Handles cmd_agregar.Click
@@ -115,5 +121,79 @@
             Me.cmd_remover.Enabled = False
         End If
         Me.cmd_agregar.Enabled = True
+    End Sub
+
+    Private Sub cmd_guardar_Click(sender As Object, e As EventArgs) Handles cmd_guardar.Click
+        If grid_intervenciones.Rows().Count = 0 Then
+            MessageBox.Show("Debe haber por lo menos 1 intervencion a facturar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            'INICIAR CONEXION DE TRANSACCION
+            Me.clase_auxiliar.iniciar_conexion_con_transaccion()
+            'GUARDAR LOS DATOS DE LA FACTURA
+            Dim sql_factura As String = ""
+            sql_factura &= "INSERT INTO Factura (id_paciente, monto_total, fecha, id_forma_pago)"
+            sql_factura &= " VALUES ("
+            sql_factura &= cmb_pacientes.SelectedValue.ToString
+            sql_factura &= ", " & monto_total.ToString 'se hace un update despues de guardar los tratamientosxinterv <- copiado de intervenciones
+            sql_factura &= ", '" & DateTime.Today.ToString("yyyy-MM-dd") & "'"
+            'sql_factura &= ", '" & DateTime.Now.ToString("HH:mm") & "'"
+            If Me.rbt_efectivo.Checked Then
+                sql_factura &= ", 1"
+            ElseIf Me.rbt_tarjeta.Checked Then
+                sql_factura &= ", 2"
+            End If
+            sql_factura &= " )"
+
+            Me.clase_auxiliar.insertar_modificar_eliminar(sql_factura)
+
+            '(Para hacer lo que sigue, primero buscamos el id de la factura recien creada)
+            Dim id_factura As Integer = Me.clase_auxiliar.ejecuto_sql("SELECT TOP 1 id_factura FROM factura ORDER BY id_factura DESC").Rows(0)("id_factura")
+
+            'GUARDAR LOS DATOS DE LOS DETALLEFACTURA
+            Dim sql_detallefactura As String
+            For Each fila In Me.grid_intervenciones.Rows()
+                sql_detallefactura = ""
+                sql_detallefactura &= "INSERT INTO detallefactura (id_factura, id_intervencion, precio) VALUES ("
+                sql_detallefactura &= " " & id_factura.ToString
+                sql_detallefactura &= ", " & fila.Cells("id_intervencion").Value.ToString
+                sql_detallefactura &= ", " & Me.monto_total.ToString
+                sql_detallefactura &= ")"
+
+                Me.clase_auxiliar.insertar_modificar_eliminar(sql_detallefactura)
+            Next
+
+            'MODIFICAR INTERVENCION (PAGADO)
+            Dim sql_intervencion As String
+            For c As Integer = 0 To Me.grid_intervenciones.Rows.Count() - 1
+                sql_intervencion = ""
+                sql_intervencion &= "UPDATE Intervencion SET pagado = 1"
+                sql_intervencion &= "WHERE id_intervencion = " & Me.grid_intervenciones.Rows(c).Cells("id_intervencion").Value.ToString
+
+                Me.clase_auxiliar.insertar_modificar_eliminar(sql_intervencion)
+            Next
+
+            'CERRAR CONEXION DE TRANSACCION
+            Me.clase_auxiliar.cerrar_conexion_con_transaccion()
+            MessageBox.Show("Se ha registrado la factura correctamente")
+            clase_auxiliar.cargar_combobox(cmb_pacientes, tabla_para_combo_pacientes())
+            limpiar_form()
+            Dim factura_impresa As Windows.Forms.Form
+            factura_impresa = New frm_factura_report(id_factura)
+            factura_impresa.Show()
+        End If
+    End Sub
+
+    Private Sub cmd_nuevo_Click(sender As Object, e As EventArgs) Handles cmd_nuevo.Click
+        limpiar_form()
+    End Sub
+
+    Private Sub limpiar_form()
+        monto_total = 0
+        clase_auxiliar.blanquear_campos(Me)
+        grid_intervenciones.Rows.Clear()
+        cmd_agregar.Enabled = False
+        cmd_remover.Enabled = False
+        txt_monto_total.Text = "$ 0"
+        rbt_efectivo.Checked = True
     End Sub
 End Class
