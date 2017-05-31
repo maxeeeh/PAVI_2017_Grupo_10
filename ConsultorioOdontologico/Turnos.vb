@@ -31,6 +31,7 @@
         clase_auxiliar.cargar_combobox(cmb_paciente, tabla_para_combo("Paciente"))
         cmb_empleado.SelectedIndex = 0
         cmb_paciente.SelectedIndex = 0
+        dtp_fecha_turno.MinDate = DateTime.Today
         Me.actualizar_datos_grilla()
     End Sub
 

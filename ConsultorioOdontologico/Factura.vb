@@ -136,7 +136,7 @@
             sql_factura &= "INSERT INTO Factura (id_paciente, monto_total, fecha, id_forma_pago)"
             sql_factura &= " VALUES ("
             sql_factura &= cmb_pacientes.SelectedValue.ToString
-            sql_factura &= ", " & monto_total.ToString 'se hace un update despues de guardar los tratamientosxinterv <- copiado de intervenciones
+            sql_factura &= ", " & monto_total.ToString.Replace(",", ".") 'se hace un update despues de guardar los tratamientosxinterv <- copiado de intervenciones
             sql_factura &= ", '" & DateTime.Today.ToString("yyyy-MM-dd") & "'"
             'sql_factura &= ", '" & DateTime.Now.ToString("HH:mm") & "'"
             If Me.rbt_efectivo.Checked Then
