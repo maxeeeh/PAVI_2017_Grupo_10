@@ -18,7 +18,7 @@
         'En el select hace id_empleado o id_paciente, y despues concatena asi: "Apellido, Nombre"
         sql &= "SELECT P.id_paciente , P.apellido + ', ' + P.nombre"
         sql &= " FROM Paciente P"
-        sql &= " WHERE habilitado = 1 AND P.id_paciente = ANY (SELECT I1.id_paciente FROM Intervencion I1 WHERE I1.pagado = 0)"
+        sql &= " WHERE habilitado = 1 AND P.id_paciente = ANY (SELECT I.id_paciente FROM Intervencion I WHERE I.pagado = 0)"
         sql &= " ORDER BY P.apellido"
         '       sql &= " GROUP BY id_" & nombre_tabla.ToLower() & ", apellido + ', ' + nombre"
         tabla = clase_auxiliar.ejecuto_sql(sql)

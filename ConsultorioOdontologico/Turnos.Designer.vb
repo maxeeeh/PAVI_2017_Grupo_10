@@ -144,9 +144,9 @@ Partial Class frm_turnos
         Me.lbl_empleado.Location = New System.Drawing.Point(62, 63)
         Me.lbl_empleado.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbl_empleado.Name = "lbl_empleado"
-        Me.lbl_empleado.Size = New System.Drawing.Size(54, 13)
+        Me.lbl_empleado.Size = New System.Drawing.Size(61, 13)
         Me.lbl_empleado.TabIndex = 1
-        Me.lbl_empleado.Text = "Empleado"
+        Me.lbl_empleado.Text = "Empleado *"
         '
         'cmb_empleado
         '
@@ -250,9 +250,9 @@ Partial Class frm_turnos
         Me.lbl_hora_desde.Location = New System.Drawing.Point(22, 20)
         Me.lbl_hora_desde.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbl_hora_desde.Name = "lbl_hora_desde"
-        Me.lbl_hora_desde.Size = New System.Drawing.Size(38, 13)
+        Me.lbl_hora_desde.Size = New System.Drawing.Size(45, 13)
         Me.lbl_hora_desde.TabIndex = 14
-        Me.lbl_hora_desde.Text = "Desde"
+        Me.lbl_hora_desde.Text = "Desde *"
         '
         'lbl_hasta
         '
@@ -260,9 +260,9 @@ Partial Class frm_turnos
         Me.lbl_hasta.Location = New System.Drawing.Point(26, 51)
         Me.lbl_hasta.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbl_hasta.Name = "lbl_hasta"
-        Me.lbl_hasta.Size = New System.Drawing.Size(35, 13)
+        Me.lbl_hasta.Size = New System.Drawing.Size(42, 13)
         Me.lbl_hasta.TabIndex = 15
-        Me.lbl_hasta.Text = "Hasta"
+        Me.lbl_hasta.Text = "Hasta *"
         '
         'grp_hora
         '
@@ -309,9 +309,9 @@ Partial Class frm_turnos
         Me.lbl_paciente.Location = New System.Drawing.Point(68, 93)
         Me.lbl_paciente.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbl_paciente.Name = "lbl_paciente"
-        Me.lbl_paciente.Size = New System.Drawing.Size(49, 13)
+        Me.lbl_paciente.Size = New System.Drawing.Size(56, 13)
         Me.lbl_paciente.TabIndex = 2
-        Me.lbl_paciente.Text = "Paciente"
+        Me.lbl_paciente.Text = "Paciente *"
         '
         'lbl_fecha
         '
@@ -319,9 +319,9 @@ Partial Class frm_turnos
         Me.lbl_fecha.Location = New System.Drawing.Point(471, 61)
         Me.lbl_fecha.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbl_fecha.Name = "lbl_fecha"
-        Me.lbl_fecha.Size = New System.Drawing.Size(37, 13)
+        Me.lbl_fecha.Size = New System.Drawing.Size(44, 13)
         Me.lbl_fecha.TabIndex = 18
-        Me.lbl_fecha.Text = "Fecha"
+        Me.lbl_fecha.Text = "Fecha *"
         '
         'cmd_buscar
         '

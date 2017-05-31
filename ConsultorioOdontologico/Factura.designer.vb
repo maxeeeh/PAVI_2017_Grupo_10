@@ -42,6 +42,8 @@ Partial Class frm_factura
         Me.rbt_tarjeta = New System.Windows.Forms.RadioButton()
         Me.lbl_forma_pago = New System.Windows.Forms.Label()
         Me.cmd_nuevo = New System.Windows.Forms.Button()
+        Me.lbl_campos_obligatorios = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.grid_intervenciones, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -58,9 +60,9 @@ Partial Class frm_factura
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(51, 18)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(54, 13)
+        Me.Label1.Size = New System.Drawing.Size(61, 13)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Pacientes"
+        Me.Label1.Text = "Pacientes *"
         '
         'cmb_intervenciones
         '
@@ -75,9 +77,9 @@ Partial Class frm_factura
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(28, 57)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(77, 13)
+        Me.Label2.Size = New System.Drawing.Size(84, 13)
         Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Intervenciones"
+        Me.Label2.Text = "Intervenciones *"
         '
         'grid_intervenciones
         '
@@ -87,7 +89,7 @@ Partial Class frm_factura
         Me.grid_intervenciones.AllowUserToResizeRows = False
         Me.grid_intervenciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grid_intervenciones.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_intervencion, Me.fecha, Me.id_empleado, Me.empleado, Me.monto})
-        Me.grid_intervenciones.Location = New System.Drawing.Point(19, 168)
+        Me.grid_intervenciones.Location = New System.Drawing.Point(19, 188)
         Me.grid_intervenciones.Name = "grid_intervenciones"
         Me.grid_intervenciones.Size = New System.Drawing.Size(394, 132)
         Me.grid_intervenciones.TabIndex = 4
@@ -134,11 +136,11 @@ Partial Class frm_factura
         'cmd_remover
         '
         Me.cmd_remover.Enabled = False
-        Me.cmd_remover.Location = New System.Drawing.Point(19, 131)
+        Me.cmd_remover.Location = New System.Drawing.Point(19, 153)
         Me.cmd_remover.Name = "cmd_remover"
-        Me.cmd_remover.Size = New System.Drawing.Size(75, 23)
+        Me.cmd_remover.Size = New System.Drawing.Size(200, 23)
         Me.cmd_remover.TabIndex = 6
-        Me.cmd_remover.Text = "Remover"
+        Me.cmd_remover.Text = "Remover Intervencion Seleccionada"
         Me.cmd_remover.UseVisualStyleBackColor = True
         '
         'Label3
@@ -161,16 +163,16 @@ Partial Class frm_factura
         '
         'cmd_guardar
         '
-        Me.cmd_guardar.Location = New System.Drawing.Point(260, 309)
+        Me.cmd_guardar.Location = New System.Drawing.Point(260, 328)
         Me.cmd_guardar.Name = "cmd_guardar"
         Me.cmd_guardar.Size = New System.Drawing.Size(75, 23)
         Me.cmd_guardar.TabIndex = 9
-        Me.cmd_guardar.Text = "Guardar"
+        Me.cmd_guardar.Text = "Generar"
         Me.cmd_guardar.UseVisualStyleBackColor = True
         '
         'cmd_salir
         '
-        Me.cmd_salir.Location = New System.Drawing.Point(341, 309)
+        Me.cmd_salir.Location = New System.Drawing.Point(341, 328)
         Me.cmd_salir.Name = "cmd_salir"
         Me.cmd_salir.Size = New System.Drawing.Size(75, 23)
         Me.cmd_salir.TabIndex = 10
@@ -202,26 +204,46 @@ Partial Class frm_factura
         'lbl_forma_pago
         '
         Me.lbl_forma_pago.AutoSize = True
-        Me.lbl_forma_pago.Location = New System.Drawing.Point(28, 84)
+        Me.lbl_forma_pago.Location = New System.Drawing.Point(26, 82)
         Me.lbl_forma_pago.Name = "lbl_forma_pago"
-        Me.lbl_forma_pago.Size = New System.Drawing.Size(79, 13)
+        Me.lbl_forma_pago.Size = New System.Drawing.Size(86, 13)
         Me.lbl_forma_pago.TabIndex = 13
-        Me.lbl_forma_pago.Text = "Forma de Pago"
+        Me.lbl_forma_pago.Text = "Forma de Pago *"
         '
         'cmd_nuevo
         '
-        Me.cmd_nuevo.Location = New System.Drawing.Point(179, 309)
+        Me.cmd_nuevo.Location = New System.Drawing.Point(179, 328)
         Me.cmd_nuevo.Name = "cmd_nuevo"
         Me.cmd_nuevo.Size = New System.Drawing.Size(75, 23)
         Me.cmd_nuevo.TabIndex = 14
         Me.cmd_nuevo.Text = "Nuevo"
         Me.cmd_nuevo.UseVisualStyleBackColor = True
         '
-        'Factura
+        'lbl_campos_obligatorios
+        '
+        Me.lbl_campos_obligatorios.AutoSize = True
+        Me.lbl_campos_obligatorios.Location = New System.Drawing.Point(266, 105)
+        Me.lbl_campos_obligatorios.Name = "lbl_campos_obligatorios"
+        Me.lbl_campos_obligatorios.Size = New System.Drawing.Size(108, 13)
+        Me.lbl_campos_obligatorios.TabIndex = 27
+        Me.lbl_campos_obligatorios.Text = "* Campos obligatorios"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(305, 172)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(108, 13)
+        Me.Label4.TabIndex = 28
+        Me.Label4.Text = "* Campos obligatorios"
+        '
+        'frm_factura
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(421, 344)
+        Me.ClientSize = New System.Drawing.Size(421, 358)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.lbl_campos_obligatorios)
         Me.Controls.Add(Me.cmd_nuevo)
         Me.Controls.Add(Me.lbl_forma_pago)
         Me.Controls.Add(Me.rbt_tarjeta)
@@ -237,7 +259,8 @@ Partial Class frm_factura
         Me.Controls.Add(Me.cmb_intervenciones)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cmb_pacientes)
-        Me.Name = "Factura"
+        Me.Name = "frm_factura"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Factura"
         CType(Me.grid_intervenciones, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -264,4 +287,6 @@ Partial Class frm_factura
     Friend WithEvents rbt_tarjeta As System.Windows.Forms.RadioButton
     Friend WithEvents lbl_forma_pago As System.Windows.Forms.Label
     Friend WithEvents cmd_nuevo As System.Windows.Forms.Button
+    Friend WithEvents lbl_campos_obligatorios As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 End Class

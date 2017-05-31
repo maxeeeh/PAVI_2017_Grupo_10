@@ -72,6 +72,7 @@ Partial Class frm_intervenciones
         Me.txt_hora_desde = New System.Windows.Forms.MaskedTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txt__observaciones_intervencion = New System.Windows.Forms.RichTextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.nud_cantidad_insumo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grp_tratamientos.SuspendLayout()
         CType(Me.grid_tratamientos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -100,9 +101,9 @@ Partial Class frm_intervenciones
         Me.lbl_paciente.Location = New System.Drawing.Point(37, 27)
         Me.lbl_paciente.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbl_paciente.Name = "lbl_paciente"
-        Me.lbl_paciente.Size = New System.Drawing.Size(49, 13)
+        Me.lbl_paciente.Size = New System.Drawing.Size(56, 13)
         Me.lbl_paciente.TabIndex = 6
-        Me.lbl_paciente.Text = "Paciente"
+        Me.lbl_paciente.Text = "Paciente *"
         '
         'cmd_buscar_turno
         '
@@ -125,11 +126,11 @@ Partial Class frm_intervenciones
         'lbl_tratamiento
         '
         Me.lbl_tratamiento.AutoSize = True
-        Me.lbl_tratamiento.Location = New System.Drawing.Point(19, 16)
+        Me.lbl_tratamiento.Location = New System.Drawing.Point(12, 16)
         Me.lbl_tratamiento.Name = "lbl_tratamiento"
-        Me.lbl_tratamiento.Size = New System.Drawing.Size(63, 13)
+        Me.lbl_tratamiento.Size = New System.Drawing.Size(70, 13)
         Me.lbl_tratamiento.TabIndex = 11
-        Me.lbl_tratamiento.Text = "Tratamiento"
+        Me.lbl_tratamiento.Text = "Tratamiento *"
         '
         'cmd_agregar_tratamiento
         '
@@ -165,9 +166,9 @@ Partial Class frm_intervenciones
         Me.lbl_insumo.AutoSize = True
         Me.lbl_insumo.Location = New System.Drawing.Point(18, 16)
         Me.lbl_insumo.Name = "lbl_insumo"
-        Me.lbl_insumo.Size = New System.Drawing.Size(41, 13)
+        Me.lbl_insumo.Size = New System.Drawing.Size(48, 13)
         Me.lbl_insumo.TabIndex = 15
-        Me.lbl_insumo.Text = "Insumo"
+        Me.lbl_insumo.Text = "Insumo *"
         '
         'grp_tratamientos
         '
@@ -555,11 +556,21 @@ Partial Class frm_intervenciones
         Me.txt__observaciones_intervencion.TabIndex = 38
         Me.txt__observaciones_intervencion.Text = ""
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(372, 298)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(108, 13)
+        Me.Label4.TabIndex = 40
+        Me.Label4.Text = "* Campos obligatorios"
+        '
         'frm_intervenciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(497, 603)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txt__observaciones_intervencion)
         Me.Controls.Add(Me.grid_datos_turno)
@@ -642,4 +653,5 @@ Partial Class frm_intervenciones
     Friend WithEvents costo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents txt_monto_total As System.Windows.Forms.TextBox
     Friend WithEvents lbl_monto_total As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 End Class
