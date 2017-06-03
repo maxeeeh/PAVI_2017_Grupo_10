@@ -95,6 +95,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HistorialMedico_DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\DataSet\TurnosDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TurnosDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\Factura_Report.Designer.vb">
       <DependentUpon>Factura_Report.vb</DependentUpon>
     </Compile>
@@ -105,6 +110,12 @@
       <DependentUpon>Historial_Medico.vb</DependentUpon>
     </Compile>
     <Compile Include="Reportes\Historial_Medico.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Turnos_Report.Designer.vb">
+      <DependentUpon>Turnos_Report.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Turnos_Report.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Soporte al Software\Atributos_Compartidos.vb" />
@@ -191,6 +202,10 @@
     <EmbeddedResource Include="Reportes\Report\Historial_Medico_Report.rdlc" />
     <EmbeddedResource Include="Reportes\Report\Insumos_SupReport.rdlc" />
     <EmbeddedResource Include="Reportes\Report\Tratamientos_SubReport.rdlc" />
+    <EmbeddedResource Include="Reportes\Report\Turnos_Report.rdlc" />
+    <EmbeddedResource Include="Reportes\Turnos_Report.resx">
+      <DependentUpon>Turnos_Report.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Turnos.resx">
       <DependentUpon>Turnos.vb</DependentUpon>
     </EmbeddedResource>
@@ -242,6 +257,17 @@
     </None>
     <None Include="Reportes\DataSet\HistorialMedico_DataSet.xss">
       <DependentUpon>HistorialMedico_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\DataSet\TurnosDataSet.xsc">
+      <DependentUpon>TurnosDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\DataSet\TurnosDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TurnosDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Reportes\DataSet\TurnosDataSet.xss">
+      <DependentUpon>TurnosDataSet.xsd</DependentUpon>
     </None>
     <None Include="Soporte al Software\App.config" />
   </ItemGroup>

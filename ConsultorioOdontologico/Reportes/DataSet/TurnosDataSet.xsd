@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TurnosDataSet" targetNamespace="http://tempuri.org/TurnosDataSet.xsd" xmlns:mstns="http://tempuri.org/TurnosDataSet.xsd" xmlns="http://tempuri.org/TurnosDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TurnosDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="TurnosDataSet" msprop:Generator_UserDSName="TurnosDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Turnos" msprop:Generator_TableClassName="TurnosDataTable" msprop:Generator_TableVarName="tableTurnos" msprop:Generator_TablePropName="Turnos" msprop:Generator_RowDeletingName="TurnosRowDeleting" msprop:Generator_RowChangingName="TurnosRowChanging" msprop:Generator_RowEvHandlerName="TurnosRowChangeEventHandler" msprop:Generator_RowDeletedName="TurnosRowDeleted" msprop:Generator_UserTableName="Turnos" msprop:Generator_RowChangedName="TurnosRowChanged" msprop:Generator_RowEvArgName="TurnosRowChangeEvent" msprop:Generator_RowClassName="TurnosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:string" minOccurs="0" />
+              <xs:element name="hora_desde" msprop:Generator_ColumnVarNameInTable="columnhora_desde" msprop:Generator_ColumnPropNameInRow="hora_desde" msprop:Generator_ColumnPropNameInTable="hora_desdeColumn" msprop:Generator_UserColumnName="hora_desde" type="xs:string" minOccurs="0" />
+              <xs:element name="hora_hasta" msprop:Generator_ColumnVarNameInTable="columnhora_hasta" msprop:Generator_ColumnPropNameInRow="hora_hasta" msprop:Generator_ColumnPropNameInTable="hora_hastaColumn" msprop:Generator_UserColumnName="hora_hasta" type="xs:string" minOccurs="0" />
+              <xs:element name="pac" msprop:Generator_ColumnVarNameInTable="columnpac" msprop:Generator_ColumnPropNameInRow="pac" msprop:Generator_ColumnPropNameInTable="pacColumn" msprop:Generator_UserColumnName="pac" type="xs:string" minOccurs="0" />
+              <xs:element name="emp" msprop:Generator_ColumnVarNameInTable="columnemp" msprop:Generator_ColumnPropNameInRow="emp" msprop:Generator_ColumnPropNameInTable="empColumn" msprop:Generator_UserColumnName="emp" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
