@@ -6,7 +6,6 @@
     End Sub
 
     Private Sub listar_turnos()
-        Dim tabla As New Data.DataTable
         Dim sql As String = ""
         sql &= "SELECT "
         sql &= " Turno.fecha, "
@@ -14,13 +13,11 @@
         sql &= " Turno.hora_hasta,"
         sql &= " Paciente.apellido + ', ' + Paciente.nombre AS pac,"
         sql &= " Empleado.apellido + ', ' + Empleado.nombre AS emp"
-        sql &= " FROM Empleado INNER JOIN Turno ON Empleado.id_empleado = Turno.id_empleado AND Empleado.nombre = Turno.hora_desde"
+        sql &= " FROM Empleado INNER JOIN Turno ON Empleado.id_empleado = Turno.id_empleado"
         sql &= " INNER JOIN Paciente ON Turno.id_paciente = Paciente.id_paciente"
         sql &= " WHERE Empleado.habilitado = 1 AND Paciente.habilitado = 1"
 
-        tabla = clase_auxiliar.ejecuto_sql(sql)
-
-        Me.TurnosBindingSource.DataSource = tabla
+        Me.TurnosBindingSource.DataSource = clase_auxiliar.ejecuto_sql(sql)
         Me.ReportViewer1.RefreshReport()
     End Sub
 End Class
