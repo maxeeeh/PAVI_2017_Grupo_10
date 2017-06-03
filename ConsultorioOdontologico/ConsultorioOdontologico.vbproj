@@ -95,26 +95,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HistorialMedico_DataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\DataSet\Insumo_DataSet.Designer.vb">
+    <Compile Include="Reportes\DataSet\TurnosDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Insumo_DataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes\DataSet\Pacientes_DataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pacientes_DataSet.xsd</DependentUpon>
+      <DependentUpon>TurnosDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reportes\Factura_Report.Designer.vb">
       <DependentUpon>Factura_Report.vb</DependentUpon>
     </Compile>
     <Compile Include="Reportes\Factura_Report.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes\frm_paciente.Designer.vb">
-      <DependentUpon>frm_paciente.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes\frm_paciente.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\Historial_Medico.Designer.vb">
@@ -123,10 +112,10 @@
     <Compile Include="Reportes\Historial_Medico.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reportes\Insumo_Reporrt.Designer.vb">
-      <DependentUpon>Insumo_Reporrt.vb</DependentUpon>
+    <Compile Include="Reportes\Turnos_Report.Designer.vb">
+      <DependentUpon>Turnos_Report.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\Insumo_Reporrt.vb">
+    <Compile Include="Reportes\Turnos_Report.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Soporte al Software\Atributos_Compartidos.vb" />
@@ -202,14 +191,8 @@
     <EmbeddedResource Include="Intervenciones.resx">
       <DependentUpon>Intervenciones.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\frm_paciente.resx">
-      <DependentUpon>frm_paciente.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Historial_Medico.resx">
       <DependentUpon>Historial_Medico.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\Insumo_Reporrt.resx">
-      <DependentUpon>Insumo_Reporrt.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Report\Detalle_Factura_SubReport.rdlc" />
     <EmbeddedResource Include="Reportes\Report\Factura_Report.rdlc" />
@@ -218,9 +201,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Report\Historial_Medico_Report.rdlc" />
     <EmbeddedResource Include="Reportes\Report\Insumos_SupReport.rdlc" />
-    <EmbeddedResource Include="Reportes\Report\Insumo_Report.rdlc" />
-    <EmbeddedResource Include="Reportes\Report\Pacientes_Report.rdlc" />
     <EmbeddedResource Include="Reportes\Report\Tratamientos_SubReport.rdlc" />
+    <EmbeddedResource Include="Reportes\Report\Turnos_Report.rdlc" />
+    <EmbeddedResource Include="Reportes\Turnos_Report.resx">
+      <DependentUpon>Turnos_Report.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Turnos.resx">
       <DependentUpon>Turnos.vb</DependentUpon>
     </EmbeddedResource>
@@ -273,27 +258,16 @@
     <None Include="Reportes\DataSet\HistorialMedico_DataSet.xss">
       <DependentUpon>HistorialMedico_DataSet.xsd</DependentUpon>
     </None>
-    <None Include="Reportes\DataSet\Insumo_DataSet.xsc">
-      <DependentUpon>Insumo_DataSet.xsd</DependentUpon>
+    <None Include="Reportes\DataSet\TurnosDataSet.xsc">
+      <DependentUpon>TurnosDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Reportes\DataSet\Insumo_DataSet.xsd">
+    <None Include="Reportes\DataSet\TurnosDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Insumo_DataSet.Designer.vb</LastGenOutput>
+      <LastGenOutput>TurnosDataSet.Designer.vb</LastGenOutput>
     </None>
-    <None Include="Reportes\DataSet\Insumo_DataSet.xss">
-      <DependentUpon>Insumo_DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Reportes\DataSet\Pacientes_DataSet.xsc">
-      <DependentUpon>Pacientes_DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Reportes\DataSet\Pacientes_DataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Pacientes_DataSet.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="Reportes\DataSet\Pacientes_DataSet.xss">
-      <DependentUpon>Pacientes_DataSet.xsd</DependentUpon>
+    <None Include="Reportes\DataSet\TurnosDataSet.xss">
+      <DependentUpon>TurnosDataSet.xsd</DependentUpon>
     </None>
     <None Include="Soporte al Software\App.config" />
   </ItemGroup>
