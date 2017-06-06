@@ -474,9 +474,9 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value EvaluationMode="Constant">Listado de Pacientes</Value>
+                  <Value>Listado de Pacientes</Value>
                   <Style>
-                    <FontSize>20pt</FontSize>
+                    <FontSize>22pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                     <TextDecoration>Underline</TextDecoration>
                   </Style>
@@ -488,7 +488,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.55245cm</Top>
+          <Top>0cm</Top>
           <Height>0.9175cm</Height>
           <Width>20.81891cm</Width>
           <Style>
@@ -521,8 +521,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>1.50523cm</Top>
-          <Height>0.72609cm</Height>
+          <Top>0.83495cm</Top>
+          <Height>1.43165cm</Height>
           <Width>20.81893cm</Width>
           <ZIndex>1</ZIndex>
           <Style>

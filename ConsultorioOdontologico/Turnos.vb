@@ -48,7 +48,7 @@
         tabla = clase_auxiliar.ejecuto_sql(sql)
 
         'Todo lo siguiente es para poder agregarle al principio del combobox el "TODOS"
-        Dim tablafinal As New Data.DataTable() 'Define la tabla
+        Dim tablafinal As New Data.DataTable 'Define la tabla
         tablafinal.Columns.Add() 'le agrega una columna donde ira el pk (para el TODOS es 0)
         tablafinal.Columns.Add() 'le agrega una columna done ira la descripcion (para el TODOS es TODOS)
 

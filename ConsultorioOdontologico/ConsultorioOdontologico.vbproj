@@ -236,7 +236,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Reportes\Report\Tratamientos_SubReport.rdlc" />
-    <EmbeddedResource Include="Reportes\Report\Turnos_Report.rdlc" />
+    <Content Include="Reportes\Report\Turnos_Report.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Reportes\Turnos_Report.resx">
       <DependentUpon>Turnos_Report.vb</DependentUpon>
     </EmbeddedResource>
