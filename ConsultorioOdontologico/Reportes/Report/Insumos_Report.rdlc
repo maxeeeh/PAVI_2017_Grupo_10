@@ -197,10 +197,10 @@
     <Height>1.65625in</Height>
     <Style />
   </Body>
-  <Width>18.32771cm</Width>
+  <Width>20.81893cm</Width>
   <Page>
     <PageHeader>
-      <Height>2.19604cm</Height>
+      <Height>2.40771cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -225,9 +225,43 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.86995cm</Top>
+          <Top>0.55245cm</Top>
           <Height>0.94396cm</Height>
-          <Width>18.32771cm</Width>
+          <Width>20.81893cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox4">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Parameters!TipoReporte.Value</Value>
+                  <Style>
+                    <FontSize>12pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox4</rd:DefaultName>
+          <Top>1.50523cm</Top>
+          <Height>0.72609cm</Height>
+          <Width>20.81893cm</Width>
+          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -268,7 +302,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
           <Top>0.94368cm</Top>
-          <Left>15.40438cm</Left>
+          <Left>17.62688cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <Style>
@@ -292,9 +326,9 @@
     <PageWidth>21cm</PageWidth>
     <InteractiveHeight>26cm</InteractiveHeight>
     <InteractiveWidth>21cm</InteractiveWidth>
-    <LeftMargin>2cm</LeftMargin>
+    <LeftMargin>0cm</LeftMargin>
     <RightMargin>0cm</RightMargin>
-    <TopMargin>2cm</TopMargin>
+    <TopMargin>0cm</TopMargin>
     <BottomMargin>0cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
@@ -331,6 +365,13 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="TipoReporte">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>6ab052f2-0097-4b41-88b3-441f629887eb</rd:ReportID>
 </Report>

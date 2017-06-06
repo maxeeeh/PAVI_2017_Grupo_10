@@ -229,7 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Report\Historial_Medico_Report.rdlc" />
     <EmbeddedResource Include="Reportes\Report\Insumos_SupReport.rdlc" />
-    <EmbeddedResource Include="Reportes\Report\Insumo_Report.rdlc" />
+    <Content Include="Reportes\Report\Insumos_Report.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Reportes\Report\Pacientes_Report.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

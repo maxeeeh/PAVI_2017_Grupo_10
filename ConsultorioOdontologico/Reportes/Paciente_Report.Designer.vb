@@ -24,6 +24,8 @@ Partial Class frm_paciente_report
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource2 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Me.PacientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Pacientes_DataSet = New ConsultorioOdontologico.Pacientes_DataSet()
         Me.rv_pacientes = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.cmd_buscar = New System.Windows.Forms.Button()
         Me.grp_rango_fecha = New System.Windows.Forms.GroupBox()
@@ -44,16 +46,24 @@ Partial Class frm_paciente_report
         Me.cmb_loc = New System.Windows.Forms.ComboBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.cmb_td = New System.Windows.Forms.ComboBox()
-        Me.PacientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Pacientes_DataSet = New ConsultorioOdontologico.Pacientes_DataSet()
+        CType(Me.PacientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Pacientes_DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grp_rango_fecha.SuspendLayout()
         Me.grp_estado.SuspendLayout()
         Me.grp_sexo.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
-        CType(Me.PacientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Pacientes_DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'PacientesBindingSource
+        '
+        Me.PacientesBindingSource.DataMember = "Pacientes"
+        Me.PacientesBindingSource.DataSource = Me.Pacientes_DataSet
+        '
+        'Pacientes_DataSet
+        '
+        Me.Pacientes_DataSet.DataSetName = "Pacientes_DataSet"
+        Me.Pacientes_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'rv_pacientes
         '
@@ -265,21 +275,11 @@ Partial Class frm_paciente_report
         Me.cmb_td.Size = New System.Drawing.Size(121, 21)
         Me.cmb_td.TabIndex = 0
         '
-        'PacientesBindingSource
-        '
-        Me.PacientesBindingSource.DataMember = "Pacientes"
-        Me.PacientesBindingSource.DataSource = Me.Pacientes_DataSet
-        '
-        'Pacientes_DataSet
-        '
-        Me.Pacientes_DataSet.DataSetName = "Pacientes_DataSet"
-        Me.Pacientes_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'frm_paciente_report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(695, 515)
+        Me.ClientSize = New System.Drawing.Size(626, 515)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.grp_sexo)
@@ -289,6 +289,8 @@ Partial Class frm_paciente_report
         Me.Controls.Add(Me.rv_pacientes)
         Me.Name = "frm_paciente_report"
         Me.Text = "Reporte de Paciente"
+        CType(Me.PacientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Pacientes_DataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grp_rango_fecha.ResumeLayout(False)
         Me.grp_rango_fecha.PerformLayout()
         Me.grp_estado.ResumeLayout(False)
@@ -297,8 +299,6 @@ Partial Class frm_paciente_report
         Me.grp_sexo.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
-        CType(Me.PacientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Pacientes_DataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
