@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Insumo_Reporrt
+Partial Class frm_insumo_report
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -24,12 +24,22 @@ Partial Class Insumo_Reporrt
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
-        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.InsumosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Insumo_DataSet = New ConsultorioOdontologico.Insumo_DataSet()
+        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         CType(Me.InsumosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Insumo_DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'InsumosBindingSource
+        '
+        Me.InsumosBindingSource.DataMember = "Insumos"
+        Me.InsumosBindingSource.DataSource = Me.Insumo_DataSet
+        '
+        'Insumo_DataSet
+        '
+        Me.Insumo_DataSet.DataSetName = "Insumo_DataSet"
+        Me.Insumo_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ReportViewer1
         '
@@ -42,24 +52,14 @@ Partial Class Insumo_Reporrt
         Me.ReportViewer1.Size = New System.Drawing.Size(530, 347)
         Me.ReportViewer1.TabIndex = 0
         '
-        'InsumosBindingSource
-        '
-        Me.InsumosBindingSource.DataMember = "Insumos"
-        Me.InsumosBindingSource.DataSource = Me.Insumo_DataSet
-        '
-        'Insumo_DataSet
-        '
-        Me.Insumo_DataSet.DataSetName = "Insumo_DataSet"
-        Me.Insumo_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Insumo_Reporrt
+        'frm_insumo_report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(643, 405)
         Me.Controls.Add(Me.ReportViewer1)
-        Me.Name = "Insumo_Reporrt"
-        Me.Text = "Insumo_Reporrt"
+        Me.Name = "frm_insumo_report"
+        Me.Text = "Reporte de Insumos"
         CType(Me.InsumosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Insumo_DataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

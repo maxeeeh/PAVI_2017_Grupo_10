@@ -116,10 +116,10 @@
     <Compile Include="Reportes\Factura_Report.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reportes\frm_paciente.Designer.vb">
-      <DependentUpon>frm_paciente.vb</DependentUpon>
+    <Compile Include="Reportes\Paciente_Report.Designer.vb">
+      <DependentUpon>Paciente_Report.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\frm_paciente.vb">
+    <Compile Include="Reportes\Paciente_Report.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\Historial_Medico.Designer.vb">
@@ -128,10 +128,10 @@
     <Compile Include="Reportes\Historial_Medico.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reportes\Insumo_Reporrt.Designer.vb">
-      <DependentUpon>Insumo_Reporrt.vb</DependentUpon>
+    <Compile Include="Reportes\Insumo_Report.Designer.vb">
+      <DependentUpon>Insumo_Report.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\Insumo_Reporrt.vb">
+    <Compile Include="Reportes\Insumo_Report.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\Turnos_Report.Designer.vb">
@@ -213,14 +213,14 @@
     <EmbeddedResource Include="Intervenciones.resx">
       <DependentUpon>Intervenciones.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\frm_paciente.resx">
-      <DependentUpon>frm_paciente.vb</DependentUpon>
+    <EmbeddedResource Include="Reportes\Paciente_Report.resx">
+      <DependentUpon>Paciente_Report.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Historial_Medico.resx">
       <DependentUpon>Historial_Medico.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\Insumo_Reporrt.resx">
-      <DependentUpon>Insumo_Reporrt.vb</DependentUpon>
+    <EmbeddedResource Include="Reportes\Insumo_Report.resx">
+      <DependentUpon>Insumo_Report.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Report\Detalle_Factura_SubReport.rdlc" />
     <EmbeddedResource Include="Reportes\Report\Factura_Report.rdlc" />
@@ -230,7 +230,9 @@
     <EmbeddedResource Include="Reportes\Report\Historial_Medico_Report.rdlc" />
     <EmbeddedResource Include="Reportes\Report\Insumos_SupReport.rdlc" />
     <EmbeddedResource Include="Reportes\Report\Insumo_Report.rdlc" />
-    <EmbeddedResource Include="Reportes\Report\Pacientes_Report.rdlc" />
+    <Content Include="Reportes\Report\Pacientes_Report.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Reportes\Report\Tratamientos_SubReport.rdlc" />
     <EmbeddedResource Include="Reportes\Report\Turnos_Report.rdlc" />
     <EmbeddedResource Include="Reportes\Turnos_Report.resx">

@@ -1,4 +1,4 @@
-﻿Public Class Insumo_Reporrt
+﻿Public Class frm_insumo_report
     Dim clase_Auxiliar As New Atributos_Compartidos
 
     Private Sub Insumo_Reporrt_Load(sender As Object, e As EventArgs) Handles MyBase.Load
