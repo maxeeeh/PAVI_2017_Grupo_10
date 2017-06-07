@@ -167,5 +167,14 @@
             Me.rb_sexo_todos.Checked = True
 
         End If
+
+
     End Sub
+
+    Private Sub frm_turnos_report_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        'La siguiente linea usa el metodo "confirmar_salida" de la clase "Atributos_Compartidos" para
+        'ver si el usuario cancelo el cerrado del formulario. (Le manda el evento de cerrado "e" al metodo)
+        e.Cancel = clase_auxiliar.confirmar_salida(e)
+    End Sub
+
 End Class

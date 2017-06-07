@@ -23,7 +23,8 @@ Partial Class frm_historial_medico
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ReportDataSource4 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_historial_medico))
         Me.Historial_MedicoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.rv_historial_medico = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.cmb_filtro_paciente = New System.Windows.Forms.ComboBox()
@@ -35,13 +36,17 @@ Partial Class frm_historial_medico
         '
         'rv_historial_medico
         '
-        ReportDataSource4.Name = "DS_Historial_Medico"
-        ReportDataSource4.Value = Me.Historial_MedicoBindingSource
-        Me.rv_historial_medico.LocalReport.DataSources.Add(ReportDataSource4)
+        Me.rv_historial_medico.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        ReportDataSource1.Name = "DS_Historial_Medico"
+        ReportDataSource1.Value = Me.Historial_MedicoBindingSource
+        Me.rv_historial_medico.LocalReport.DataSources.Add(ReportDataSource1)
         Me.rv_historial_medico.LocalReport.ReportEmbeddedResource = "ConsultorioOdontologico.Historial_Medico_Report.rdlc"
-        Me.rv_historial_medico.Location = New System.Drawing.Point(50, 31)
+        Me.rv_historial_medico.Location = New System.Drawing.Point(12, 31)
+        Me.rv_historial_medico.MinimumSize = New System.Drawing.Size(793, 412)
         Me.rv_historial_medico.Name = "rv_historial_medico"
-        Me.rv_historial_medico.Size = New System.Drawing.Size(655, 412)
+        Me.rv_historial_medico.Size = New System.Drawing.Size(793, 412)
         Me.rv_historial_medico.TabIndex = 0
         '
         'cmb_filtro_paciente
@@ -70,11 +75,15 @@ Partial Class frm_historial_medico
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(732, 455)
+        Me.ClientSize = New System.Drawing.Size(817, 455)
         Me.Controls.Add(Me.lbl_filtro_paciente)
         Me.Controls.Add(Me.cmb_filtro_paciente)
         Me.Controls.Add(Me.rv_historial_medico)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(833, 494)
         Me.Name = "frm_historial_medico"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Historial Medico"
         CType(Me.Historial_MedicoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.HistorialMedico_DataSet, System.ComponentModel.ISupportInitialize).EndInit()

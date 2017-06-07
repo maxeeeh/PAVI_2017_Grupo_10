@@ -6,13 +6,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.85958cm</Width>
+              <Width>0.75687cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.7225cm</Width>
+              <Width>6.04854cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.865cm</Width>
+              <Width>1.89458cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -251,7 +251,7 @@
         </TablixRowHierarchy>
         <DataSetName>DS_Insumo</DataSetName>
         <Height>1.2cm</Height>
-        <Width>7.44708cm</Width>
+        <Width>8.7cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -262,7 +262,7 @@
     <Height>0.52083in</Height>
     <Style />
   </Body>
-  <Width>2.97359in</Width>
+  <Width>3.5in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

@@ -24,6 +24,7 @@ Partial Class frm_insumo_report
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_insumo_report))
         Me.InsumosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Insumo_DataSet = New ConsultorioOdontologico.Insumo_DataSet()
         Me.rv_insumos = New Microsoft.Reporting.WinForms.ReportViewer()
@@ -49,13 +50,16 @@ Partial Class frm_insumo_report
         '
         'rv_insumos
         '
+        Me.rv_insumos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         ReportDataSource1.Name = "DS_Insumo"
         ReportDataSource1.Value = Me.InsumosBindingSource
         Me.rv_insumos.LocalReport.DataSources.Add(ReportDataSource1)
         Me.rv_insumos.LocalReport.ReportEmbeddedResource = "ConsultorioOdontologico.Insumo_Report.rdlc"
         Me.rv_insumos.Location = New System.Drawing.Point(12, 66)
         Me.rv_insumos.Name = "rv_insumos"
-        Me.rv_insumos.Size = New System.Drawing.Size(593, 425)
+        Me.rv_insumos.Size = New System.Drawing.Size(793, 425)
         Me.rv_insumos.TabIndex = 0
         '
         'grp_estado
@@ -115,10 +119,13 @@ Partial Class frm_insumo_report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(617, 504)
+        Me.ClientSize = New System.Drawing.Size(817, 504)
         Me.Controls.Add(Me.cmd_buscar)
         Me.Controls.Add(Me.grp_estado)
         Me.Controls.Add(Me.rv_insumos)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(833, 543)
         Me.Name = "frm_insumo_report"
         Me.Text = "Reporte de Insumos"
         CType(Me.InsumosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()

@@ -160,6 +160,12 @@
     <Compile Include="Intervenciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Soporte al Software\Menu_Acceso.Designer.vb">
+      <DependentUpon>Menu_Acceso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Soporte al Software\Menu_Acceso.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Turnos.Designer.vb">
       <DependentUpon>Turnos.vb</DependentUpon>
     </Compile>
@@ -241,6 +247,9 @@
     </Content>
     <EmbeddedResource Include="Reportes\Turnos_Report.resx">
       <DependentUpon>Turnos_Report.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Soporte al Software\Menu_Acceso.resx">
+      <DependentUpon>Menu_Acceso.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Turnos.resx">
       <DependentUpon>Turnos.vb</DependentUpon>

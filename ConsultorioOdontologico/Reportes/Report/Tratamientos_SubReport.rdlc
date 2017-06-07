@@ -6,10 +6,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.83312cm</Width>
+              <Width>0.73844cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>6.09833cm</Width>
+              <Width>7.96156cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -179,7 +179,7 @@
         </TablixRowHierarchy>
         <DataSetName>DS_Tratamiento</DataSetName>
         <Height>1.2cm</Height>
-        <Width>6.93145cm</Width>
+        <Width>8.7cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -190,7 +190,7 @@
     <Height>0.53369in</Height>
     <Style />
   </Body>
-  <Width>2.80059in</Width>
+  <Width>3.5in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

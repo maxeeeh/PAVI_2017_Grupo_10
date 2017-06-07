@@ -24,6 +24,7 @@ Partial Class frm_factura_report
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_factura_report))
         Me.FacturaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Factura_DataSet = New ConsultorioOdontologico.Factura_DataSet()
         Me.rv_factura = New Microsoft.Reporting.WinForms.ReportViewer()
@@ -58,6 +59,7 @@ Partial Class frm_factura_report
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(766, 656)
         Me.Controls.Add(Me.rv_factura)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frm_factura_report"
         Me.Text = "Visualizador Factura"
         CType(Me.FacturaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()

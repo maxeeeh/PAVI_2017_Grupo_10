@@ -6,12 +6,12 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>15.79848cm</Width>
+              <Width>19.5291cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>4.92744cm</Height>
+              <Height>7.36806cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -27,7 +27,7 @@
                           <Top>2.61816cm</Top>
                           <Left>0.55562cm</Left>
                           <Height>1.83208cm</Height>
-                          <Width>2.80059in</Width>
+                          <Width>3.525in</Width>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -42,9 +42,9 @@
                             </Parameter>
                           </Parameters>
                           <Top>2.61816cm</Top>
-                          <Left>8.01688cm</Left>
+                          <Left>9.99352cm</Left>
                           <Height>1.83208cm</Height>
-                          <Width>2.97359in</Width>
+                          <Width>3.525in</Width>
                           <ZIndex>1</ZIndex>
                           <Style>
                             <Border>
@@ -98,7 +98,7 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
                           <Top>1.98289cm</Top>
-                          <Left>8.01688cm</Left>
+                          <Left>9.99352cm</Left>
                           <Height>0.6cm</Height>
                           <Width>2.5cm</Width>
                           <ZIndex>3</ZIndex>
@@ -179,7 +179,7 @@
                           <Top>0.43067cm</Top>
                           <Left>0.26458cm</Left>
                           <Height>0.6cm</Height>
-                          <Width>15.30522cm</Width>
+                          <Width>18.94702cm</Width>
                           <ZIndex>4</ZIndex>
                           <Style>
                             <Border>
@@ -203,7 +203,6 @@
                                   <Style />
                                 </Paragraph>
                               </Paragraphs>
-                              <Left>0cm</Left>
                               <Height>0.6cm</Height>
                               <Width>13.95646cm</Width>
                               <Style>
@@ -221,7 +220,7 @@
                           <Top>1.17178cm</Top>
                           <Left>0.26458cm</Left>
                           <Height>0.6cm</Height>
-                          <Width>15.30522cm</Width>
+                          <Width>18.94702cm</Width>
                           <ZIndex>5</ZIndex>
                           <Style>
                             <Border>
@@ -229,6 +228,79 @@
                             </Border>
                           </Style>
                         </Rectangle>
+                        <Rectangle Name="Rectangle4">
+                          <ReportItems>
+                            <Textbox Name="observaciones">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!observaciones.Value</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>observaciones</rd:DefaultName>
+                              <Left>0.34396cm</Left>
+                              <Height>1.79944cm</Height>
+                              <Width>17.78286cm</Width>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                          <Top>5.22663cm</Top>
+                          <Left>0.55562cm</Left>
+                          <Height>1.79944cm</Height>
+                          <Width>18.3914cm</Width>
+                          <ZIndex>6</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                        </Rectangle>
+                        <Textbox Name="Textbox4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Observaciones de la intervencion</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <Top>4.62663cm</Top>
+                          <Left>0.55562cm</Left>
+                          <Height>0.6cm</Height>
+                          <Width>5.33104cm</Width>
+                          <ZIndex>7</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
                       </ReportItems>
                       <KeepTogether>true</KeepTogether>
                       <Style>
@@ -262,8 +334,8 @@
         <DataSetName>DS_Historial_Medico</DataSetName>
         <Top>2.32543cm</Top>
         <Left>0.18203cm</Left>
-        <Height>4.92744cm</Height>
-        <Width>15.79848cm</Width>
+        <Height>7.36806cm</Height>
+        <Width>19.5291cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -334,17 +406,60 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>2.98958in</Height>
+    <Height>3.9205in</Height>
     <Style />
   </Body>
-  <Width>6.36446in</Width>
+  <Width>20cm</Width>
   <Page>
+    <PageFooter>
+      <Height>1.28475cm</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox3">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Globals!PageNumber</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox3</rd:DefaultName>
+          <Top>0.17639cm</Top>
+          <Left>16.89363cm</Left>
+          <Height>0.6cm</Height>
+          <Width>2.5cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
-    <LeftMargin>2cm</LeftMargin>
-    <RightMargin>2cm</RightMargin>
-    <TopMargin>2cm</TopMargin>
-    <BottomMargin>2cm</BottomMargin>
+    <LeftMargin>0cm</LeftMargin>
+    <RightMargin>0cm</RightMargin>
+    <TopMargin>0cm</TopMargin>
+    <BottomMargin>0cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
   </Page>
@@ -391,18 +506,6 @@
         </Field>
         <Field Name="observaciones">
           <DataField>observaciones</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="tra">
-          <DataField>tra</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ins">
-          <DataField>ins</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cantidad_insumos">
-          <DataField>cantidad_insumos</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
