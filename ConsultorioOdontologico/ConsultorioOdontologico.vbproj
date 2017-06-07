@@ -95,6 +95,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HistorialMedico_DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\DataSet\HistorialMedico_DataSet.vb">
+      <DependentUpon>HistorialMedico_DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\DataSet\Insumo_DataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -319,7 +319,7 @@
                 sql_tratamXinterv = ""
                 sql_tratamXinterv &= "INSERT INTO TratamientoXIntervencion (id_intervencion, id_tratamiento) VALUES ("
                 sql_tratamXinterv &= " " & id_intervencion.ToString
-                sql_tratamXinterv &= ", " & fila.Cells("id_tratamiento").Value.ToString
+                sql_tratamXinterv &= ", " & CInt(fila.Cells("id_tratamiento").Value.ToString) + 1
                 sql_tratamXinterv &= ")"
 
                 Me.clase_auxiliar.insertar_modificar_eliminar(sql_tratamXinterv)
@@ -331,7 +331,7 @@
                 sql_insumoXinterv = ""
                 sql_insumoXinterv &= "INSERT INTO InsumoXIntervencion (id_intervencion, id_insumo, cantidad_insumos) VALUES ("
                 sql_insumoXinterv &= " " & id_intervencion.ToString
-                sql_insumoXinterv &= ", " & fila.Cells("id_insumo").Value.ToString
+                sql_insumoXinterv &= ", " & CInt(fila.Cells("id_insumo").Value.ToString) + 1
                 sql_insumoXinterv &= ", " & fila.Cells("cantidad").Value.ToString
                 sql_insumoXinterv &= ")"
 
