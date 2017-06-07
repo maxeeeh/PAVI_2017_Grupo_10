@@ -217,7 +217,7 @@
         Me.cmd_buscar.Enabled = True
         Me.accion = tipo_accion.normal
 
-        Me.actualizar_horarios_empleado
+        Me.actualizar_horarios_empleado()
     End Sub
 
     Private Sub cmd_buscar_Click(sender As Object, e As EventArgs) Handles cmd_buscar.Click
