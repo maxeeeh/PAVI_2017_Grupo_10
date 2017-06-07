@@ -63,7 +63,7 @@
         tabla = clase_auxiliar.ejecuto_sql(sql)
 
         txt_empleado.Text = tabla.Rows(0)("emp")
-        txt_fecha.Text = tabla.Rows(0)("fecha")
+        txt_fecha.Text = Convert.ToDateTime(tabla.Rows(0)("fecha")).ToString("ddMMyyyy")
         txt_hora_desde.Text = tabla.Rows(0)("hora_desde")
         txt_hora_hasta.Text = tabla.Rows(0)("hora_hasta")
         txt__observaciones_turno.Text = tabla.Rows(0)("observaciones")
@@ -207,7 +207,7 @@
         End If
     End Sub
 
-    
+
     Private Sub reasignar_nro_filas(ByVal txt_nro_fila As String, ByRef grilla As DataGridView)
         Dim nro_fila As Integer = Convert.ToInt32(txt_nro_fila) - 1
         grilla.Rows.RemoveAt(nro_fila)
