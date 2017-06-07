@@ -31,7 +31,10 @@
         clase_auxiliar.cargar_combobox(cmb_paciente, tabla_para_combo("Paciente"))
         cmb_empleado.SelectedIndex = 0
         cmb_paciente.SelectedIndex = 0
+        dtp_fecha_turno.Value = DateTime.Today
         dtp_fecha_turno.MinDate = DateTime.Today
+        dtp_hora_desde.Value = DateTime.Now
+        dtp_hora_hasta.Value = DateTime.Now
         Me.actualizar_datos_grilla()
     End Sub
 
@@ -265,7 +268,7 @@
         'MessageBox.Show(dtp_fecha_turno.Value & vbCrLf & DateTime.Today)
         'MessageBox.Show(dtp_fecha_turno.Value.ToString("dd/MM/yyyy") & vbCrLf & DateTime.Today)
 
-        If dtp_fecha_turno.Value.ToString("dd/MM/yyyy") = DateTime.Today And dtp_hora_desde.Value.ToString("HH:mm") < DateTime.Now.ToString("HH:mm") Then
+        If dtp_fecha_turno.Value = DateTime.Today And dtp_hora_desde.Value < DateTime.Now Then
             libre_de_error = False
             message_str &= vbCrLf & "La hora seleccionada debe ser posterior a la hora actual."
         End If
