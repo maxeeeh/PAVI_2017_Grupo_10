@@ -300,7 +300,7 @@
             sql_intervencion &= ", '" & DateTime.Now.ToString("HH:mm") & "'"
             sql_intervencion &= ", " & id_paciente.ToString
             sql_intervencion &= ", " & id_empleado.ToString
-            sql_intervencion &= ", " & monto_total.ToString 'se hace un update despues de guardar los tratamientosxinterv
+            sql_intervencion &= ", " & monto_total.ToString().Replace(",", ".") 'se hace un update despues de guardar los tratamientosxinterv
             If Me.txt__observaciones_intervencion.Text <> "" Then
                 sql_intervencion &= ", '" & Me.txt__observaciones_intervencion.Text & "'"
             Else
