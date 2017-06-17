@@ -81,6 +81,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Estadisticas_DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Estadisticas\Estadisticas_DataSet.vb">
+      <DependentUpon>Estadisticas_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Estadisticas\frm_tratamientosPorPacientes.Designer.vb">
+      <DependentUpon>frm_tratamientosPorPacientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Estadisticas\frm_tratamientosPorPacientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Estadisticas\frm_Insumos_Mas_Usados.Designer.vb">
       <DependentUpon>frm_Insumos_Mas_Usados.vb</DependentUpon>
     </Compile>
@@ -239,8 +248,12 @@
     <EmbeddedResource Include="Estadisticas\frm_profesionalConMasTurnos.resx">
       <DependentUpon>frm_profesionalConMasTurnos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Estadisticas\frm_tratamientosPorPacientes.resx">
+      <DependentUpon>frm_tratamientosPorPacientes.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Estadisticas\Report\Insumos_mas_Usados_Report.rdlc" />
     <EmbeddedResource Include="Estadisticas\Report\ProfesionalConMasTurnos_Report.rdlc" />
+    <EmbeddedResource Include="Estadisticas\TratamientosPorPacientes_Estadistica.rdlc" />
     <EmbeddedResource Include="Factura.resx">
       <DependentUpon>Factura.vb</DependentUpon>
     </EmbeddedResource>

@@ -29,12 +29,12 @@
         Return tabla
     End Function
 
-    Private Function tabla_para_combo_paciente() As DataTable ' el parametro puede ser "Empleado" o "Paciente"
-        'Esta funcion da una tabla con 2 columnas: la primera es el id_paciente o id_empleado, y la segunda el apellido y nombre concatenados
+    Private Function tabla_para_combo_paciente() As DataTable
+        'Esta funcion da una tabla con 2 columnas: la primera es el id_paciente y la segunda el apellido y nombre concatenados
 
         Dim tabla As New Data.DataTable
         Dim sql As String = ""
-        'En el select hace id_empleado o id_paciente, y despues concatena asi: "Apellido, Nombre"
+        'En el select hace id_paciente, y despues concatena asi: "Apellido, Nombre"
         'La idea del LEFT JOIN es que mantenga los datos de la izquierda y llene con null los datos a la derecha
         'si es que no se encontraron coincidencias con la condicion del ON. Al hacer el LEFT JOIN se encontraran
         'los turnos que no tengan intervencion registrada si el id_intervencion es NULL
@@ -42,7 +42,7 @@
         sql &= " FROM Paciente P JOIN Turno T ON P.id_paciente = T.id_paciente"
         sql &= " LEFT JOIN Intervencion I ON T.id_paciente = I.id_paciente AND T.fecha = I.fecha"
         sql &= " WHERE P.habilitado = 1"
-        'sql &= " AND T.fecha = '" & DateTime.Today.ToString("yyyy-MM-dd") & "'"
+        sql &= " AND T.fecha = '" & DateTime.Today.ToString("yyyy-MM-dd") & "'"
         sql &= " AND I.id_intervencion IS NULL"
         sql &= " ORDER BY P.apellido"
         tabla = clase_auxiliar.ejecuto_sql(sql)
@@ -58,8 +58,8 @@
         Dim sql As String = ""
         sql &= "SELECT T.* , E.apellido + ', ' + E.nombre As emp"
         sql &= " FROM Turno T  JOIN Empleado E ON T.id_empleado=E.id_Empleado"
-        'sql &= " WHERE  T.fecha = '" & DateTime.Today.ToString("yyyy-MM-dd") & "'"
-        sql &= " WHERE T.id_paciente=" & cmb_paciente.SelectedValue
+        sql &= " WHERE  T.fecha = '" & DateTime.Today.ToString("yyyy-MM-dd") & "'"
+        sql &= " AND T.id_paciente=" & cmb_paciente.SelectedValue
         tabla = clase_auxiliar.ejecuto_sql(sql)
 
         txt_empleado.Text = tabla.Rows(0)("emp")
