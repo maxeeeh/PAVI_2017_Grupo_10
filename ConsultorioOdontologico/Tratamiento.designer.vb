@@ -39,6 +39,7 @@ Partial Class frm_registrar_tratamiento
         Me.lbl_campos_obligatorios = New System.Windows.Forms.Label()
         Me.txt_filtro_descripcion = New System.Windows.Forms.TextBox()
         Me.lbl_filtro_descripcion = New System.Windows.Forms.Label()
+        Me.lbl_costo_anterior = New System.Windows.Forms.Label()
         CType(Me.grid_tratamientos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grp_descripcion.SuspendLayout()
         Me.grp_costo.SuspendLayout()
@@ -150,6 +151,7 @@ Partial Class frm_registrar_tratamiento
         '
         'grp_costo
         '
+        Me.grp_costo.Controls.Add(Me.lbl_costo_anterior)
         Me.grp_costo.Controls.Add(Me.txt_costo)
         Me.grp_costo.Location = New System.Drawing.Point(12, 104)
         Me.grp_costo.Name = "grp_costo"
@@ -161,9 +163,9 @@ Partial Class frm_registrar_tratamiento
         'txt_costo
         '
         Me.txt_costo.Location = New System.Drawing.Point(6, 19)
-        Me.txt_costo.Mask = "0000.00"
+        Me.txt_costo.Mask = "000000.00"
         Me.txt_costo.Name = "txt_costo"
-        Me.txt_costo.Size = New System.Drawing.Size(46, 20)
+        Me.txt_costo.Size = New System.Drawing.Size(59, 20)
         Me.txt_costo.TabIndex = 0
         '
         'lbl_campos_obligatorios
@@ -190,6 +192,16 @@ Partial Class frm_registrar_tratamiento
         Me.lbl_filtro_descripcion.Size = New System.Drawing.Size(107, 13)
         Me.lbl_filtro_descripcion.TabIndex = 90
         Me.lbl_filtro_descripcion.Text = "Filtrar por descripción"
+        '
+        'lbl_costo_anterior
+        '
+        Me.lbl_costo_anterior.AutoSize = True
+        Me.lbl_costo_anterior.Location = New System.Drawing.Point(81, 22)
+        Me.lbl_costo_anterior.Name = "lbl_costo_anterior"
+        Me.lbl_costo_anterior.Size = New System.Drawing.Size(78, 13)
+        Me.lbl_costo_anterior.TabIndex = 92
+        Me.lbl_costo_anterior.Text = "Costo anterior: "
+        Me.lbl_costo_anterior.Visible = False
         '
         'frm_registrar_tratamiento
         '
@@ -238,5 +250,6 @@ Partial Class frm_registrar_tratamiento
     Friend WithEvents lbl_campos_obligatorios As System.Windows.Forms.Label
     Friend WithEvents txt_filtro_descripcion As System.Windows.Forms.TextBox
     Friend WithEvents lbl_filtro_descripcion As System.Windows.Forms.Label
+    Friend WithEvents lbl_costo_anterior As System.Windows.Forms.Label
 
 End Class

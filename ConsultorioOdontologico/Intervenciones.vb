@@ -42,7 +42,7 @@
         sql &= " FROM Paciente P JOIN Turno T ON P.id_paciente = T.id_paciente"
         sql &= " LEFT JOIN Intervencion I ON T.id_paciente = I.id_paciente AND T.fecha = I.fecha"
         sql &= " WHERE P.habilitado = 1"
-        sql &= " AND T.fecha = '" & DateTime.Today.ToString("yyyy-MM-dd") & "'"
+        'sql &= " AND T.fecha = '" & DateTime.Today.ToString("yyyy-MM-dd") & "'"
         sql &= " AND I.id_intervencion IS NULL"
         sql &= " ORDER BY P.apellido"
         tabla = clase_auxiliar.ejecuto_sql(sql)
@@ -58,8 +58,8 @@
         Dim sql As String = ""
         sql &= "SELECT T.* , E.apellido + ', ' + E.nombre As emp"
         sql &= " FROM Turno T  JOIN Empleado E ON T.id_empleado=E.id_Empleado"
-        sql &= " WHERE  T.fecha = '" & DateTime.Today.ToString("yyyy-MM-dd") & "'"
-        sql &= "AND T.id_paciente=" & cmb_paciente.SelectedValue
+        'sql &= " WHERE  T.fecha = '" & DateTime.Today.ToString("yyyy-MM-dd") & "'"
+        sql &= " WHERE T.id_paciente=" & cmb_paciente.SelectedValue
         tabla = clase_auxiliar.ejecuto_sql(sql)
 
         txt_empleado.Text = tabla.Rows(0)("emp")
@@ -198,7 +198,7 @@
             If fila_de_tratamiento <> -1 Then 'Si fila_de_tratamiento es -1 es porque no habia sido agregado
                 Dim res As Integer = MessageBox.Show("El tratamiento ya estaba agregado")
             Else
-                Me.grid_tratamientos.Rows.Add(Me.grid_tratamientos.Rows.Count + 1, Me.cmb_tratamientos.Text, Me.cmb_tratamientos.SelectedIndex, tabla_tratamientos.Rows(Me.cmb_tratamientos.SelectedIndex)(2))
+                Me.grid_tratamientos.Rows.Add(Me.grid_tratamientos.Rows.Count + 1, Me.cmb_tratamientos.Text, Me.cmb_tratamientos.SelectedIndex, tabla_tratamientos.Rows(Me.cmb_tratamientos.SelectedIndex)(3))
                 'Me.actualizar_monto_total()
                 Me.actualizar_monto_total(tabla_tratamientos.Rows(Me.cmb_tratamientos.SelectedIndex)("costo"))
             End If

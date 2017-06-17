@@ -142,6 +142,8 @@
 
     Private Sub insertar()
 
+        'MessageBox.Show(CDec(Me.txt_costo.Text.Trim()))
+
         Dim txt_insert As String = ""
 
         txt_insert &= "INSERT INTO Tratamiento ("
@@ -149,26 +151,26 @@
         txt_insert &= ", costo)"
         txt_insert &= " VALUES ("
         txt_insert &= "'" & Me.txt_descripcion.Text & "'"
-        Dim dec As String = Me.txt_costo.Text.Substring(5)
-        Dim ent As String = Me.txt_costo.Text.Substring(0, 5)
+        'Dim dec As String = Me.txt_costo.Text.Substring(5)
+        'Dim ent As String = Me.txt_costo.Text.Substring(0, 5)
 
 
 
 
-        If dec.Length = 0 Then
-            dec = "00"
-        Else
-            If dec.Length = 1 Then
-                dec = dec & "0"
-            Else
-                dec = dec.Replace(" ", "0")
-            End If
-        End If
+        'If dec.Length = 0 Then
+        '    dec = "00"
+        'Else
+        '    If dec.Length = 1 Then
+        '        dec = dec & "0"
+        '    Else
+        '        dec = dec.Replace(" ", "0")
+        '    End If
+        'End If
 
 
 
-
-        txt_insert &= ", '" & ent & dec & "')"
+        'txt_insert &= ", '" & ent & dec & "')"
+        txt_insert &= ", " & Me.txt_costo.Text.Replace(",", ".") & "')"
 
 
         insertar_modificar_eliminar(txt_insert)
@@ -182,7 +184,7 @@
         Dim txt_update As String = ""
 
         txt_update &= "UPDATE Tratamiento "
-        txt_update &= "SET costo= '" & Me.txt_costo.Text & "'"
+        txt_update &= "SET costo= '" & Me.txt_costo.Text.Replace(",", ".") & "'"
         If habilitar Then
             txt_update &= ", descripcion = '" & Me.txt_descripcion.Text & "'"
             txt_update &= ", habilitado = 1"
@@ -213,6 +215,7 @@
     Private Sub cmd_nuevo_Click(sender As Object, e As EventArgs) Handles cmd_nuevo.Click
         habilitar_controles()
         clase_auxiliar.blanquear_campos(Me)
+        Me.lbl_costo_anterior.Visible = False
         Me.accion = tipo_grabacion.insertar
         Me.txt_descripcion.Focus()
     End Sub
@@ -252,6 +255,7 @@
             Else
                 If validar_datos() = respuesta_validacion_error._ok Then
                     modificar(False)
+                    Me.lbl_costo_anterior.Visible = False
                     habilitar_controles()
                     clase_auxiliar.blanquear_campos(Me)
                     accion = tipo_grabacion.insertar
@@ -287,6 +291,7 @@
             txt_delete &= " WHERE id_tratamiento= " & Me.grid_tratamientos.CurrentRow.Cells(0).Value
 
             insertar_modificar_eliminar(txt_delete)
+            Me.lbl_costo_anterior.Visible = False
             cargar_grilla()
             MessageBox.Show("Se ha eliminado el tratamiento correctamente" _
                             , "Informacion" _
@@ -298,7 +303,9 @@
 
     Private Sub llenar_form_click_en_grid()
         txt_descripcion.Text = Me.grid_tratamientos.CurrentRow.Cells(1).Value
-        txt_costo.Text = Me.grid_tratamientos.CurrentRow.Cells(2).Value
+        Me.lbl_costo_anterior.Text = "Costo anterior: $ " & Me.grid_tratamientos.CurrentRow.Cells(2).Value
+        Me.lbl_costo_anterior.Visible = True
+        'txt_costo.Text = Me.grid_tratamientos.CurrentRow.Cells(2).Value
 
         accion = tipo_grabacion.modificar
         habilitar_controles()

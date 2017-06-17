@@ -3,7 +3,6 @@
 Public Class frm_paciente_report
 
     Dim clase_auxiliar As New Atributos_Compartidos
-    Dim filtros_aplicados() As String = {" ", " ", " ", " ", " ", " "}
 
 
     Private Sub frm_paciente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -16,7 +15,6 @@ Public Class frm_paciente_report
         sql &= " TipoDocumento TD ON P.id_tipo_documento = TD.id_tipo_documento JOIN"
         sql &= " Localidad L ON P.id_localidad = L.id_localidad"
         sql &= " WHERE P.habilitado = 1"
-        filtros_aplicados(0) = "[HABILITADO]"
         buscar_pacientes(sql)
     End Sub
 
@@ -55,24 +53,7 @@ Public Class frm_paciente_report
 
     Private Sub buscar_pacientes(ByVal sql As String)
         sql &= " ORDER BY pac ASC"
-        Dim value_param As String = "Filtrado por: "
-        Dim tiene_filtro As Boolean = False
 
-        For Each value As String In filtros_aplicados
-            If value <> " " Then
-                tiene_filtro = True
-                value_param &= value
-            End If
-        Next
-
-        If tiene_filtro = False Then
-            value_param = " "
-        End If
-
-        Dim param As Microsoft.Reporting.WinForms.ReportParameter = New Microsoft.Reporting.WinForms.ReportParameter("TipoReporte", value_param)
-        rv_pacientes.ProcessingMode = ProcessingMode.Local
-        rv_pacientes.LocalReport.ReportPath = "Reportes\Report\Pacientes_Report.rdlc"
-        rv_pacientes.LocalReport.SetParameters(param)
 
         PacientesBindingSource.DataSource = clase_auxiliar.ejecuto_sql(sql)
         Me.rv_pacientes.RefreshReport()
@@ -102,15 +83,12 @@ Public Class frm_paciente_report
             If radio_button.Checked = True Then
                 If radio_button.Text = "TODOS" Then
                     sql &= "(P.habilitado = 1 OR P.habilitado = 0)"
-                    filtros_aplicados(0) = " "
                     Exit For
                 ElseIf radio_button.Text = "Habilitados" Then
                     sql &= "P.habilitado = 1"
-                    filtros_aplicados(0) = "[HABILITADO]"
                     Exit For
                 Else
                     sql &= "P.habilitado = 0"
-                    filtros_aplicados(0) = "[DESHABILITADO]"
                     Exit For
                 End If
             End If
@@ -120,15 +98,12 @@ Public Class frm_paciente_report
             If radio_button.Checked = True Then
                 If radio_button.Text = "TODOS" Then
                     sql &= " AND (P.sexo = 'H' OR P.sexo = 'M')"
-                    filtros_aplicados(1) = " "
                     Exit For
                 ElseIf radio_button.Text = "Hombre" Then
                     sql &= " AND P.sexo = 'H'"
-                    filtros_aplicados(1) = "[sexo HOMBRE]"
                     Exit For
                 Else
                     sql &= " AND P.sexo = 'M'"
-                    filtros_aplicados(1) = "[sexo MUJER]"
                     Exit For
                 End If
             End If
@@ -136,16 +111,10 @@ Public Class frm_paciente_report
 
         If cmb_loc.SelectedIndex <> 0 Then
             sql &= " AND L.id_localidad = " & cmb_loc.SelectedValue
-            filtros_aplicados(2) = "[localidad " & cmb_loc.Text.ToUpper() & "]"
-        Else
-            filtros_aplicados(2) = " "
         End If
 
         If cmb_td.SelectedIndex <> 0 Then
             sql &= " AND TD.id_tipo_documento = " & cmb_td.SelectedValue
-            filtros_aplicados(3) = "[tipo documento " & cmb_td.Text.ToUpper() & "]"
-        Else
-            filtros_aplicados(3) = " "
         End If
 
         If chk_habilitar_fechas.Checked = True Then
@@ -156,9 +125,6 @@ Public Class frm_paciente_report
                 Exit Sub
             End If
             sql &= " AND P.fecha_nacimiento BETWEEN '" & fecha_desde.ToString("yyyy-MM-dd") & "' AND '" & fecha_hasta.ToString("yyyy-MM-dd") & "'"
-            filtros_aplicados(4) = "[rango fecha nacimiento [" & fecha_desde.ToString("dd/MM/yyyy") & " - " & fecha_hasta.ToString("dd/MM/yyyy") & "]]"
-        Else
-            filtros_aplicados(4) = " "
         End If
         buscar_pacientes(sql)
     End Sub

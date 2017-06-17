@@ -1,6 +1,5 @@
 ﻿Public Class frm_turnos_report
     Dim clase_auxiliar As New Atributos_Compartidos
-    Dim filtros_aplicados() As String = {" ", " ", " ", " "}
 
     Private Sub Turnos_Report_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         clase_auxiliar.cargar_combobox(cmb_empleado, tabla_para_combo("Empleado")) 'la "tabla_para_combo" es solo de este formulario
@@ -58,23 +57,6 @@
 
     Private Sub listar_turnos(ByVal sql As String)
         sql &= " ORDER BY Turno.fecha ASC, Turno.hora_desde ASC"
-        Dim value_param As String = "Filtrado por: "
-        Dim tiene_filtro As Boolean = False
-
-        For Each value As String In filtros_aplicados
-            If value <> " " Then
-                tiene_filtro = True
-                value_param &= value
-            End If
-        Next
-
-        If tiene_filtro = False Then
-            value_param = " "
-        End If
-        Dim param As Microsoft.Reporting.WinForms.ReportParameter = New Microsoft.Reporting.WinForms.ReportParameter("TipoReporte", value_param) 'agregar los filtros aplicados al string
-        rv_turnos.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
-        rv_turnos.LocalReport.ReportPath = "Reportes\Report\Turnos_Report.rdlc"
-        rv_turnos.LocalReport.SetParameters(param)
         Me.TurnosBindingSource.DataSource = clase_auxiliar.ejecuto_sql(sql)
         Me.rv_turnos.RefreshReport()
     End Sub
@@ -98,21 +80,16 @@
                 If radio_button.Checked = True Then
                     If radio_button.Text = "TODOS" Then
                         sql &= "AND (Paciente.sexo = 'H' OR Paciente.sexo = 'M')"
-                        filtros_aplicados(0) = " "
                         Exit For
                     ElseIf radio_button.Text = "Hombre" Then
                         sql &= "AND Paciente.sexo = 'H'"
-                        filtros_aplicados(0) = "[sexo HOMBRE]"
                         Exit For
                     Else
                         sql &= "AND Paciente.sexo = 'M'"
-                        filtros_aplicados(0) = "[sexo MUJER]"
                         Exit For
                     End If
                 End If
             Next
-        Else
-            filtros_aplicados(0) = " "
         End If
 
         If chk_habilitar_fechas.Checked = True Then
@@ -123,23 +100,14 @@
                 Exit Sub
             End If
             sql &= " AND Turno.fecha BETWEEN '" & fecha_desde.ToString("yyyy-MM-dd") & "' AND '" & fecha_hasta.ToString("yyyy-MM-dd") & "'"
-            filtros_aplicados(1) = "[rango fecha turno [" & fecha_desde.ToString("dd/MM/yyyy") & " - " & fecha_hasta.ToString("dd/MM/yyyy") & "]]"
-        Else
-            filtros_aplicados(1) = " "
         End If
 
         If cmb_paciente.SelectedIndex <> 0 Then
             sql &= " AND Paciente.id_paciente = " & cmb_paciente.SelectedValue
-            filtros_aplicados(2) = "[turnos paciente " & cmb_paciente.Text.ToUpper() & "]"
-        Else
-            filtros_aplicados(2) = " "
         End If
 
         If cmb_empleado.SelectedIndex <> 0 Then
             sql &= " AND Empleado.id_empleado = " & cmb_empleado.SelectedValue
-            filtros_aplicados(3) = "[turnos empleado " & cmb_empleado.Text.ToUpper() & "]"
-        Else
-            filtros_aplicados(3) = " "
         End If
         listar_turnos(sql)
     End Sub

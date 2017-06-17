@@ -56,7 +56,7 @@ Partial Class frm_insumo_report
         ReportDataSource1.Name = "DS_Insumo"
         ReportDataSource1.Value = Me.InsumosBindingSource
         Me.rv_insumos.LocalReport.DataSources.Add(ReportDataSource1)
-        Me.rv_insumos.LocalReport.ReportEmbeddedResource = "ConsultorioOdontologico.Insumo_Report.rdlc"
+        Me.rv_insumos.LocalReport.ReportEmbeddedResource = "ConsultorioOdontologico.Insumos_Report.rdlc"
         Me.rv_insumos.Location = New System.Drawing.Point(12, 66)
         Me.rv_insumos.Name = "rv_insumos"
         Me.rv_insumos.Size = New System.Drawing.Size(793, 425)

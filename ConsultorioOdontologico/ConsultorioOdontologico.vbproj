@@ -238,16 +238,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Report\Historial_Medico_Report.rdlc" />
     <EmbeddedResource Include="Reportes\Report\Insumos_SupReport.rdlc" />
-    <Content Include="Reportes\Report\Insumos_Report.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Reportes\Report\Pacientes_Report.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="Reportes\Report\Insumos_Report.rdlc" />
+    <EmbeddedResource Include="Reportes\Report\Pacientes_Report.rdlc" />
     <EmbeddedResource Include="Reportes\Report\Tratamientos_SubReport.rdlc" />
-    <Content Include="Reportes\Report\Turnos_Report.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="Reportes\Report\Turnos_Report.rdlc" />
     <EmbeddedResource Include="Reportes\Turnos_Report.resx">
       <DependentUpon>Turnos_Report.vb</DependentUpon>
     </EmbeddedResource>
