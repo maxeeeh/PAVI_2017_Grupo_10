@@ -76,6 +76,23 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Estadisticas\Estadisticas_DataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Estadisticas_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Estadisticas\frm_Insumos_Mas_Usados.Designer.vb">
+      <DependentUpon>frm_Insumos_Mas_Usados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Estadisticas\frm_Insumos_Mas_Usados.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estadisticas\frm_profesionalConMasTurnos.Designer.vb">
+      <DependentUpon>frm_profesionalConMasTurnos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Estadisticas\frm_profesionalConMasTurnos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Factura.designer.vb">
       <DependentUpon>Factura.vb</DependentUpon>
     </Compile>
@@ -216,6 +233,14 @@
     <EmbeddedResource Include="Cargo.resx">
       <DependentUpon>Cargo.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Estadisticas\frm_Insumos_Mas_Usados.resx">
+      <DependentUpon>frm_Insumos_Mas_Usados.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estadisticas\frm_profesionalConMasTurnos.resx">
+      <DependentUpon>frm_profesionalConMasTurnos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estadisticas\Report\Insumos_mas_Usados_Report.rdlc" />
+    <EmbeddedResource Include="Estadisticas\Report\ProfesionalConMasTurnos_Report.rdlc" />
     <EmbeddedResource Include="Factura.resx">
       <DependentUpon>Factura.vb</DependentUpon>
     </EmbeddedResource>
@@ -269,6 +294,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Estadisticas\Estadisticas_DataSet.xsc">
+      <DependentUpon>Estadisticas_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Estadisticas\Estadisticas_DataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Estadisticas_DataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Estadisticas\Estadisticas_DataSet.xss">
+      <DependentUpon>Estadisticas_DataSet.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
