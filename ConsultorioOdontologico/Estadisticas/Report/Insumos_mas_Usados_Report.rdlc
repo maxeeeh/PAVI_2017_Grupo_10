@@ -279,7 +279,7 @@
         </ChartNoDataMessage>
         <DataSetName>Insumos_Mas_Usados</DataSetName>
         <Height>7.58974cm</Height>
-        <Width>20.58458cm</Width>
+        <Width>21.87576cm</Width>
         <Style>
           <Border>
             <Color>LightGrey</Color>
@@ -292,7 +292,7 @@
       <Line Name="Line1">
         <Top>8.00516cm</Top>
         <Height>0cm</Height>
-        <Width>20.58458cm</Width>
+        <Width>21.87576cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -304,10 +304,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>10.29229cm</Width>
+              <Width>10.93788cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>10.29229cm</Width>
+              <Width>10.93788cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -478,7 +478,7 @@
         <DataSetName>Insumos_Mas_Usados</DataSetName>
         <Top>9.70703cm</Top>
         <Height>1.2cm</Height>
-        <Width>20.58458cm</Width>
+        <Width>21.87576cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -508,7 +508,7 @@
         <rd:DefaultName>Textbox7</rd:DefaultName>
         <Top>8.43703cm</Top>
         <Height>0.89104cm</Height>
-        <Width>20.58458cm</Width>
+        <Width>21.87576cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -521,10 +521,10 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>5.84375in</Height>
+    <Height>5.62708in</Height>
     <Style />
   </Body>
-  <Width>8.10417in</Width>
+  <Width>8.6125in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

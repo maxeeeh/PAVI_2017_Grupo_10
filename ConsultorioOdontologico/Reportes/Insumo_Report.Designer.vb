@@ -57,9 +57,10 @@ Partial Class frm_insumo_report
         ReportDataSource1.Value = Me.InsumosBindingSource
         Me.rv_insumos.LocalReport.DataSources.Add(ReportDataSource1)
         Me.rv_insumos.LocalReport.ReportEmbeddedResource = "ConsultorioOdontologico.Insumos_Report.rdlc"
-        Me.rv_insumos.Location = New System.Drawing.Point(12, 66)
+        Me.rv_insumos.Location = New System.Drawing.Point(16, 81)
+        Me.rv_insumos.Margin = New System.Windows.Forms.Padding(4)
         Me.rv_insumos.Name = "rv_insumos"
-        Me.rv_insumos.Size = New System.Drawing.Size(793, 425)
+        Me.rv_insumos.Size = New System.Drawing.Size(1106, 693)
         Me.rv_insumos.TabIndex = 0
         '
         'grp_estado
@@ -67,9 +68,11 @@ Partial Class frm_insumo_report
         Me.grp_estado.Controls.Add(Me.rb_deshabilitados)
         Me.grp_estado.Controls.Add(Me.rb_habilitados)
         Me.grp_estado.Controls.Add(Me.rb_estado_todos)
-        Me.grp_estado.Location = New System.Drawing.Point(12, 12)
+        Me.grp_estado.Location = New System.Drawing.Point(16, 15)
+        Me.grp_estado.Margin = New System.Windows.Forms.Padding(4)
         Me.grp_estado.Name = "grp_estado"
-        Me.grp_estado.Size = New System.Drawing.Size(270, 48)
+        Me.grp_estado.Padding = New System.Windows.Forms.Padding(4)
+        Me.grp_estado.Size = New System.Drawing.Size(360, 59)
         Me.grp_estado.TabIndex = 4
         Me.grp_estado.TabStop = False
         Me.grp_estado.Text = "Estado"
@@ -77,9 +80,10 @@ Partial Class frm_insumo_report
         'rb_deshabilitados
         '
         Me.rb_deshabilitados.AutoSize = True
-        Me.rb_deshabilitados.Location = New System.Drawing.Point(168, 22)
+        Me.rb_deshabilitados.Location = New System.Drawing.Point(224, 27)
+        Me.rb_deshabilitados.Margin = New System.Windows.Forms.Padding(4)
         Me.rb_deshabilitados.Name = "rb_deshabilitados"
-        Me.rb_deshabilitados.Size = New System.Drawing.Size(94, 17)
+        Me.rb_deshabilitados.Size = New System.Drawing.Size(122, 21)
         Me.rb_deshabilitados.TabIndex = 2
         Me.rb_deshabilitados.Text = "Deshabilitados"
         Me.rb_deshabilitados.UseVisualStyleBackColor = True
@@ -88,9 +92,10 @@ Partial Class frm_insumo_report
         '
         Me.rb_habilitados.AutoSize = True
         Me.rb_habilitados.Checked = True
-        Me.rb_habilitados.Location = New System.Drawing.Point(80, 22)
+        Me.rb_habilitados.Location = New System.Drawing.Point(107, 27)
+        Me.rb_habilitados.Margin = New System.Windows.Forms.Padding(4)
         Me.rb_habilitados.Name = "rb_habilitados"
-        Me.rb_habilitados.Size = New System.Drawing.Size(77, 17)
+        Me.rb_habilitados.Size = New System.Drawing.Size(99, 21)
         Me.rb_habilitados.TabIndex = 1
         Me.rb_habilitados.TabStop = True
         Me.rb_habilitados.Text = "Habilitados"
@@ -99,34 +104,39 @@ Partial Class frm_insumo_report
         'rb_estado_todos
         '
         Me.rb_estado_todos.AutoSize = True
-        Me.rb_estado_todos.Location = New System.Drawing.Point(6, 22)
+        Me.rb_estado_todos.Location = New System.Drawing.Point(8, 27)
+        Me.rb_estado_todos.Margin = New System.Windows.Forms.Padding(4)
         Me.rb_estado_todos.Name = "rb_estado_todos"
-        Me.rb_estado_todos.Size = New System.Drawing.Size(63, 17)
+        Me.rb_estado_todos.Size = New System.Drawing.Size(79, 21)
         Me.rb_estado_todos.TabIndex = 0
         Me.rb_estado_todos.Text = "TODOS"
         Me.rb_estado_todos.UseVisualStyleBackColor = True
         '
         'cmd_buscar
         '
-        Me.cmd_buscar.Location = New System.Drawing.Point(305, 25)
+        Me.cmd_buscar.Location = New System.Drawing.Point(407, 31)
+        Me.cmd_buscar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmd_buscar.Name = "cmd_buscar"
-        Me.cmd_buscar.Size = New System.Drawing.Size(91, 29)
+        Me.cmd_buscar.Size = New System.Drawing.Size(121, 36)
         Me.cmd_buscar.TabIndex = 5
         Me.cmd_buscar.Text = "Buscar"
         Me.cmd_buscar.UseVisualStyleBackColor = True
         '
         'frm_insumo_report
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(817, 504)
+        Me.ClientSize = New System.Drawing.Size(1138, 790)
         Me.Controls.Add(Me.cmd_buscar)
         Me.Controls.Add(Me.grp_estado)
         Me.Controls.Add(Me.rv_insumos)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(833, 543)
+        Me.MinimumSize = New System.Drawing.Size(1138, 790)
         Me.Name = "frm_insumo_report"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Reporte de Insumos"
         CType(Me.InsumosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Insumo_DataSet, System.ComponentModel.ISupportInitialize).EndInit()

@@ -24,44 +24,49 @@ Partial Class frm_Insumos_Mas_Usados
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
-        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
-        Me.Estadisticas_DataSet = New ConsultorioOdontologico.Estadisticas_DataSet()
         Me.Insumos_Mas_UsadosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        CType(Me.Estadisticas_DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Estadisticas_DataSet = New ConsultorioOdontologico.Estadisticas_DataSet()
+        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         CType(Me.Insumos_Mas_UsadosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Estadisticas_DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'ReportViewer1
-        '
-        ReportDataSource1.Name = "Insumos_Mas_Usados"
-        ReportDataSource1.Value = Me.Insumos_Mas_UsadosBindingSource
-        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource1)
-        Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "ConsultorioOdontologico.Insumos_mas_Usados_Report.rdlc"
-        Me.ReportViewer1.Location = New System.Drawing.Point(2, 13)
-        Me.ReportViewer1.Name = "ReportViewer1"
-        Me.ReportViewer1.Size = New System.Drawing.Size(839, 571)
-        Me.ReportViewer1.TabIndex = 0
-        '
-        'Estadisticas_DataSet
-        '
-        Me.Estadisticas_DataSet.DataSetName = "Estadisticas_DataSet"
-        Me.Estadisticas_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Insumos_Mas_UsadosBindingSource
         '
         Me.Insumos_Mas_UsadosBindingSource.DataMember = "Insumos_Mas_Usados"
         Me.Insumos_Mas_UsadosBindingSource.DataSource = Me.Estadisticas_DataSet
         '
+        'Estadisticas_DataSet
+        '
+        Me.Estadisticas_DataSet.DataSetName = "Estadisticas_DataSet"
+        Me.Estadisticas_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ReportViewer1
+        '
+        Me.ReportViewer1.KeepSessionAlive = False
+        ReportDataSource1.Name = "Insumos_Mas_Usados"
+        ReportDataSource1.Value = Me.Insumos_Mas_UsadosBindingSource
+        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource1)
+        Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "ConsultorioOdontologico.Insumos_mas_Usados_Report.rdlc"
+        Me.ReportViewer1.Location = New System.Drawing.Point(3, 13)
+        Me.ReportViewer1.Margin = New System.Windows.Forms.Padding(4)
+        Me.ReportViewer1.Name = "ReportViewer1"
+        Me.ReportViewer1.Size = New System.Drawing.Size(1122, 764)
+        Me.ReportViewer1.TabIndex = 0
+        '
         'frm_Insumos_Mas_Usados
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(842, 586)
+        Me.ClientSize = New System.Drawing.Size(1138, 790)
         Me.Controls.Add(Me.ReportViewer1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frm_Insumos_Mas_Usados"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "frm_Insumos_Mas_Usados"
-        CType(Me.Estadisticas_DataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Insumos_Mas_UsadosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Estadisticas_DataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

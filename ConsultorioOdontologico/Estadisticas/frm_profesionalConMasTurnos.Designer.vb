@@ -24,44 +24,51 @@ Partial Class frm_profesionalConMasTurnos
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
-        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
-        Me.Estadisticas_DataSet = New ConsultorioOdontologico.Estadisticas_DataSet()
         Me.ProfesionalConMasTurnosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        CType(Me.Estadisticas_DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Estadisticas_DataSet = New ConsultorioOdontologico.Estadisticas_DataSet()
+        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         CType(Me.ProfesionalConMasTurnosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Estadisticas_DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'ReportViewer1
-        '
-        ReportDataSource1.Name = "ProfesionalConMasTurnos"
-        ReportDataSource1.Value = Me.ProfesionalConMasTurnosBindingSource
-        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource1)
-        Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "ConsultorioOdontologico.ProfesionalConMasTurnos_Report.rdlc"
-        Me.ReportViewer1.Location = New System.Drawing.Point(1, 0)
-        Me.ReportViewer1.Name = "ReportViewer1"
-        Me.ReportViewer1.Size = New System.Drawing.Size(903, 567)
-        Me.ReportViewer1.TabIndex = 0
-        '
-        'Estadisticas_DataSet
-        '
-        Me.Estadisticas_DataSet.DataSetName = "Estadisticas_DataSet"
-        Me.Estadisticas_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ProfesionalConMasTurnosBindingSource
         '
         Me.ProfesionalConMasTurnosBindingSource.DataMember = "ProfesionalConMasTurnos"
         Me.ProfesionalConMasTurnosBindingSource.DataSource = Me.Estadisticas_DataSet
         '
+        'Estadisticas_DataSet
+        '
+        Me.Estadisticas_DataSet.DataSetName = "Estadisticas_DataSet"
+        Me.Estadisticas_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ReportViewer1
+        '
+        Me.ReportViewer1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        ReportDataSource1.Name = "ProfesionalConMasTurnos"
+        ReportDataSource1.Value = Me.ProfesionalConMasTurnosBindingSource
+        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource1)
+        Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "ConsultorioOdontologico.ProfesionalConMasTurnos_Report.rdlc"
+        Me.ReportViewer1.Location = New System.Drawing.Point(1, 0)
+        Me.ReportViewer1.Margin = New System.Windows.Forms.Padding(4)
+        Me.ReportViewer1.Name = "ReportViewer1"
+        Me.ReportViewer1.Size = New System.Drawing.Size(1203, 777)
+        Me.ReportViewer1.TabIndex = 0
+        '
         'frm_profesionalConMasTurnos
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(906, 568)
+        Me.ClientSize = New System.Drawing.Size(1138, 790)
         Me.Controls.Add(Me.ReportViewer1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frm_profesionalConMasTurnos"
-        Me.Text = "frm_profesionalConMasTurnos"
-        CType(Me.Estadisticas_DataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
+        Me.Text = "Estadistica de Turnos por Profesional"
         CType(Me.ProfesionalConMasTurnosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Estadisticas_DataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

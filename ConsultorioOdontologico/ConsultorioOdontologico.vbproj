@@ -108,6 +108,12 @@
     <Compile Include="Factura.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Soporte al Software\Acceso Sistema.Designer.vb">
+      <DependentUpon>Acceso Sistema.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Soporte al Software\Acceso Sistema.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes\DataSet\Factura_DataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -253,9 +259,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Estadisticas\Report\Insumos_mas_Usados_Report.rdlc" />
     <EmbeddedResource Include="Estadisticas\Report\ProfesionalConMasTurnos_Report.rdlc" />
-    <EmbeddedResource Include="Estadisticas\TratamientosPorPacientes_Estadistica.rdlc" />
+    <EmbeddedResource Include="Estadisticas\Report\TratamientosPorPacientes_Estadistica.rdlc" />
     <EmbeddedResource Include="Factura.resx">
       <DependentUpon>Factura.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Soporte al Software\Acceso Sistema.resx">
+      <DependentUpon>Acceso Sistema.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Intervenciones.resx">
       <DependentUpon>Intervenciones.vb</DependentUpon>
@@ -279,7 +288,7 @@
     <EmbeddedResource Include="Reportes\Report\Insumos_Report.rdlc" />
     <EmbeddedResource Include="Reportes\Report\Pacientes_Report.rdlc" />
     <EmbeddedResource Include="Reportes\Report\Tratamientos_SubReport.rdlc" />
-    <EmbeddedResource Include="Reportes\Report\Turnos_Report.rdlc" />
+    <EmbeddedResource Include="Reportes\Turnos_Report.rdlc" />
     <EmbeddedResource Include="Reportes\Turnos_Report.resx">
       <DependentUpon>Turnos_Report.vb</DependentUpon>
     </EmbeddedResource>

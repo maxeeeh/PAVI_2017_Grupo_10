@@ -271,7 +271,7 @@
         </ChartNoDataMessage>
         <DataSetName>ProfesionalConMasTurnos</DataSetName>
         <Height>10.05354cm</Height>
-        <Width>20.92854cm</Width>
+        <Width>21.60587cm</Width>
         <Style>
           <Border>
             <Color>LightGrey</Color>
@@ -284,7 +284,7 @@
       <Line Name="Line1">
         <Top>10.66808cm</Top>
         <Height>0cm</Height>
-        <Width>21.35187cm</Width>
+        <Width>21.60587cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -296,7 +296,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>10.46427cm</Width>
+              <Width>11.1416cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>10.46427cm</Width>
@@ -470,7 +470,7 @@
         <DataSetName>ProfesionalConMasTurnos</DataSetName>
         <Top>12.32641cm</Top>
         <Height>1.2cm</Height>
-        <Width>20.92854cm</Width>
+        <Width>21.60587cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -500,7 +500,7 @@
         <rd:DefaultName>Textbox7</rd:DefaultName>
         <Top>11.05641cm</Top>
         <Height>0.81167cm</Height>
-        <Width>20.92854cm</Width>
+        <Width>21.60587cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -516,7 +516,7 @@
     <Height>5.54167in</Height>
     <Style />
   </Body>
-  <Width>8.40625in</Width>
+  <Width>8.50625in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

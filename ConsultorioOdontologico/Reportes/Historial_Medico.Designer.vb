@@ -43,26 +43,29 @@ Partial Class frm_historial_medico
         ReportDataSource1.Value = Me.Historial_MedicoBindingSource
         Me.rv_historial_medico.LocalReport.DataSources.Add(ReportDataSource1)
         Me.rv_historial_medico.LocalReport.ReportEmbeddedResource = "ConsultorioOdontologico.Historial_Medico_Report.rdlc"
-        Me.rv_historial_medico.Location = New System.Drawing.Point(12, 31)
-        Me.rv_historial_medico.MinimumSize = New System.Drawing.Size(793, 412)
+        Me.rv_historial_medico.Location = New System.Drawing.Point(16, 38)
+        Me.rv_historial_medico.Margin = New System.Windows.Forms.Padding(4)
+        Me.rv_historial_medico.MinimumSize = New System.Drawing.Size(1057, 507)
         Me.rv_historial_medico.Name = "rv_historial_medico"
-        Me.rv_historial_medico.Size = New System.Drawing.Size(793, 412)
+        Me.rv_historial_medico.Size = New System.Drawing.Size(1106, 737)
         Me.rv_historial_medico.TabIndex = 0
         '
         'cmb_filtro_paciente
         '
         Me.cmb_filtro_paciente.FormattingEnabled = True
-        Me.cmb_filtro_paciente.Location = New System.Drawing.Point(105, 4)
+        Me.cmb_filtro_paciente.Location = New System.Drawing.Point(140, 5)
+        Me.cmb_filtro_paciente.Margin = New System.Windows.Forms.Padding(4)
         Me.cmb_filtro_paciente.Name = "cmb_filtro_paciente"
-        Me.cmb_filtro_paciente.Size = New System.Drawing.Size(196, 21)
+        Me.cmb_filtro_paciente.Size = New System.Drawing.Size(260, 24)
         Me.cmb_filtro_paciente.TabIndex = 1
         '
         'lbl_filtro_paciente
         '
         Me.lbl_filtro_paciente.AutoSize = True
-        Me.lbl_filtro_paciente.Location = New System.Drawing.Point(47, 7)
+        Me.lbl_filtro_paciente.Location = New System.Drawing.Point(63, 9)
+        Me.lbl_filtro_paciente.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbl_filtro_paciente.Name = "lbl_filtro_paciente"
-        Me.lbl_filtro_paciente.Size = New System.Drawing.Size(52, 13)
+        Me.lbl_filtro_paciente.Size = New System.Drawing.Size(67, 17)
         Me.lbl_filtro_paciente.TabIndex = 2
         Me.lbl_filtro_paciente.Text = "Paciente:"
         '
@@ -73,17 +76,19 @@ Partial Class frm_historial_medico
         '
         'frm_historial_medico
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(817, 455)
+        Me.ClientSize = New System.Drawing.Size(1120, 743)
         Me.Controls.Add(Me.lbl_filtro_paciente)
         Me.Controls.Add(Me.cmb_filtro_paciente)
         Me.Controls.Add(Me.rv_historial_medico)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(833, 494)
+        Me.MinimumSize = New System.Drawing.Size(1138, 790)
         Me.Name = "frm_historial_medico"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Historial Medico"
         CType(Me.Historial_MedicoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.HistorialMedico_DataSet, System.ComponentModel.ISupportInitialize).EndInit()

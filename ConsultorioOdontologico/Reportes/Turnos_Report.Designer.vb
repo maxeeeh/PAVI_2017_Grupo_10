@@ -68,31 +68,30 @@ Partial Class frm_turnos_report
         ReportDataSource1.Value = Me.TurnosBindingSource
         Me.rv_turnos.LocalReport.DataSources.Add(ReportDataSource1)
         Me.rv_turnos.LocalReport.ReportEmbeddedResource = "ConsultorioOdontologico.Turnos_Report.rdlc"
-        Me.rv_turnos.Location = New System.Drawing.Point(9, 103)
-        Me.rv_turnos.Margin = New System.Windows.Forms.Padding(2)
+        Me.rv_turnos.Location = New System.Drawing.Point(12, 127)
+        Me.rv_turnos.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.rv_turnos.Name = "rv_turnos"
-        Me.rv_turnos.Size = New System.Drawing.Size(811, 338)
+        Me.rv_turnos.Size = New System.Drawing.Size(1081, 416)
         Me.rv_turnos.TabIndex = 0
         '
         'dtp_desde
         '
         Me.dtp_desde.Enabled = False
         Me.dtp_desde.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtp_desde.Location = New System.Drawing.Point(62, 23)
-        Me.dtp_desde.Margin = New System.Windows.Forms.Padding(2)
+        Me.dtp_desde.Location = New System.Drawing.Point(83, 28)
+        Me.dtp_desde.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.dtp_desde.MinDate = New Date(2017, 5, 30, 0, 0, 0, 0)
         Me.dtp_desde.Name = "dtp_desde"
-        Me.dtp_desde.Size = New System.Drawing.Size(100, 20)
+        Me.dtp_desde.Size = New System.Drawing.Size(132, 22)
         Me.dtp_desde.TabIndex = 1
         Me.dtp_desde.Value = New Date(2017, 5, 30, 0, 0, 0, 0)
         '
         'lbl_fecha_desde
         '
         Me.lbl_fecha_desde.AutoSize = True
-        Me.lbl_fecha_desde.Location = New System.Drawing.Point(16, 26)
-        Me.lbl_fecha_desde.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lbl_fecha_desde.Location = New System.Drawing.Point(21, 32)
         Me.lbl_fecha_desde.Name = "lbl_fecha_desde"
-        Me.lbl_fecha_desde.Size = New System.Drawing.Size(38, 13)
+        Me.lbl_fecha_desde.Size = New System.Drawing.Size(49, 17)
         Me.lbl_fecha_desde.TabIndex = 2
         Me.lbl_fecha_desde.Text = "Desde"
         '
@@ -103,11 +102,11 @@ Partial Class frm_turnos_report
         Me.grp_rango_fechas.Controls.Add(Me.lbl_fecha_hasta)
         Me.grp_rango_fechas.Controls.Add(Me.dtp_desde)
         Me.grp_rango_fechas.Controls.Add(Me.lbl_fecha_desde)
-        Me.grp_rango_fechas.Location = New System.Drawing.Point(22, 12)
-        Me.grp_rango_fechas.Margin = New System.Windows.Forms.Padding(2)
+        Me.grp_rango_fechas.Location = New System.Drawing.Point(29, 15)
+        Me.grp_rango_fechas.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.grp_rango_fechas.Name = "grp_rango_fechas"
-        Me.grp_rango_fechas.Padding = New System.Windows.Forms.Padding(2)
-        Me.grp_rango_fechas.Size = New System.Drawing.Size(330, 87)
+        Me.grp_rango_fechas.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.grp_rango_fechas.Size = New System.Drawing.Size(440, 107)
         Me.grp_rango_fechas.TabIndex = 3
         Me.grp_rango_fechas.TabStop = False
         Me.grp_rango_fechas.Text = "Rango de Fechas"
@@ -115,10 +114,10 @@ Partial Class frm_turnos_report
         'chk_habilitar_fechas
         '
         Me.chk_habilitar_fechas.AutoSize = True
-        Me.chk_habilitar_fechas.Location = New System.Drawing.Point(30, 53)
-        Me.chk_habilitar_fechas.Margin = New System.Windows.Forms.Padding(2)
+        Me.chk_habilitar_fechas.Location = New System.Drawing.Point(40, 65)
+        Me.chk_habilitar_fechas.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.chk_habilitar_fechas.Name = "chk_habilitar_fechas"
-        Me.chk_habilitar_fechas.Size = New System.Drawing.Size(64, 17)
+        Me.chk_habilitar_fechas.Size = New System.Drawing.Size(82, 21)
         Me.chk_habilitar_fechas.TabIndex = 5
         Me.chk_habilitar_fechas.Text = "Habilitar"
         Me.chk_habilitar_fechas.UseVisualStyleBackColor = True
@@ -127,19 +126,18 @@ Partial Class frm_turnos_report
         '
         Me.dtp_hasta.Enabled = False
         Me.dtp_hasta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtp_hasta.Location = New System.Drawing.Point(213, 23)
-        Me.dtp_hasta.Margin = New System.Windows.Forms.Padding(2)
+        Me.dtp_hasta.Location = New System.Drawing.Point(284, 28)
+        Me.dtp_hasta.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.dtp_hasta.Name = "dtp_hasta"
-        Me.dtp_hasta.Size = New System.Drawing.Size(100, 20)
+        Me.dtp_hasta.Size = New System.Drawing.Size(132, 22)
         Me.dtp_hasta.TabIndex = 3
         '
         'lbl_fecha_hasta
         '
         Me.lbl_fecha_hasta.AutoSize = True
-        Me.lbl_fecha_hasta.Location = New System.Drawing.Point(170, 26)
-        Me.lbl_fecha_hasta.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lbl_fecha_hasta.Location = New System.Drawing.Point(227, 32)
         Me.lbl_fecha_hasta.Name = "lbl_fecha_hasta"
-        Me.lbl_fecha_hasta.Size = New System.Drawing.Size(35, 13)
+        Me.lbl_fecha_hasta.Size = New System.Drawing.Size(45, 17)
         Me.lbl_fecha_hasta.TabIndex = 4
         Me.lbl_fecha_hasta.Text = "Hasta"
         '
@@ -148,10 +146,10 @@ Partial Class frm_turnos_report
         Me.cmb_paciente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.cmb_paciente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmb_paciente.FormattingEnabled = True
-        Me.cmb_paciente.Location = New System.Drawing.Point(511, 63)
-        Me.cmb_paciente.Margin = New System.Windows.Forms.Padding(2)
+        Me.cmb_paciente.Location = New System.Drawing.Point(681, 78)
+        Me.cmb_paciente.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cmb_paciente.Name = "cmb_paciente"
-        Me.cmb_paciente.Size = New System.Drawing.Size(182, 21)
+        Me.cmb_paciente.Size = New System.Drawing.Size(241, 24)
         Me.cmb_paciente.TabIndex = 8
         '
         'cmb_empleado
@@ -159,29 +157,27 @@ Partial Class frm_turnos_report
         Me.cmb_empleado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.cmb_empleado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmb_empleado.FormattingEnabled = True
-        Me.cmb_empleado.Location = New System.Drawing.Point(511, 30)
-        Me.cmb_empleado.Margin = New System.Windows.Forms.Padding(2)
+        Me.cmb_empleado.Location = New System.Drawing.Point(681, 37)
+        Me.cmb_empleado.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cmb_empleado.Name = "cmb_empleado"
-        Me.cmb_empleado.Size = New System.Drawing.Size(182, 21)
+        Me.cmb_empleado.Size = New System.Drawing.Size(241, 24)
         Me.cmb_empleado.TabIndex = 7
         '
         'lbl_paciente
         '
         Me.lbl_paciente.AutoSize = True
-        Me.lbl_paciente.Location = New System.Drawing.Point(453, 63)
-        Me.lbl_paciente.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lbl_paciente.Location = New System.Drawing.Point(604, 78)
         Me.lbl_paciente.Name = "lbl_paciente"
-        Me.lbl_paciente.Size = New System.Drawing.Size(49, 13)
+        Me.lbl_paciente.Size = New System.Drawing.Size(63, 17)
         Me.lbl_paciente.TabIndex = 6
         Me.lbl_paciente.Text = "Paciente"
         '
         'lbl_empleado
         '
         Me.lbl_empleado.AutoSize = True
-        Me.lbl_empleado.Location = New System.Drawing.Point(447, 34)
-        Me.lbl_empleado.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lbl_empleado.Location = New System.Drawing.Point(596, 42)
         Me.lbl_empleado.Name = "lbl_empleado"
-        Me.lbl_empleado.Size = New System.Drawing.Size(54, 13)
+        Me.lbl_empleado.Size = New System.Drawing.Size(71, 17)
         Me.lbl_empleado.TabIndex = 5
         Me.lbl_empleado.Text = "Empleado"
         '
@@ -190,9 +186,11 @@ Partial Class frm_turnos_report
         Me.grp_sexo.Controls.Add(Me.rb_m)
         Me.grp_sexo.Controls.Add(Me.rb_h)
         Me.grp_sexo.Controls.Add(Me.rb_sexo_todos)
-        Me.grp_sexo.Location = New System.Drawing.Point(357, 12)
+        Me.grp_sexo.Location = New System.Drawing.Point(476, 15)
+        Me.grp_sexo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grp_sexo.Name = "grp_sexo"
-        Me.grp_sexo.Size = New System.Drawing.Size(85, 87)
+        Me.grp_sexo.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grp_sexo.Size = New System.Drawing.Size(113, 107)
         Me.grp_sexo.TabIndex = 9
         Me.grp_sexo.TabStop = False
         Me.grp_sexo.Text = "Sexo"
@@ -200,9 +198,10 @@ Partial Class frm_turnos_report
         'rb_m
         '
         Me.rb_m.AutoSize = True
-        Me.rb_m.Location = New System.Drawing.Point(6, 64)
+        Me.rb_m.Location = New System.Drawing.Point(8, 79)
+        Me.rb_m.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.rb_m.Name = "rb_m"
-        Me.rb_m.Size = New System.Drawing.Size(51, 17)
+        Me.rb_m.Size = New System.Drawing.Size(64, 21)
         Me.rb_m.TabIndex = 5
         Me.rb_m.TabStop = True
         Me.rb_m.Text = "Mujer"
@@ -211,9 +210,10 @@ Partial Class frm_turnos_report
         'rb_h
         '
         Me.rb_h.AutoSize = True
-        Me.rb_h.Location = New System.Drawing.Point(6, 41)
+        Me.rb_h.Location = New System.Drawing.Point(8, 50)
+        Me.rb_h.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.rb_h.Name = "rb_h"
-        Me.rb_h.Size = New System.Drawing.Size(62, 17)
+        Me.rb_h.Size = New System.Drawing.Size(79, 21)
         Me.rb_h.TabIndex = 4
         Me.rb_h.TabStop = True
         Me.rb_h.Text = "Hombre"
@@ -223,9 +223,10 @@ Partial Class frm_turnos_report
         '
         Me.rb_sexo_todos.AutoSize = True
         Me.rb_sexo_todos.Checked = True
-        Me.rb_sexo_todos.Location = New System.Drawing.Point(6, 17)
+        Me.rb_sexo_todos.Location = New System.Drawing.Point(8, 21)
+        Me.rb_sexo_todos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.rb_sexo_todos.Name = "rb_sexo_todos"
-        Me.rb_sexo_todos.Size = New System.Drawing.Size(63, 17)
+        Me.rb_sexo_todos.Size = New System.Drawing.Size(79, 21)
         Me.rb_sexo_todos.TabIndex = 3
         Me.rb_sexo_todos.TabStop = True
         Me.rb_sexo_todos.Text = "TODOS"
@@ -233,19 +234,19 @@ Partial Class frm_turnos_report
         '
         'cmd_buscar
         '
-        Me.cmd_buscar.Location = New System.Drawing.Point(708, 34)
-        Me.cmd_buscar.Margin = New System.Windows.Forms.Padding(2)
+        Me.cmd_buscar.Location = New System.Drawing.Point(944, 42)
+        Me.cmd_buscar.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cmd_buscar.Name = "cmd_buscar"
-        Me.cmd_buscar.Size = New System.Drawing.Size(98, 45)
+        Me.cmd_buscar.Size = New System.Drawing.Size(131, 55)
         Me.cmd_buscar.TabIndex = 10
         Me.cmd_buscar.Text = "Buscar"
         Me.cmd_buscar.UseVisualStyleBackColor = True
         '
         'frm_turnos_report
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(829, 451)
+        Me.ClientSize = New System.Drawing.Size(1105, 555)
         Me.Controls.Add(Me.cmd_buscar)
         Me.Controls.Add(Me.grp_sexo)
         Me.Controls.Add(Me.cmb_paciente)
@@ -255,10 +256,10 @@ Partial Class frm_turnos_report
         Me.Controls.Add(Me.grp_rango_fechas)
         Me.Controls.Add(Me.rv_turnos)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(2)
-        Me.MinimumSize = New System.Drawing.Size(833, 490)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.MinimumSize = New System.Drawing.Size(1105, 592)
         Me.Name = "frm_turnos_report"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Reporte de Turnos"
         CType(Me.TurnosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TurnosDataSet, System.ComponentModel.ISupportInitialize).EndInit()
