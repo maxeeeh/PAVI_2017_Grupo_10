@@ -364,9 +364,9 @@
         If txt_depto.Text = "" Then
             txt_insert &= ", ''"
         Else
-            txt_insert &= ", '" & Me.txt_depto.Text & "')"
+            txt_insert &= ", '" & Me.txt_depto.Text & "'"
         End If
-
+        txt_insert &= ")"
 
 
         insertar_modificar_eliminar(txt_insert)
