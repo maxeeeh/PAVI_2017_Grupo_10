@@ -8,14 +8,11 @@
 
     Private Sub frm_intervenciones_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         clase_auxiliar.cargar_combobox(cmb_insumos, "Insumo")
-        tabla_tratamientos = tabla_para_combo_tratamiento()
-        clase_auxiliar.cargar_combobox(cmb_tratamientos, tabla_tratamientos)
+        clase_auxiliar.cargar_combobox(cmb_tratamientos, tabla_para_combo_tratamiento())
         clase_auxiliar.cargar_combobox(cmb_paciente, tabla_para_combo_paciente())
         cmb_paciente.SelectedIndex = -1
-
         cmb_tratamientos.SelectedIndex = -1
         cmb_insumos.SelectedIndex = -1
-
 
     End Sub
 
@@ -53,26 +50,28 @@
     End Function
 
     Private Sub cmd_buscar_turno_Click(sender As Object, e As EventArgs) Handles cmd_buscar_turno.Click
+        If cmb_paciente.SelectedIndex <> -1 Then
+            Dim tabla As New Data.DataTable
+            Dim sql As String = ""
+            sql &= "SELECT T.* , E.apellido + ', ' + E.nombre As emp"
+            sql &= " FROM Turno T  JOIN Empleado E ON T.id_empleado=E.id_Empleado"
+            sql &= " WHERE  T.fecha = '" & DateTime.Today.ToString("yyyy-MM-dd") & "'"
+            sql &= " AND T.id_paciente=" & cmb_paciente.SelectedValue
+            tabla = clase_auxiliar.ejecuto_sql(sql)
 
-        Dim tabla As New Data.DataTable
-        Dim sql As String = ""
-        sql &= "SELECT T.* , E.apellido + ', ' + E.nombre As emp"
-        sql &= " FROM Turno T  JOIN Empleado E ON T.id_empleado=E.id_Empleado"
-        sql &= " WHERE  T.fecha = '" & DateTime.Today.ToString("yyyy-MM-dd") & "'"
-        sql &= " AND T.id_paciente=" & cmb_paciente.SelectedValue
-        tabla = clase_auxiliar.ejecuto_sql(sql)
+            txt_empleado.Text = tabla.Rows(0)("emp")
+            txt_fecha.Text = Convert.ToDateTime(tabla.Rows(0)("fecha")).ToString("ddMMyyyy")
+            txt_hora_desde.Text = tabla.Rows(0)("hora_desde")
+            txt_hora_hasta.Text = tabla.Rows(0)("hora_hasta")
+            txt__observaciones_turno.Text = tabla.Rows(0)("observaciones")
 
-        txt_empleado.Text = tabla.Rows(0)("emp")
-        txt_fecha.Text = Convert.ToDateTime(tabla.Rows(0)("fecha")).ToString("ddMMyyyy")
-        txt_hora_desde.Text = tabla.Rows(0)("hora_desde")
-        txt_hora_hasta.Text = tabla.Rows(0)("hora_hasta")
-        txt__observaciones_turno.Text = tabla.Rows(0)("observaciones")
+            id_empleado = tabla.Rows(0)("id_empleado")
+            id_paciente = cmb_paciente.SelectedValue
 
-        id_empleado = tabla.Rows(0)("id_empleado")
-        id_paciente = cmb_paciente.SelectedValue
-
-        habilitar_controles()
-
+            habilitar_controles()
+        Else
+            MessageBox.Show("Debe seleccionar un paciente", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
     End Sub
 
     Private Sub habilitar_controles()
