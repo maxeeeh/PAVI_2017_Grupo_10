@@ -8,7 +8,8 @@
 
     Private Sub frm_intervenciones_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         clase_auxiliar.cargar_combobox(cmb_insumos, "Insumo")
-        clase_auxiliar.cargar_combobox(cmb_tratamientos, tabla_para_combo_tratamiento())
+        tabla_tratamientos = tabla_para_combo_tratamiento() 'la tabla_tratamientos se usa mas adelante
+        clase_auxiliar.cargar_combobox(cmb_tratamientos, tabla_tratamientos)
         clase_auxiliar.cargar_combobox(cmb_paciente, tabla_para_combo_paciente())
         cmb_paciente.SelectedIndex = -1
         cmb_tratamientos.SelectedIndex = -1
@@ -197,7 +198,7 @@
             If fila_de_tratamiento <> -1 Then 'Si fila_de_tratamiento es -1 es porque no habia sido agregado
                 Dim res As Integer = MessageBox.Show("El tratamiento ya estaba agregado")
             Else
-                Me.grid_tratamientos.Rows.Add(Me.grid_tratamientos.Rows.Count + 1, Me.cmb_tratamientos.Text, Me.cmb_tratamientos.SelectedIndex, tabla_tratamientos.Rows(Me.cmb_tratamientos.SelectedIndex)(3))
+                Me.grid_tratamientos.Rows.Add(Me.grid_tratamientos.Rows.Count + 1, Me.cmb_tratamientos.Text, Me.cmb_tratamientos.SelectedIndex, tabla_tratamientos.Rows(Me.cmb_tratamientos.SelectedIndex)(2))
                 'Me.actualizar_monto_total()
                 Me.actualizar_monto_total(tabla_tratamientos.Rows(Me.cmb_tratamientos.SelectedIndex)("costo"))
             End If
