@@ -172,8 +172,8 @@ Partial Class frm_acceso_sistema
         'SalirToolStripMenuItem
         '
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
-        Me.SalirToolStripMenuItem.Text = "Salir"
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(106, 20)
+        Me.SalirToolStripMenuItem.Text = "Cerrar Programa"
         '
         'frm_acceso_sistema
         '
