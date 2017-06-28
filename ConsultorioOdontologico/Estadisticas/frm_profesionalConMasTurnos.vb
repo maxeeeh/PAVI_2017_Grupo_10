@@ -3,7 +3,7 @@
     Dim clase_auxiliar As New Atributos_Compartidos
 
     Private Sub frm_profesionalConMasTurnos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        mostrar_Estadística()
+
 
     End Sub
 
@@ -28,6 +28,6 @@
 
 
     Private Sub ReportViewer1_Load(sender As Object, e As EventArgs) Handles ReportViewer1.Load
-
+        mostrar_Estadística()
     End Sub
 End Class

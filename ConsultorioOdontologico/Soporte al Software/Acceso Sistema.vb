@@ -16,9 +16,11 @@
         If Me.ActiveMdiChild Is Nothing Then 'Si no hay un formulario abierto, no hay ningun formulario abierto y abre el nuevo
             ejecutar_apertura_formulario(formulario)
         Else 'Si ya hay un formulario abierto, lo intenta cerrar (preguntandole al usuario)
-            Me.MdiChildren(0).Close()
-            If Me.ActiveMdiChild Is Nothing Then 'Verifica de nuevo que no haya un formulario abierto para  ver si abre el nuevo
-                ejecutar_apertura_formulario(formulario)
+            If formulario.Name <> Me.MdiChildren(0).Name Then
+                Me.MdiChildren(0).Close()
+                If Me.ActiveMdiChild Is Nothing Then 'Verifica de nuevo que no haya un formulario abierto para  ver si abre el nuevo
+                    ejecutar_apertura_formulario(formulario)
+                End If
             End If
         End If
     End Sub
