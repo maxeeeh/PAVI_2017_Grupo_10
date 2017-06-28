@@ -170,7 +170,7 @@
 
 
         'txt_insert &= ", '" & ent & dec & "')"
-        txt_insert &= ", " & Me.txt_costo.Text.Replace(",", ".") & "')"
+        txt_insert &= ", " & Me.txt_costo.Text.Replace(",", ".") & ")"
 
 
         insertar_modificar_eliminar(txt_insert)
@@ -184,7 +184,7 @@
         Dim txt_update As String = ""
 
         txt_update &= "UPDATE Tratamiento "
-        txt_update &= "SET costo= '" & Me.txt_costo.Text.Replace(",", ".") & "'"
+        txt_update &= "SET costo= " & Me.txt_costo.Text.Replace(",", ".")
         If habilitar Then
             txt_update &= ", descripcion = '" & Me.txt_descripcion.Text & "'"
             txt_update &= ", habilitado = 1"
