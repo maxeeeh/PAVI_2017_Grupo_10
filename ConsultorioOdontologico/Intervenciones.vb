@@ -198,7 +198,7 @@
             If fila_de_tratamiento <> -1 Then 'Si fila_de_tratamiento es -1 es porque no habia sido agregado
                 Dim res As Integer = MessageBox.Show("El tratamiento ya estaba agregado")
             Else
-                Me.grid_tratamientos.Rows.Add(Me.grid_tratamientos.Rows.Count + 1, Me.cmb_tratamientos.Text, Me.cmb_tratamientos.SelectedIndex, tabla_tratamientos.Rows(Me.cmb_tratamientos.SelectedIndex)(2))
+                Me.grid_tratamientos.Rows.Add(Me.grid_tratamientos.Rows.Count + 1, Me.cmb_tratamientos.Text, Me.cmb_tratamientos.SelectedIndex, tabla_tratamientos.Rows(Me.cmb_tratamientos.SelectedIndex)(3))
                 'Me.actualizar_monto_total()
                 Me.actualizar_monto_total(tabla_tratamientos.Rows(Me.cmb_tratamientos.SelectedIndex)("costo"))
             End If

@@ -76,18 +76,16 @@ Partial Class frm_paciente_report
         Me.rv_pacientes.LocalReport.DataSources.Add(ReportDataSource1)
         Me.rv_pacientes.LocalReport.ReportEmbeddedResource = "ConsultorioOdontologico.Pacientes_Report.rdlc"
         Me.rv_pacientes.LocalReport.ReportPath = ""
-        Me.rv_pacientes.Location = New System.Drawing.Point(16, 140)
-        Me.rv_pacientes.Margin = New System.Windows.Forms.Padding(4)
+        Me.rv_pacientes.Location = New System.Drawing.Point(12, 114)
         Me.rv_pacientes.Name = "rv_pacientes"
-        Me.rv_pacientes.Size = New System.Drawing.Size(1105, 634)
+        Me.rv_pacientes.Size = New System.Drawing.Size(829, 516)
         Me.rv_pacientes.TabIndex = 0
         '
         'cmd_buscar
         '
-        Me.cmd_buscar.Location = New System.Drawing.Point(943, 36)
-        Me.cmd_buscar.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmd_buscar.Location = New System.Drawing.Point(707, 29)
         Me.cmd_buscar.Name = "cmd_buscar"
-        Me.cmd_buscar.Size = New System.Drawing.Size(140, 81)
+        Me.cmd_buscar.Size = New System.Drawing.Size(105, 66)
         Me.cmd_buscar.TabIndex = 1
         Me.cmd_buscar.Text = "Buscar"
         Me.cmd_buscar.UseVisualStyleBackColor = True
@@ -99,11 +97,9 @@ Partial Class frm_paciente_report
         Me.grp_rango_fecha.Controls.Add(Me.Label1)
         Me.grp_rango_fecha.Controls.Add(Me.dtp_hasta)
         Me.grp_rango_fecha.Controls.Add(Me.dtp_desde)
-        Me.grp_rango_fecha.Location = New System.Drawing.Point(25, 15)
-        Me.grp_rango_fecha.Margin = New System.Windows.Forms.Padding(4)
+        Me.grp_rango_fecha.Location = New System.Drawing.Point(19, 12)
         Me.grp_rango_fecha.Name = "grp_rango_fecha"
-        Me.grp_rango_fecha.Padding = New System.Windows.Forms.Padding(4)
-        Me.grp_rango_fecha.Size = New System.Drawing.Size(437, 118)
+        Me.grp_rango_fecha.Size = New System.Drawing.Size(328, 96)
         Me.grp_rango_fecha.TabIndex = 2
         Me.grp_rango_fecha.TabStop = False
         Me.grp_rango_fecha.Text = "Fecha Nacimiento"
@@ -111,10 +107,9 @@ Partial Class frm_paciente_report
         'chk_habilitar_fechas
         '
         Me.chk_habilitar_fechas.AutoSize = True
-        Me.chk_habilitar_fechas.Location = New System.Drawing.Point(43, 81)
-        Me.chk_habilitar_fechas.Margin = New System.Windows.Forms.Padding(4)
+        Me.chk_habilitar_fechas.Location = New System.Drawing.Point(32, 66)
         Me.chk_habilitar_fechas.Name = "chk_habilitar_fechas"
-        Me.chk_habilitar_fechas.Size = New System.Drawing.Size(82, 21)
+        Me.chk_habilitar_fechas.Size = New System.Drawing.Size(64, 17)
         Me.chk_habilitar_fechas.TabIndex = 7
         Me.chk_habilitar_fechas.Text = "Habilitar"
         Me.chk_habilitar_fechas.UseVisualStyleBackColor = True
@@ -122,20 +117,18 @@ Partial Class frm_paciente_report
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(221, 42)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(166, 34)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(45, 17)
+        Me.Label2.Size = New System.Drawing.Size(35, 13)
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "Hasta"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(21, 42)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(16, 34)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(49, 17)
+        Me.Label1.Size = New System.Drawing.Size(38, 13)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Desde"
         '
@@ -143,10 +136,9 @@ Partial Class frm_paciente_report
         '
         Me.dtp_hasta.Enabled = False
         Me.dtp_hasta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtp_hasta.Location = New System.Drawing.Point(276, 38)
-        Me.dtp_hasta.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtp_hasta.Location = New System.Drawing.Point(207, 31)
         Me.dtp_hasta.Name = "dtp_hasta"
-        Me.dtp_hasta.Size = New System.Drawing.Size(132, 22)
+        Me.dtp_hasta.Size = New System.Drawing.Size(100, 20)
         Me.dtp_hasta.TabIndex = 4
         Me.dtp_hasta.Value = New Date(2017, 6, 5, 0, 0, 0, 0)
         '
@@ -154,11 +146,10 @@ Partial Class frm_paciente_report
         '
         Me.dtp_desde.Enabled = False
         Me.dtp_desde.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtp_desde.Location = New System.Drawing.Point(80, 38)
-        Me.dtp_desde.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtp_desde.Location = New System.Drawing.Point(60, 31)
         Me.dtp_desde.MinDate = New Date(1920, 1, 1, 0, 0, 0, 0)
         Me.dtp_desde.Name = "dtp_desde"
-        Me.dtp_desde.Size = New System.Drawing.Size(132, 22)
+        Me.dtp_desde.Size = New System.Drawing.Size(100, 20)
         Me.dtp_desde.TabIndex = 3
         Me.dtp_desde.Value = New Date(1970, 1, 1, 0, 0, 0, 0)
         '
@@ -167,11 +158,9 @@ Partial Class frm_paciente_report
         Me.grp_estado.Controls.Add(Me.rb_deshabilitados)
         Me.grp_estado.Controls.Add(Me.rb_habilitados)
         Me.grp_estado.Controls.Add(Me.rb_estado_todos)
-        Me.grp_estado.Location = New System.Drawing.Point(484, 15)
-        Me.grp_estado.Margin = New System.Windows.Forms.Padding(4)
+        Me.grp_estado.Location = New System.Drawing.Point(363, 12)
         Me.grp_estado.Name = "grp_estado"
-        Me.grp_estado.Padding = New System.Windows.Forms.Padding(4)
-        Me.grp_estado.Size = New System.Drawing.Size(143, 118)
+        Me.grp_estado.Size = New System.Drawing.Size(107, 96)
         Me.grp_estado.TabIndex = 3
         Me.grp_estado.TabStop = False
         Me.grp_estado.Text = "Estado"
@@ -179,10 +168,9 @@ Partial Class frm_paciente_report
         'rb_deshabilitados
         '
         Me.rb_deshabilitados.AutoSize = True
-        Me.rb_deshabilitados.Location = New System.Drawing.Point(8, 90)
-        Me.rb_deshabilitados.Margin = New System.Windows.Forms.Padding(4)
+        Me.rb_deshabilitados.Location = New System.Drawing.Point(6, 73)
         Me.rb_deshabilitados.Name = "rb_deshabilitados"
-        Me.rb_deshabilitados.Size = New System.Drawing.Size(122, 21)
+        Me.rb_deshabilitados.Size = New System.Drawing.Size(94, 17)
         Me.rb_deshabilitados.TabIndex = 2
         Me.rb_deshabilitados.Text = "Deshabilitados"
         Me.rb_deshabilitados.UseVisualStyleBackColor = True
@@ -191,10 +179,9 @@ Partial Class frm_paciente_report
         '
         Me.rb_habilitados.AutoSize = True
         Me.rb_habilitados.Checked = True
-        Me.rb_habilitados.Location = New System.Drawing.Point(8, 55)
-        Me.rb_habilitados.Margin = New System.Windows.Forms.Padding(4)
+        Me.rb_habilitados.Location = New System.Drawing.Point(6, 45)
         Me.rb_habilitados.Name = "rb_habilitados"
-        Me.rb_habilitados.Size = New System.Drawing.Size(99, 21)
+        Me.rb_habilitados.Size = New System.Drawing.Size(77, 17)
         Me.rb_habilitados.TabIndex = 1
         Me.rb_habilitados.TabStop = True
         Me.rb_habilitados.Text = "Habilitados"
@@ -203,10 +190,9 @@ Partial Class frm_paciente_report
         'rb_estado_todos
         '
         Me.rb_estado_todos.AutoSize = True
-        Me.rb_estado_todos.Location = New System.Drawing.Point(8, 21)
-        Me.rb_estado_todos.Margin = New System.Windows.Forms.Padding(4)
+        Me.rb_estado_todos.Location = New System.Drawing.Point(6, 17)
         Me.rb_estado_todos.Name = "rb_estado_todos"
-        Me.rb_estado_todos.Size = New System.Drawing.Size(79, 21)
+        Me.rb_estado_todos.Size = New System.Drawing.Size(63, 17)
         Me.rb_estado_todos.TabIndex = 0
         Me.rb_estado_todos.Text = "TODOS"
         Me.rb_estado_todos.UseVisualStyleBackColor = True
@@ -216,11 +202,9 @@ Partial Class frm_paciente_report
         Me.grp_sexo.Controls.Add(Me.rb_m)
         Me.grp_sexo.Controls.Add(Me.rb_h)
         Me.grp_sexo.Controls.Add(Me.rb_sexo_todos)
-        Me.grp_sexo.Location = New System.Drawing.Point(636, 15)
-        Me.grp_sexo.Margin = New System.Windows.Forms.Padding(4)
+        Me.grp_sexo.Location = New System.Drawing.Point(477, 12)
         Me.grp_sexo.Name = "grp_sexo"
-        Me.grp_sexo.Padding = New System.Windows.Forms.Padding(4)
-        Me.grp_sexo.Size = New System.Drawing.Size(113, 118)
+        Me.grp_sexo.Size = New System.Drawing.Size(85, 96)
         Me.grp_sexo.TabIndex = 4
         Me.grp_sexo.TabStop = False
         Me.grp_sexo.Text = "Sexo"
@@ -228,10 +212,9 @@ Partial Class frm_paciente_report
         'rb_m
         '
         Me.rb_m.AutoSize = True
-        Me.rb_m.Location = New System.Drawing.Point(8, 90)
-        Me.rb_m.Margin = New System.Windows.Forms.Padding(4)
+        Me.rb_m.Location = New System.Drawing.Point(6, 73)
         Me.rb_m.Name = "rb_m"
-        Me.rb_m.Size = New System.Drawing.Size(64, 21)
+        Me.rb_m.Size = New System.Drawing.Size(51, 17)
         Me.rb_m.TabIndex = 5
         Me.rb_m.TabStop = True
         Me.rb_m.Text = "Mujer"
@@ -240,10 +223,9 @@ Partial Class frm_paciente_report
         'rb_h
         '
         Me.rb_h.AutoSize = True
-        Me.rb_h.Location = New System.Drawing.Point(8, 55)
-        Me.rb_h.Margin = New System.Windows.Forms.Padding(4)
+        Me.rb_h.Location = New System.Drawing.Point(6, 45)
         Me.rb_h.Name = "rb_h"
-        Me.rb_h.Size = New System.Drawing.Size(79, 21)
+        Me.rb_h.Size = New System.Drawing.Size(62, 17)
         Me.rb_h.TabIndex = 4
         Me.rb_h.TabStop = True
         Me.rb_h.Text = "Hombre"
@@ -253,10 +235,9 @@ Partial Class frm_paciente_report
         '
         Me.rb_sexo_todos.AutoSize = True
         Me.rb_sexo_todos.Checked = True
-        Me.rb_sexo_todos.Location = New System.Drawing.Point(8, 21)
-        Me.rb_sexo_todos.Margin = New System.Windows.Forms.Padding(4)
+        Me.rb_sexo_todos.Location = New System.Drawing.Point(6, 17)
         Me.rb_sexo_todos.Name = "rb_sexo_todos"
-        Me.rb_sexo_todos.Size = New System.Drawing.Size(79, 21)
+        Me.rb_sexo_todos.Size = New System.Drawing.Size(63, 17)
         Me.rb_sexo_todos.TabIndex = 3
         Me.rb_sexo_todos.TabStop = True
         Me.rb_sexo_todos.Text = "TODOS"
@@ -265,11 +246,9 @@ Partial Class frm_paciente_report
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.cmb_loc)
-        Me.GroupBox3.Location = New System.Drawing.Point(756, 15)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox3.Location = New System.Drawing.Point(567, 12)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Size = New System.Drawing.Size(179, 58)
+        Me.GroupBox3.Size = New System.Drawing.Size(134, 47)
         Me.GroupBox3.TabIndex = 5
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Localidad"
@@ -277,20 +256,17 @@ Partial Class frm_paciente_report
         'cmb_loc
         '
         Me.cmb_loc.FormattingEnabled = True
-        Me.cmb_loc.Location = New System.Drawing.Point(8, 23)
-        Me.cmb_loc.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmb_loc.Location = New System.Drawing.Point(6, 19)
         Me.cmb_loc.Name = "cmb_loc"
-        Me.cmb_loc.Size = New System.Drawing.Size(160, 24)
+        Me.cmb_loc.Size = New System.Drawing.Size(121, 21)
         Me.cmb_loc.TabIndex = 0
         '
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.cmb_td)
-        Me.GroupBox4.Location = New System.Drawing.Point(756, 75)
-        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox4.Location = New System.Drawing.Point(567, 61)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox4.Size = New System.Drawing.Size(179, 58)
+        Me.GroupBox4.Size = New System.Drawing.Size(134, 47)
         Me.GroupBox4.TabIndex = 6
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Tipo de Documento"
@@ -298,17 +274,16 @@ Partial Class frm_paciente_report
         'cmb_td
         '
         Me.cmb_td.FormattingEnabled = True
-        Me.cmb_td.Location = New System.Drawing.Point(8, 23)
-        Me.cmb_td.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmb_td.Location = New System.Drawing.Point(6, 19)
         Me.cmb_td.Name = "cmb_td"
-        Me.cmb_td.Size = New System.Drawing.Size(160, 24)
+        Me.cmb_td.Size = New System.Drawing.Size(121, 21)
         Me.cmb_td.TabIndex = 0
         '
         'frm_paciente_report
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1120, 743)
+        Me.ClientSize = New System.Drawing.Size(854, 642)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.grp_sexo)
@@ -318,10 +293,9 @@ Partial Class frm_paciente_report
         Me.Controls.Add(Me.rv_pacientes)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(1138, 790)
-        Me.MinimumSize = New System.Drawing.Size(1138, 790)
+        Me.MaximumSize = New System.Drawing.Size(854, 709)
+        Me.MinimumSize = New System.Drawing.Size(854, 590)
         Me.Name = "frm_paciente_report"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Reporte de Paciente"

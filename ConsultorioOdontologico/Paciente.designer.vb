@@ -93,12 +93,11 @@ Partial Class frm_registrar_paciente
         Me.grid_pacientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.grid_pacientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.nom, Me.ape, Me.tipoDoc, Me.id_tipo_documento, Me.nroDoc, Me.sexo, Me.fecha_nacimiento, Me.telefono, Me.celular, Me.id_localidad, Me.calle, Me.nro_calle, Me.piso, Me.departamento})
         Me.grid_pacientes.Cursor = System.Windows.Forms.Cursors.Cross
-        Me.grid_pacientes.Location = New System.Drawing.Point(16, 25)
-        Me.grid_pacientes.Margin = New System.Windows.Forms.Padding(4)
+        Me.grid_pacientes.Location = New System.Drawing.Point(12, 20)
         Me.grid_pacientes.Name = "grid_pacientes"
         Me.grid_pacientes.ReadOnly = True
         Me.grid_pacientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grid_pacientes.Size = New System.Drawing.Size(1053, 313)
+        Me.grid_pacientes.Size = New System.Drawing.Size(790, 254)
         Me.grid_pacientes.TabIndex = 17
         '
         'nom
@@ -209,10 +208,9 @@ Partial Class frm_registrar_paciente
         'cmd_nuevo
         '
         Me.cmd_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmd_nuevo.Location = New System.Drawing.Point(661, 753)
-        Me.cmd_nuevo.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmd_nuevo.Location = New System.Drawing.Point(496, 612)
         Me.cmd_nuevo.Name = "cmd_nuevo"
-        Me.cmd_nuevo.Size = New System.Drawing.Size(119, 28)
+        Me.cmd_nuevo.Size = New System.Drawing.Size(89, 23)
         Me.cmd_nuevo.TabIndex = 36
         Me.cmd_nuevo.Text = "Nuevo"
         Me.cmd_nuevo.UseVisualStyleBackColor = True
@@ -220,10 +218,9 @@ Partial Class frm_registrar_paciente
         'cmd_salir
         '
         Me.cmd_salir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmd_salir.Location = New System.Drawing.Point(963, 753)
-        Me.cmd_salir.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmd_salir.Location = New System.Drawing.Point(722, 612)
         Me.cmd_salir.Name = "cmd_salir"
-        Me.cmd_salir.Size = New System.Drawing.Size(119, 28)
+        Me.cmd_salir.Size = New System.Drawing.Size(89, 23)
         Me.cmd_salir.TabIndex = 35
         Me.cmd_salir.Text = "Salir"
         Me.cmd_salir.UseVisualStyleBackColor = True
@@ -231,11 +228,9 @@ Partial Class frm_registrar_paciente
         'grp_pacientes
         '
         Me.grp_pacientes.Controls.Add(Me.grid_pacientes)
-        Me.grp_pacientes.Location = New System.Drawing.Point(13, 401)
-        Me.grp_pacientes.Margin = New System.Windows.Forms.Padding(4)
+        Me.grp_pacientes.Location = New System.Drawing.Point(10, 326)
         Me.grp_pacientes.Name = "grp_pacientes"
-        Me.grp_pacientes.Padding = New System.Windows.Forms.Padding(4)
-        Me.grp_pacientes.Size = New System.Drawing.Size(1092, 345)
+        Me.grp_pacientes.Size = New System.Drawing.Size(819, 280)
         Me.grp_pacientes.TabIndex = 33
         Me.grp_pacientes.TabStop = False
         Me.grp_pacientes.Text = "Pacientes"
@@ -244,10 +239,9 @@ Partial Class frm_registrar_paciente
         '
         Me.cmd_registrar.Enabled = False
         Me.cmd_registrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmd_registrar.Location = New System.Drawing.Point(812, 753)
-        Me.cmd_registrar.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmd_registrar.Location = New System.Drawing.Point(609, 612)
         Me.cmd_registrar.Name = "cmd_registrar"
-        Me.cmd_registrar.Size = New System.Drawing.Size(119, 28)
+        Me.cmd_registrar.Size = New System.Drawing.Size(89, 23)
         Me.cmd_registrar.TabIndex = 34
         Me.cmd_registrar.Text = "Guardar"
         Me.cmd_registrar.UseVisualStyleBackColor = True
@@ -255,27 +249,24 @@ Partial Class frm_registrar_paciente
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(25, 373)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Location = New System.Drawing.Point(19, 303)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(197, 17)
+        Me.Label3.Size = New System.Drawing.Size(146, 13)
         Me.Label3.TabIndex = 20
         Me.Label3.Text = "Filtrar por nombre y/o apellido"
         '
         'txt_filtro_nombre_apellido
         '
-        Me.txt_filtro_nombre_apellido.Location = New System.Drawing.Point(236, 369)
-        Me.txt_filtro_nombre_apellido.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_filtro_nombre_apellido.Location = New System.Drawing.Point(177, 300)
         Me.txt_filtro_nombre_apellido.Name = "txt_filtro_nombre_apellido"
-        Me.txt_filtro_nombre_apellido.Size = New System.Drawing.Size(132, 22)
+        Me.txt_filtro_nombre_apellido.Size = New System.Drawing.Size(100, 20)
         Me.txt_filtro_nombre_apellido.TabIndex = 21
         '
         'cmd_eliminar_por_doc
         '
-        Me.cmd_eliminar_por_doc.Location = New System.Drawing.Point(455, 754)
-        Me.cmd_eliminar_por_doc.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmd_eliminar_por_doc.Location = New System.Drawing.Point(341, 613)
         Me.cmd_eliminar_por_doc.Name = "cmd_eliminar_por_doc"
-        Me.cmd_eliminar_por_doc.Size = New System.Drawing.Size(149, 28)
+        Me.cmd_eliminar_por_doc.Size = New System.Drawing.Size(112, 23)
         Me.cmd_eliminar_por_doc.TabIndex = 38
         Me.cmd_eliminar_por_doc.Text = "Eliminar"
         Me.cmd_eliminar_por_doc.UseVisualStyleBackColor = True
@@ -283,10 +274,9 @@ Partial Class frm_registrar_paciente
         'lbl_advertencia
         '
         Me.lbl_advertencia.AutoSize = True
-        Me.lbl_advertencia.Location = New System.Drawing.Point(733, 336)
-        Me.lbl_advertencia.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_advertencia.Location = New System.Drawing.Point(550, 273)
         Me.lbl_advertencia.Name = "lbl_advertencia"
-        Me.lbl_advertencia.Size = New System.Drawing.Size(360, 17)
+        Me.lbl_advertencia.Size = New System.Drawing.Size(269, 13)
         Me.lbl_advertencia.TabIndex = 43
         Me.lbl_advertencia.Text = "-Debe especificar al menos 1 (uno) numero de contacto"
         '
@@ -302,11 +292,9 @@ Partial Class frm_registrar_paciente
         Me.grp_domicilio.Controls.Add(Me.lbl_nro)
         Me.grp_domicilio.Controls.Add(Me.lbl_calle)
         Me.grp_domicilio.Controls.Add(Me.txt_calle)
-        Me.grp_domicilio.Location = New System.Drawing.Point(553, 28)
-        Me.grp_domicilio.Margin = New System.Windows.Forms.Padding(4)
+        Me.grp_domicilio.Location = New System.Drawing.Point(415, 23)
         Me.grp_domicilio.Name = "grp_domicilio"
-        Me.grp_domicilio.Padding = New System.Windows.Forms.Padding(4)
-        Me.grp_domicilio.Size = New System.Drawing.Size(529, 130)
+        Me.grp_domicilio.Size = New System.Drawing.Size(397, 106)
         Me.grp_domicilio.TabIndex = 41
         Me.grp_domicilio.TabStop = False
         Me.grp_domicilio.Text = "Domicilio"
@@ -316,96 +304,86 @@ Partial Class frm_registrar_paciente
         Me.cmb_loc.Enabled = False
         Me.cmb_loc.FormattingEnabled = True
         Me.cmb_loc.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmb_loc.Location = New System.Drawing.Point(132, 90)
-        Me.cmb_loc.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmb_loc.Location = New System.Drawing.Point(99, 73)
         Me.cmb_loc.Name = "cmb_loc"
-        Me.cmb_loc.Size = New System.Drawing.Size(369, 24)
+        Me.cmb_loc.Size = New System.Drawing.Size(278, 21)
         Me.cmb_loc.TabIndex = 10
         '
         'lbl_localidad
         '
         Me.lbl_localidad.AutoSize = True
-        Me.lbl_localidad.Location = New System.Drawing.Point(33, 94)
-        Me.lbl_localidad.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_localidad.Location = New System.Drawing.Point(25, 76)
         Me.lbl_localidad.Name = "lbl_localidad"
-        Me.lbl_localidad.Size = New System.Drawing.Size(78, 17)
+        Me.lbl_localidad.Size = New System.Drawing.Size(60, 13)
         Me.lbl_localidad.TabIndex = 8
         Me.lbl_localidad.Text = "Localidad *"
         '
         'txt_depto
         '
         Me.txt_depto.Enabled = False
-        Me.txt_depto.Location = New System.Drawing.Point(369, 55)
-        Me.txt_depto.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_depto.Location = New System.Drawing.Point(277, 45)
         Me.txt_depto.Name = "txt_depto"
-        Me.txt_depto.Size = New System.Drawing.Size(132, 22)
+        Me.txt_depto.Size = New System.Drawing.Size(100, 20)
         Me.txt_depto.TabIndex = 7
         '
         'txt_piso
         '
         Me.txt_piso.Enabled = False
-        Me.txt_piso.Location = New System.Drawing.Point(132, 57)
-        Me.txt_piso.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_piso.Location = New System.Drawing.Point(99, 46)
         Me.txt_piso.Name = "txt_piso"
-        Me.txt_piso.Size = New System.Drawing.Size(132, 22)
+        Me.txt_piso.Size = New System.Drawing.Size(100, 20)
         Me.txt_piso.TabIndex = 6
         '
         'lbl_depto
         '
         Me.lbl_depto.AutoSize = True
-        Me.lbl_depto.Location = New System.Drawing.Point(285, 60)
-        Me.lbl_depto.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_depto.Location = New System.Drawing.Point(214, 49)
         Me.lbl_depto.Name = "lbl_depto"
-        Me.lbl_depto.Size = New System.Drawing.Size(46, 17)
+        Me.lbl_depto.Size = New System.Drawing.Size(36, 13)
         Me.lbl_depto.TabIndex = 5
         Me.lbl_depto.Text = "Depto"
         '
         'lbl_piso
         '
         Me.lbl_piso.AutoSize = True
-        Me.lbl_piso.Location = New System.Drawing.Point(68, 60)
-        Me.lbl_piso.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_piso.Location = New System.Drawing.Point(51, 49)
         Me.lbl_piso.Name = "lbl_piso"
-        Me.lbl_piso.Size = New System.Drawing.Size(35, 17)
+        Me.lbl_piso.Size = New System.Drawing.Size(27, 13)
         Me.lbl_piso.TabIndex = 4
         Me.lbl_piso.Text = "Piso"
         '
         'txt_nro_calle
         '
         Me.txt_nro_calle.Enabled = False
-        Me.txt_nro_calle.Location = New System.Drawing.Point(369, 23)
-        Me.txt_nro_calle.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_nro_calle.Location = New System.Drawing.Point(277, 19)
         Me.txt_nro_calle.Name = "txt_nro_calle"
-        Me.txt_nro_calle.Size = New System.Drawing.Size(132, 22)
+        Me.txt_nro_calle.Size = New System.Drawing.Size(100, 20)
         Me.txt_nro_calle.TabIndex = 3
         '
         'lbl_nro
         '
         Me.lbl_nro.AutoSize = True
-        Me.lbl_nro.Location = New System.Drawing.Point(301, 27)
-        Me.lbl_nro.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_nro.Location = New System.Drawing.Point(226, 22)
         Me.lbl_nro.Name = "lbl_nro"
-        Me.lbl_nro.Size = New System.Drawing.Size(40, 17)
+        Me.lbl_nro.Size = New System.Drawing.Size(31, 13)
         Me.lbl_nro.TabIndex = 2
         Me.lbl_nro.Text = "Nro *"
         '
         'lbl_calle
         '
         Me.lbl_calle.AutoSize = True
-        Me.lbl_calle.Location = New System.Drawing.Point(64, 27)
-        Me.lbl_calle.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_calle.Location = New System.Drawing.Point(48, 22)
         Me.lbl_calle.Name = "lbl_calle"
-        Me.lbl_calle.Size = New System.Drawing.Size(48, 17)
+        Me.lbl_calle.Size = New System.Drawing.Size(37, 13)
         Me.lbl_calle.TabIndex = 1
         Me.lbl_calle.Text = "Calle *"
         '
         'txt_calle
         '
         Me.txt_calle.Enabled = False
-        Me.txt_calle.Location = New System.Drawing.Point(132, 23)
-        Me.txt_calle.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_calle.Location = New System.Drawing.Point(99, 19)
         Me.txt_calle.Name = "txt_calle"
-        Me.txt_calle.Size = New System.Drawing.Size(132, 22)
+        Me.txt_calle.Size = New System.Drawing.Size(100, 20)
         Me.txt_calle.TabIndex = 0
         '
         'grp_datos_personales
@@ -428,21 +406,18 @@ Partial Class frm_registrar_paciente
         Me.grp_datos_personales.Controls.Add(Me.lbl_nro_doc)
         Me.grp_datos_personales.Controls.Add(Me.txt_nro_doc)
         Me.grp_datos_personales.Controls.Add(Me.lbl_tipo_documento)
-        Me.grp_datos_personales.Location = New System.Drawing.Point(29, 28)
-        Me.grp_datos_personales.Margin = New System.Windows.Forms.Padding(4)
+        Me.grp_datos_personales.Location = New System.Drawing.Point(22, 23)
         Me.grp_datos_personales.Name = "grp_datos_personales"
-        Me.grp_datos_personales.Padding = New System.Windows.Forms.Padding(4)
-        Me.grp_datos_personales.Size = New System.Drawing.Size(499, 330)
+        Me.grp_datos_personales.Size = New System.Drawing.Size(374, 268)
         Me.grp_datos_personales.TabIndex = 40
         Me.grp_datos_personales.TabStop = False
         Me.grp_datos_personales.Text = "Datos Personales"
         '
         'cmd_buscar
         '
-        Me.cmd_buscar.Location = New System.Drawing.Point(200, 133)
-        Me.cmd_buscar.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmd_buscar.Location = New System.Drawing.Point(150, 108)
         Me.cmd_buscar.Name = "cmd_buscar"
-        Me.cmd_buscar.Size = New System.Drawing.Size(267, 28)
+        Me.cmd_buscar.Size = New System.Drawing.Size(200, 23)
         Me.cmd_buscar.TabIndex = 13
         Me.cmd_buscar.Text = "Buscar"
         Me.cmd_buscar.UseVisualStyleBackColor = True
@@ -450,10 +425,9 @@ Partial Class frm_registrar_paciente
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(135, 190)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(101, 154)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 17)
+        Me.Label2.Size = New System.Drawing.Size(35, 13)
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Sexo*"
         '
@@ -461,10 +435,10 @@ Partial Class frm_registrar_paciente
         '
         Me.rb_hombre.AutoSize = True
         Me.rb_hombre.Enabled = False
-        Me.rb_hombre.Location = New System.Drawing.Point(200, 187)
-        Me.rb_hombre.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.rb_hombre.Location = New System.Drawing.Point(150, 152)
+        Me.rb_hombre.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.rb_hombre.Name = "rb_hombre"
-        Me.rb_hombre.Size = New System.Drawing.Size(79, 21)
+        Me.rb_hombre.Size = New System.Drawing.Size(62, 17)
         Me.rb_hombre.TabIndex = 16
         Me.rb_hombre.TabStop = True
         Me.rb_hombre.Text = "Hombre"
@@ -473,10 +447,10 @@ Partial Class frm_registrar_paciente
         'rb_mujer
         '
         Me.rb_mujer.Enabled = False
-        Me.rb_mujer.Location = New System.Drawing.Point(285, 188)
-        Me.rb_mujer.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.rb_mujer.Location = New System.Drawing.Point(214, 153)
+        Me.rb_mujer.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.rb_mujer.Name = "rb_mujer"
-        Me.rb_mujer.Size = New System.Drawing.Size(79, 18)
+        Me.rb_mujer.Size = New System.Drawing.Size(59, 15)
         Me.rb_mujer.TabIndex = 15
         Me.rb_mujer.TabStop = True
         Me.rb_mujer.Text = "Mujer"
@@ -488,47 +462,42 @@ Partial Class frm_registrar_paciente
         Me.cmb_tipo_doc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmb_tipo_doc.DropDownWidth = 100
         Me.cmb_tipo_doc.FormattingEnabled = True
-        Me.cmb_tipo_doc.Location = New System.Drawing.Point(200, 101)
-        Me.cmb_tipo_doc.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmb_tipo_doc.Location = New System.Drawing.Point(150, 82)
         Me.cmb_tipo_doc.Name = "cmb_tipo_doc"
-        Me.cmb_tipo_doc.Size = New System.Drawing.Size(87, 24)
+        Me.cmb_tipo_doc.Size = New System.Drawing.Size(66, 21)
         Me.cmb_tipo_doc.TabIndex = 8
         '
         'txt_celular
         '
         Me.txt_celular.Enabled = False
-        Me.txt_celular.Location = New System.Drawing.Point(200, 299)
-        Me.txt_celular.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_celular.Location = New System.Drawing.Point(150, 243)
         Me.txt_celular.Name = "txt_celular"
-        Me.txt_celular.Size = New System.Drawing.Size(265, 22)
+        Me.txt_celular.Size = New System.Drawing.Size(200, 20)
         Me.txt_celular.TabIndex = 12
         '
         'txt_telefono
         '
         Me.txt_telefono.Enabled = False
-        Me.txt_telefono.Location = New System.Drawing.Point(200, 258)
-        Me.txt_telefono.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_telefono.Location = New System.Drawing.Point(150, 210)
         Me.txt_telefono.Name = "txt_telefono"
-        Me.txt_telefono.Size = New System.Drawing.Size(265, 22)
+        Me.txt_telefono.Size = New System.Drawing.Size(200, 20)
         Me.txt_telefono.TabIndex = 11
         '
         'lbl_celular
         '
         Me.lbl_celular.AutoSize = True
-        Me.lbl_celular.Location = New System.Drawing.Point(128, 300)
-        Me.lbl_celular.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_celular.Location = New System.Drawing.Point(96, 244)
         Me.lbl_celular.Name = "lbl_celular"
-        Me.lbl_celular.Size = New System.Drawing.Size(52, 17)
+        Me.lbl_celular.Size = New System.Drawing.Size(39, 13)
         Me.lbl_celular.TabIndex = 10
         Me.lbl_celular.Text = "Celular"
         '
         'lbl_telefono
         '
         Me.lbl_telefono.AutoSize = True
-        Me.lbl_telefono.Location = New System.Drawing.Point(116, 260)
-        Me.lbl_telefono.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_telefono.Location = New System.Drawing.Point(87, 211)
         Me.lbl_telefono.Name = "lbl_telefono"
-        Me.lbl_telefono.Size = New System.Drawing.Size(64, 17)
+        Me.lbl_telefono.Size = New System.Drawing.Size(49, 13)
         Me.lbl_telefono.TabIndex = 9
         Me.lbl_telefono.Text = "Teléfono"
         '
@@ -536,104 +505,94 @@ Partial Class frm_registrar_paciente
         '
         Me.dtp_fecha_nac.Enabled = False
         Me.dtp_fecha_nac.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.dtp_fecha_nac.Location = New System.Drawing.Point(200, 218)
-        Me.dtp_fecha_nac.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtp_fecha_nac.Location = New System.Drawing.Point(150, 177)
         Me.dtp_fecha_nac.Name = "dtp_fecha_nac"
-        Me.dtp_fecha_nac.Size = New System.Drawing.Size(265, 22)
+        Me.dtp_fecha_nac.Size = New System.Drawing.Size(200, 20)
         Me.dtp_fecha_nac.TabIndex = 8
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(29, 223)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(22, 181)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(150, 17)
+        Me.Label1.Size = New System.Drawing.Size(115, 13)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "Fecha de Nacimiento *"
         '
         'lbl_ape
         '
         Me.lbl_ape.AutoSize = True
-        Me.lbl_ape.Location = New System.Drawing.Point(124, 27)
-        Me.lbl_ape.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_ape.Location = New System.Drawing.Point(93, 22)
         Me.lbl_ape.Name = "lbl_ape"
-        Me.lbl_ape.Size = New System.Drawing.Size(67, 17)
+        Me.lbl_ape.Size = New System.Drawing.Size(51, 13)
         Me.lbl_ape.TabIndex = 0
         Me.lbl_ape.Text = "Apellido *"
         '
         'txt_ape
         '
         Me.txt_ape.Enabled = False
-        Me.txt_ape.Location = New System.Drawing.Point(200, 23)
-        Me.txt_ape.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_ape.Location = New System.Drawing.Point(150, 19)
         Me.txt_ape.Name = "txt_ape"
-        Me.txt_ape.Size = New System.Drawing.Size(265, 22)
+        Me.txt_ape.Size = New System.Drawing.Size(200, 20)
         Me.txt_ape.TabIndex = 0
         '
         'lbl_nom
         '
         Me.lbl_nom.AutoSize = True
-        Me.lbl_nom.Location = New System.Drawing.Point(124, 55)
-        Me.lbl_nom.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_nom.Location = New System.Drawing.Point(93, 45)
         Me.lbl_nom.Name = "lbl_nom"
-        Me.lbl_nom.Size = New System.Drawing.Size(67, 17)
+        Me.lbl_nom.Size = New System.Drawing.Size(51, 13)
         Me.lbl_nom.TabIndex = 5
         Me.lbl_nom.Text = "Nombre *"
         '
         'txt_nom
         '
         Me.txt_nom.Enabled = False
-        Me.txt_nom.Location = New System.Drawing.Point(200, 52)
-        Me.txt_nom.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_nom.Location = New System.Drawing.Point(150, 42)
         Me.txt_nom.Name = "txt_nom"
-        Me.txt_nom.Size = New System.Drawing.Size(265, 22)
+        Me.txt_nom.Size = New System.Drawing.Size(200, 20)
         Me.txt_nom.TabIndex = 1
         '
         'lbl_nro_doc
         '
         Me.lbl_nro_doc.AutoSize = True
-        Me.lbl_nro_doc.Location = New System.Drawing.Point(296, 105)
-        Me.lbl_nro_doc.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_nro_doc.Location = New System.Drawing.Point(222, 85)
         Me.lbl_nro_doc.Name = "lbl_nro_doc"
-        Me.lbl_nro_doc.Size = New System.Drawing.Size(65, 17)
+        Me.lbl_nro_doc.Size = New System.Drawing.Size(51, 13)
         Me.lbl_nro_doc.TabIndex = 13
         Me.lbl_nro_doc.Text = "Nro Doc*"
         '
         'txt_nro_doc
         '
-        Me.txt_nro_doc.Location = New System.Drawing.Point(371, 103)
-        Me.txt_nro_doc.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_nro_doc.Location = New System.Drawing.Point(278, 84)
         Me.txt_nro_doc.Mask = "00-000-000"
         Me.txt_nro_doc.Name = "txt_nro_doc"
-        Me.txt_nro_doc.Size = New System.Drawing.Size(95, 22)
+        Me.txt_nro_doc.Size = New System.Drawing.Size(72, 20)
         Me.txt_nro_doc.TabIndex = 11
         '
         'lbl_tipo_documento
         '
         Me.lbl_tipo_documento.AutoSize = True
-        Me.lbl_tipo_documento.Location = New System.Drawing.Point(109, 108)
-        Me.lbl_tipo_documento.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_tipo_documento.Location = New System.Drawing.Point(82, 88)
         Me.lbl_tipo_documento.Name = "lbl_tipo_documento"
-        Me.lbl_tipo_documento.Size = New System.Drawing.Size(70, 17)
+        Me.lbl_tipo_documento.Size = New System.Drawing.Size(55, 13)
         Me.lbl_tipo_documento.TabIndex = 1
         Me.lbl_tipo_documento.Text = "Tipo Doc*"
         '
         'lbl_asterisco
         '
         Me.lbl_asterisco.AutoSize = True
-        Me.lbl_asterisco.Location = New System.Drawing.Point(948, 315)
-        Me.lbl_asterisco.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_asterisco.Location = New System.Drawing.Point(711, 256)
         Me.lbl_asterisco.Name = "lbl_asterisco"
-        Me.lbl_asterisco.Size = New System.Drawing.Size(145, 17)
+        Me.lbl_asterisco.Size = New System.Drawing.Size(108, 13)
         Me.lbl_asterisco.TabIndex = 42
         Me.lbl_asterisco.Text = "* Campos obligatorios"
         '
         'frm_registrar_paciente
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1120, 743)
+        Me.ClientSize = New System.Drawing.Size(854, 642)
         Me.Controls.Add(Me.lbl_advertencia)
         Me.Controls.Add(Me.grp_domicilio)
         Me.Controls.Add(Me.grp_datos_personales)
@@ -647,10 +606,10 @@ Partial Class frm_registrar_paciente
         Me.Controls.Add(Me.cmd_registrar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(1138, 790)
-        Me.MinimumSize = New System.Drawing.Size(1138, 790)
+        Me.MaximumSize = New System.Drawing.Size(854, 642)
+        Me.MinimumSize = New System.Drawing.Size(854, 590)
         Me.Name = "frm_registrar_paciente"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Registrar Paciente"

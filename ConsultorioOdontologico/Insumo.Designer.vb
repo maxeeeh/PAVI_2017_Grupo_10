@@ -37,29 +37,26 @@ Partial Class frm_registrar_insumo
         '
         'txt_descripcion
         '
-        Me.txt_descripcion.Location = New System.Drawing.Point(8, 23)
-        Me.txt_descripcion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txt_descripcion.Location = New System.Drawing.Point(6, 19)
         Me.txt_descripcion.Name = "txt_descripcion"
-        Me.txt_descripcion.Size = New System.Drawing.Size(481, 142)
+        Me.txt_descripcion.Size = New System.Drawing.Size(362, 116)
         Me.txt_descripcion.TabIndex = 0
         Me.txt_descripcion.Text = ""
         '
         'cmd_registrar
         '
-        Me.cmd_registrar.Location = New System.Drawing.Point(172, 463)
-        Me.cmd_registrar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmd_registrar.Location = New System.Drawing.Point(129, 376)
         Me.cmd_registrar.Name = "cmd_registrar"
-        Me.cmd_registrar.Size = New System.Drawing.Size(100, 28)
+        Me.cmd_registrar.Size = New System.Drawing.Size(75, 23)
         Me.cmd_registrar.TabIndex = 2
         Me.cmd_registrar.Text = "Guardar"
         Me.cmd_registrar.UseVisualStyleBackColor = True
         '
         'cmd_salir
         '
-        Me.cmd_salir.Location = New System.Drawing.Point(401, 463)
-        Me.cmd_salir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmd_salir.Location = New System.Drawing.Point(301, 376)
         Me.cmd_salir.Name = "cmd_salir"
-        Me.cmd_salir.Size = New System.Drawing.Size(100, 28)
+        Me.cmd_salir.Size = New System.Drawing.Size(75, 23)
         Me.cmd_salir.TabIndex = 3
         Me.cmd_salir.Text = "Salir"
         Me.cmd_salir.UseVisualStyleBackColor = True
@@ -67,11 +64,9 @@ Partial Class frm_registrar_insumo
         'grp_descripcion
         '
         Me.grp_descripcion.Controls.Add(Me.txt_descripcion)
-        Me.grp_descripcion.Location = New System.Drawing.Point(16, 15)
-        Me.grp_descripcion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grp_descripcion.Location = New System.Drawing.Point(12, 12)
         Me.grp_descripcion.Name = "grp_descripcion"
-        Me.grp_descripcion.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.grp_descripcion.Size = New System.Drawing.Size(499, 174)
+        Me.grp_descripcion.Size = New System.Drawing.Size(374, 141)
         Me.grp_descripcion.TabIndex = 4
         Me.grp_descripcion.TabStop = False
         Me.grp_descripcion.Text = "Descripcion*"
@@ -79,37 +74,32 @@ Partial Class frm_registrar_insumo
         'lst_insumos
         '
         Me.lst_insumos.FormattingEnabled = True
-        Me.lst_insumos.ItemHeight = 16
-        Me.lst_insumos.Location = New System.Drawing.Point(24, 251)
-        Me.lst_insumos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.lst_insumos.Location = New System.Drawing.Point(18, 204)
         Me.lst_insumos.Name = "lst_insumos"
-        Me.lst_insumos.Size = New System.Drawing.Size(481, 196)
+        Me.lst_insumos.Size = New System.Drawing.Size(362, 160)
         Me.lst_insumos.TabIndex = 5
         '
         'lbl_filtro
         '
         Me.lbl_filtro.AutoSize = True
-        Me.lbl_filtro.Location = New System.Drawing.Point(20, 220)
-        Me.lbl_filtro.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_filtro.Location = New System.Drawing.Point(15, 179)
         Me.lbl_filtro.Name = "lbl_filtro"
-        Me.lbl_filtro.Size = New System.Drawing.Size(145, 17)
+        Me.lbl_filtro.Size = New System.Drawing.Size(107, 13)
         Me.lbl_filtro.TabIndex = 6
         Me.lbl_filtro.Text = "Filtrar por descripcion"
         '
         'txt_filtro
         '
-        Me.txt_filtro.Location = New System.Drawing.Point(172, 217)
-        Me.txt_filtro.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txt_filtro.Location = New System.Drawing.Point(129, 176)
         Me.txt_filtro.Name = "txt_filtro"
-        Me.txt_filtro.Size = New System.Drawing.Size(333, 22)
+        Me.txt_filtro.Size = New System.Drawing.Size(251, 20)
         Me.txt_filtro.TabIndex = 7
         '
         'cmd_borrar
         '
-        Me.cmd_borrar.Location = New System.Drawing.Point(287, 463)
-        Me.cmd_borrar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmd_borrar.Location = New System.Drawing.Point(215, 376)
         Me.cmd_borrar.Name = "cmd_borrar"
-        Me.cmd_borrar.Size = New System.Drawing.Size(100, 28)
+        Me.cmd_borrar.Size = New System.Drawing.Size(75, 23)
         Me.cmd_borrar.TabIndex = 8
         Me.cmd_borrar.Text = "Eliminar"
         Me.cmd_borrar.UseVisualStyleBackColor = True
@@ -117,18 +107,17 @@ Partial Class frm_registrar_insumo
         'lbl_campo_obligatorio
         '
         Me.lbl_campo_obligatorio.AutoSize = True
-        Me.lbl_campo_obligatorio.Location = New System.Drawing.Point(383, 192)
-        Me.lbl_campo_obligatorio.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_campo_obligatorio.Location = New System.Drawing.Point(287, 156)
         Me.lbl_campo_obligatorio.Name = "lbl_campo_obligatorio"
-        Me.lbl_campo_obligatorio.Size = New System.Drawing.Size(131, 17)
+        Me.lbl_campo_obligatorio.Size = New System.Drawing.Size(98, 13)
         Me.lbl_campo_obligatorio.TabIndex = 9
         Me.lbl_campo_obligatorio.Text = "* Campo obligatorio"
         '
         'frm_registrar_insumo
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(528, 496)
+        Me.ClientSize = New System.Drawing.Size(410, 407)
         Me.Controls.Add(Me.lbl_campo_obligatorio)
         Me.Controls.Add(Me.cmd_borrar)
         Me.Controls.Add(Me.txt_filtro)
@@ -139,10 +128,9 @@ Partial Class frm_registrar_insumo
         Me.Controls.Add(Me.cmd_registrar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(546, 543)
-        Me.MinimumSize = New System.Drawing.Size(546, 543)
+        Me.MaximumSize = New System.Drawing.Size(410, 441)
+        Me.MinimumSize = New System.Drawing.Size(410, 400)
         Me.Name = "frm_registrar_insumo"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registrar Insumo"

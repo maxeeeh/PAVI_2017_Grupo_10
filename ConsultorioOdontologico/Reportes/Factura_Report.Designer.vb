@@ -50,17 +50,18 @@ Partial Class frm_factura_report
         Me.rv_factura.LocalReport.ReportEmbeddedResource = "ConsultorioOdontologico.Factura_Report.rdlc"
         Me.rv_factura.Location = New System.Drawing.Point(36, 12)
         Me.rv_factura.Name = "rv_factura"
-        Me.rv_factura.Size = New System.Drawing.Size(658, 629)
+        Me.rv_factura.Size = New System.Drawing.Size(658, 665)
         Me.rv_factura.TabIndex = 0
         '
         'frm_factura_report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(766, 656)
+        Me.ClientSize = New System.Drawing.Size(766, 689)
         Me.Controls.Add(Me.rv_factura)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frm_factura_report"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Visualizador Factura"
         CType(Me.FacturaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Factura_DataSet, System.ComponentModel.ISupportInitialize).EndInit()

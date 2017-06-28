@@ -48,10 +48,9 @@ Partial Class frm_registrar_tratamiento
         'lblFecha
         '
         Me.lblFecha.AutoSize = True
-        Me.lblFecha.Location = New System.Drawing.Point(320, 20)
-        Me.lblFecha.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblFecha.Location = New System.Drawing.Point(240, 16)
         Me.lblFecha.Name = "lblFecha"
-        Me.lblFecha.Size = New System.Drawing.Size(47, 17)
+        Me.lblFecha.Size = New System.Drawing.Size(37, 13)
         Me.lblFecha.TabIndex = 67
         Me.lblFecha.Text = "Fecha"
         '
@@ -60,12 +59,11 @@ Partial Class frm_registrar_tratamiento
         Me.grid_tratamientos.AllowUserToAddRows = False
         Me.grid_tratamientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grid_tratamientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_tratamiento, Me.descripcion, Me.costo})
-        Me.grid_tratamientos.Location = New System.Drawing.Point(16, 276)
-        Me.grid_tratamientos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grid_tratamientos.Location = New System.Drawing.Point(12, 224)
         Me.grid_tratamientos.Name = "grid_tratamientos"
         Me.grid_tratamientos.ReadOnly = True
         Me.grid_tratamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grid_tratamientos.Size = New System.Drawing.Size(500, 171)
+        Me.grid_tratamientos.Size = New System.Drawing.Size(375, 139)
         Me.grid_tratamientos.TabIndex = 69
         '
         'id_tratamiento
@@ -94,10 +92,9 @@ Partial Class frm_registrar_tratamiento
         'cmd_nuevo
         '
         Me.cmd_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmd_nuevo.Location = New System.Drawing.Point(16, 465)
-        Me.cmd_nuevo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmd_nuevo.Location = New System.Drawing.Point(12, 378)
         Me.cmd_nuevo.Name = "cmd_nuevo"
-        Me.cmd_nuevo.Size = New System.Drawing.Size(119, 28)
+        Me.cmd_nuevo.Size = New System.Drawing.Size(89, 23)
         Me.cmd_nuevo.TabIndex = 0
         Me.cmd_nuevo.Text = "Nuevo"
         Me.cmd_nuevo.UseVisualStyleBackColor = True
@@ -106,10 +103,9 @@ Partial Class frm_registrar_tratamiento
         '
         Me.cmd_registrar.Enabled = False
         Me.cmd_registrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmd_registrar.Location = New System.Drawing.Point(143, 465)
-        Me.cmd_registrar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmd_registrar.Location = New System.Drawing.Point(107, 378)
         Me.cmd_registrar.Name = "cmd_registrar"
-        Me.cmd_registrar.Size = New System.Drawing.Size(119, 28)
+        Me.cmd_registrar.Size = New System.Drawing.Size(89, 23)
         Me.cmd_registrar.TabIndex = 1
         Me.cmd_registrar.Text = "Guardar"
         Me.cmd_registrar.UseVisualStyleBackColor = True
@@ -118,10 +114,9 @@ Partial Class frm_registrar_tratamiento
         '
         Me.cmd_eliminar.Enabled = False
         Me.cmd_eliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmd_eliminar.Location = New System.Drawing.Point(269, 465)
-        Me.cmd_eliminar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmd_eliminar.Location = New System.Drawing.Point(202, 378)
         Me.cmd_eliminar.Name = "cmd_eliminar"
-        Me.cmd_eliminar.Size = New System.Drawing.Size(119, 28)
+        Me.cmd_eliminar.Size = New System.Drawing.Size(89, 23)
         Me.cmd_eliminar.TabIndex = 78
         Me.cmd_eliminar.Text = "Eliminar"
         Me.cmd_eliminar.UseVisualStyleBackColor = True
@@ -129,10 +124,9 @@ Partial Class frm_registrar_tratamiento
         'cmd_salir
         '
         Me.cmd_salir.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmd_salir.Location = New System.Drawing.Point(396, 465)
-        Me.cmd_salir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmd_salir.Location = New System.Drawing.Point(297, 378)
         Me.cmd_salir.Name = "cmd_salir"
-        Me.cmd_salir.Size = New System.Drawing.Size(119, 28)
+        Me.cmd_salir.Size = New System.Drawing.Size(89, 23)
         Me.cmd_salir.TabIndex = 79
         Me.cmd_salir.Text = "Salir"
         Me.cmd_salir.UseVisualStyleBackColor = True
@@ -140,21 +134,18 @@ Partial Class frm_registrar_tratamiento
         'grp_descripcion
         '
         Me.grp_descripcion.Controls.Add(Me.txt_descripcion)
-        Me.grp_descripcion.Location = New System.Drawing.Point(16, 15)
-        Me.grp_descripcion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grp_descripcion.Location = New System.Drawing.Point(12, 12)
         Me.grp_descripcion.Name = "grp_descripcion"
-        Me.grp_descripcion.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.grp_descripcion.Size = New System.Drawing.Size(500, 100)
+        Me.grp_descripcion.Size = New System.Drawing.Size(375, 81)
         Me.grp_descripcion.TabIndex = 81
         Me.grp_descripcion.TabStop = False
         Me.grp_descripcion.Text = "Descripción del tratamiento*"
         '
         'txt_descripcion
         '
-        Me.txt_descripcion.Location = New System.Drawing.Point(8, 23)
-        Me.txt_descripcion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txt_descripcion.Location = New System.Drawing.Point(6, 19)
         Me.txt_descripcion.Name = "txt_descripcion"
-        Me.txt_descripcion.Size = New System.Drawing.Size(483, 61)
+        Me.txt_descripcion.Size = New System.Drawing.Size(363, 50)
         Me.txt_descripcion.TabIndex = 0
         Me.txt_descripcion.Text = ""
         '
@@ -162,11 +153,9 @@ Partial Class frm_registrar_tratamiento
         '
         Me.grp_costo.Controls.Add(Me.lbl_costo_anterior)
         Me.grp_costo.Controls.Add(Me.txt_costo)
-        Me.grp_costo.Location = New System.Drawing.Point(16, 128)
-        Me.grp_costo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grp_costo.Location = New System.Drawing.Point(12, 104)
         Me.grp_costo.Name = "grp_costo"
-        Me.grp_costo.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.grp_costo.Size = New System.Drawing.Size(500, 63)
+        Me.grp_costo.Size = New System.Drawing.Size(375, 51)
         Me.grp_costo.TabIndex = 85
         Me.grp_costo.TabStop = False
         Me.grp_costo.Text = "Costo del tratamiento*"
@@ -174,56 +163,51 @@ Partial Class frm_registrar_tratamiento
         'lbl_costo_anterior
         '
         Me.lbl_costo_anterior.AutoSize = True
-        Me.lbl_costo_anterior.Location = New System.Drawing.Point(108, 27)
-        Me.lbl_costo_anterior.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_costo_anterior.Location = New System.Drawing.Point(81, 22)
         Me.lbl_costo_anterior.Name = "lbl_costo_anterior"
-        Me.lbl_costo_anterior.Size = New System.Drawing.Size(105, 17)
+        Me.lbl_costo_anterior.Size = New System.Drawing.Size(78, 13)
         Me.lbl_costo_anterior.TabIndex = 92
         Me.lbl_costo_anterior.Text = "Costo anterior: "
         Me.lbl_costo_anterior.Visible = False
         '
         'txt_costo
         '
-        Me.txt_costo.Location = New System.Drawing.Point(8, 23)
-        Me.txt_costo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txt_costo.Location = New System.Drawing.Point(6, 19)
         Me.txt_costo.Mask = "000000.00"
         Me.txt_costo.Name = "txt_costo"
-        Me.txt_costo.Size = New System.Drawing.Size(77, 22)
+        Me.txt_costo.Size = New System.Drawing.Size(59, 20)
         Me.txt_costo.TabIndex = 0
         '
         'lbl_campos_obligatorios
         '
         Me.lbl_campos_obligatorios.AutoSize = True
-        Me.lbl_campos_obligatorios.Location = New System.Drawing.Point(371, 192)
-        Me.lbl_campos_obligatorios.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_campos_obligatorios.Location = New System.Drawing.Point(278, 156)
         Me.lbl_campos_obligatorios.Name = "lbl_campos_obligatorios"
-        Me.lbl_campos_obligatorios.Size = New System.Drawing.Size(145, 17)
+        Me.lbl_campos_obligatorios.Size = New System.Drawing.Size(108, 13)
         Me.lbl_campos_obligatorios.TabIndex = 89
         Me.lbl_campos_obligatorios.Text = "* Campos obligatorios"
         '
         'txt_filtro_descripcion
         '
-        Me.txt_filtro_descripcion.Location = New System.Drawing.Point(171, 231)
-        Me.txt_filtro_descripcion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txt_filtro_descripcion.Location = New System.Drawing.Point(128, 188)
         Me.txt_filtro_descripcion.Name = "txt_filtro_descripcion"
-        Me.txt_filtro_descripcion.Size = New System.Drawing.Size(336, 22)
+        Me.txt_filtro_descripcion.Size = New System.Drawing.Size(253, 20)
         Me.txt_filtro_descripcion.TabIndex = 91
         '
         'lbl_filtro_descripcion
         '
         Me.lbl_filtro_descripcion.AutoSize = True
-        Me.lbl_filtro_descripcion.Location = New System.Drawing.Point(20, 235)
-        Me.lbl_filtro_descripcion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_filtro_descripcion.Location = New System.Drawing.Point(15, 191)
         Me.lbl_filtro_descripcion.Name = "lbl_filtro_descripcion"
-        Me.lbl_filtro_descripcion.Size = New System.Drawing.Size(145, 17)
+        Me.lbl_filtro_descripcion.Size = New System.Drawing.Size(107, 13)
         Me.lbl_filtro_descripcion.TabIndex = 90
         Me.lbl_filtro_descripcion.Text = "Filtrar por descripción"
         '
         'frm_registrar_tratamiento
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(528, 496)
+        Me.ClientSize = New System.Drawing.Size(410, 407)
         Me.Controls.Add(Me.txt_filtro_descripcion)
         Me.Controls.Add(Me.lbl_filtro_descripcion)
         Me.Controls.Add(Me.lbl_campos_obligatorios)
@@ -237,10 +221,9 @@ Partial Class frm_registrar_tratamiento
         Me.Controls.Add(Me.lblFecha)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(546, 543)
-        Me.MinimumSize = New System.Drawing.Size(546, 543)
+        Me.MaximumSize = New System.Drawing.Size(410, 441)
+        Me.MinimumSize = New System.Drawing.Size(410, 407)
         Me.Name = "frm_registrar_tratamiento"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registrar Tratamiento"
